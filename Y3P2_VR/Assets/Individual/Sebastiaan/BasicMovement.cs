@@ -8,13 +8,14 @@ public class BasicMovement : MonoBehaviourPunCallbacks, IPunObservable {
     public PhotonView myView;
     public Text text;
     public GameObject camera;
+    public string name = "yes";
 
     public float speed;
 
     private Vector3 selfPos;
 
     private void Awake() {
-            text.text = PhotonNetwork.NickName;
+        text.text = PhotonManager.photon.playername;
     }
 
     void Update() {

@@ -25,7 +25,7 @@ public class PhotonUIManager : MonoBehaviour
     }
 
     public void CreateRoom() {
-        PhotonManager.photon.SetupRoom(createRoomField.text);
+        PhotonManager.photon.SetupRoom(createRoomField.text, name.text);
     }
 
     //Loads up the correct UI that represents the current connection status;

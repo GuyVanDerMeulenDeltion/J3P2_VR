@@ -44,7 +44,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
         menu.SetActive(true);
     }
 
-    public void SetupRoom(string _Identifier) {
+    public void SetupRoom(string _Identifier, string name) {
+        playername = name;
         Debug.Log("Created a room with the ID of: " + _Identifier);
         RoomOptions _RoomOptions = new RoomOptions() { IsOpen = true, MaxPlayers = 20, };
         PhotonNetwork.JoinOrCreateRoom(_Identifier, _RoomOptions, TypedLobby.Default);
