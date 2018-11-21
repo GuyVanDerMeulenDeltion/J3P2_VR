@@ -5,7 +5,17 @@ using UnityEngine;
 
 public class BaiscMove : MonoBehaviourPunCallbacks
 {
+    public GameObject camera;
     public float speed;
+
+    private void Start() {
+        InitializeNetworkSync();
+    }
+
+    void InitializeNetworkSync() {
+        if (!photonView.IsMine)
+            camera.SetActive(false);
+    }
 
     void Update()
     {
