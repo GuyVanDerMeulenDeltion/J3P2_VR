@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class PhotonManager : MonoBehaviour {
+public class PhotonManager : MonoBehaviourPunCallbacks {
 
     public static PhotonManager photon;
 
@@ -20,11 +20,15 @@ public class PhotonManager : MonoBehaviour {
         PhotonNetwork.ConnectUsingSettings();
     }
 
-    public void OnConnectedToMaster() {
+    public override void OnConnectedToMaster() {
         print("Connected to master.");
+        menu.SetActive(true);
     }
 
-    public void OnJoinedLobby() {
-        Debug.Log("Joined Lobby.");
+    public void SetupRoom(string _Identifier) {
+        Debug.Log("Created a room with the ID of: " + _Identifier);
+        RoomOptions _RoomOptions = new RoomOptions() { IsOpen = true, MaxPlayers = 20, };
+        PhotonNetwork.JoinOrCreateRoom(_Identifier, _RoomOptions, TypedLobby.Default);
+        Application.LoadLevel(1);
     }
 }
