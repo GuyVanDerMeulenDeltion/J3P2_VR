@@ -13,13 +13,14 @@ public class BaiscMove : MonoBehaviourPunCallbacks
     }
 
     void InitializeNetworkSync() {
-        if (!photonView.IsMine)
+        if (!photonView == gameObject.GetPhotonView()) {
             camera.SetActive(false);
+            Destroy(this);
+        }
     }
 
     void Update()
     {
-        if(photonView.IsMine)
         transform.Translate(new Vector3(Input.GetAxis("Horizontal")*Time.deltaTime*speed, 0, Input.GetAxis("Vertical")*Time.deltaTime*speed));
     }
 }
