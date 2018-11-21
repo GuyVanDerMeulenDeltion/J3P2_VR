@@ -10,7 +10,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     public static PhotonManager photon;
 
     public string playername;
-    public List<string> players = new List<string>();
 
     [Header("Menu:")]
     public GameObject menu;
@@ -55,13 +54,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
 
     private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode) {
         if (scene.name == "Game") {
-            print("Sceneload");
-            InstantiatePlayer(PhotonNetwork.PlayerList.Length);
+            InstantiatePlayer();
         }
     }
 
-   private void InstantiatePlayer(int i) {
-        GameObject _Player = InstantiateSceneObject(players[i], Vector3.zero, Quaternion.identity);
-        print(i);
+   private void InstantiatePlayer() {
+        GameObject _Player = PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity, 1);
+        PhotonNetwork.RemoveRPCs(PhotonNetwork.LocalPlayer);
    }
 }

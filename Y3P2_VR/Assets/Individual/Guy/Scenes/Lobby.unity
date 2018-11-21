@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1451,27 +1451,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playername: 
-  players:
-  - TestPlayer 0
-  - TestPlayer 1
-  - TestPlayer 2
-  - TestPlayer 3
-  - TestPlayer 4
-  - TestPlayer 5
-  - TestPlayer 6
-  - TestPlayer 7
-  - TestPlayer 8
-  - TestPlayer 9
-  - TestPlayer 10
-  - TestPlayer 12
-  - TestPlayer 13
-  - TestPlayer 14
-  - TestPlayer 15
-  - TestPlayer 16
-  - TestPlayer 17
-  - TestPlayer 18
-  - TestPlayer 19
-  - TestPlayer 20
   menu: {fileID: 1703438233}
 --- !u!4 &2010224324
 Transform:
