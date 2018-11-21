@@ -17,9 +17,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     }
 
     private void InstanceNetworkPlayer() {
-        if (PhotonNetwork.PlayerList.Length > currentPlayers.Count) {
             GameObject _NewPlayer = PhotonNetwork.Instantiate("Player", spawnpoint.position, Quaternion.identity);
             currentPlayers.Add(_NewPlayer);
-        }
     }
 }
