@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 405042}
   - component: {fileID: 11410018}
   - component: {fileID: 8551848639597174511}
+  - component: {fileID: 5848051360140949366}
   m_Layer: 0
   m_Name: TestPlayer 0
   m_TagString: Untagged
@@ -53,9 +54,9 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
-  viewIdField: 4
-  InstantiationId: 4
+  - {fileID: 5848051360140949366}
+  viewIdField: 1
+  InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &8551848639597174511
 MonoBehaviour:
@@ -74,6 +75,21 @@ MonoBehaviour:
   camera: {fileID: 5476459565843703374}
   name: 0
   speed: 5
+--- !u!114 &5848051360140949366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!1 &17434973388923226
 GameObject:
   m_ObjectHideFlags: 0
