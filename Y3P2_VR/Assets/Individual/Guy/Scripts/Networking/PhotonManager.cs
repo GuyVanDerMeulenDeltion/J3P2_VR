@@ -58,6 +58,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
         }
     }
 
+    [PunRPC]
    private void InstantiatePlayer() {
         GameObject _Player = PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity, 1);
         PhotonNetwork.RemoveRPCs(PhotonNetwork.LocalPlayer);
