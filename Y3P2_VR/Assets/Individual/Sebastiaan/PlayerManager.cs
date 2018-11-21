@@ -13,16 +13,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public Transform spawnpoint;
 
     private void Start() {
-        StartCoroutine(InstanceNetworkPlayer());
-        print("start");
+        InstanceNetworkPlayer();
     }
 
-    IEnumerator InstanceNetworkPlayer() {
-        yield return new WaitForSeconds(playerSpawnTimer);
+    private void InstanceNetworkPlayer() {
         if (PhotonNetwork.PlayerList.Length > currentPlayers.Count) {
             GameObject _NewPlayer = PhotonNetwork.Instantiate("Player", spawnpoint.position, Quaternion.identity);
             currentPlayers.Add(_NewPlayer);
         }
-        StartCoroutine(InstanceNetworkPlayer());
     }
 }

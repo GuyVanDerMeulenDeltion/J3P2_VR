@@ -18,6 +18,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
 
     public void Start() {
         PhotonNetwork.ConnectUsingSettings();
+        DontDestroyOnLoad(this);
     }
 
     public override void OnConnectedToMaster() {

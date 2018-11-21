@@ -21,6 +21,8 @@ public class BaiscMove : MonoBehaviourPunCallbacks
 
     void Update()
     {
-        transform.Translate(new Vector3(Input.GetAxis("Horizontal")*Time.deltaTime*speed, 0, Input.GetAxis("Vertical")*Time.deltaTime*speed));
+        if (photonView == gameObject.GetPhotonView()) {
+            transform.Translate(new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0, Input.GetAxis("Vertical") * Time.deltaTime * speed));
+        }
     }
 }
