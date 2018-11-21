@@ -60,6 +60,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     }
 
    private void InstantiatePlayer() {
-        GameObject _Player = PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);
+        GameObject _Player = PhotonNetwork.Instantiate("TestPlayer", Vector3.zero, Quaternion.identity);
    }
 }
