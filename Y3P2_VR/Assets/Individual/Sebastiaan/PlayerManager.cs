@@ -12,16 +12,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     public Transform spawnpoint;
 
-    private void Start ()  {
-        StartCoroutine(CheckForNewPlayers());
-    }
-
-    private IEnumerator CheckForNewPlayers() {
-        yield return new WaitForSeconds(playerSpawnTimer);
-        if (PhotonNetwork.PlayerList.Length > currentPlayers.Count) {
-            GameObject _NewPlayer = PhotonNetwork.Instantiate("Player", spawnpoint.position, Quaternion.identity);
-            currentPlayers.Add(_NewPlayer);
-        }
-        StartCoroutine(CheckForNewPlayers());
+    public void OnLevelWasLoaded() {
+        GameObject _NewPlayer = PhotonNetwork.Instantiate("Player", spawnpoint.position, Quaternion.identity);
+        currentPlayers.Add(_NewPlayer);
     }
 }
