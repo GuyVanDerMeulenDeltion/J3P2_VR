@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     private void Start() {
         StartCoroutine(InstanceNetworkPlayer());
+        print("start");
     }
 
     IEnumerator InstanceNetworkPlayer() {
