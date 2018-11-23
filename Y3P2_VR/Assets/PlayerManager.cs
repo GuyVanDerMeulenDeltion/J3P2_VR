@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public static PlayerManager thisPlayer;
 
     public BasicMovement player;
+    public PlayerHead player_head;
 
     private void Awake() {
         if(photonView.IsMine || !PhotonNetwork.IsConnected) {
@@ -22,6 +23,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     private void GetComponentsFromPlayer() {
         player = GetComponentInChildren<BasicMovement>();
+        player_head = GetComponentInChildren<PlayerHead>();
     }
 
     private void InitialiseComponents() {

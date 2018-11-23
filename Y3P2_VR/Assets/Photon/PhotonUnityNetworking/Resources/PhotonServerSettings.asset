@@ -38,4 +38,5 @@ MonoBehaviour:
   - InstantiatePublicChatMessage
   - SendChatOverNetwork
   - SetTextboxText
+  - SyncMenu
   DisableAutoOpenWizard: 1

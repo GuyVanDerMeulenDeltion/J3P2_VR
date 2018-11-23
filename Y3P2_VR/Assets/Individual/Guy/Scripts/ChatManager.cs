@@ -28,9 +28,9 @@ public class ChatManager : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void SetTextForAllToSee(Transform _Player, string _String) {
+    public void SetTextForAllToSee(int _View, string _String) {
         GameObject _NewLog = PhotonNetwork.Instantiate(text_prefab.name, Vector3.zero, Quaternion.identity);
-        _NewLog.transform.SetParent(_Player);
+        _NewLog.transform.SetParent(PhotonView.Find(_View).transform);
         _NewLog.transform.localPosition = Vector3.zero + new Vector3(0, 8, 0);
         Text _Text = _NewLog.GetComponentInChildren<Text>();
         _Text.text = _String;
