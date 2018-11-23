@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager gameManager;
 
-    public static float _MAXPLAYERHEALTH = 100;
-    public static float _PLAYERHEALTH = Mathf.Infinity;
+    public static float _MAXPLAYERHEALTH = 1000;
+    public static float _PLAYERHEALTH = _MAXPLAYERHEALTH;
 
     public void Awake() {
         if (gameManager != null) return;
