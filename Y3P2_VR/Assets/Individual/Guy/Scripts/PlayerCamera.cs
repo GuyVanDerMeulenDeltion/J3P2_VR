@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public static float _SENSITIVITY = 100;
+    public static float _SENSITIVITY = 150;
 
     [SerializeField] private Transform camera_Anchor;
     [SerializeField] private Camera player_Camera;
@@ -17,7 +17,8 @@ public class PlayerCamera : MonoBehaviour
     }
 
     public void Update() {
-        eulerRotation += new Vector3(IncrementRotation().x, IncrementRotation().y ,0);
+        if (Input.GetButton("Fire2"))
+            eulerRotation += new Vector3(IncrementRotation().x, IncrementRotation().y ,0);
         camera_Anchor.eulerAngles = eulerRotation;
     }
 
