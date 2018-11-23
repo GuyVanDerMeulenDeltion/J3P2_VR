@@ -36,6 +36,7 @@ public class ChatManager : MonoBehaviourPunCallbacks
         currentChatMessage = Instantiate(text_prefab, Vector3.zero, Quaternion.identity);
         Text _Text = currentChatMessage.GetComponentInChildren<Text>();
         _Text.text = _String;
+        if (_Text.text == "") Destroy(currentChatMessage);
     }
 
     [PunRPC]
