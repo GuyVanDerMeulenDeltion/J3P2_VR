@@ -45,6 +45,10 @@ public class BasicMovement : MonoBehaviourPunCallbacks {
         photonView.RPC("SpawnHitsplashViaNetwork", RpcTarget.All, transform.position + new Vector3(0, 2, 0));
     }
 
+    public void CreateDamageParticle(Vector3 _Pos) {
+        photonView.RPC("InstantiateHitParticleOverNetwork", RpcTarget.All, _Pos);
+    }
+
     [PunRPC]
     public void SpawnHitsplashViaNetwork(Vector3 _Pos) {
         Instantiate(Resources.Load("Hitsplash"), _Pos, Quaternion.identity);

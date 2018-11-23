@@ -21,6 +21,11 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision _C) {
+        if(_C.transform.tag != "Player") {
+            PlayerManager.thisPlayer.player.CreateDamageParticle(transform.position);
+            return;
+        }
+
             if (_C.transform.tag == "Player") {
             if(_C.transform.GetComponent<BasicMovement>())
                 if(_C.transform.GetComponent<BasicMovement>().enabled) {
