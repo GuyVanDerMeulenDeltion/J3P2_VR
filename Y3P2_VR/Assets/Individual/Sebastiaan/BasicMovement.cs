@@ -37,8 +37,8 @@ public class BasicMovement : MonoBehaviourPunCallbacks {
         text.text = photonView.Owner.NickName;
     }
 
-    public void GetDamaged() {
-        photonView.RPC("InstantiateHitParticleOverNetwork", RpcTarget.All, transform.position);
+    public void GetDamaged(Vector3 _Pos) {
+        photonView.RPC("InstantiateHitParticleOverNetwork", RpcTarget.All, _Pos);
         GameManager._PLAYERHEALTH -= 25;
         GameManager.gameManager.CheckHealth();
         PlayerManager.thisPlayer.player_health.SetHealth();

@@ -28,8 +28,11 @@ public class FlintLock : MonoBehaviourPunCallbacks
    
     void Update()
     {
+        if (Input.GetButtonDown("Fire1"))
+            ShootBullet(false);
+
         if (Input.GetButton("Fire1"))
-            ShootBullet();
+            ShootBullet(true);
 
         //Notes for implementer:
         //Replace the following "Input.GetAxis("Horizontal")" with the HTC Vive Trigger on the current hand (min 0, max 1).
@@ -59,10 +62,12 @@ public class FlintLock : MonoBehaviourPunCallbacks
         currentCooldown = cooldown;
     }
 
-    public void ShootBullet() {
-        if (_COOLDOWN > 0) {
-            _COOLDOWN -= Time.deltaTime;
-            return;
+    public void ShootBullet(bool _ApplyCooldown) {
+        if (_ApplyCooldown == true) {
+            if (_COOLDOWN > 0) {
+                _COOLDOWN -= Time.deltaTime;
+                return;
+            }
         }
 
         _COOLDOWN = _MAXCOOLDOWN;
