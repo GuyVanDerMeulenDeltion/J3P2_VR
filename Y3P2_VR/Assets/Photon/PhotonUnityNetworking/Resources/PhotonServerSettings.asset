@@ -33,12 +33,18 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - InstantiatePlayer
+<<<<<<< HEAD
+=======
   - DestroyObjectOverNetwork
   - SetTextForAllToSee
   - InstantiatePublicChatMessage
   - SendChatOverNetwork
   - SetTextboxText
+<<<<<<< HEAD
   - SyncMenu
   - SetTextToPlayer
   - SetChatTransform
+=======
+>>>>>>> b191693c2a94d5a4a1d717449996dd7471663e73
+>>>>>>> 2470302befa605f45f3a54606a06b82f963255db
   DisableAutoOpenWizard: 1
