@@ -41,4 +41,5 @@ MonoBehaviour:
   - BroadCastUI
   - FindNetworkReference
   - SpawnHitsplashViaNetwork
+  - InstantiateHitParticleOverNetwork
   DisableAutoOpenWizard: 1

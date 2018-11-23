@@ -60,6 +60,12 @@ public class FlintLock : MonoBehaviourPunCallbacks
     }
 
     public void ShootBullet() {
+        if (_COOLDOWN > 0) {
+            _COOLDOWN -= Time.deltaTime;
+            return;
+        }
+
+        _COOLDOWN = _MAXCOOLDOWN;
         float[] _Pos = {bulletspawn.position.x, bulletspawn.position.y, bulletspawn.position.z};
         float[] _Rot = { bulletspawn.eulerAngles.x, bulletspawn.eulerAngles.y, bulletspawn.eulerAngles.z };
         photonView.RPC("NetworkShootBullet", RpcTarget.All, (_Pos));
@@ -69,12 +75,6 @@ public class FlintLock : MonoBehaviourPunCallbacks
 
     [PunRPC]
     public void NetworkShootBullet(float[] _Pos) {
-        if(_COOLDOWN > 0) {
-            _COOLDOWN -= Time.deltaTime;
-            return;
-        }
-
-        _COOLDOWN = _MAXCOOLDOWN;
         Vector3 _NewPos = new Vector3(_Pos[0], _Pos[1], _Pos[2]);
         GameObject _BulletInstance = _BulletInstance = Instantiate(Resources.Load("Bullet") as GameObject, _NewPos, Quaternion.identity);
         currentBullet = _BulletInstance;

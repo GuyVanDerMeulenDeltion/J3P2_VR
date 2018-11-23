@@ -9,7 +9,9 @@ public class UINetworkBillboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _Target = PlayerManager.thisPlayer.player_cam.player_Camera.transform;
-        Quaternion.LookRotation(transform.position - _Target.position);
+        if (PlayerManager.thisPlayer != null) {
+            _Target = PlayerManager.thisPlayer.player_cam.player_Camera.transform;
+            Quaternion.LookRotation(transform.position - _Target.position);
+        }
     }
 }

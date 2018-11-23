@@ -38,6 +38,7 @@ public class BasicMovement : MonoBehaviourPunCallbacks {
     }
 
     public void GetDamaged() {
+        photonView.RPC("InstantiateHitParticleOverNetwork", RpcTarget.All, transform.position);
         GameManager._PLAYERHEALTH -= 25;
         GameManager.gameManager.CheckHealth();
         PlayerManager.thisPlayer.player_health.SetHealth();
@@ -47,6 +48,11 @@ public class BasicMovement : MonoBehaviourPunCallbacks {
     [PunRPC]
     public void SpawnHitsplashViaNetwork(Vector3 _Pos) {
         Instantiate(Resources.Load("Hitsplash"), _Pos, Quaternion.identity);
+    }
+
+    [PunRPC]
+    public void InstantiateHitParticleOverNetwork(Vector3 _PointOfImpact) {
+        Instantiate(Resources.Load("ImpactEffect"), _PointOfImpact, Quaternion.identity);
     }
 
     private void Move() {

@@ -12,6 +12,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     [Header("Menu:")]
     public GameObject menu;
     public bool _DEVMODE = false;
+    public bool _ENTERDEVROOM = false;
 
     private void Awake() {
         DontDestroyOnLoad(this);
@@ -35,7 +36,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
         base.OnConnectedToMaster();
         print("Connected to master.");
 
+
+        if(_ENTERDEVROOM == false)
         SetupRoom("Standard", "Tyler" + Random.Range(0, 100));
+        else
+        SetupRoom("Devs", "Dev_" + Random.Range(0, 100));
     }
 
     public void SetupRoom(string _Identifier, string name) {

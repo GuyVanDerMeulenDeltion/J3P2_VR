@@ -9,6 +9,9 @@ public class Bullet : MonoBehaviour
     public static float _DESTROYTIMER = 10;
 
     private Rigidbody thisbody;
+    [SerializeField] private TrailRenderer _trail;
+
+    private bool alreadyCollided = false;
 
     void Start()
     {
@@ -19,14 +22,17 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision _C) {
-        if (_C.transform.tag == "Player") {
+        if (alreadyCollided == false)
+            if (_C.transform.tag == "Player") {
             if(_C.transform.GetComponent<BasicMovement>())
                 if(_C.transform.GetComponent<BasicMovement>().enabled) {
                     _C.transform.GetComponent<BasicMovement>().GetDamaged();
+                    Destroy(gameObject);
                 }
         }
 
-        Destroy(gameObject);
+            alreadyCollided = true;
+            _trail.enabled = false;
     }
 
     private IEnumerator DestroySelf() {

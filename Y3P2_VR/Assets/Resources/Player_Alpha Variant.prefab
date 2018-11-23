@@ -51,5 +51,33 @@ PrefabInstance:
       propertyPath: InstantiationId
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 76, guid: c9248d8e58293473bb27cf2f5505f88b, type: 3}
+      propertyPath: m_Name
+      value: Player_Alpha Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 685, guid: c9248d8e58293473bb27cf2f5505f88b, type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 685, guid: c9248d8e58293473bb27cf2f5505f88b, type: 3}
+      propertyPath: InstantiationId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 691, guid: c9248d8e58293473bb27cf2f5505f88b, type: 3}
+      propertyPath: viewIdField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 691, guid: c9248d8e58293473bb27cf2f5505f88b, type: 3}
+      propertyPath: InstantiationId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 686, guid: c9248d8e58293473bb27cf2f5505f88b, type: 3}
+      propertyPath: viewIdField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 686, guid: c9248d8e58293473bb27cf2f5505f88b, type: 3}
+      propertyPath: InstantiationId
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9248d8e58293473bb27cf2f5505f88b, type: 3}
