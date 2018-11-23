@@ -9,14 +9,13 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
 
     public static PhotonManager photon;
 
-    public string playername;
-
     [Header("Menu:")]
     public GameObject menu;
 
     private void Awake() {
+        PhotonNetwork.SerializationRate = 20;
+        PhotonNetwork.SendRate = 40;
         DontDestroyOnLoad(this);
-        SceneManager.sceneLoaded += OnSceneFinishedLoading;
 
         if (photon != null) return;
         photon = this;
@@ -34,8 +33,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     public override void OnConnectedToMaster() {
         base.OnConnectedToMaster();
         print("Connected to master.");
-        PhotonNetwork.NickName = playername;
-        PhotonNetwork.JoinLobby(TypedLobby.Default);
     }
 
     public override void OnJoinedLobby() {
@@ -45,22 +42,17 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     }
 
     public void SetupRoom(string _Identifier, string name) {
-        playername = name;
         Debug.Log("Created a room with the ID of: " + _Identifier);
-        RoomOptions _RoomOptions = new RoomOptions() { IsOpen = true, MaxPlayers = 20, };
+        RoomOptions _RoomOptions = new RoomOptions() { IsOpen = true, MaxPlayers = 20};
         PhotonNetwork.JoinOrCreateRoom(_Identifier, _RoomOptions, TypedLobby.Default);
+        SetNetworkName(name);
+    }
+
+    public void SetNetworkName(string _Newname) {
+        PhotonNetwork.NickName = _Newname;
+    }
+
+    public override void OnJoinedRoom() {
         PhotonNetwork.LoadLevel("Game");
     }
-
-    private void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode) {
-        if (scene.name == "Game") {
-            InstantiatePlayer();
-        }
-    }
-
-    [PunRPC]
-   private void InstantiatePlayer() {
-        GameObject _Player = PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity, 1);
-        PhotonNetwork.RemoveRPCs(PhotonNetwork.LocalPlayer);
-   }
 }

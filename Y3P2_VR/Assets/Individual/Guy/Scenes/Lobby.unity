@@ -1450,7 +1450,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0b2947f0dede04488ffec95bbf4c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playername: 
   menu: {fileID: 1703438233}
 --- !u!4 &2010224324
 Transform:
