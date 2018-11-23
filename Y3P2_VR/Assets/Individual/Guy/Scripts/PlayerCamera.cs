@@ -17,6 +17,7 @@ public class PlayerCamera : MonoBehaviour
     }
 
     public void Update() {
+        if(Input.GetButton("Fire2"))
         eulerRotation += new Vector3(IncrementRotation().x, IncrementRotation().y ,0);
         camera_Anchor.eulerAngles = eulerRotation;
     }
