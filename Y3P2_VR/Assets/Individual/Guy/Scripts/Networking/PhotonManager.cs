@@ -36,7 +36,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
         print("Connected to master.");
 
         if(!_DEVMODE)
-        SetupRoom("Standard", "Test" + Random.Range(0, 100));
+        SetupRoom("Standard", "Tyler" + Random.Range(0, 100));
         else
         SetupRoom("Dev", "Nigger" + Random.Range(0, 100));
     }
