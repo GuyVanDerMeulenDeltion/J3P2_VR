@@ -38,7 +38,7 @@ public class BasicMovement : MonoBehaviourPunCallbacks {
     }
 
     public void GetDamaged() {
-        GameManager._PLAYERHEALTH -= 10;
+        GameManager._PLAYERHEALTH -= 25;
         GameManager.gameManager.CheckHealth();
         PlayerManager.thisPlayer.player_health.SetHealth();
         photonView.RPC("SpawnHitsplashViaNetwork", RpcTarget.All, transform.position + new Vector3(0, 2, 0));

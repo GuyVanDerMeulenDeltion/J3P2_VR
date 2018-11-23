@@ -13,7 +13,11 @@ public class FlintLock : MonoBehaviourPunCallbacks
     public float cooldown;
     private float currentCooldown;
 
-    private GameObject currentBullet; 
+    private GameObject currentBullet;
+
+    //For testing purposes;
+    public static float _MAXCOOLDOWN = 1;
+    public static float _COOLDOWN = _MAXCOOLDOWN;
 
     //public float triggerAxis;
     //public float recockAxis;
@@ -24,7 +28,7 @@ public class FlintLock : MonoBehaviourPunCallbacks
    
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
             ShootBullet();
 
         //Notes for implementer:
@@ -65,6 +69,12 @@ public class FlintLock : MonoBehaviourPunCallbacks
 
     [PunRPC]
     public void NetworkShootBullet(float[] _Pos) {
+        if(_COOLDOWN > 0) {
+            _COOLDOWN -= Time.deltaTime;
+            return;
+        }
+
+        _COOLDOWN = _MAXCOOLDOWN;
         Vector3 _NewPos = new Vector3(_Pos[0], _Pos[1], _Pos[2]);
         GameObject _BulletInstance = _BulletInstance = Instantiate(Resources.Load("Bullet") as GameObject, _NewPos, Quaternion.identity);
         currentBullet = _BulletInstance;
