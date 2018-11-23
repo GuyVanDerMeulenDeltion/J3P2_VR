@@ -4,40 +4,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BasicMovement : MonoBehaviourPunCallbacks, IPunObservable {
-    public PhotonView myView;
+public class BasicMovement : MonoBehaviourPunCallbacks {
     public Text text;
     public GameObject camera;
-    public string name = "yes";
+    public string name = "";
 
     public float speed;
 
     private Vector3 selfPos;
 
-    private void Awake() {
-        text.text = PhotonManager.photon.playername;
+    public void Initialise(bool _Local) {
+        SetNameplate();
+
+        if(!_Local) {
+            this.enabled = false;
+            return;
+        }
+
+        camera.SetActive(true);
     }
 
-    void Update() {
-        if (myView.IsMine) {
+    private void Update() {
+        if (photonView.IsMine)
             Move();
-        } else
-            SmoothedNetMovement();
     }
 
-    private void SmoothedNetMovement() {
-        transform.position = Vector3.Lerp(transform.position, selfPos, Time.deltaTime * speed);
+    public void SetNameplate() {
+        text.text = photonView.Owner.NickName;
     }
 
     private void Move() {
         transform.Translate(new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0, Input.GetAxis("Vertical") * Time.deltaTime * speed));
     }
 
-    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-        if(stream.IsWriting) {
-            stream.SendNext(transform.position);
-        } else {
-            selfPos = (Vector3)stream.ReceiveNext();
-        }
-    }
+
 }

@@ -25,7 +25,7 @@ MonoBehaviour:
     EnableLobbyStatistics: 0
     NetworkLogging: 1
   StartInOfflineMode: 0
-  PunLogging: 0
+  PunLogging: 2
   EnableSupportLogger: 0
   RunInBackground: 1
   RpcList:
@@ -33,4 +33,12 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - InstantiatePlayer
+<<<<<<< HEAD
+=======
+  - DestroyObjectOverNetwork
+  - SetTextForAllToSee
+  - InstantiatePublicChatMessage
+  - SendChatOverNetwork
+  - SetTextboxText
+>>>>>>> b191693c2a94d5a4a1d717449996dd7471663e73
   DisableAutoOpenWizard: 1
