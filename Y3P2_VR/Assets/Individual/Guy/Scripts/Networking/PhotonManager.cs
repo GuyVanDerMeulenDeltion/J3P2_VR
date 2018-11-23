@@ -14,7 +14,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
 
     private void Awake() {
         DontDestroyOnLoad(this);
-        PhotonNetwork.AutomaticallySyncScene = true;
 
         if (photon != null) return;
         photon = this;
