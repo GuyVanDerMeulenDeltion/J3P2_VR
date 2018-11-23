@@ -1593,7 +1593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 1703438233}
-  _DEVMODE: 0
+  _DEVMODE: 1
 --- !u!4 &2010224324
 Transform:
   m_ObjectHideFlags: 0
