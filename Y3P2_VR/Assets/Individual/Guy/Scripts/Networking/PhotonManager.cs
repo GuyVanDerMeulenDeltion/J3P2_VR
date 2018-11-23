@@ -13,8 +13,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     public GameObject menu;
 
     private void Awake() {
-        PhotonNetwork.SerializationRate = 20;
-        PhotonNetwork.SendRate = 40;
         DontDestroyOnLoad(this);
 
         if (photon != null) return;
