@@ -17,7 +17,10 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void Start() {
         if(PlayerManager.thisPlayer == null) {
-            PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);
+            if (PhotonManager.photon._DEVMODE == false)
+                PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);
+            else
+                PhotonNetwork.Instantiate("Player_Alpha Variant", Vector3.zero, Quaternion.identity);
         }
     }
 
