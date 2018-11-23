@@ -9,7 +9,8 @@ public class ChatManager : MonoBehaviourPunCallbacks
     public static ChatManager chatManager;
 
      [SerializeField]private GameObject text_prefab;
-
+                     private GameObject currentChatMessage;
+        
      public InputField chatbox;
 
     public void Awake() {
@@ -23,17 +24,23 @@ public class ChatManager : MonoBehaviourPunCallbacks
         chatManager = this;
     }
 
-    public void SendMessage(Transform _Player) {
-        photonView.RPC("SetTextForAllToSee", RpcTarget.All, (_Player, chatbox.text));
+    public void SendMessage(int _PhotonID) {
+        photonView.RPC("SetTextForAllToSee", RpcTarget.All, (string)chatbox.text);
+        photonView.RPC("SetChatTransform", RpcTarget.All, _PhotonID);
+
+        ChatManager.chatManager.chatbox.text = "";
     }
 
     [PunRPC]
-    public void SetTextForAllToSee(int _View, string _String) {
-        GameObject _NewLog = PhotonNetwork.Instantiate(text_prefab.name, Vector3.zero, Quaternion.identity);
-        _NewLog.transform.SetParent(PhotonView.Find(_View).transform);
-        _NewLog.transform.localPosition = Vector3.zero + new Vector3(0, 8, 0);
-        Text _Text = _NewLog.GetComponentInChildren<Text>();
+    public void SetTextForAllToSee(string _String) {
+        currentChatMessage = Instantiate(text_prefab, Vector3.zero, Quaternion.identity);
+        Text _Text = currentChatMessage.GetComponentInChildren<Text>();
         _Text.text = _String;
-        ChatManager.chatManager.chatbox.text = "";
+    }
+
+    [PunRPC]
+    public void SetChatTransform(int _PhotonID) {
+        currentChatMessage.transform.SetParent(PhotonView.Find(_PhotonID).transform);
+        currentChatMessage.transform.localPosition = Vector3.zero + new Vector3(0, 8, 0);
     }
 }

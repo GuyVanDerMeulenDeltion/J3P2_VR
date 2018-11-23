@@ -31,6 +31,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     }
 
     private void SendMessage() {
-        ChatManager.chatManager.SendMessage(transform);
+        ChatManager.chatManager.SendMessage(photonView.ViewID);
     }
 }

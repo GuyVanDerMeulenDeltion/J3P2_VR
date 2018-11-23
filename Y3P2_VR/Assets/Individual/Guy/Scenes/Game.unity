@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a058a6a346466147ae6614e1c2a2298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text_prefab: {fileID: 49, guid: 55afcece8cd9c634290cf27c6203f3ef, type: 3}
+  text_prefab: {fileID: 48, guid: 55afcece8cd9c634290cf27c6203f3ef, type: 3}
   chatbox: {fileID: 1220082256}
 --- !u!114 &197738338
 MonoBehaviour:
