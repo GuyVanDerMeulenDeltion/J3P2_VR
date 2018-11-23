@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
         GetComponentsFromPlayer();
         InitialiseComponents();
+        ChatManager.chatManager.chatbox.onEndEdit.AddListener(delegate { SendMessage(); });
     }
 
     private void GetComponentsFromPlayer() {
@@ -27,16 +28,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         player.Initialise(PhotonNetwork.IsConnected && photonView.IsMine);
     }
 
-    public void CallNewText(int _PhotonID, string _Text) {
-        photonView.RPC("SetTextboxText", RpcTarget.All, (_PhotonID, _Text));
-    }
-
-    [PunRPC]
-    public void SetTextboxText(int _PhotonViewID, string _Text) {
-        foreach (PhotonView _View in PhotonNetwork.PhotonViews) {
-            if (_View.ViewID == _PhotonViewID) {
-                _View.gameObject.GetComponentInChildren<Text>().text = _Text;
-            }
-        }
+    private void SendMessage() {
+        ChatManager.chatManager.SendMessage(transform);
     }
 }
