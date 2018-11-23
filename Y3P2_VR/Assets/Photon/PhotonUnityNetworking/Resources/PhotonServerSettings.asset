@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: d4d8b577-b885-4a05-9230-194ae34fd953
+    AppIdRealtime: 
     AppIdChat: 
     AppIdVoice: 
     AppVersion: 
@@ -25,26 +25,8 @@ MonoBehaviour:
     EnableLobbyStatistics: 0
     NetworkLogging: 1
   StartInOfflineMode: 0
-  PunLogging: 2
+  PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
-  RpcList:
-  - DestroySpaceship
-  - Fire
-  - RespawnSpaceship
-  - InstantiatePlayer
-<<<<<<< HEAD
-=======
-  - DestroyObjectOverNetwork
-  - SetTextForAllToSee
-  - InstantiatePublicChatMessage
-  - SendChatOverNetwork
-  - SetTextboxText
-<<<<<<< HEAD
-  - SyncMenu
-  - SetTextToPlayer
-  - SetChatTransform
-=======
->>>>>>> b191693c2a94d5a4a1d717449996dd7471663e73
->>>>>>> 2470302befa605f45f3a54606a06b82f963255db
-  DisableAutoOpenWizard: 1
+  RpcList: []
+  DisableAutoOpenWizard: 0
