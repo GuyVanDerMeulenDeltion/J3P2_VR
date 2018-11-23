@@ -10,6 +10,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     public BasicMovement player;
     public PlayerHead player_head;
+    public PlayerCamera player_cam;
+    public FlintLock player_Weapon;
+    public HealthUI player_health;
 
     private void Awake() {
         if(photonView.IsMine || !PhotonNetwork.IsConnected) {
@@ -24,6 +27,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     private void GetComponentsFromPlayer() {
         player = GetComponentInChildren<BasicMovement>();
         player_head = GetComponentInChildren<PlayerHead>();
+        player_cam = GetComponentInChildren<PlayerCamera>();
+        player_Weapon = GetComponentInChildren<FlintLock>();
+        player_health = GetComponentInChildren<HealthUI>();
     }
 
     private void InitialiseComponents() {

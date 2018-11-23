@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class FlintLock : MonoBehaviour
+public class FlintLock : MonoBehaviourPunCallbacks
 {
+    public Transform bulletspawn;
+
     private Animator myanim;
     private float triggerTimeline;
     private bool readyForRecock;
     public float cooldown;
     private float currentCooldown;
+
+    private GameObject currentBullet; 
 
     //public float triggerAxis;
     //public float recockAxis;
@@ -19,6 +24,9 @@ public class FlintLock : MonoBehaviour
    
     void Update()
     {
+        if (Input.GetButtonDown("Fire1"))
+            ShootBullet();
+
         //Notes for implementer:
         //Replace the following "Input.GetAxis("Horizontal")" with the HTC Vive Trigger on the current hand (min 0, max 1).
         myanim.SetFloat("TriggerAxis", Mathf.Clamp(Input.GetAxis("Horizontal"), 0, 0.95f));
@@ -39,11 +47,31 @@ public class FlintLock : MonoBehaviour
 
     public void ChangeStateReadyToFire()
     {
-        myanim.SetBool("Ready", true);
+        //myanim.SetBool("Ready", true); temp
     }
 
     public void ApplyCooldown()
     {
         currentCooldown = cooldown;
+    }
+
+    public void ShootBullet() {
+        float[] _Pos = {bulletspawn.position.x, bulletspawn.position.y, bulletspawn.position.z};
+        float[] _Rot = { bulletspawn.eulerAngles.x, bulletspawn.eulerAngles.y, bulletspawn.eulerAngles.z };
+        photonView.RPC("NetworkShootBullet", RpcTarget.All, (_Pos));
+        photonView.RPC("CorrectBulletRotation", RpcTarget.All, (_Rot));
+
+    }
+
+    [PunRPC]
+    public void NetworkShootBullet(float[] _Pos) {
+        Vector3 _NewPos = new Vector3(_Pos[0], _Pos[1], _Pos[2]);
+        GameObject _BulletInstance = _BulletInstance = Instantiate(Resources.Load("Bullet") as GameObject, _NewPos, Quaternion.identity);
+        currentBullet = _BulletInstance;
+    }
+
+    [PunRPC]
+    public void CorrectBulletRotation(float[] _Eulers) {
+        currentBullet.transform.eulerAngles = new Vector3(_Eulers[0], _Eulers[1], _Eulers[2]);
     }
 }

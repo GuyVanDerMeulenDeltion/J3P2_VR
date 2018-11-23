@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BasicMovement : MonoBehaviourPunCallbacks {
+    public Image healthbar;
+
     public Text text;
     public GameObject camera;
     public string name = "";
@@ -21,7 +23,9 @@ public class BasicMovement : MonoBehaviourPunCallbacks {
             return;
         }
 
-        camera.SetActive(true);
+        PlayerManager.thisPlayer.player_health.enabled = true;
+        PlayerManager.thisPlayer.player_cam.enabled = true;
+        PlayerManager.thisPlayer.player_Weapon.enabled = true;
     }
 
     private void Update() {
@@ -33,9 +37,20 @@ public class BasicMovement : MonoBehaviourPunCallbacks {
         text.text = photonView.Owner.NickName;
     }
 
-    private void Move() {
-        transform.Translate(new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0, Input.GetAxis("Vertical") * Time.deltaTime * speed));
+    public void GetDamaged() {
+        GameManager._PLAYERHEALTH -= 10;
+        GameManager.gameManager.CheckHealth();
+        PlayerManager.thisPlayer.player_health.SetHealth();
+        photonView.RPC("SpawnHitsplashViaNetwork", RpcTarget.All, transform.position + new Vector3(0, 2, 0));
     }
 
+    [PunRPC]
+    public void SpawnHitsplashViaNetwork(Vector3 _Pos) {
+        Instantiate(Resources.Load("Hitsplash"), _Pos, Quaternion.identity);
+    }
 
+    private void Move() {
+        transform.eulerAngles += new Vector3(0, +Input.GetAxis("Mouse X") * PlayerCamera._SENSITIVITY * Time.deltaTime, 0);
+        transform.Translate(new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0, Input.GetAxis("Vertical") * Time.deltaTime * speed));
+    }
 }

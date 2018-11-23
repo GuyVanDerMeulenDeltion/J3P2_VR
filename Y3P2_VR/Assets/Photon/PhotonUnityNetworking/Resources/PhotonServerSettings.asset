@@ -35,4 +35,10 @@ MonoBehaviour:
   - SetChatTransform
   - SetTextForAllToSee
   - SyncMenu
+  - NetworkShootBullet
+  - CorrectBulletRotation
+  - CheckPhotonView
+  - BroadCastUI
+  - FindNetworkReference
+  - SpawnHitsplashViaNetwork
   DisableAutoOpenWizard: 1
