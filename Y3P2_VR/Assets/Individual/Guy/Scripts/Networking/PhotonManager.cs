@@ -39,6 +39,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
         base.OnJoinedLobby();
         Debug.Log("Succesfully joined lobby.");
         menu.SetActive(true);
+        SetupRoom("Standard", "Test" + Random.Range(0, 100));
     }
 
     public void SetupRoom(string _Identifier, string name) {
