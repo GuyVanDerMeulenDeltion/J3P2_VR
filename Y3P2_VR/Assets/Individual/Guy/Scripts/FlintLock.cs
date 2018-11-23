@@ -72,6 +72,7 @@ public class FlintLock : MonoBehaviourPunCallbacks
 
     [PunRPC]
     public void CorrectBulletRotation(float[] _Eulers) {
+        if(currentBullet != null)
         currentBullet.transform.eulerAngles = new Vector3(_Eulers[0], _Eulers[1], _Eulers[2]);
     }
 }

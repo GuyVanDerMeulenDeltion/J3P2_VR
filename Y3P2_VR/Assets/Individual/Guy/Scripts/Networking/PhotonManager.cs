@@ -11,6 +11,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
 
     [Header("Menu:")]
     public GameObject menu;
+    public bool _DEVMODE = false;
 
     private void Awake() {
         DontDestroyOnLoad(this);
@@ -20,6 +21,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     }
 
     private void Start() {
+        PhotonNetwork.SerializationRate = 20;
+        PhotonNetwork.SendRate = 40;
         SetupPhoton();
     }
     
@@ -31,7 +34,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     public override void OnConnectedToMaster() {
         base.OnConnectedToMaster();
         print("Connected to master.");
+
+        if(!_DEVMODE)
         SetupRoom("Standard", "Test" + Random.Range(0, 100));
+        else
+        SetupRoom("Dev", "Nigger" + Random.Range(0, 100));
     }
 
     public void SetupRoom(string _Identifier, string name) {

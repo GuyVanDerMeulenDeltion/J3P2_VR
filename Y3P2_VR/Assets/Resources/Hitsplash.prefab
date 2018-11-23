@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4574422904138723452}
   - component: {fileID: 3144413397719725015}
   - component: {fileID: 3270492687445229701}
+  - component: {fileID: 3632156056005524266}
   m_Layer: 5
   m_Name: Hitsplash
   m_TagString: Untagged
@@ -26,7 +27,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5032831418541460188}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -157.817}
   m_LocalScale: {x: 0.023563735, y: 0.023563735, z: 0.023563735}
   m_Children:
@@ -99,6 +100,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3632156056005524266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5032831418541460188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9981735e4dfce8546bf018c1e2d967cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5270369384234549616
 GameObject:
   m_ObjectHideFlags: 0

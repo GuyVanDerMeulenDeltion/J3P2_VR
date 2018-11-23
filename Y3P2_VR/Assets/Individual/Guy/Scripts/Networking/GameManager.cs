@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public static GameManager gameManager;
 
     public static float _MAXPLAYERHEALTH = 100;
-    public static float _PLAYERHEALTH = 100;
+    public static float _PLAYERHEALTH = Mathf.Infinity;
 
     public void Awake() {
         if (gameManager != null) return;
@@ -22,10 +22,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     public void CheckHealth() {
-    /*    if(_PLAYERHEALTH <= 0) {
+        if(_PLAYERHEALTH <= 0) {
+            _PLAYERHEALTH = _MAXPLAYERHEALTH;
             PhotonNetwork.LeaveRoom();
-            PhotonNetwork.JoinLobby();
-            PhotonNetwork.LoadLevel(0);
-        } */
+            PhotonNetwork.LeaveLobby();
+            Application.Quit();
+        } 
     } 
 }

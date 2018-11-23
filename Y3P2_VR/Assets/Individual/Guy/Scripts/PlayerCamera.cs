@@ -7,7 +7,7 @@ public class PlayerCamera : MonoBehaviour
     public static float _SENSITIVITY = 150;
 
     [SerializeField] private Transform camera_Anchor;
-    [SerializeField] private Camera player_Camera;
+                     public Camera player_Camera;
 
     private Vector3 eulerRotation;
 

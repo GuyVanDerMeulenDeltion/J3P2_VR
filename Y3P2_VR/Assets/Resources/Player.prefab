@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 495}
   - component: {fileID: 405}
   - component: {fileID: 630}
+  - component: {fileID: 835}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -179,6 +180,18 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9981735e4dfce8546bf018c1e2d967cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &75
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +549,7 @@ GameObject:
   - component: {fileID: 406}
   - component: {fileID: 637}
   - component: {fileID: 636}
-  - component: {fileID: 832}
+  - component: {fileID: 639}
   m_Layer: 0
   m_Name: Healthbar_Fill
   m_TagString: Untagged
@@ -613,7 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarFill: {fileID: 637}
---- !u!114 &832
+--- !u!114 &639
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -646,6 +659,7 @@ GameObject:
   - component: {fileID: 498}
   - component: {fileID: 407}
   - component: {fileID: 638}
+  - component: {fileID: 836}
   m_Layer: 0
   m_Name: Healthbar
   m_TagString: Untagged
@@ -710,6 +724,18 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9981735e4dfce8546bf018c1e2d967cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2378218873255967497 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2378218874800138925, guid: 1480561723f65694ab5940aec3e37925,
