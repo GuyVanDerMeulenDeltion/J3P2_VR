@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 557}
   - component: {fileID: 561}
   - component: {fileID: 555}
-  - component: {fileID: 2790706677509235406}
+  - component: {fileID: 749}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -341,9 +341,9 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 555}
-  - {fileID: 2790706677509235406}
-  viewIdField: 2
-  InstantiationId: 2
+  - {fileID: 749}
+  viewIdField: 3
+  InstantiationId: 3
   isRuntimeInstantiated: 0
 --- !u!114 &555
 MonoBehaviour:
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
---- !u!114 &2790706677509235406
+--- !u!114 &749
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
