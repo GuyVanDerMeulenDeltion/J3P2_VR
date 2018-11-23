@@ -50,7 +50,8 @@ public class BasicMovement : MonoBehaviourPunCallbacks {
     }
 
     private void Move() {
-        transform.eulerAngles += new Vector3(0, +Input.GetAxis("Mouse X") * PlayerCamera._SENSITIVITY * Time.deltaTime, 0);
+        if (Input.GetButton("Fire2"))
+            transform.eulerAngles += new Vector3(0, +Input.GetAxis("Mouse X") * PlayerCamera._SENSITIVITY * Time.deltaTime, 0);
         transform.Translate(new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0, Input.GetAxis("Vertical") * Time.deltaTime * speed));
     }
 }
