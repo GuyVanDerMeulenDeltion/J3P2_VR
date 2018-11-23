@@ -33,12 +33,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     public override void OnConnectedToMaster() {
         base.OnConnectedToMaster();
         print("Connected to master.");
-    }
-
-    public override void OnJoinedLobby() {
-        base.OnJoinedLobby();
-        Debug.Log("Succesfully joined lobby.");
-        menu.SetActive(true);
         SetupRoom("Standard", "Test" + Random.Range(0, 100));
     }
 
