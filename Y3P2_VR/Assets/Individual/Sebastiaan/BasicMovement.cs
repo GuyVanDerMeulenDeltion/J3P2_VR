@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BasicMovement : NetworkedObject {
+public class BasicMovement : MonoBehaviourPunCallbacks {
     public Text text;
     public GameObject camera;
     public string name = "";
@@ -13,9 +13,14 @@ public class BasicMovement : NetworkedObject {
 
     private Vector3 selfPos;
 
-    public override void Initialise(bool _Local) {
+    public void Initialise(bool _Local) {
         SetNameplate();
-        base.Initialise(_Local);
+
+        if (!_Local) {
+            this.enabled = false;
+            return;
+        }
+
         camera.SetActive(true);
     }
 
