@@ -13,6 +13,7 @@ public class PlayerCamera : MonoBehaviour
 
     public void OnEnable() {
         player_Camera.enabled = true;
+        PlayerManager.thisPlayer.camera = player_Camera.gameObject;
         eulerRotation = camera_Anchor.eulerAngles;
     }
 

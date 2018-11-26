@@ -42,4 +42,5 @@ MonoBehaviour:
   - FindNetworkReference
   - SpawnHitsplashViaNetwork
   - InstantiateHitParticleOverNetwork
+  - SetNameOverNetwork
   DisableAutoOpenWizard: 1

@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 {
     public static PlayerManager thisPlayer;
 
+    public GameObject camera;
+
     public BasicMovement player;
     public PlayerHead player_head;
     public PlayerCamera player_cam;

@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class UINetworkBillboard : MonoBehaviour
 {
-    private Transform _Target;
-
     // Update is called once per frame
     void Update()
     {
-        if (PlayerManager.thisPlayer != null) {
-            _Target = PlayerManager.thisPlayer.player_cam.player_Camera.transform;
-            Quaternion.LookRotation(transform.position - _Target.position);
+        if (PlayerManager.thisPlayer.camera != null) {
+            print("yes");
+            transform.rotation = Quaternion.LookRotation(PlayerManager.thisPlayer.camera.transform.position - transform.position);
         }
     }
 }

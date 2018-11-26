@@ -42,6 +42,6 @@ public class ChatManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void SetChatTransform(int _PhotonID) {
         currentChatMessage.transform.SetParent(PhotonView.Find(_PhotonID).transform);
-        currentChatMessage.transform.localPosition = Vector3.zero + new Vector3(0, 8, 0);
+        currentChatMessage.transform.localPosition = Vector3.zero + new Vector3(0, 7, 0);
     }
 }

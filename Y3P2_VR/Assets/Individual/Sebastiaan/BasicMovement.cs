@@ -37,6 +37,15 @@ public class BasicMovement : MonoBehaviourPunCallbacks {
         text.text = photonView.Owner.NickName;
     }
 
+    public void SetNameDuringSession(string _NewName) {
+        photonView.RPC("SetNameOverNetwork", RpcTarget.All, _NewName);
+    }
+
+    [PunRPC]
+    public void SetNameOverNetwork(string _NewName) {
+        GetComponentInChildren<Text>().text = _NewName;
+    }
+
     public void GetDamaged(Vector3 _Pos) {
         photonView.RPC("InstantiateHitParticleOverNetwork", RpcTarget.All, _Pos);
         GameManager._PLAYERHEALTH -= 25;
