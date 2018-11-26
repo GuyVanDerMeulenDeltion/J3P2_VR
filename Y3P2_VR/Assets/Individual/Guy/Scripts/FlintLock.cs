@@ -16,7 +16,7 @@ public class FlintLock : MonoBehaviourPunCallbacks
     private GameObject currentBullet;
 
     //For testing purposes;
-    public static float _MAXCOOLDOWN = 1;
+    public static float _MAXCOOLDOWN = 0.3f;
     public static float _COOLDOWN = _MAXCOOLDOWN;
 
     //public float triggerAxis;
