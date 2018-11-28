@@ -8,7 +8,7 @@ TagManager:
   - projectile
   - FxTemporaire
   - Bullet
-  - Interactible
+  - Interactable
   layers:
   - Default
   - TransparentFX
