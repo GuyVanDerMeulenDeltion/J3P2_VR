@@ -25,11 +25,13 @@ public class DrawOutline : MonoBehaviour {
     private void OnTriggerStay(Collider _O) {
         if(_O.transform.tag == "Hand") {
             Material[] _Materials = {thisRender.material, outline};
+            thisRender.materials = _Materials;
         }
     }
 
     private void OnTriggerExit(Collider _O) {
         if (_O.transform.tag == "Hand") {
+            print("Exit");
             Material[] _Materials = {thisRender.materials[0]};
             thisRender.materials = _Materials;
         }

@@ -1,8 +1,8 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+﻿
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 Shader "Custom/Outline" {
 	Properties{
-		_MainTex("MainTex", 2D) = "white" {}
 		_Outline("_Outline", Range(0,0.1)) = 0
 		_OutlineColor("Color", Color) = (1, 1, 1, 1)
 	}
@@ -44,7 +44,6 @@ Shader "Custom/Outline" {
 			CGPROGRAM
 			#pragma surface surf Lambert
 
-			sampler2D _MainTex;
 
 			struct Input {
 				float2 uv_MainTex;
