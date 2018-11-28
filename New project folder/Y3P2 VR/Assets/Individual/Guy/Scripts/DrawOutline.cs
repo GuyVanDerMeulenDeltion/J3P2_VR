@@ -6,17 +6,15 @@ public class DrawOutline : MonoBehaviour {
 
     private MeshRenderer thisRender { get { return GetComponent<MeshRenderer>(); } }
 
-    private void OnTriggerStay(Collider _O) {
+    protected virtual void OnTriggerEnter(Collider _O) {
         if(_O.transform.tag == "Hand") {
-            print(thisRender.materials[1]);
-            thisRender.materials[1].SetFloat("_Thickness", 1);
+            thisRender.material.SetFloat("Thickness", 4);
         }
     }
 
-    private void OnTriggerExit(Collider _O) {
+    protected virtual void OnTriggerExit(Collider _O) {
         if (_O.transform.tag == "Hand") {
-            print("no");
-            thisRender.materials[1].SetFloat("_Thickness", 0);
+            thisRender.material.SetFloat("Thickness", 0);
         }
     }
 }
