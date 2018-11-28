@@ -882,10 +882,10 @@ MonoBehaviour:
   otherHand: {fileID: 11450312}
   handType: 2
   trackedObject: {fileID: 0}
-  grabPinchAction: {fileID: 0}
-  grabGripAction: {fileID: 0}
-  hapticAction: {fileID: 0}
-  uiInteractAction: {fileID: 0}
+  grabPinchAction: {fileID: 11400000, guid: 3fd2405cd08899740870a5540b3047ce, type: 2}
+  grabGripAction: {fileID: 11400000, guid: 4e3d5f8d3edc3b14581714c42f9ab54d, type: 2}
+  hapticAction: {fileID: 11400000, guid: d27860b0c0430c24fa7ae356f436e3a9, type: 2}
+  uiInteractAction: {fileID: 11400000, guid: a1d58a8a0b77ec14c9b14d256b811ba8, type: 2}
   useHoverSphere: 1
   hoverSphereTransform: {fileID: 480432}
   hoverSphereRadius: 0.075
@@ -935,10 +935,10 @@ MonoBehaviour:
   otherHand: {fileID: 11401046}
   handType: 1
   trackedObject: {fileID: 0}
-  grabPinchAction: {fileID: 0}
-  grabGripAction: {fileID: 0}
-  hapticAction: {fileID: 0}
-  uiInteractAction: {fileID: 0}
+  grabPinchAction: {fileID: 11400000, guid: 3fd2405cd08899740870a5540b3047ce, type: 2}
+  grabGripAction: {fileID: 11400000, guid: 4e3d5f8d3edc3b14581714c42f9ab54d, type: 2}
+  hapticAction: {fileID: 11400000, guid: d27860b0c0430c24fa7ae356f436e3a9, type: 2}
+  uiInteractAction: {fileID: 11400000, guid: a1d58a8a0b77ec14c9b14d256b811ba8, type: 2}
   useHoverSphere: 1
   hoverSphereTransform: {fileID: 4000012325712216}
   hoverSphereRadius: 0.075
@@ -1113,7 +1113,7 @@ MonoBehaviour:
   controllerMaterial: {fileID: 2100000, guid: 11b050e661ec0cf48a289a7266451e91, type: 2}
   flashColor: {r: 1, g: 0.9170069, b: 0.453, a: 0.709}
   textHintPrefab: {fileID: 140952, guid: 5fa42bb9e52706a42b8a1eaf0b54326a, type: 2}
-  hapticFlash: {fileID: 0}
+  hapticFlash: {fileID: 11400000, guid: d27860b0c0430c24fa7ae356f436e3a9, type: 2}
   debugHints: 0
 --- !u!114 &11494192
 MonoBehaviour:
@@ -1129,7 +1129,7 @@ MonoBehaviour:
   controllerMaterial: {fileID: 2100000, guid: 11b050e661ec0cf48a289a7266451e91, type: 2}
   flashColor: {r: 1, g: 0.9170069, b: 0.453, a: 0.709}
   textHintPrefab: {fileID: 140952, guid: 5fa42bb9e52706a42b8a1eaf0b54326a, type: 2}
-  hapticFlash: {fileID: 0}
+  hapticFlash: {fileID: 11400000, guid: d27860b0c0430c24fa7ae356f436e3a9, type: 2}
   debugHints: 0
 --- !u!114 &11497470
 MonoBehaviour:
@@ -1145,10 +1145,10 @@ MonoBehaviour:
   otherHand: {fileID: 0}
   handType: 0
   trackedObject: {fileID: 0}
-  grabPinchAction: {fileID: 0}
-  grabGripAction: {fileID: 0}
-  hapticAction: {fileID: 0}
-  uiInteractAction: {fileID: 0}
+  grabPinchAction: {fileID: 11400000, guid: 3fd2405cd08899740870a5540b3047ce, type: 2}
+  grabGripAction: {fileID: 11400000, guid: 4e3d5f8d3edc3b14581714c42f9ab54d, type: 2}
+  hapticAction: {fileID: 11400000, guid: d27860b0c0430c24fa7ae356f436e3a9, type: 2}
+  uiInteractAction: {fileID: 11400000, guid: a1d58a8a0b77ec14c9b14d256b811ba8, type: 2}
   useHoverSphere: 1
   hoverSphereTransform: {fileID: 0}
   hoverSphereRadius: 0.05
@@ -1358,7 +1358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27991c206a5e66147bb8ee3ef31c8bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionSet: {fileID: 0}
+  actionSet: {fileID: 11400000, guid: cf5cd85c2dec2c64aa800321584811f0, type: 2}
   disableAllOtherActionSets: 0
   activateOnStart: 1
   deactivateOnDestroy: 1
@@ -1395,28 +1395,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5fb0ca93b55ef4b8d54b512b103341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poseAction: {fileID: 0}
+  poseAction: {fileID: 11400000, guid: 8584ccf8d185681439d2aa7aa30e85a1, type: 2}
   inputSource: 1
   origin: {fileID: 0}
   onTransformUpdated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp-firstpass, Version=0.0.0.0,
+    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onTransformChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp-firstpass, Version=0.0.0.0,
+    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onConnectedChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp-firstpass, Version=0.0.0.0,
+    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onTrackingChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp-firstpass, Version=0.0.0.0,
+    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000011957598740
 MonoBehaviour:
@@ -1429,28 +1429,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5fb0ca93b55ef4b8d54b512b103341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poseAction: {fileID: 0}
+  poseAction: {fileID: 11400000, guid: 8584ccf8d185681439d2aa7aa30e85a1, type: 2}
   inputSource: 2
   origin: {fileID: 0}
   onTransformUpdated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp-firstpass, Version=0.0.0.0,
+    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onTransformChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp-firstpass, Version=0.0.0.0,
+    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onConnectedChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp-firstpass, Version=0.0.0.0,
+    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onTrackingChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp-firstpass, Version=0.0.0.0,
+    m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114000013709408034
 MonoBehaviour:

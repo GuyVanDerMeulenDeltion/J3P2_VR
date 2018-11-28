@@ -8,23 +8,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb7820ae3b72434d8f63392e8d9d254, type: 3}
+  m_Script: {fileID: 11500000, guid: f0797e7d781dc384dbe3679f3fdf4f5f, type: 3}
   m_Name: __actions_buggy
   m_EditorClassIdentifier: 
   allActions:
-  - {fileID: 11400000, guid: 834b5b50da5332642a144f04b3b30a2e, type: 2}
-  - {fileID: 11400000, guid: 6e880146399440c4d987d8563e5a471e, type: 2}
-  - {fileID: 11400000, guid: 6c6af88452ab10041a893ebb7018a07c, type: 2}
-  - {fileID: 11400000, guid: fce304f35d1ef1a49b9786ef2ae61902, type: 2}
+  - {fileID: 11400000, guid: b47f052346a4d484593a8e5a40a54d1b, type: 2}
+  - {fileID: 11400000, guid: 1987036e1b5690f48b4e9fb6277c0696, type: 2}
+  - {fileID: 11400000, guid: 9a68fb14f25334e429ea48d4cb147a36, type: 2}
+  - {fileID: 11400000, guid: dd53fd79baf7ae045b990c65fc05df6c, type: 2}
   nonVisualInActions:
-  - {fileID: 11400000, guid: 834b5b50da5332642a144f04b3b30a2e, type: 2}
-  - {fileID: 11400000, guid: 6e880146399440c4d987d8563e5a471e, type: 2}
-  - {fileID: 11400000, guid: 6c6af88452ab10041a893ebb7018a07c, type: 2}
-  - {fileID: 11400000, guid: fce304f35d1ef1a49b9786ef2ae61902, type: 2}
+  - {fileID: 11400000, guid: b47f052346a4d484593a8e5a40a54d1b, type: 2}
+  - {fileID: 11400000, guid: 1987036e1b5690f48b4e9fb6277c0696, type: 2}
+  - {fileID: 11400000, guid: 9a68fb14f25334e429ea48d4cb147a36, type: 2}
+  - {fileID: 11400000, guid: dd53fd79baf7ae045b990c65fc05df6c, type: 2}
   visualActions: []
   poseActions: []
   skeletonActions: []
   outActionArray: []
   fullPath: /actions/buggy
   usage: single
-  inActions: {fileID: 11400000, guid: 42d5ee9730f4a3942924d91dd7220e27, type: 2}
+  inActions: {fileID: 11400000, guid: 0163e3ba6f9e5f54aaad338121222ed2, type: 2}

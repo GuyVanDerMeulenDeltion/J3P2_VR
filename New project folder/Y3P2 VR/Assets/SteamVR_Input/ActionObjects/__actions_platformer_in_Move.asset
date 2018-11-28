@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTolerance: 0.000001
   fullPath: /actions/platformer/in/Move
-  actionSet: {fileID: 11400000, guid: 3a3bb2bd93fd9474b889eb636d9dd315, type: 2}
+  actionSet: {fileID: 11400000, guid: 585041326905a5845b25ce4e437fc7c3, type: 2}
   direction: 0
