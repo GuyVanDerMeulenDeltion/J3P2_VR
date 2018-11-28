@@ -8,13 +8,15 @@ public class DrawOutline : MonoBehaviour {
 
     private void OnTriggerStay(Collider _O) {
         if(_O.transform.tag == "Hand") {
-            thisRender.material.SetFloat("Thickness", 4);
+            print(thisRender.materials[1]);
+            thisRender.materials[1].SetFloat("_Thickness", 1);
         }
     }
 
     private void OnTriggerExit(Collider _O) {
         if (_O.transform.tag == "Hand") {
-            thisRender.material.SetFloat("Thickness", 0);
+            print("no");
+            thisRender.materials[1].SetFloat("_Thickness", 0);
         }
     }
 }
