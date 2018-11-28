@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hand
+  - projectile
+  - FxTemporaire
+  - Bullet
+  - Interactable
   layers:
   - Default
   - TransparentFX
