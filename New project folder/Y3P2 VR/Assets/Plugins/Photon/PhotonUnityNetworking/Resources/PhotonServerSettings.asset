@@ -33,4 +33,9 @@ MonoBehaviour:
   - RespawnSpaceship
   - BroadcastNetworkMessage
   - BroadcastMessage
+  - CollectPlayers
+  - Die
+  - NetworkDeath
+  - SetHitVisuals
+  - SetOnNetworkDeath
   DisableAutoOpenWizard: 1

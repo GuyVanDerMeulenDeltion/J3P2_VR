@@ -9,7 +9,7 @@ public class LeftController : MonoBehaviour
     public GameObject leftHandItem;
     public GameObject leftHandSpawnPos { get { return (transform.GetChild(0).gameObject); } }
 
-    public float leftHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.LeftHand); } }
+   // public float leftHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.LeftHand); } }
 
     private Vector3 lastPosition;
     public const float force = 2;

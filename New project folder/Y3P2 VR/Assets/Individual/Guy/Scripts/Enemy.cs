@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
                     if (hitTimer > 0) {
                         hitTimer -= Time.deltaTime;
                     } else {
-                        Attack();
+                        Attack(_O.GetComponent<PhotonView>().ViewID);
                         hitTimer = maxHitTimer;
                     }
                 }
@@ -97,8 +97,8 @@ public class Enemy : MonoBehaviourPunCallbacks {
         }
     }
 
-    protected virtual void Attack() {
-        PlayerManager.thisPlayer.SetDeath();
+    protected virtual void Attack(int _View) {
+        PlayerManager.thisPlayer.SetDeath(_View);
         stopAttacking = true;
     }
 

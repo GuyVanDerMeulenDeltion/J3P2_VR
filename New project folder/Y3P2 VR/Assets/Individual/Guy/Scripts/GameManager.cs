@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviourPunCallbacks {
     }
 
     public void Start() {
+        if (PlayerManager.thisPlayer.test == true) return;
+
         if (PlayerManager.thisPlayer == null && PhotonNetwork.IsConnected) {
                 PhotonNetwork.Instantiate("[CameraRig]", _SpawnPoint[0].position, Quaternion.identity);
         } else if(PhotonNetwork.IsConnected == false) {

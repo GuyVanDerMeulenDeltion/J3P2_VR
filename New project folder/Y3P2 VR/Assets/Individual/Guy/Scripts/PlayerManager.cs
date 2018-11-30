@@ -8,12 +8,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 
     public static PlayerManager thisPlayer;
 
-    internal VR_Player playerMain;
-
     //Player components;
+    public bool died = false;
+    public bool test = false;
+
+    internal VR_Player playerMain;
     internal PlayerHead player_head;
     internal Menu player_menu;
-    internal Camera camera;
+    public Camera camera;
     internal SteamVR_PlayArea area;
     internal SteamVR_Behaviour_Pose[] hands;
 
@@ -22,6 +24,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         if (photonView.IsMine || !PhotonNetwork.IsConnected)
         {
             thisPlayer = this;
+
+            if(test == false)
             GetComponentsFromPlayer();
         }
     }
@@ -29,6 +33,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     private void Start() {
         if (this == thisPlayer)
         {
+            if(test == false)
             playerMain.Initialise();
         }
     }
@@ -40,5 +45,22 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         camera = GetComponentInChildren<Camera>();
         area = GetComponentInChildren<SteamVR_PlayArea>();
         hands = GetComponentsInChildren<SteamVR_Behaviour_Pose>();
+    }
+    
+    public void SetDeath(int _Photonview) {
+        if (PhotonNetwork.IsConnected)
+            photonView.RPC("SetOnNetworkDeath", RpcTarget.All, _Photonview);
+        else
+            SetOnNetworkDeath(_Photonview);
+    }
+
+    [PunRPC]
+    public void SetOnNetworkDeath(int _Photonview) {
+        if(PhotonNetwork.IsConnected && _Photonview == photonView.ViewID) {
+            died = true;
+            return;
+        }
+
+        died = true;
     }
 }
