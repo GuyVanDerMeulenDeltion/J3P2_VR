@@ -18,6 +18,8 @@ public class LeftController : MonoBehaviour
     {
         lastPosition = transform.position;
         DropItem();
+        if (leftHandItem != null)
+            print(leftHandItem.GetComponent<FixedJoint>().currentForce);
     }
 
     public void OnTriggerStay(Collider other)
@@ -25,11 +27,13 @@ public class LeftController : MonoBehaviour
 
         if (other.transform.tag == "Interactable")
         {
-            if (leftHandAxis > 0.85f && leftHandItem == null)
+            if(Input.GetButtonDown("Fire1"))
+            //if (leftHandAxis > 0.85f && leftHandItem == null)
             {
                 leftHandItem = other.gameObject;
                 other.gameObject.transform.SetParent(leftHandSpawnPos.transform);               
                 leftHandItem.GetComponent<Rigidbody>().useGravity = false;
+                leftHandItem.GetComponent<FixedJoint>().connectedBody = transform.GetComponent<Rigidbody>();
                 leftHandItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 leftHandItem.transform.position = leftHandSpawnPos.transform.position;
                 leftHandItem.transform.rotation = leftHandSpawnPos.transform.rotation;
@@ -40,12 +44,13 @@ public class LeftController : MonoBehaviour
     public void DropItem()
     {
         if (leftHandItem)
-            if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.LeftHand))
+            if(Input.GetButtonDown("Fire2"))
+            //if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.LeftHand))
             {
                 leftHandItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 leftHandItem.transform.SetParent(null);
                 leftHandItem.GetComponent<Rigidbody>().useGravity = true;
-                leftHandItem.GetComponent<Rigidbody>().velocity = transform.forward + (transform.position - lastPosition * force);
+                leftHandItem.GetComponent<FixedJoint>().connectedBody = null;
                 leftHandItem = null;
             }
     }

@@ -29,6 +29,7 @@ public class RightController : MonoBehaviour
                 rightHandItem = other.gameObject;
                 other.gameObject.transform.SetParent(rightHandSpawnPos.transform);
                 rightHandItem.GetComponent<Rigidbody>().useGravity = false;
+                rightHandItem.GetComponent<FixedJoint>().connectedBody = transform.GetComponent<Rigidbody>();
                 rightHandItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 rightHandItem.transform.position = rightHandSpawnPos.transform.position;
                 rightHandItem.transform.rotation = rightHandSpawnPos.transform.rotation;
@@ -44,7 +45,7 @@ public class RightController : MonoBehaviour
                 rightHandItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 rightHandItem.transform.SetParent(null);
                 rightHandItem.GetComponent<Rigidbody>().useGravity = true;
-                rightHandItem.GetComponent<Rigidbody>().velocity = transform.forward + (transform.position - lastPosition * force);
+                rightHandItem.GetComponent<FixedJoint>().connectedBody = null;
                 rightHandItem = null;
             }
     }

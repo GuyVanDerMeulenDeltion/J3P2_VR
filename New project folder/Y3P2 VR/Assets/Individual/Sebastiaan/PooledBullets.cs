@@ -8,14 +8,4 @@ public class PooledBullets : MonoBehaviour {
     {
         gameObject.SetActive(false);
     }
-
-    private void Update()
-    {
-        tijdelijkebeweegfunctieAHHAHHAHAH();
-    }
-
-    void tijdelijkebeweegfunctieAHHAHHAHAH()
-    {
-        transform.transform.transform.transform.transform.Translate(Vector3.forward * 2 * Time.deltaTime);
-    }
 }
