@@ -9,6 +9,8 @@ public class VR_Player : MonoBehaviourPunCallbacks {
 
     public static VR_Player localPlayer;
 
+    public bool isDead = false;
+
     [SerializeField] private bool isLocal = false;
     [SerializeField] private Animator broadcastAnim;
     [SerializeField] private TextMeshProUGUI broadcastText;
