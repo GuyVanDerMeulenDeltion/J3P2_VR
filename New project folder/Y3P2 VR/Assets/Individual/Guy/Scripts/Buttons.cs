@@ -2,23 +2,62 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
-public class Buttons : DrawOutline {
+public class Buttons : MonoBehaviour {
+
+    private static List<Buttons> allButtons = new List<Buttons>();
 
     [SerializeField]private UnityEvent function;
+    [SerializeField]private Outline outline;
+    [SerializeField]private Animator thisAnim;
     private bool canInteract = false;
+    
+    private void Awake() {
+        allButtons.Add(this);
+    }
 
-    protected override void OnTriggerEnter(Collider _O) {
-        base.OnTriggerEnter(_O);
+    public void Update() {
+        if(canInteract == true) {
+            if (Input.GetKeyDown(KeyCode.L))
+                Activate();
+        }
+    }
+
+    private void OnTriggerEnter(Collider _O) {
+        SetCurrentButton();
+    }
+
+    private void OnTriggerExit(Collider _O) {
+        DeactivateCurrentButton();
+    }
+
+    private void SetCurrentButton() {
+        foreach(Buttons _Button in allButtons) {
+            _Button.thisAnim.enabled = false;
+            _Button.outline.enabled = false;
+        }
+
+        thisAnim.enabled = true;
         canInteract = true;
+        outline.enabled = true;
     }
 
-    protected override void OnTriggerExit(Collider _O) {
-        base.OnTriggerExit(_O);
+    private void DeactivateCurrentButton() {
+        thisAnim.enabled = false;
         canInteract = false;
+        outline.enabled = false;
     }
 
-    private void Activate() {
+    public void Activate() {
         function.Invoke();
+        print("Activated function...");
+    }
+
+    public static void DeactivateAllButtons() {
+        foreach (Buttons _Button in allButtons) {
+            _Button.thisAnim.enabled = false;
+            _Button.outline.enabled = false;
+        }
     }
 }

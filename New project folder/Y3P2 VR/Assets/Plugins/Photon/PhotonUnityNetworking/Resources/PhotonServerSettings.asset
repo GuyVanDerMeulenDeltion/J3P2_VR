@@ -38,4 +38,5 @@ MonoBehaviour:
   - NetworkDeath
   - SetHitVisuals
   - SetOnNetworkDeath
+  - SetSpawnParticles
   DisableAutoOpenWizard: 1

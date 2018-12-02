@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
         }
 
         if(Input.GetButtonDown("Fire1")) {
-            GetDamaged(3, transform.position, 1);
+            GetDamaged(50, transform.position, 10);
         }
     }
 
