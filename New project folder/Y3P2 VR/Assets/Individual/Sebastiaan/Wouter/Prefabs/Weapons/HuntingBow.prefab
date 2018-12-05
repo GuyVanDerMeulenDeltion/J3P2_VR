@@ -396,7 +396,7 @@ Transform:
   m_GameObject: {fileID: 1540478080590002}
   m_LocalRotation: {x: -0, y: -0, z: -0.4064209, w: 0.913686}
   m_LocalPosition: {x: 21.386, y: 1.199, z: -4.477}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4157711578932748}
   - {fileID: 4078227042161710}
@@ -638,7 +638,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95a52f3f43bf704782c5f97bb21732e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupOffset: {x: -90, y: 180, z: 0}
+  pickupRotation: {x: -90, y: 180, z: 0}
+  pickupPosition: {x: 0, y: 0, z: -0.1}
 --- !u!114 &114730064454194274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -650,8 +651,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271db87f8b4f7534490a46abeb80b9cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupOffset: {x: 0, y: 0, z: 0}
-  ammo: {fileID: 1216516151744108, guid: 5c3a0719e31c76e47b2d16e2cdd84184, type: 2}
+  pickupRotation: {x: 0, y: 0, z: 0}
+  pickupPosition: {x: 0, y: 0, z: 0}
+  ammo: {fileID: 1209796904069572, guid: 5c3a0719e31c76e47b2d16e2cdd84184, type: 2}
+  firing: 0
 --- !u!120 &120121172475992860
 LineRenderer:
   m_ObjectHideFlags: 1

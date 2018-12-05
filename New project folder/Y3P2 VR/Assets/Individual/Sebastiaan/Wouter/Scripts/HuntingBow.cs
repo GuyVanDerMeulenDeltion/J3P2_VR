@@ -19,7 +19,6 @@ public class HuntingBow : MonoBehaviour
 
     public void Update()
     {
-        if(transform.GetComponent<Bow>().enabled)
         UpdateStringConnections();
     }
 

@@ -17,11 +17,6 @@ public class BowString : Bow
     public float leftHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.LeftHand); } }
     public float rightHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.RightHand); } }
 
-    public void OnEnable()
-    {
-        drawOutline.enabled = true;
-    }
-
     private void Update()
     {
         Shoot();
@@ -51,6 +46,7 @@ public class BowString : Bow
                 GameObject _arrow = Instantiate(ammo, transform.position, transform.rotation) as GameObject;
                 _arrow.transform.SetParent(transform);
                 _arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                currentHand.GetComponent<Controller>().item = _arrow.gameObject;
             }
         }
         else if (firing && currentHand != null)
@@ -59,13 +55,14 @@ public class BowString : Bow
             {
                 transform.parent.LookAt(currentHand.transform.position,transform.parent.up);
                 transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", Vector3.Distance(startPos.transform.position, currentHand.transform.position));
-
+                
                 if (leftHandAxis == 0)
                 {
                     transform.GetChild(0).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                     transform.GetChild(0).GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f*transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
                     //------------ temp
                     transform.GetChild(0).GetComponent<TempFirework>().enable = true;
+                    currentHand.GetComponent<Controller>().item = null;
                     transform.GetChild(0).SetParent(null);
                     firing = false;
                     currentHand = null;
@@ -81,7 +78,8 @@ public class BowString : Bow
                 firing = true;
                 GameObject _arrow = Instantiate(ammo, transform.position, transform.rotation) as GameObject;
                 _arrow.transform.SetParent(transform);
-                _arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;               
+                _arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                currentHand.GetComponent<Controller>().item = _arrow.gameObject;
             }
         }
         else if (firing && currentHand != null)
@@ -97,6 +95,7 @@ public class BowString : Bow
                     transform.GetChild(0).GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f*transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
                     //------------ temp
                     transform.GetChild(0).GetComponent<TempFirework>().enable = true;
+                    currentHand.GetComponent<Controller>().item = null;
                     transform.GetChild(0).SetParent(null);
                     firing = false;
                     currentHand = null;
@@ -106,10 +105,5 @@ public class BowString : Bow
 
         if (!firing && currentHand == null && transform.parent.GetComponent<Animator>().GetFloat("DrawAxis") != 0)       
             transform.parent.GetComponent<Animator>().SetFloat("DrawAxis",Mathf.Lerp(transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"), 0,0.2f));       
-    }
-
-    public void OnDisable()
-    {
-        drawOutline.enabled = false;
     }
 }
