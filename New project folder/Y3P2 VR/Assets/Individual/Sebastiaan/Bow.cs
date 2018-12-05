@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bow : Interactables {
+public class Bow : Interactables
+{
+
 
     private void Update()
     {
-        transform.localEulerAngles = pickupOffset;
-    }
-
-
-    public void DrawArrow()
-    {
+        if(transform.GetChild(2).GetComponent<BowString>().firing == false)
+        transform.localEulerAngles = pickupRotation;
+        transform.localPosition = pickupPosition;
 
     }
 }
+

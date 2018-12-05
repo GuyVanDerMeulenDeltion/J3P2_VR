@@ -5,7 +5,8 @@ using UnityEngine;
 public class Interactables : MonoBehaviour {
 
     private DrawOutline drawOutline;
-    public Vector3 pickupOffset;
+    public Vector3 pickupRotation;
+    public Vector3 pickupPosition;
 
     public void Awake()
     {

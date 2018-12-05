@@ -19,11 +19,8 @@ public class HuntingBow : MonoBehaviour
 
     public void Update()
     {
+        if(transform.GetComponent<Bow>().enabled)
         UpdateStringConnections();
-
-        //Implementer notes:
-        //Replace the following "Input.GetAxis("Horizontal")" with bowdrawing action progress (min 0, max 1).
-        myAnim.SetFloat("DrawAxis", Mathf.Clamp(Input.GetAxis("Horizontal"), 0, 0.95f));
     }
 
     public void UpdateStringConnections()
