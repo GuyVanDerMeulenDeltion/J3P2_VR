@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Valve.VR;
 
-public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable {
+public class PlayerManager : MonoBehaviourPunCallbacks {
 
     public static PlayerManager thisPlayer;
 
@@ -12,11 +12,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable {
     public bool died = false;
     public bool test = false;
 
-    [Header("Photon Sync Settings:")]
-    public Transform[] childrenToSync;
-
     public Camera camera;
-    internal VR_Player playerMain;
+    public VR_Player playerMain;
     internal PlayerHead player_head;
     internal Menu player_menu;
     internal SteamVR_PlayArea area;
@@ -30,9 +27,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable {
         {
             thisPlayer = this;
             GetComponentsFromPlayer();
+            camera.enabled = true;
             return;
         }
 
+        playerMain.enabled = false;
         this.enabled = false;
     }
 
@@ -40,7 +39,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable {
         if (this == thisPlayer)
         {
             EnemyManager.enemyManager.SetNewTarget(photonView.ViewID);
-            if(test == false)
+            if (test == false)
+            GetComponentsFromPlayer();
             playerMain.Initialise();
         }
     }
@@ -52,31 +52,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable {
             camera.enabled = true;
         }
 
-        playerMain = GetComponentInChildren<VR_Player>();
         player_head = GetComponentInChildren<PlayerHead>();
         player_menu = GetComponentInChildren<Menu>();
         camera = GetComponentInChildren<Camera>();
         area = GetComponentInChildren<SteamVR_PlayArea>();
         hands = GetComponentsInChildren<SteamVR_Behaviour_Pose>();
         reviveFields = GetComponentsInChildren<Player_Revivefield>();
+        Steam_VR_Manager.steamManager.EnableRender();
     }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-        if (stream.IsWriting) {
-            foreach (Transform _Child in childrenToSync) {
-                stream.SendNext(_Child.position);
-                stream.SendNext(_Child.rotation);
-            }
-        } else if (stream.IsReading) {
-            foreach (Transform _Child in childrenToSync) {
-                _Child.position = (Vector3)stream.ReceiveNext();
-                _Child.rotation = (Quaternion)stream.ReceiveNext();
-            }
-        }
-    }
-
-
-
 
     public void SetDeath() {
         if (died == false) {

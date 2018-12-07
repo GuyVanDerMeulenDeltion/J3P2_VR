@@ -21,18 +21,18 @@ public class GameManager : MonoBehaviourPunCallbacks {
     public void Start() {
         if (test == true) {
             if (PhotonNetwork.IsConnected)
-                PhotonNetwork.Instantiate("TestPlayer", _SpawnPoint[0].position, Quaternion.identity);
+                PhotonNetwork.Instantiate("TestPlayer", _SpawnPoint[spawnIndex].position, Quaternion.identity);
                 return;
         }
 
         if (PlayerManager.thisPlayer == null && PhotonNetwork.IsConnected) {
-                PhotonNetwork.Instantiate("[CameraRig]", _SpawnPoint[0].position, Quaternion.identity);
+                PhotonNetwork.Instantiate("[CameraRig]", _SpawnPoint[spawnIndex].position, Quaternion.identity);
             print(_SpawnPoint[0]);
-                photonView.RPC("SetSpawn", RpcTarget.All, _SpawnPoint[0].position);
+                photonView.RPC("SetSpawn", RpcTarget.All, _SpawnPoint[spawnIndex].position);
                 photonView.RPC("SendOnJoinedMessage", RpcTarget.All, "All welcome the new player!");
                 SendOnJoinedMessage("Welcome to the game");
         } else if(PhotonNetwork.IsConnected == false) {
-                Instantiate(Resources.Load("[CameraRig]"), _SpawnPoint[0].position, Quaternion.identity);
+                Instantiate(Resources.Load("[CameraRig]"), _SpawnPoint[spawnIndex].position, Quaternion.identity);
                 SetSpawn(_SpawnPoint[0].position);
                 SendOnJoinedMessage("Welcome to the game");
         }
