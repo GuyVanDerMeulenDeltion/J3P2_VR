@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 
+    AppIdRealtime: d4d8b577-b885-4a05-9230-194ae34fd953
     AppIdChat: 
     AppIdVoice: 
     AppVersion: 
@@ -27,5 +27,22 @@ MonoBehaviour:
   PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
-  RpcList: []
-  DisableAutoOpenWizard: 0
+  RpcList:
+  - BroadcastMessage
+  - DestroySpaceship
+  - Fire
+  - GetEnemyAnimation
+  - GetEnemyDeath
+  - GetEnemyHealth
+  - GetEnemyHit
+  - GetEnemyHitsplash
+  - GetEnemyMessage
+  - GetEnemyRagdoll
+  - GetEnemyTotalHit
+  - GetNewTarget
+  - GetReviveFieldState
+  - RespawnSpaceship
+  - SendOnJoinedMessage
+  - SetNewSpawnIndex
+  - SetSpawn
+  DisableAutoOpenWizard: 1
