@@ -52,6 +52,9 @@ MonoBehaviour:
   - GetEnemyMessage
   - GetEnemyHit
   - GetReviveFieldState
+<<<<<<< HEAD
   - SetNewSpawnIndex
   - GetEnemyTotalHit
+=======
+>>>>>>> ed2fdb33475526b23e42f3b30df6672c317310c7
   DisableAutoOpenWizard: 1

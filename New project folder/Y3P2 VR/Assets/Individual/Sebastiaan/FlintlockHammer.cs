@@ -8,7 +8,7 @@ public class FlintlockHammer : MonoBehaviour {
     
     private FlintLock flintLock { get { return GameObject.Find("FlintLock").GetComponent<FlintLock>(); } }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         if (other.transform.tag == "Hand")
             currentHand = other.gameObject;
@@ -16,7 +16,7 @@ public class FlintlockHammer : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.transform.tag == "Hand" && flintLock.firing == false)
+        if (other.transform.tag == "Hand" && flintLock.firing == false &&transform.parent.parent.parent.GetComponent<FlintLock>().cocking == false)
             currentHand = null;
     }
 }
