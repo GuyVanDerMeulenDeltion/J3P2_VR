@@ -120,6 +120,7 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
     private void GetEnemyTotalHit(int _ViewID, int _Hit, Vector3 _Velocity) {
         foreach(PhotonView _View in PhotonNetwork.PhotonViews) {
             if(_ViewID == _View.ViewID) {
+                if(_View.GetComponent<Enemy>())
                 _View.GetComponent<Enemy>().GetDamaged(_Hit, _Velocity);
                 return;
             }
@@ -139,7 +140,7 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
         _KOMessage.GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
         foreach(PhotonView _View in PhotonNetwork.PhotonViews) {
             if(_View.ViewID == _i) {
-                Destroy(_View.transform.GetChild(2));
+                Destroy(_View.transform.GetChild(2).gameObject);
                 return;
             }
         }
