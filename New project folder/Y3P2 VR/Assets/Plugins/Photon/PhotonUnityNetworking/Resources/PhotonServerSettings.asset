@@ -50,4 +50,8 @@ MonoBehaviour:
   - GetEnemyHitsplash
   - GetEnemyRagdoll
   - GetEnemyMessage
+  - GetEnemyHit
+  - GetReviveFieldState
+  - SetNewSpawnIndex
+  - GetEnemyTotalHit
   DisableAutoOpenWizard: 1

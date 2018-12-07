@@ -15,6 +15,13 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
         enemyManager = this;
     }
 
+    public void SetEnemyTotalHit(int _i, int _Hit, Vector3 _Velocity) {
+        if (PhotonNetwork.IsConnected)
+            photonView.RPC("GetEnemyTotalHit", RpcTarget.MasterClient, _i, _Hit, _Velocity);
+        else
+            GetEnemyTotalHit( _i, _Hit, _Velocity);
+    }
+
     public void SetNewTarget(int _i) {
         if (PhotonNetwork.IsConnected)
             photonView.RPC("GetNewTarget", RpcTarget.MasterClient, _i);
@@ -75,7 +82,7 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
     private void GetNewTarget(int _i) {
         foreach (PhotonView _View in PhotonNetwork.PhotonViews)
             if (_View.ViewID == _i && _View.gameObject.tag == "Player") {
-                Enemy.players.Add(_View.transform);
+                Enemy.players.Add(_View.transform.GetChild(2).transform);
                 return;
             }
     }
@@ -105,6 +112,16 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
     }
 
     [PunRPC]
+    private void GetEnemyTotalHit(int _ViewID, int _Hit, Vector3 _Velocity) {
+        foreach(PhotonView _View in PhotonNetwork.PhotonViews) {
+            if(_ViewID == _View.ViewID) {
+                _View.GetComponent<Enemy>().GetDamaged(_Hit, _Velocity);
+                return;
+            }
+        }
+    }
+
+    [PunRPC]
     private void GetEnemyHitsplash(Vector3 _Pos, int _Damage) {
         GameObject _Hitsplash = (GameObject)Instantiate(Resources.Load("Hitsplash"), _Pos, Quaternion.identity);
         _Hitsplash.GetComponentInChildren<TextMeshProUGUI>().text = _Damage.ToString();
@@ -117,10 +134,7 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
         _KOMessage.GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
         foreach(PhotonView _View in PhotonNetwork.PhotonViews) {
             if(_View.ViewID == _i) {
-                Image[] _HealthUI = _View.GetComponentsInChildren<Image>();
-                foreach (Image _Image in _HealthUI) {
-                    _Image.enabled = false;
-                }
+                Destroy(_View.transform.GetChild(2));
                 return;
             }
         }
@@ -149,7 +163,7 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
     private void GetEnemyHit(int _i, Vector3 _Velocity, float Damage) {
         foreach(PhotonView _View in PhotonNetwork.PhotonViews) {
             if(_View.ViewID == _i && _View.transform.tag == "Enemy") {
-                _View.GetComponent<Rigidbody>().AddForce(_Velocity);
+                _View.GetComponent<Rigidbody>().velocity = _Velocity;
                 _View.GetComponent<Enemy>().health -= Damage;
                 return;
             }

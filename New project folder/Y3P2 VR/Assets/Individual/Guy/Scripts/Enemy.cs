@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
         Attacking();
 
         if (Input.GetButtonDown("Fire1")) {
-            GetDamaged(50, transform.position, 50);
+            GetDamaged(50, Vector3.one);
         }
 
         if (Input.GetButtonDown("Fire2")) {
@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
                 if (hitTimer > 0) {
                     hitTimer -= Time.deltaTime;
                 } else {
-                    Attack(currentTarget.GetComponent<PhotonView>().ViewID);
+                    Attack(currentTarget.transform.parent.GetComponent<PhotonView>().ViewID);
                     hitTimer = maxHitTimer;
                 }
              }
@@ -207,17 +207,17 @@ public class Enemy : MonoBehaviourPunCallbacks {
     }
 
     //Function handles the hit that has been applied to the enemy
-    public void GetDamaged(int _Hit, Vector3 _HitPos, float _Force) {
-        health -= _Hit;
-        SetHitVisuals(_Hit, _HitPos);
+    public void GetDamaged(int _Hit, Vector3 _Velocity) {
+        EnemyManager.enemyManager.SetEnemyHit(photonView.ViewID, _Velocity, _Hit);
+        EnemyManager.enemyManager.SetEnemyHitsplash(transform.position + new Vector3(0, 1, 0), _Hit);
+        EnemyManager.enemyManager.SetEnemyHealth(photonView.ViewID, maxHealth, health);
 
         if (hit == false) {
             hit = true;
             thisAgent.enabled = false;
-            EnemyManager.enemyManager.SetEnemyRagdoll(photonView.ViewID, true);
-            thisBody.AddForce(_HitPos * _Force, ForceMode.Impulse);
             StopCoroutine(RestoreTimer());
             StartCoroutine(RestoreTimer());
+            EnemyManager.enemyManager.SetEnemyRagdoll(photonView.ViewID, true);
         }
 
         CheckDeath();
@@ -231,6 +231,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     public void Die() {
         EnemyManager.enemyManager.SetEnemyDeath(photonView.ViewID, transform.position + new Vector3(0, 1, 0));
         EnemyManager.enemyManager.SetEnemyRagdoll(photonView.ViewID, true);
+        thisBody.velocity *= 10;
         Destroy(thisAgent);
         Destroy(this);
 

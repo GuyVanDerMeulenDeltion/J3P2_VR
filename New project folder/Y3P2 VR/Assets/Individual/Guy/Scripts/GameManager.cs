@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviourPunCallbacks {
     public static float _MAXPLAYERHEALTH = 250;
     public static float _PLAYERHEALTH = _MAXPLAYERHEALTH;
 
+    private int spawnIndex = 0;
+
     public void Awake() {
         if (gameManager != null) return;
         gameManager = this;
@@ -34,6 +36,14 @@ public class GameManager : MonoBehaviourPunCallbacks {
                 SetSpawn(_SpawnPoint[0].position);
                 SendOnJoinedMessage("Welcome to the game");
         }
+
+        if (PhotonNetwork.IsConnected)
+            photonView.RPC("SetNewSpawnIndex", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    private void SetNewSpawnIndex() {
+        spawnIndex++;
     }
 
     [PunRPC]

@@ -5,6 +5,8 @@ using Photon.Pun;
 
 public class Destroy : MonoBehaviour {
 
+    public bool networkDestroy = true;
+
     [SerializeField]private float timeTillDestroy = 5;
     [SerializeField]private GameObject toDestroy;
 
@@ -18,9 +20,9 @@ public class Destroy : MonoBehaviour {
 	
     private IEnumerator DestroyObject() {
         yield return new WaitForSeconds(timeTillDestroy);
-        if (!toDestroy.GetComponent<PhotonView>())
+        if (!PhotonNetwork.IsConnected || networkDestroy == false)
             Destroy(toDestroy);
-        else
+        else if (networkDestroy == true)
             PhotonNetwork.Destroy(toDestroy);
     }
 }

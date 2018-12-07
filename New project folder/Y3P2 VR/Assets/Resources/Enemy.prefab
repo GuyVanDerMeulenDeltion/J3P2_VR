@@ -226,28 +226,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  deadPrefab: {fileID: 1214048790981692, guid: 1551ea0441f6a8644a51f4033fdeeec6, type: 2}
   maxHitTimer: 4
+  floor:
+    serializedVersion: 2
+    m_Bits: 0
   health: 0
-  healthUI: {fileID: 1023292430239524}
-  healthFill: {fileID: 114785062343696628}
   currentTarget: {fileID: 0}
-  gotHitEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114185459868167874}
-        m_MethodName: Restore
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114434182654459642
 MonoBehaviour:
   m_ObjectHideFlags: 1
