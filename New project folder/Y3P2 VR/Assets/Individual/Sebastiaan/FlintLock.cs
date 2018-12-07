@@ -10,82 +10,113 @@ public class FlintLock : Interactables
     private FlintlockHammer flintLockHammer { get { return GameObject.Find("Hammer").GetComponent<FlintlockHammer>(); } }
 
     public bool firing;
-    private bool canFire = true;
-    private bool cocked = true;
+    public bool resetTrigger;
+
+    [HideInInspector]
+    public bool cocking;
 
     public float leftHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.LeftHand); } }
     public float rightHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.RightHand); } }
 
+    private void OnEnable()
+    {
+        //resets the hand upon pickup
+        flintLockHammer.currentHand = null;
+    }
+
     void Start()
     {
+        //assings animator variable
         myanim = GetComponent<Animator>();
     }
 
     void Update()
     {
+        //applies pickup rotation offset
         transform.localEulerAngles = pickupRotation;
         transform.localPosition = pickupPosition;
 
         Recock();
         Trigger();
-
-
-
-        //Notes for implementer:
-        //Replace the following "Input.GetAxis("Horizontal")" with the HTC Vive Trigger on the current hand (min 0, max 1).
-        myanim.SetFloat("TriggerAxis", Mathf.Clamp(Input.GetAxis("Horizontal"), 0, 0.95f));
-
-
-        //Notes for implementer:
-        //Replace the following "Input.GetAxis("Vertical")" with recocking action progress (min 0, max 1).
-        //  myanim.SetFloat("RecockAxis", Mathf.Clamp(Input.GetAxis("Vertical"), 0, 0.95f));
-
+        ResetTrigger();
     }
 
     void Recock()
     {
-        if (!cocked &&flintLockHammer.currentHand !=null)
+        //recocks flintlock by distance from hand you recock with to the hammer multiplied my 4 to get a  realistic feeling
+        if (!myanim.GetBool("Cocked") && flintLockHammer.currentHand != null)
         {
-            transform.GetComponent<Animator>().SetFloat("RecockAxis", Vector3.Distance(transform.position, flintLockHammer.currentHand.transform.position));
-            if (transform.GetComponent<Animator>().GetFloat("RecockAxis") >= 1f)
+            if (flintLockHammer.currentHand.GetComponent<Controller>().leftHand && leftHandAxis > 0.99f || flintLockHammer.currentHand.GetComponent<Controller>().rightHand && rightHandAxis > 0.99f)
             {
-                cocked = true;
-                print("Cocked");
+                cocking = true;
+                myanim.SetBool("Firing", false);
+                myanim.SetFloat("RecockAxis", Mathf.Clamp(Vector3.Distance(transform.position, flintLockHammer.currentHand.transform.position), 0, 1f));
+                if (myanim.GetFloat("RecockAxis") > 0.95f)
+                    myanim.SetBool("Cocked", true);
             }
-        }
-    }
 
+        }
+        else       
+            cocking = false;       
+    }
     void Trigger()
     {
-        if (flintLockHammer.currentHand != null)
+        //grabs the trigger value of the hand you hold the weapon with and applies it to the animation
+        if (transform.parent.GetComponent<Controller>().leftHand && leftHandAxis > 0.05f && myanim.GetBool("Cocked") && resetTrigger)
         {
-            if (flintLockHammer.currentHand.GetComponent<Controller>().leftHand && leftHandAxis > 0.05f && canFire)
-            {
-                firing = true;
-                transform.GetComponent<Animator>().SetFloat("TriggerAxis", leftHandAxis);
-                print(leftHandAxis);
-                if (leftHandAxis > 0.99f)
-                    Shoot();
-            }
-            else if (flintLockHammer.currentHand.GetComponent<Controller>().rightHand && rightHandAxis > 0.05f && canFire)
-            {
-                firing = true;
-                transform.GetComponent<Animator>().SetFloat("TriggerAxis", rightHandAxis);
-                print(rightHandAxis);
-                if (rightHandAxis > 0.99f)
-                    Shoot();
-            }
-            else
-                firing = false;
+            firing = true;
+            print(leftHandAxis);
+            myanim.SetFloat("TriggerAxis", leftHandAxis);
+            if (leftHandAxis > 0.99f)
+                Shoot();
         }
+        else if (transform.parent.GetComponent<Controller>().rightHand && rightHandAxis > 0.05f && myanim.GetBool("Cocked") && resetTrigger)
+        {
+            firing = true;
+            print(rightHandAxis);
+            myanim.SetFloat("TriggerAxis", rightHandAxis);
+            if (rightHandAxis > 0.99f && myanim.GetBool("Cocked"))
+                Shoot();
+        }
+        else
+        {
+            firing = false;
+            myanim.SetFloat("TriggerAxis", Mathf.Lerp(myanim.GetFloat("TriggerAxis"), 0, 0.01f));
+            myanim.SetFloat("RecockAxis", Mathf.Lerp(myanim.GetFloat("RecockAxis"), 0, 0.05f));
+        }
+
     }
 
     void Shoot()
     {
-        //spawn particles
+        //resetting variables
+        firing = false;
+        myanim.SetBool("Cocked", false);
+        myanim.SetBool("Firing",true);
+        myanim.SetFloat("RecockAxis", 0);
+        resetTrigger = false;
 
-       // firing = false;
-     //   cocked = false;
-        print("Shot");
+
+        //spawn particles
+        //instantiate bullet
+    }
+
+    void ResetTrigger()
+    {
+        //prevents instant firing on pickup
+        if (transform.parent.GetComponent<Controller>().leftHand && leftHandAxis == 0f)
+            resetTrigger = true;
+
+        if (transform.parent.GetComponent<Controller>().rightHand && rightHandAxis == 0f)
+            resetTrigger = true;
+    }
+
+    private void OnDisable()
+    {
+        //resets variables on disable
+        if (flintLockHammer.currentHand != null)
+            flintLockHammer.currentHand = null;
+        myanim.SetFloat("TriggerAxis", 0);
+        myanim.SetFloat("RecockAxis", 0);
     }
 }
