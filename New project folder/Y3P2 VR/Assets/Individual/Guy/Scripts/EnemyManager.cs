@@ -4,11 +4,16 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 [RequireComponent(typeof(PhotonView))]
 public class EnemyManager : MonoBehaviourPunCallbacks {
 
     public static EnemyManager enemyManager;
+
+    internal void SetEnemyTotalHit(int viewID) {
+        throw new NotImplementedException();
+    }
 
     private void Awake() {
         if (enemyManager != null) Destroy(this);
