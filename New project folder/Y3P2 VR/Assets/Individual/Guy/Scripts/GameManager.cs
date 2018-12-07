@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviourPunCallbacks {
     public void Awake() {
         if (gameManager != null) return;
         gameManager = this;
+
+        photonView.RPC("SetNewSpawnIndex", RpcTarget.AllBuffered);
     }
 
     public void Start() {
@@ -27,7 +29,6 @@ public class GameManager : MonoBehaviourPunCallbacks {
 
         if (PlayerManager.thisPlayer == null && PhotonNetwork.IsConnected) {
                 PhotonNetwork.Instantiate("[CameraRig]", _SpawnPoint[spawnIndex].position, Quaternion.identity);
-            print(_SpawnPoint[0]);
                 photonView.RPC("SetSpawn", RpcTarget.All, _SpawnPoint[spawnIndex].position);
                 photonView.RPC("SendOnJoinedMessage", RpcTarget.All, "All welcome the new player!");
                 SendOnJoinedMessage("Welcome to the game");
