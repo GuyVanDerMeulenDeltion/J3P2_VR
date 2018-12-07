@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59ce5dbd344bf64aaa8490089febc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  test: 1
   _SpawnPoint:
   - {fileID: 1325587818}
 --- !u!4 &209198955
@@ -340,10 +341,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - _Pos: {fileID: 0}
+  - itemType: Spawn_Effect
+    _Pos:
+    - {fileID: 1801897952}
+    - {fileID: 1164451901}
+    - {fileID: 1325587818}
     _Item: {fileID: 1921604835119932, guid: 4548010d87592a047a654f5c39fe78ea, type: 2}
   entities:
-  - _Pos:
+  - entityType: Enemy_Crusader
+    _Pos:
     - {fileID: 1801897952}
     - {fileID: 1164451901}
     _Entity: {fileID: 1524180767593412, guid: b77c7451892d4d749b3e6165ff60ba50, type: 2}
@@ -358,7 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70dde9a2a70dfa64ea22809d1d2a12f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pvCache: {fileID: 0}
 --- !u!114 &209198958
 MonoBehaviour:
   m_ObjectHideFlags: 0

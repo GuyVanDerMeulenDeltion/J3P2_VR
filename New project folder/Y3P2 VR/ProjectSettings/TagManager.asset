@@ -10,6 +10,7 @@ TagManager:
   - Bullet
   - Interactable
   - Enemy
+  - Health
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - PostProcessing
   - Menu
   - Enemy
-  - 
+  - Floor
   - 
   - 
   - 

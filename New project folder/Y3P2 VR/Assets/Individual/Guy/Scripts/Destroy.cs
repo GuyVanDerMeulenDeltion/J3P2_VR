@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Destroy : MonoBehaviour {
 
@@ -17,6 +18,9 @@ public class Destroy : MonoBehaviour {
 	
     private IEnumerator DestroyObject() {
         yield return new WaitForSeconds(timeTillDestroy);
-        Destroy(toDestroy);
+        if (!toDestroy.GetComponent<PhotonView>())
+            Destroy(toDestroy);
+        else
+            PhotonNetwork.Destroy(toDestroy);
     }
 }

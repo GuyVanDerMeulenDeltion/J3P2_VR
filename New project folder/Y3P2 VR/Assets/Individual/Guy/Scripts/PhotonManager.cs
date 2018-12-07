@@ -7,6 +7,7 @@ using Photon.Realtime;
 public class PhotonManager : MonoBehaviourPunCallbacks {
 
     public static PhotonManager photonManager;
+    public bool test = false;
     private bool loadedroom = false;
 
 	// Use this for initialization
@@ -23,15 +24,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     }
 
     public override void OnConnectedToMaster() {
-        if(VR_Player.localPlayer != null)
-        VR_Player.localPlayer.SendMessageLocally("You have connected to the network.");
-    }
+        if (VR_Player.localPlayer != null && test == false) {
+            VR_Player.localPlayer.SendMessageLocally("You have connected to the network.");
+        }
 
-    public void Update() {
-        if(Input.GetButtonDown("Fire1") && loadedroom == false && PhotonNetwork.IsConnected) {
-            loadedroom = true;
-            CreateRoom("Test");
-        }        
+        CreateRoom("Test");
     }
 
     public void CreateRoom(string _RoomID) {
@@ -40,6 +37,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     }
 
     public override void OnJoinedRoom() {
-        PhotonNetwork.LoadLevel(2);
+        PhotonNetwork.LoadLevel(1);
     }
 }

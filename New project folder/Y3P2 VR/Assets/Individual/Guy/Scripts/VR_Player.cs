@@ -42,13 +42,13 @@ public class VR_Player : MonoBehaviourPunCallbacks {
     }
 
     public void SendMessageLocally(string _Message) {
-        broadcastAnim.SetTrigger("Broadcast");
+        broadcastAnim.SetTrigger("Send");
         broadcastText.text = _Message;
     }
 
     [PunRPC]
     private new void BroadcastMessage(string _Message) {
-        broadcastAnim.SetTrigger("Broadcast");
+        broadcastAnim.SetTrigger("Send");
         broadcastText.text = _Message;
     }
 }

@@ -39,4 +39,15 @@ MonoBehaviour:
   - SetHitVisuals
   - SetOnNetworkDeath
   - SetSpawnParticles
+  - SendOnJoinedMessage
+  - SetSpawn
+  - SetHealthbar
+  - SetAnimationViaNetwork
+  - GetNewTarget
+  - GetEnemyAnimation
+  - GetEnemyHealth
+  - GetEnemyDeath
+  - GetEnemyHitsplash
+  - GetEnemyRagdoll
+  - GetEnemyMessage
   DisableAutoOpenWizard: 1

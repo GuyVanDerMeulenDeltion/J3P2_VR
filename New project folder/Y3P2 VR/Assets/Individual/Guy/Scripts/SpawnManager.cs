@@ -9,12 +9,14 @@ public class SpawnManager : MonoBehaviourPunCallbacks {
 
     [System.Serializable]
     public struct ItemSpawns {
-        public Transform _Pos;
+        public string itemType;
+        public Transform[] _Pos;
         public GameObject _Item;
     }
 
     [System.Serializable]
     public struct Entity {
+        public string entityType;
         public Transform[] _Pos;
         public GameObject _Entity;
     }
@@ -27,6 +29,11 @@ public class SpawnManager : MonoBehaviourPunCallbacks {
         spawnManager = this;
     }
 
+    private void Start() {
+        if (PhotonNetwork.IsMasterClient)
+            SpawnScenery();
+    }
+
     public void SpawnScenery() {
         SpawnItems();
         SpawnEntites();
@@ -34,10 +41,12 @@ public class SpawnManager : MonoBehaviourPunCallbacks {
 
     private void SpawnItems() {
         foreach (ItemSpawns _Spawn in items) {
-            if (PhotonNetwork.IsConnected)
-                PhotonNetwork.InstantiateSceneObject(_Spawn._Item.name, _Spawn._Pos.position, Quaternion.identity);
-            else
-                Instantiate(_Spawn._Item, _Spawn._Pos.position, Quaternion.identity);
+            foreach (Transform _Pos in _Spawn._Pos) {
+                if (PhotonNetwork.IsConnected)
+                    PhotonNetwork.InstantiateSceneObject(_Spawn._Item.name, _Pos.position, Quaternion.identity);
+                else
+                    Instantiate(_Spawn._Item, _Pos.position, Quaternion.identity);
+            }
         }
     }
 
