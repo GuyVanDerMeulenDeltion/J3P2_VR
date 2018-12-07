@@ -1520,7 +1520,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.46, y: 3.25, z: 2.55}
+  m_Size: {x: 1.53, y: 3.25, z: 1.47}
   m_Center: {x: 0, y: 1.6, z: 0}
 --- !u!95 &95140253964650042
 Animator:
@@ -3294,7 +3294,7 @@ MonoBehaviour:
   - {fileID: 114276789428196732}
   - {fileID: 114874282637974420}
   - {fileID: 114205232901320330}
-  viewIdField: 1
+  viewIdField: 0
   InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &114757768695783300
@@ -3631,8 +3631,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 3
-  InstantiationId: 3
+  viewIdField: 0
+  InstantiationId: 4
   isRuntimeInstantiated: 0
 --- !u!114 &114843392600455264
 MonoBehaviour:
@@ -3943,8 +3943,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 2
-  InstantiationId: 2
+  viewIdField: 0
+  InstantiationId: 3
   isRuntimeInstantiated: 0
 --- !u!114 &114949917458241502
 MonoBehaviour:
@@ -3991,8 +3991,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 4
-  InstantiationId: 4
+  viewIdField: 0
+  InstantiationId: 5
   isRuntimeInstantiated: 0
 --- !u!114 &114968334478882084
 MonoBehaviour:
