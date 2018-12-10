@@ -4,36 +4,25 @@ using UnityEngine;
 
 public class PlayerHead : MonoBehaviour {
 
-    private static float rayRange = 4;
+    private static float rayRange = 12;
 
-    public LayerMask menuMask;
+    public bool isWielding = false;
+    public Menu menu;
 
-    private RaycastHit hit;
+    private bool checkedMenu = false;
 
-    private bool checkedAllMenus = false;
+    public void Update() {
+        if (isWielding == true)
+            menu.SetMenuState(false);
+    }
 
-	// Update is called once per frame
-	private void Update () {
-        CastRay();
-	}
+    private void OnTriggerEnter(Collider _O) {
+        if (_O.GetComponent<Menu>())
+            menu.SetMenuState(true);
+    }
 
-    //Checks if it has hit a menu type object
-    private void CastRay() {
-        Debug.DrawRay(transform.position, transform.forward * rayRange);
-        if (Physics.Raycast(transform.position, transform.forward, out hit, rayRange, menuMask)) {
-            print("y");
-            checkedAllMenus = false;
-            hit.transform.GetComponent<Menu>().SetMenuState(true);
-            return;
-        }
-
-        if(checkedAllMenus == false) {
-            print("Closing menu...");
-            if(Menu.currentMenus != null)
-                foreach(Menu _Menu in Menu.currentMenus) {
-                _Menu.SetMenuState(false);
-                checkedAllMenus = true;
-            }
-        }
+    private void OnTriggerExit(Collider _O) {
+        if (_O.GetComponent<Menu>())
+            menu.SetMenuState(false);
     }
 }

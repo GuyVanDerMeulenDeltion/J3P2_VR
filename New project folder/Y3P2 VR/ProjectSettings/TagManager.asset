@@ -11,6 +11,7 @@ TagManager:
   - Interactable
   - Enemy
   - Health
+  - Menu
   layers:
   - Default
   - TransparentFX

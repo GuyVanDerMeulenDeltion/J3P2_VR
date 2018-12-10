@@ -4,14 +4,8 @@ using System.Collections.Generic;
 
 public class Menu : MonoBehaviour {
 
-    public static List<Menu> currentMenus = new List<Menu>();
-
     [SerializeField]private Animator thisAnim;
     [SerializeField]private Animator extraAnim;
-
-    private void Start() {
-        currentMenus.Add(this);
-    }
 
     public void SetMenuState(bool _State) {
         thisAnim.SetBool("Open", _State);

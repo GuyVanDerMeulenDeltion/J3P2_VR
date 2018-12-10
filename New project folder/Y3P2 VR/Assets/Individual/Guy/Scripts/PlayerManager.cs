@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 
     public Camera camera;
     public VR_Player playerMain;
+    internal Grayscale_ImageEffect player_grayscale;
     internal PlayerHead player_head;
     internal Menu player_menu;
     internal SteamVR_PlayArea area;
@@ -33,6 +34,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 
         playerMain.enabled = false;
         this.enabled = false;
+    }
+
+    public void Update() {
+        if (Input.GetKeyDown(KeyCode.E))
+            SetDeath();
+        else if (Input.GetKeyDown(KeyCode.R))
+            Revive();
     }
 
     private void Start() {
@@ -58,27 +66,23 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         area = GetComponentInChildren<SteamVR_PlayArea>();
         hands = GetComponentsInChildren<SteamVR_Behaviour_Pose>();
         reviveFields = GetComponentsInChildren<Player_Revivefield>();
+        player_grayscale = GetComponentInChildren<Grayscale_ImageEffect>();
         Steam_VR_Manager.steamManager.EnableRender();
     }
 
     public void SetDeath() {
         if (died == false) {
-            died = true;
+            playerMain.SetDeath();
             foreach (Player_Revivefield _Field in reviveFields) {
                 _Field.SetReviveFieldState(false);
             }
-
-            playerMain.SendMessageOnline("Someone has died!");
-            playerMain.SendMessageLocally("You has died!");
             return;
         }
     }
 
     public void Revive() {
         if(died == true) {
-            died = false;
-            playerMain.SendMessageOnline("Someone has been revived!");
-            playerMain.SendMessageLocally("You have been revived!");
+            playerMain.SetRevive();
             foreach (Player_Revivefield _Field in reviveFields) {
                 _Field.SetReviveFieldState(true);
             }

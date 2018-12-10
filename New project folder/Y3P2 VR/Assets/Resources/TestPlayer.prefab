@@ -213,6 +213,7 @@ MonoBehaviour:
   died: 0
   test: 1
   camera: {fileID: 20826179295611630}
+  playerMain: {fileID: 0}
 --- !u!114 &114893513595555428
 MonoBehaviour:
   m_ObjectHideFlags: 1
