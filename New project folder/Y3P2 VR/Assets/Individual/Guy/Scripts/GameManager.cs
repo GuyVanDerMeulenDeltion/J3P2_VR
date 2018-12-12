@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviourPunCallbacks {
     public static GameManager gameManager;
 
     public bool test = false;
+
+    public GameObject teleportManagerInstance;
+
     [SerializeField] private Transform[] _SpawnPoint;
     public static float _MAXPLAYERHEALTH = 250;
     public static float _PLAYERHEALTH = _MAXPLAYERHEALTH;
@@ -23,8 +26,9 @@ public class GameManager : MonoBehaviourPunCallbacks {
     public void Start() {
         if (test == true) {
             if (PhotonNetwork.IsConnected)
-                PhotonNetwork.Instantiate("TestPlayer", _SpawnPoint[spawnIndex].position, Quaternion.identity);
-                return;
+                        PhotonNetwork.Instantiate("TestPlayer", _SpawnPoint[spawnIndex].position, Quaternion.identity);
+                    Instantiate(teleportManagerInstance);
+            return;
         }
 
         if (PlayerManager.thisPlayer == null && PhotonNetwork.IsConnected) {

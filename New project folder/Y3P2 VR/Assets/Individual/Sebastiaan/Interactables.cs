@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Interactables : MonoBehaviour {
+public class Interactables : MonoBehaviourPunCallbacks {
 
     private DrawOutline drawOutline;
     public Vector3 pickupRotation;

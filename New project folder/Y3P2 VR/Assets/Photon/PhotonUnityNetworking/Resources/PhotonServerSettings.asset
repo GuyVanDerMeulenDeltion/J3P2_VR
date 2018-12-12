@@ -45,4 +45,6 @@ MonoBehaviour:
   - SendOnJoinedMessage
   - SetNewSpawnIndex
   - SetSpawn
+  - GetEnemyMasterHit
+  - DestroyThis
   DisableAutoOpenWizard: 1

@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     //[SerializeField]private UnityEvent gotHitEvent;
     #endregion
 
-    private bool hit = true;
+    private bool hit = false;
     private bool started = false;
     private bool inRange = false;
     private float agentSpeed;
@@ -43,13 +43,13 @@ public class Enemy : MonoBehaviourPunCallbacks {
     public void Update() {
         Attacking();
 
-        if (Input.GetButtonDown("Fire1")) {
+        /*if (Input.GetButtonDown("Fire1")) {
             GetDamaged(50, Vector3.one);
         }
 
         if (Input.GetButtonDown("Fire2")) {
             StartEnemy();
-        }
+        }*/
     }
 
     private void Attacking() {
@@ -131,11 +131,16 @@ public class Enemy : MonoBehaviourPunCallbacks {
         }
     }
 
+
     private void Start() {
         EnemyManager.enemyManager.SetEnemyRagdoll(photonView.ViewID, true);
         health = maxHealth;
         hitTimer = maxHitTimer;
         agentSpeed = thisAgent.speed;
+
+        if (EnemyManager.enemyManager.aggroAllOnStart == true) {
+            StartEnemy();
+        }
     }
     #endregion
 
@@ -208,11 +213,12 @@ public class Enemy : MonoBehaviourPunCallbacks {
 
     //Function handles the hit that has been applied to the enemy
     public void GetDamaged(int _Hit, Vector3 _Velocity) {
+
         EnemyManager.enemyManager.SetEnemyHit(photonView.ViewID, _Velocity, _Hit);
         EnemyManager.enemyManager.SetEnemyHitsplash(transform.position + new Vector3(0, 1, 0), _Hit);
         EnemyManager.enemyManager.SetEnemyHealth(photonView.ViewID, maxHealth, health);
 
-        if (hit == false) {
+        if (hit == false && started == true) {
             hit = true;
             thisAgent.enabled = false;
             StopCoroutine(RestoreTimer());
@@ -221,11 +227,17 @@ public class Enemy : MonoBehaviourPunCallbacks {
         }
 
         CheckDeath();
+
     }
 
     public void CheckDeath() {
-        if(health <= 0) 
-                Die();
+        if (health <= 0) {
+            Die();
+            return;
+        }
+
+        if (started == false)
+            StartEnemy();
     }
 
     public void Die() {

@@ -11,13 +11,15 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
 
     public static EnemyManager enemyManager;
 
-    internal void SetEnemyTotalHit(int viewID) {
-        throw new NotImplementedException();
-    }
+    public bool aggroAllOnStart = false;
 
     private void Awake() {
         if (enemyManager != null) Destroy(this);
         enemyManager = this;
+    }
+
+    public void HitEnemyViaMaster(int i, Vector3 _Velocity, int _Hit) { //Function that makes it able to hit enemies via network
+        photonView.RPC("GetEnemyMasterHit", RpcTarget.MasterClient, i, _Velocity, _Hit);
     }
 
     public void SetEnemyTotalHit(int _i, int _Hit, Vector3 _Velocity) {
@@ -135,7 +137,7 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
 
     [PunRPC]
     private void GetEnemyDeath(int _i, Vector3 _SplashPos) {
-        GameObject _KOMessage = (GameObject)Instantiate(Resources.Load("Hitsplash"), _SplashPos, transform.rotation);
+        GameObject _KOMessage = (GameObject)Instantiate(Resources.Load("Hitsplash"), _SplashPos + new Vector3(0, 1, 0), transform.rotation);
         _KOMessage.GetComponentInChildren<TextMeshProUGUI>().text = "KO'd!";
         _KOMessage.GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
         foreach(PhotonView _View in PhotonNetwork.PhotonViews) {
@@ -169,10 +171,19 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
     private void GetEnemyHit(int _i, Vector3 _Velocity, float Damage) {
         foreach(PhotonView _View in PhotonNetwork.PhotonViews) {
             if(_View.ViewID == _i && _View.transform.tag == "Enemy") {
-                _View.GetComponent<Rigidbody>().velocity = _Velocity;
+                _View.GetComponent<Rigidbody>().AddForce(_Velocity, ForceMode.Impulse);
                 _View.GetComponent<Enemy>().health -= Damage;
                 return;
             }
         }
+    }
+
+    [PunRPC]
+    private void GetEnemyMasterHit(int _i, Vector3 _Velocity, int _Hit) {
+        foreach (PhotonView _View in PhotonNetwork.PhotonViews)
+            if (_View.ViewID == _i && _View.transform.tag == "Enemy") {
+                _View.transform.GetComponent<Enemy>().GetDamaged(_Hit, _Velocity);
+                return;
+            }
     }
 }

@@ -13,8 +13,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     public bool test = false;
 
     public Camera camera;
+    public GameObject[] menu;
     public VR_Player playerMain;
+    public InteractionManager interaction_manager;
     internal Grayscale_ImageEffect player_grayscale;
+    internal Controller[] player_controllers;
     internal PlayerHead player_head;
     internal Menu player_menu;
     internal SteamVR_PlayArea area;
@@ -32,8 +35,23 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
             return;
         }
 
+        foreach (GameObject _MenuItem in menu)
+            Destroy(_MenuItem);
         playerMain.enabled = false;
+        Destroy(interaction_manager);
         this.enabled = false;
+    }
+
+    public void SetCurrentState() {
+        player_head.isWielding = CheckHands();
+    }
+
+    private bool CheckHands() {
+        foreach (Controller _Cont in player_controllers)
+            if (_Cont.item != null)
+                return true;
+
+        return false;
     }
 
     public void Update() {
@@ -67,6 +85,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         hands = GetComponentsInChildren<SteamVR_Behaviour_Pose>();
         reviveFields = GetComponentsInChildren<Player_Revivefield>();
         player_grayscale = GetComponentInChildren<Grayscale_ImageEffect>();
+        player_controllers = GetComponentsInChildren<Controller>();
         Steam_VR_Manager.steamManager.EnableRender();
     }
 

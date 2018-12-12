@@ -35,6 +35,9 @@ public class VR_Player : MonoBehaviourPunCallbacks {
         PlayerManager.thisPlayer.camera.enabled = true;
         PlayerManager.thisPlayer.area.enabled = true;
 
+        foreach (Controller _Cont in PlayerManager.thisPlayer.player_controllers)
+            _Cont.enabled = true;
+
         for(int i = 0; i < PlayerManager.thisPlayer.hands.Length; i++) {
             PlayerManager.thisPlayer.hands[i].enabled = true;
         }

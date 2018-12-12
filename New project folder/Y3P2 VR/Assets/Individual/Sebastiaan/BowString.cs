@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Valve.VR;
 using UnityEngine;
+using Photon.Pun;
 
 public class BowString : Bow
 {
@@ -42,8 +43,15 @@ public class BowString : Bow
         {
             if (leftHandAxis > 0.85f && currentHand.GetComponent<Controller>().leftHand)
             {
+                GameObject _arrow;
                 firing = true;
-                GameObject _arrow = Instantiate(ammo, transform.position, transform.rotation) as GameObject;
+                if(PhotonNetwork.IsConnected)
+                 _arrow = PhotonNetwork.Instantiate(ammo.name, transform.position, transform.rotation) as GameObject;
+                else
+                    _arrow = Instantiate(ammo, transform.position, transform.rotation) as GameObject;
+
+                if (_arrow.GetComponent<NetworkedAmmo>())
+                    _arrow.GetComponent<NetworkedAmmo>().enabled = false;
                 _arrow.transform.SetParent(transform);
                 _arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 currentHand.GetComponent<Controller>().item = _arrow.gameObject;
@@ -62,6 +70,10 @@ public class BowString : Bow
                     transform.GetChild(0).GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f*transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
                     //------------ temp
                     transform.GetChild(0).GetComponent<TempFirework>().enable = true;
+                    if (transform.GetChild(0).GetComponent<NetworkedAmmo>()) {
+                        transform.GetChild(0).GetComponent<NetworkedAmmo>().canHit = true;
+                        transform.GetChild(0).GetComponent<Destroy>().enabled = true;
+                    }
                     currentHand.GetComponent<Controller>().item = null;
                     transform.GetChild(0).SetParent(null);
                     firing = false;
@@ -95,6 +107,10 @@ public class BowString : Bow
                     transform.GetChild(0).GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f*transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
                     //------------ temp
                     transform.GetChild(0).GetComponent<TempFirework>().enable = true;
+                    if (transform.GetChild(0).GetComponent<NetworkedAmmo>()) {
+                        transform.GetChild(0).GetComponent<NetworkedAmmo>().canHit = true;
+                        transform.GetChild(0).GetComponent<Destroy>().enabled = true;
+                    }
                     currentHand.GetComponent<Controller>().item = null;
                     transform.GetChild(0).SetParent(null);
                     firing = false;

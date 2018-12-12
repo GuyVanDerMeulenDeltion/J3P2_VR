@@ -12,24 +12,25 @@ public class Buttons : MonoBehaviour {
     [SerializeField]private Outline outline;
     [SerializeField]private Animator thisAnim;
     private bool canInteract = false;
+
+    internal GameObject hand;
     
     private void Awake() {
         allButtons.Add(this);
     }
 
-    public void Update() {
-        if(canInteract == true) {
-            if (Input.GetKeyDown(KeyCode.L))
-                Activate();
+    private void OnTriggerEnter(Collider _O) {
+        if (_O.transform.tag == "Hand" && _O.gameObject != gameObject) {
+            SetCurrentButton();
+            hand = _O.gameObject;
         }
     }
 
-    private void OnTriggerEnter(Collider _O) {
-        SetCurrentButton();
-    }
-
     private void OnTriggerExit(Collider _O) {
-        DeactivateCurrentButton();
+        if (_O.transform.tag == "Hand" && _O.gameObject != gameObject) {
+            DeactivateCurrentButton();
+            hand = null;
+        }
     }
 
     private void SetCurrentButton() {
@@ -52,8 +53,13 @@ public class Buttons : MonoBehaviour {
         outline.enabled = false;
     }
 
-    public void Activate() {
-        function.Invoke();
+    public static void Activate(GameObject _Hand) {
+        foreach(Buttons _But in allButtons) {
+            if (_But.canInteract && _But.hand == _Hand) {
+                _But.function.Invoke();
+                return;
+            }
+        }
         print("Activated function...");
     }
 
