@@ -6,7 +6,7 @@ public class FlintlockHammer : MonoBehaviour {
 
     public GameObject currentHand;
     
-    private FlintLock flintLock { get { return GameObject.Find("FlintLock").GetComponent<FlintLock>(); } }
+    private FlintLock flintLock { get { return transform.parent.parent.parent.GetComponent<FlintLock>(); } }
 
     public void OnTriggerStay(Collider other)
     {
