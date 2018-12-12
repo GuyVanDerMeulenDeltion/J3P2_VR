@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using Valve.VR;
 using UnityEngine;
+using Photon.Pun;
 
 public class FlintLock : Interactables
 {
     private Animator myanim;
 
     private FlintlockHammer flintLockHammer { get { return GameObject.Find("Hammer").GetComponent<FlintlockHammer>(); } }
+    [SerializeField] private Transform bulletSpawnpos;
 
     public bool firing;
     public bool resetTrigger;
@@ -99,6 +101,31 @@ public class FlintLock : Interactables
 
         //spawn particles
         //instantiate bullet
+    }
+
+    public void ShootBullet()
+    {
+        if (PhotonNetwork.IsConnected)
+            photonView.RPC("ShootBulletNetworked", RpcTarget.All);
+        else
+            ShootBulletNetworked();
+    }
+    
+    [PunRPC]
+    private void ShootBulletNetworked()
+    {
+        GameObject _NewBullet;
+        if (PhotonNetwork.IsConnected)
+        {
+            _NewBullet = PhotonNetwork.Instantiate("Bullet", bulletSpawnpos.position, Quaternion.Euler(-transform.right));
+            _NewBullet.GetComponent<Rigidbody>().AddForce(-transform.right * 80, ForceMode.Impulse);
+        }
+        else
+        {
+            _NewBullet = (GameObject)Instantiate(Resources.Load("Bullet"), bulletSpawnpos.position, Quaternion.Euler(-transform.right));
+            _NewBullet.GetComponent<Rigidbody>().AddForce(-transform.right * 80, ForceMode.Impulse);
+        }
+
     }
 
     void ResetTrigger()

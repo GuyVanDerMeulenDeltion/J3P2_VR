@@ -144,7 +144,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     }
     #endregion
 
-    private void StartEnemy() {
+    public void StartEnemy() {
         hit = false;
         EnemyManager.enemyManager.SetEnemyRagdoll(photonView.ViewID, false);
         StartCoroutine(StartNavigation());

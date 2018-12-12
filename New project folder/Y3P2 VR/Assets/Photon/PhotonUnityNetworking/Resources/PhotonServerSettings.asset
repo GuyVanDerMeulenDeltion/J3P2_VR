@@ -47,4 +47,5 @@ MonoBehaviour:
   - SetSpawn
   - GetEnemyMasterHit
   - DestroyThis
+  - ShootBulletNetworked
   DisableAutoOpenWizard: 1

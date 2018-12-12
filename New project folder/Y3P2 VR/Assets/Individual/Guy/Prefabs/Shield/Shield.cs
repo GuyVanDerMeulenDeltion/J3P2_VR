@@ -26,7 +26,7 @@ public class Shield : MonoBehaviourPunCallbacks {
         print(CalculateKinetics());
 
         if(CalculateKinetics() > 3)
-            EnemyManager.enemyManager.SetEnemyTotalHit(_O.GetComponent<PhotonView>().ViewID, (int)CalculateKinetics(), -transform.up *( CalculateKinetics() * 8));
+            EnemyManager.enemyManager.SetEnemyTotalHit(_O.GetComponent<PhotonView>().ViewID,(int)CalculateKinetics(), -transform.up *( CalculateKinetics() * 8));
     }
 
     private float CalculateKinetics() {
