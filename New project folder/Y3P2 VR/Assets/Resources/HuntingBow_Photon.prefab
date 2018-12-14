@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4465319292319136}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114572784760351558}
   - component: {fileID: 114089545635938104}
   - component: {fileID: 114614039355269992}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DrawCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4142948067638390}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4408807535415858}
   - component: {fileID: 137023142989922482}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Box002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4166489008946306}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4221836639711622}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 114368431952788826}
   - component: {fileID: 114376648407370398}
   - component: {fileID: 114401006248868314}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: HuntingBow_Photon
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4363503165968482}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4381851626343080}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: StringConnection1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4093766352707032}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4753949291782576}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4411977377256178}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4523705289451702}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: StringConnection2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4513094326846246}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4234972276226300}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4433669818460470}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: StartPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4545472698369234}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bone002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +372,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1308088099545630}
   m_LocalRotation: {x: -0, y: -0, z: -0.4064209, w: 0.913686}
-  m_LocalPosition: {x: 23.901, y: 1.292, z: -3.233}
+  m_LocalPosition: {x: 0.0023765564, y: 0, z: -9.304}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4221836639711622}
