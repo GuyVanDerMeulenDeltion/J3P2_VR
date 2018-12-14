@@ -8,6 +8,9 @@ public class Controller : MonoBehaviour
     public GameObject item;
     public GameObject otherController;
 
+    [Header("Hand visuals:")]
+    public Mitten mitten;
+
     SteamVR_Behaviour_Pose controllerPose { get { return GetComponent<SteamVR_Behaviour_Pose>(); } }
 
     public float leftHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.LeftHand); } }
@@ -19,9 +22,23 @@ public class Controller : MonoBehaviour
 
     public void Update()
     {
+        SetMitten();
         DropObject();
         HideController();
         ActivateButton();
+    }
+
+    //Used for the hand visuals
+    private void SetMitten() {
+        if(leftHand == true) {
+            mitten.triggerAxis = leftHandAxis;
+            return;
+        }
+
+        if(rightHand == true) {
+            mitten.triggerAxis = rightHandAxis;
+            return;
+        }
     }
 
     public void ActivateButton() {
@@ -67,6 +84,6 @@ public class Controller : MonoBehaviour
     void HideController()
     {
         transform.GetComponent<SphereCollider>().enabled = item ? false : true;
-        transform.GetChild(0).gameObject.SetActive(item ? false : true);
+        mitten.transform.GetChild(1).gameObject.SetActive(item ? false : true);
     }
 }

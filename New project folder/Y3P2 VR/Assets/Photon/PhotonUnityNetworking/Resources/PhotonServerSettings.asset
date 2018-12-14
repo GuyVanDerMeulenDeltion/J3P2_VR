@@ -48,4 +48,5 @@ MonoBehaviour:
   - GetEnemyMasterHit
   - DestroyThis
   - ShootBulletNetworked
+  - GetGloveState
   DisableAutoOpenWizard: 1
