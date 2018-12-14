@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bush_Structure_DefaultMaterial_AlbedoTransparency
+  m_Name: Tower_decor_DefaultMaterial_AlbedoTransparency
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 5da804d3d8d7fb343983ea11204502b5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 21264aff2f2315241ba16a25b9bd8d57, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -40,11 +40,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 6b6eb5ef0da84894ba58af65834f9dcc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 63cb86fe71c5f9a459262de24a9648c5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: eb9c61d544fdcfd4eae8ff2515542a7e, type: 3}
+        m_Texture: {fileID: 2800000, guid: fafe13de012a66c469bec4a9ad276f0f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
