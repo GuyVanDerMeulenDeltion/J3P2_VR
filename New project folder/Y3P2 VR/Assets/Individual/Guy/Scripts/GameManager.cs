@@ -24,12 +24,12 @@ public class GameManager : MonoBehaviourPunCallbacks {
     }
 
     public void Start() {
-        if (test == true) {
+      /*  if (test == true) {
             if (PhotonNetwork.IsConnected)
                         PhotonNetwork.Instantiate("TestPlayer", _SpawnPoint[spawnIndex].position, Quaternion.identity);
                     Instantiate(teleportManagerInstance);
             return;
-        }
+        }*/
 
         if (PlayerManager.thisPlayer == null && PhotonNetwork.IsConnected) {
                 PhotonNetwork.Instantiate("[CameraRig]", _SpawnPoint[spawnIndex].position, Quaternion.identity);

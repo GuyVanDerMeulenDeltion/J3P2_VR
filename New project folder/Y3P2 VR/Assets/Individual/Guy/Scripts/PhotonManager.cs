@@ -24,9 +24,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     }
 
     public override void OnConnectedToMaster() {
-        if (VR_Player.localPlayer != null && test == false) {
+     /*   if (VR_Player.localPlayer != null && test == false) {
             VR_Player.localPlayer.SendMessageLocally("You have connected to the network.");
-        }
+            return;
+        }*/
 
         CreateRoom("Test");
     }
