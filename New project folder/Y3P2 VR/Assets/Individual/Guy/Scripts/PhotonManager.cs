@@ -27,7 +27,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
 
     public void CreateRoom(string _RoomID) {
         print("Joined room");
-        RoomOptions _Options = new RoomOptions { IsVisible = true, IsOpen = true, MaxPlayers = 2 };
+        RoomOptions _Options = new RoomOptions { IsVisible = true, IsOpen = true, MaxPlayers = 4 };
         PhotonNetwork.JoinOrCreateRoom(_RoomID, _Options, TypedLobby.Default);
     }
 
