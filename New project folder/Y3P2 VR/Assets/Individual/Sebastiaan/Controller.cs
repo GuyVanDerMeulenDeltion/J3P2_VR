@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using Photon.Pun;
 
-public class Controller : MonoBehaviour
+public class Controller : MonoBehaviourPunCallbacks
 {
     public GameObject item;
     public GameObject otherController;
@@ -56,10 +57,17 @@ public class Controller : MonoBehaviour
         if (other.transform.tag == "Interactable" && otherController.GetComponent<Controller>().item != other.gameObject)
         {
             if (leftHand && leftHandAxis > 0.85f)
-                InteractionManager.PickObject(transform.gameObject, other.gameObject, item);
+                if(item != null)
+                    InteractionManager.intManager.PickObjectNetwork(GetComponent<PhotonView>().ViewID, other.gameObject.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID, true);
+                else
+                    InteractionManager.intManager.PickObjectNetwork(GetComponent<PhotonView>().ViewID, other.gameObject.GetComponent<PhotonView>().ViewID, 0, false);
 
             if (rightHand && rightHandAxis > 0.85f)
-                InteractionManager.PickObject(transform.gameObject, other.gameObject, item);
+                if(item != null)
+                    InteractionManager.intManager.PickObjectNetwork(GetComponent<PhotonView>().ViewID, other.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID, true);
+                else
+                    InteractionManager.intManager.PickObjectNetwork(GetComponent<PhotonView>().ViewID, other.GetComponent<PhotonView>().ViewID, 0, false);
+
 
             if (PlayerManager.thisPlayer != null)
                 PlayerManager.thisPlayer.SetCurrentState();
@@ -70,11 +78,11 @@ public class Controller : MonoBehaviour
     {
         if (leftHand)
             if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.LeftHand)) 
-                InteractionManager.ThrowObject(transform.gameObject, item, controllerPose);
+                InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item, controllerPose);
             
         if (rightHand)
-            if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand)) 
-                InteractionManager.ThrowObject(transform.gameObject, item, controllerPose);
+            if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand))
+                InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item, controllerPose);
             
 
         if(PlayerManager.thisPlayer != null)
