@@ -10,7 +10,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 
     //Player components;
     public bool died = false;
-    public bool test = false;
 
     public Camera camera;
     public GameObject[] menu;
@@ -70,19 +69,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         if (this == thisPlayer)
         {
             EnemyManager.enemyManager.SetNewTarget(photonView.ViewID);
-            if (test == false)
             GetComponentsFromPlayer();
             playerMain.Initialise();
         }
     }
 
     private void GetComponentsFromPlayer() {
-        if(test == true) {
-            testMov = GetComponent<PhotonTestMovement>();
-            testMov.enabled = true;
-            camera.enabled = true;
-        }
-
         player_head = GetComponentInChildren<PlayerHead>();
         player_menu = GetComponentInChildren<Menu>();
         camera = GetComponentInChildren<Camera>();

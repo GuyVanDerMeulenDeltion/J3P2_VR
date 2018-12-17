@@ -7,8 +7,6 @@ using Photon.Realtime;
 public class PhotonManager : MonoBehaviourPunCallbacks {
 
     public static PhotonManager photonManager;
-    public bool test = false;
-    private bool loadedroom = false;
 
 	// Use this for initialization
 	private void Awake () {
@@ -24,15 +22,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     }
 
     public override void OnConnectedToMaster() {
-     /*   if (VR_Player.localPlayer != null && test == false) {
-            VR_Player.localPlayer.SendMessageLocally("You have connected to the network.");
-            return;
-        }*/
-
         CreateRoom("Test");
     }
 
     public void CreateRoom(string _RoomID) {
+        print("Joined room");
         RoomOptions _Options = new RoomOptions { IsVisible = true, IsOpen = true, MaxPlayers = 2 };
         PhotonNetwork.JoinOrCreateRoom(_RoomID, _Options, TypedLobby.Default);
     }

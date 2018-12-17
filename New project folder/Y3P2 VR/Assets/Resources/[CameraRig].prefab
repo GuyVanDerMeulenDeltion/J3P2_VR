@@ -6177,7 +6177,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   died: 0
-  test: 0
   camera: {fileID: 20501436067014012}
   menu:
   - {fileID: 1809767764991870}
