@@ -49,4 +49,6 @@ MonoBehaviour:
   - DestroyThis
   - ShootBulletNetworked
   - GetGloveState
+  - PickObject
+  - ThrowObject
   DisableAutoOpenWizard: 1

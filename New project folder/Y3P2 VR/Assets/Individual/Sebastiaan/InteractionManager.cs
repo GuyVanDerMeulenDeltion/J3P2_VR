@@ -23,11 +23,11 @@ public class InteractionManager : MonoBehaviourPunCallbacks
             PickObject(_View, pickUpObject, hasItem, itemStatus);
     }
 
-    public void DropObjectNetwork(int _View, GameObject throwable, SteamVR_Behaviour_Pose trackedObj) {
+    public void DropObjectNetwork(int _View, int throwable) {
         if (PhotonNetwork.IsConnected)
-            photonView.RPC("ThrowObject", RpcTarget.AllBuffered, _View, throwable, trackedObj);
+            photonView.RPC("ThrowObject", RpcTarget.AllBuffered, _View, throwable);
         else
-            ThrowObject(_View, throwable, trackedObj);
+            ThrowObject(_View, throwable);
     }
 
     [PunRPC]
@@ -63,39 +63,61 @@ public class InteractionManager : MonoBehaviourPunCallbacks
 
         if (_HasItem == null)
         {
-            _PickedupObject.transform.SetParent(_Hand.transform);
-            _PickedupObject.GetComponent<Rigidbody>().isKinematic = true;
-            _PickedupObject.GetComponent<Rigidbody>().useGravity = false;
-            if (_PickedupObject.GetComponent<Interactables>() != null)
-                _PickedupObject.GetComponent<Interactables>().enabled = true;
+            if (PhotonNetwork.IsMasterClient) {
+                _PickedupObject.transform.SetParent(_Hand.transform);
+                _PickedupObject.GetComponent<Rigidbody>().isKinematic = true;
+                _PickedupObject.GetComponent<Rigidbody>().useGravity = false;
+
+                if (_PickedupObject.GetComponent<Interactables>() != null)
+                    _PickedupObject.GetComponent<Interactables>().enabled = true;
+            }
+
             _PickedupObject.GetComponent<Transform>().position = _Hand.transform.position;
             _PickedupObject.GetComponent<Transform>().rotation = _Hand.transform.rotation;
+
+            if(_Hand.GetPhotonView().IsMine)
             _Hand.GetComponent<Controller>().item = _PickedupObject;
         }
     }
 
     [PunRPC]
-    public void ThrowObject(int _View, GameObject throwable, SteamVR_Behaviour_Pose trackedObj)
+    public void ThrowObject(int _View, int _throwable)
     {
         GameObject _Hand = null;
+        GameObject _Throwable = null;
+        SteamVR_Behaviour_Pose _TrackedObj = null;
 
         foreach (PhotonView _view in PhotonNetwork.PhotonViews) {
             if (_view.ViewID == _View) {
                 _Hand = _view.gameObject;
+                _TrackedObj = _view.GetComponent<SteamVR_Behaviour_Pose>();
                 break;
             }
         }
 
-        if (throwable != null && _Hand != null)
+        foreach (PhotonView _view in PhotonNetwork.PhotonViews) {
+            if (_view.ViewID == _throwable) {
+                _Throwable = _view.gameObject;
+                break;
+            }
+        }
+
+        if (_Throwable != null && _Hand != null)
         {
+            if(_Hand.GetPhotonView().IsMine)
             _Hand.GetComponent<Controller>().item = null;
-            throwable.transform.SetParent(null);
-            if (throwable.GetComponent<Interactables>() != null)
-                throwable.GetComponent<Interactables>().enabled = false;
-            throwable.GetComponent<Rigidbody>().isKinematic = false;
-            throwable.GetComponent<Rigidbody>().useGravity = true;
-            throwable.GetComponent<Rigidbody>().velocity = trackedObj.GetVelocity();
-            throwable.GetComponent<Rigidbody>().angularVelocity = trackedObj.GetAngularVelocity();
+
+            if (PhotonNetwork.IsMasterClient) {
+
+                if (_Throwable.GetComponent<Interactables>() != null)
+                    _Throwable.GetComponent<Interactables>().enabled = false;
+
+                _Throwable.transform.SetParent(null);
+                _Throwable.GetComponent<Rigidbody>().isKinematic = false;
+                _Throwable.GetComponent<Rigidbody>().useGravity = true;
+                _Throwable.GetComponent<Rigidbody>().velocity = _TrackedObj.GetVelocity();
+                _Throwable.GetComponent<Rigidbody>().angularVelocity = _TrackedObj.GetAngularVelocity();
+            }
         }
     }
 }

@@ -78,11 +78,11 @@ public class Controller : MonoBehaviourPunCallbacks
     {
         if (leftHand)
             if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.LeftHand)) 
-                InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item, controllerPose);
+                InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID);
             
         if (rightHand)
             if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand))
-                InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item, controllerPose);
+                InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID);
             
 
         if(PlayerManager.thisPlayer != null)
