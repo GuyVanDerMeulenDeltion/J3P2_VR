@@ -43,7 +43,7 @@ public class SpawnManager : MonoBehaviourPunCallbacks {
         foreach (ItemSpawns _Spawn in items) {
             foreach (Transform _Pos in _Spawn._Pos) {
                 if (PhotonNetwork.IsConnected)
-                    PhotonNetwork.InstantiateSceneObject(_Spawn._Item.name, _Pos.position, _Pos.rotation);
+                    PhotonNetwork.Instantiate(_Spawn._Item.name, _Pos.position, _Pos.rotation);
                 else
                     Instantiate(_Spawn._Item, _Pos.position, Quaternion.identity);
             }

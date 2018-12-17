@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviourPunCallbacks {
     [PunRPC]
     private void SetNewSpawnIndex() {
         spawnIndex++;
+        print(PhotonNetwork.PlayerList.Length);
     }
 
     [PunRPC]
