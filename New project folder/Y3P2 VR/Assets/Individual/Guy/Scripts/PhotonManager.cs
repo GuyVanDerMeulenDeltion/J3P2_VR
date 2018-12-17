@@ -22,7 +22,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     }
 
     public override void OnConnectedToMaster() {
-        CreateRoom("Test");
+        CreateRoom("test");
     }
 
     public void CreateRoom(string _RoomID) {
