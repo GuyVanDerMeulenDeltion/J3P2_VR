@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 533260bc2b7b57f479528cb3fac01322
+guid: 0f7e72c3149890949ae2027b551a7e82
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,7 +8,7 @@ ModelImporter:
     2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Object001
+    4300000: Bridge
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -67,7 +67,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

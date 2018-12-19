@@ -1,14 +1,21 @@
 fileFormatVersion: 2
-guid: 533260bc2b7b57f479528cb3fac01322
+guid: 4dfc005de287d7646b3581ee5f85cffb
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: DoorL
+    100002: DoorR
+    100004: //RootNode
+    400000: DoorL
+    400002: DoorR
+    400004: //RootNode
     2100000: No Name
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Object001
+    2300000: DoorL
+    2300002: DoorR
+    3300000: DoorL
+    3300002: DoorR
+    4300000: DoorR
+    4300002: DoorL
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -67,7 +74,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

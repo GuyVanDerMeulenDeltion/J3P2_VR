@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 533260bc2b7b57f479528cb3fac01322
+guid: 678942ff4a9b42846aa7f0867778fb62
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,7 +8,7 @@ ModelImporter:
     2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Object001
+    4300000: CastleWall
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -67,7 +67,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
