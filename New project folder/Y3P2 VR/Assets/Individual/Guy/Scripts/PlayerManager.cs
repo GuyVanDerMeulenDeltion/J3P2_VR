@@ -10,7 +10,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 
     //Player components;
     public bool died = false;
-    public bool test = false;
 
     public Camera camera;
     public GameObject[] menu;
@@ -18,7 +17,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     public InteractionManager interaction_manager;
 
     internal Hand[] player_hands_steam;
-    internal Valve.VR.InteractionSystem.TeleportArea player_teleportArea;
+    //internal Valve.VR.InteractionSystem.TeleportArea player_teleportArea;
     internal Grayscale_ImageEffect player_grayscale;
     internal Controller[] player_controllers;
     internal PlayerHead player_head;
@@ -27,8 +26,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     internal SteamVR_Behaviour_Pose[] hands;
     internal Player_Revivefield[] reviveFields;
     internal PhotonTestMovement testMov;
-    internal Valve.VR.InteractionSystem.TeleportArc player_tele_arc;
-    internal Valve.VR.InteractionSystem.Teleport player_tele;
+    //internal Valve.VR.InteractionSystem.TeleportArc player_tele_arc;
+    //internal Valve.VR.InteractionSystem.Teleport player_tele;
 
     private void Awake()
     {
@@ -70,19 +69,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         if (this == thisPlayer)
         {
             EnemyManager.enemyManager.SetNewTarget(photonView.ViewID);
-            if (test == false)
             GetComponentsFromPlayer();
             playerMain.Initialise();
         }
     }
 
     private void GetComponentsFromPlayer() {
-        if(test == true) {
-            testMov = GetComponent<PhotonTestMovement>();
-            testMov.enabled = true;
-            camera.enabled = true;
-        }
-
         player_head = GetComponentInChildren<PlayerHead>();
         player_menu = GetComponentInChildren<Menu>();
         camera = GetComponentInChildren<Camera>();
@@ -92,9 +84,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         player_grayscale = GetComponentInChildren<Grayscale_ImageEffect>();
         player_controllers = GetComponentsInChildren<Controller>();
         player_hands_steam = GetComponentsInChildren<Hand>();
-        player_tele_arc = GetComponentInChildren<Valve.VR.InteractionSystem.TeleportArc>();
-        player_tele = GetComponentInChildren<Valve.VR.InteractionSystem.Teleport>();
-        player_teleportArea = GetComponentInChildren<Valve.VR.InteractionSystem.TeleportArea>();
+        //player_tele_arc = GetComponentInChildren<Valve.VR.InteractionSystem.TeleportArc>();
+        //player_tele = GetComponentInChildren<Valve.VR.InteractionSystem.Teleport>();
+        //player_teleportArea = GetComponentInChildren<Valve.VR.InteractionSystem.TeleportArea>();
         Steam_VR_Manager.steamManager.EnableRender();
     }
 

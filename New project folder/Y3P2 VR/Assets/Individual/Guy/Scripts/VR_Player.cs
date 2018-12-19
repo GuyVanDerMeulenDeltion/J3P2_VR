@@ -19,22 +19,13 @@ public class VR_Player : MonoBehaviourPunCallbacks {
     private bool ignoreBroadcastedMessage = false;
 
 
-    private void Awake() {
-        SetLocalPlayer();
-    }
-
-    private void SetLocalPlayer() {
-        if (isLocal == true)
-            localPlayer = this;
-    }
-
     public void Initialise() {
         PlayerManager.thisPlayer.playerMain.enabled = true;
         PlayerManager.thisPlayer.player_head.enabled = true;
         PlayerManager.thisPlayer.player_menu.enabled = true;
         PlayerManager.thisPlayer.camera.enabled = true;
         PlayerManager.thisPlayer.area.enabled = true;
-        PlayerManager.thisPlayer.player_teleportArea.enabled = true;
+        //PlayerManager.thisPlayer.player_teleportArea.enabled = true;
 
         foreach (Hand _Hand in PlayerManager.thisPlayer.player_hands_steam)
             _Hand.enabled = true;
@@ -47,8 +38,8 @@ public class VR_Player : MonoBehaviourPunCallbacks {
             PlayerManager.thisPlayer.hands[i].enabled = true;
         }
 
-        PlayerManager.thisPlayer.player_tele.enabled = true;
-        PlayerManager.thisPlayer.player_tele_arc.enabled = true;
+        //PlayerManager.thisPlayer.player_tele.enabled = true;
+        //PlayerManager.thisPlayer.player_tele_arc.enabled = true;
     }
 
     public void SendMessageOnline(string _Message) {
