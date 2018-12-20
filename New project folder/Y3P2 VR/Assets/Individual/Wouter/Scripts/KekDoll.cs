@@ -6,8 +6,7 @@ public class KekDoll : MonoBehaviour {
 
     private Animator myanim;
     private Rigidbody rb;
-    public BoxCollider leftfoot;
-    public BoxCollider rightfoot;
+
 
     public bool doRagdoll;
 
@@ -23,15 +22,13 @@ public class KekDoll : MonoBehaviour {
     {
 		if(doRagdoll)
         {
-            rightfoot.enabled = false;
-            leftfoot.enabled = false;
+
             rb.constraints = RigidbodyConstraints.None;
             myanim.enabled = false;
         }
         else
         {
-            rightfoot.enabled = true;
-            leftfoot.enabled = true;
+
             rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
             myanim.enabled = true;
             Vector3 desiredX = new Vector3(0, transform.localEulerAngles.y, 0);
