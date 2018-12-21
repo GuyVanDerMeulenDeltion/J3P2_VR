@@ -8,7 +8,7 @@ public class FlintLock : Interactables
 {
     private Animator myanim;
 
-    private FlintlockHammer flintLockHammer { get { return GameObject.Find("Hammer").GetComponent<FlintlockHammer>(); } }
+    [SerializeField] private FlintlockHammer flintLockHammer;
     [SerializeField] private Transform bulletSpawnpos;
 
     public bool firing;
@@ -45,14 +45,15 @@ public class FlintLock : Interactables
 
     void Recock()
     {
+        print(myanim.GetBool("Cocked") +":"+flintLockHammer.currentHand);
         //recocks flintlock by distance from hand you recock with to the hammer multiplied my 4 to get a  realistic feeling
         if (!myanim.GetBool("Cocked") && flintLockHammer.currentHand != null)
         {
+            cocking = true;
             if (flintLockHammer.currentHand.GetComponent<Controller>().leftHand && leftHandAxis > 0.99f || flintLockHammer.currentHand.GetComponent<Controller>().rightHand && rightHandAxis > 0.99f)
             {
-                cocking = true;
                 myanim.SetBool("Firing", false);
-                myanim.SetFloat("RecockAxis", Mathf.Clamp(Vector3.Distance(transform.position, flintLockHammer.currentHand.transform.position), 0, 1f));
+                myanim.SetFloat("RecockAxis", Mathf.Clamp(Vector3.Distance(transform.position, flintLockHammer.currentHand.transform.position) * 1.5f, 0, 1f));
                 if (myanim.GetFloat("RecockAxis") > 0.95f)
                     myanim.SetBool("Cocked", true);
             }

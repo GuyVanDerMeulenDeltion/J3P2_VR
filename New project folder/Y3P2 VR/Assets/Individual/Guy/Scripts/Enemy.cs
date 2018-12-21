@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     [SerializeField]private float maxHealth = 500;
 
     [Header("Enemy Hit Settings:")]
-    [SerializeField]private float maxHitTimer = 2;
+    [SerializeField]private float maxHitTimer = 6;
     [SerializeField]private LayerMask floor; 
 
     [Header("NPC Statistics:")]
@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     private bool hit = false;
     private bool started = false;
     private bool inRange = false;
+    private bool attacking = false;
     private float agentSpeed;
 
     public void Update() {
@@ -67,6 +68,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
         //Does the big attack;
         print("Attack");
         EnemyManager.enemyManager.SetEnemyMessage(transform.position + new Vector3(0, 1, 0), gameObject.name + " has attacked " +currentTarget.name+"!");
+        EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, false, true);
     }
 
     #region Checks
@@ -82,7 +84,9 @@ public class Enemy : MonoBehaviourPunCallbacks {
 
     private bool CheckIfTarget(GameObject _Object) {
         if (currentTarget != null && started == true && hit == false)
-            if (_Object == currentTarget.gameObject)
+            print(_Object.transform.root.gameObject);
+            print(currentTarget.gameObject);
+            if (_Object.gameObject == currentTarget.gameObject)
                 return true;
 
         return false;
@@ -98,7 +102,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
 
         thisAgent.speed = 0;
         thisAgent.velocity = Vector3.zero;
-        EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, false);
+        EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, false, false);
         inRange = true;
     }
 
@@ -108,9 +112,10 @@ public class Enemy : MonoBehaviourPunCallbacks {
                 inRange = false;
 
         if (CheckIfTarget(_O.gameObject)) {
+            if(attacking == false)
                 thisAgent.speed = agentSpeed;
                 inRange = false;
-                EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, true);
+                EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, true, false);
             }
         }
     #endregion
@@ -158,7 +163,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
         yield return new WaitForSeconds(2);
         thisAgent.enabled = true;
         StartCoroutine(AssignTargetTimer());
-        EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, true);
+        EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, true, false);
     }
 
     //Timer before the enemy will be searching for a new target
@@ -212,9 +217,9 @@ public class Enemy : MonoBehaviourPunCallbacks {
     }
 
     //Function handles the hit that has been applied to the enemy
-    public void GetDamaged(int _Hit, Vector3 _Velocity) {
+    public void GetDamaged(int _Hit, Vector3 _Velocity, Vector3 _Angular) {
 
-        //EnemyManager.enemyManager.SetEnemyHit(photonView.ViewID, _Velocity, GetComponent<Rigidbody>().angularVelocity, _Hit);
+        EnemyManager.enemyManager.SetEnemyHit(photonView.ViewID, _Velocity, _Angular, _Hit);
         EnemyManager.enemyManager.SetEnemyHitsplash(transform.position + new Vector3(0, 1, 0), _Hit);
         EnemyManager.enemyManager.SetEnemyHealth(photonView.ViewID, maxHealth, health);
 
@@ -255,18 +260,18 @@ public class Enemy : MonoBehaviourPunCallbacks {
         yield return new WaitForSeconds(restoreTimer);
         if (CheckIfGrounded()) {
             EnemyManager.enemyManager.SetEnemyRagdoll(photonView.ViewID, false);
-            EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, false);
+            EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, false, false);
             yield return new WaitForSeconds(1.5f);
             hit = false;
             thisAgent.enabled = true;
             thisAgent.updatePosition = transform;
             if (inRange == false) {
                 thisAgent.speed = agentSpeed;
-                EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, true);
+                EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, true, false);
             } else {
                 thisAgent.speed = 0;
                 thisAgent.velocity = Vector3.zero;
-                EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, false);
+                EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, false, false);
             }
             yield break;
         }
@@ -279,4 +284,15 @@ public class Enemy : MonoBehaviourPunCallbacks {
         EnemyManager.enemyManager.SetEnemyHealth(photonView.ViewID, maxHealth, health);
         EnemyManager.enemyManager.SetEnemyHitsplash(_HitPos, _Hit);
     }
+
+    #region Animation Events
+    public void AnimationCheck(int _i) {
+        if (_i == 0) attacking = true;
+        else
+        if (_i == 1) {
+            attacking = false;
+            thisAgent.speed = agentSpeed;
+        }
+    }
+    #endregion
 }

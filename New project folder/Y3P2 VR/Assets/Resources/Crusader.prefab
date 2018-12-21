@@ -1399,6 +1399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navigationCollider: {fileID: 0}
   quickbool: 0
+  faceControllerScript: {fileID: 0}
   doRagdoll: 0
 --- !u!114 &114918568578908104
 MonoBehaviour:

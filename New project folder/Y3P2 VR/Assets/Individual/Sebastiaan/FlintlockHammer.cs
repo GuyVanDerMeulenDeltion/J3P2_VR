@@ -10,13 +10,14 @@ public class FlintlockHammer : MonoBehaviour {
 
     public void OnTriggerStay(Collider other)
     {
-        if (other.transform.tag == "Hand")
+        if (other.transform.tag == "Hand") {
             currentHand = other.gameObject;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.transform.tag == "Hand" && flintLock.firing == false &&transform.parent.parent.parent.GetComponent<FlintLock>().cocking == false)
+        if (other.transform.tag == "Hand" && flintLock.firing == false && flintLock.cocking == false)
             currentHand = null;
     }
 }

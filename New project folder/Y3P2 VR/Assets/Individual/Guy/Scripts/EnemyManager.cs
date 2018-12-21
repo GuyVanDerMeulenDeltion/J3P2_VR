@@ -18,15 +18,15 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
         enemyManager = this;
     }
 
-    public void HitEnemyViaMaster(int i, Vector3 _Velocity, int _Hit) { //Function that makes it able to hit enemies via network
-        photonView.RPC("GetEnemyMasterHit", RpcTarget.MasterClient, i, _Velocity, _Hit);
+    public void HitEnemyViaMaster(int i, Vector3 _Velocity, Vector3 _Angular ,int _Hit) { //Function that makes it able to hit enemies via network
+        photonView.RPC("GetEnemyMasterHit", RpcTarget.MasterClient, i, _Velocity, _Angular ,_Hit);
     }
 
-    public void SetEnemyTotalHit(int _i, int _Hit, Vector3 _Velocity) {
+    public void SetEnemyTotalHit(int _i, int _Hit, Vector3 _Velocity, Vector3 _AngularVelocity) {
         if (PhotonNetwork.IsConnected)
-            photonView.RPC("GetEnemyTotalHit", RpcTarget.MasterClient, _i, _Hit, _Velocity);
+            photonView.RPC("GetEnemyTotalHit", RpcTarget.MasterClient, _i, _Hit, _Velocity, _AngularVelocity);
         else
-            GetEnemyTotalHit( _i, _Hit, _Velocity);
+            GetEnemyTotalHit( _i, _Hit, _Velocity, _AngularVelocity);
     }
 
     public void SetNewTarget(int _i) {
@@ -36,11 +36,11 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
             GetNewTarget(_i);
     }
 
-    public void SetEnemyAnimation(int _i, bool _State) {
+    public void SetEnemyAnimation(int _i, bool _State, bool _Attack) {
         if (PhotonNetwork.IsConnected)
-            photonView.RPC("GetEnemyAnimation", RpcTarget.AllBuffered, _i , _State);
+            photonView.RPC("GetEnemyAnimation", RpcTarget.AllBuffered, _i , _State, _Attack);
         else
-            GetEnemyAnimation(_i, _State);
+            GetEnemyAnimation(_i, _State, _Attack);
     }
 
     public void SetEnemyHealth(int _i, float _maxHealth, float _health) {
@@ -89,16 +89,19 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
     private void GetNewTarget(int _i) {
         foreach (PhotonView _View in PhotonNetwork.PhotonViews)
             if (_View.ViewID == _i && _View.gameObject.tag == "Player") {
-                Enemy.players.Add(_View.transform.GetChild(2).transform);
+                Enemy.players.Add(_View.transform.GetComponentInChildren<Hitfield>().transform);
                 return;
             }
     }
 
     [PunRPC]
-    private void GetEnemyAnimation(int _i, bool _State) {
+    private void GetEnemyAnimation(int _i, bool _State, bool _Attack) {
         foreach(PhotonView _View in PhotonNetwork.PhotonViews) {
             if(_View.ViewID == _i) {
-                _View.GetComponent<Animator>().SetBool("Walk", _State);
+                _View.GetComponent<Animator>().SetBool("Run", _State);
+
+                if(_Attack == true)
+                _View.GetComponent<Animator>().SetTrigger("Attack");
                 return;
             }
         }
@@ -119,11 +122,11 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
     }
 
     [PunRPC]
-    private void GetEnemyTotalHit(int _ViewID, int _Hit, Vector3 _Velocity) {
+    private void GetEnemyTotalHit(int _ViewID, int _Hit, Vector3 _Velocity, Vector3 _AngularVelocity) {
         foreach(PhotonView _View in PhotonNetwork.PhotonViews) {
             if(_ViewID == _View.ViewID) {
                 if(_View.GetComponent<Enemy>())
-                _View.GetComponent<Enemy>().GetDamaged(_Hit, _Velocity);
+                _View.GetComponent<Enemy>().GetDamaged(_Hit, _Velocity, _AngularVelocity);
                 return;
             }
         }
@@ -180,10 +183,10 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
     }
 
     [PunRPC]
-    private void GetEnemyMasterHit(int _i, Vector3 _Velocity, int _Hit) {
+    private void GetEnemyMasterHit(int _i, Vector3 _Velocity, Vector3 _Angular ,int _Hit) {
         foreach (PhotonView _View in PhotonNetwork.PhotonViews)
             if (_View.ViewID == _i && _View.transform.tag == "Enemy") {
-                _View.transform.GetComponent<Enemy>().GetDamaged(_Hit, _Velocity);
+                _View.transform.GetComponent<Enemy>().GetDamaged(_Hit, _Velocity, _Angular);
                 return;
             }
     }

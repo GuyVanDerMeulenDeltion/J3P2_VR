@@ -3,14 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Sword : Interactables {
+public class Sword : MeleeWeapons {
 
     public int baseDamageMutliplier = 20;
-
-    private Vector3 oldPos;
-    private Vector3 newPos;
-
-    private Vector3 customVelocity;
 
     private void OnTriggerEnter(Collider _O)
     {
@@ -20,23 +15,12 @@ public class Sword : Interactables {
         }
     }
 
-    private void Update()
-    {
-        newPos = transform.position;
-        customVelocity = (oldPos - newPos) / Time.deltaTime;
-        oldPos = newPos;
-    }
-
     public void Hit(GameObject _O)
     {
         print(CalculateKinetics());
 
         if (CalculateKinetics() > 2)
-            EnemyManager.enemyManager.SetEnemyTotalHit(_O.GetComponent<PhotonView>().ViewID, baseDamageMutliplier * (int)CalculateKinetics(), -transform.up * (CalculateKinetics() * 8));
+            EnemyManager.enemyManager.SetEnemyTotalHit(_O.GetComponent<PhotonView>().ViewID, baseDamageMutliplier * (int)CalculateKinetics(), customVelocity, customAngularVelocity);
     }
 
-    private float CalculateKinetics()
-    {
-        return Mathf.Pow(customVelocity.magnitude, 2) * 0.5f;
-    }
 }

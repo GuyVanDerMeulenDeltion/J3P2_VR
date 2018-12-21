@@ -524,8 +524,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061d6f0ddac441c488c891cf2207ce3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupRotation: {x: 0, y: 90, z: 0}
-  pickupPosition: {x: 0, y: -0.075, z: -0.175}
+  pickupRotation: {x: 0, y: 90, z: 70}
+  pickupPosition: {x: 0, y: 0, z: -0.15}
+  flintLockHammer: {fileID: 114120389959049394}
   bulletSpawnpos: {fileID: 4102947210560192}
   firing: 0
   resetTrigger: 0
@@ -563,7 +564,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114270580974470158}
   viewIdField: 0
-  InstantiationId: 8
+  InstantiationId: 9
   isRuntimeInstantiated: 0
 --- !u!135 &135087507043581274
 SphereCollider:

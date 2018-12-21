@@ -22,7 +22,7 @@ public class NetworkedAmmo : MonoBehaviourPunCallbacks {
         if (canHit == true) {
             canHit = false;
             int _Damage = !calculateKinetics ? baseDamage : (int)(Mathf.Pow(GetComponent<Rigidbody>().velocity.magnitude, 2) * 0.5f);
-            EnemyManager.enemyManager.SetEnemyTotalHit(_O.GetComponent<PhotonView>().ViewID, _Damage, GetComponent<Rigidbody>().velocity);
+            EnemyManager.enemyManager.SetEnemyTotalHit(_O.GetComponent<PhotonView>().ViewID, _Damage, GetComponent<Rigidbody>().velocity, GetComponent<Rigidbody>().angularVelocity);
         }
     }
 

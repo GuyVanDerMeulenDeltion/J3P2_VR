@@ -168,6 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518aef14e49fdd34d84631ed8bb668f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupRotation: {x: 0, y: 0, z: 0}
+  pickupPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &114981859227662504
 MonoBehaviour:
   m_ObjectHideFlags: 1

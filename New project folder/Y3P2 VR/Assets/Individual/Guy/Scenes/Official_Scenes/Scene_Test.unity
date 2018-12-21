@@ -2901,15 +2901,7 @@ MonoBehaviour:
   - entityType: Crusader
     _Pos:
     - {fileID: 1476372667}
-    - {fileID: 1148096324}
-    - {fileID: 1852021040}
-    - {fileID: 2105347948}
-    - {fileID: 1307110483}
-    - {fileID: 1711281794}
-    - {fileID: 1612567039}
-    - {fileID: 1258724946}
-    - {fileID: 1911676939}
-    _Entity: {fileID: 1524180767593412, guid: b77c7451892d4d749b3e6165ff60ba50, type: 2}
+    _Entity: {fileID: 1925864966609802, guid: 14246e4534bfd474b9e861e39c5b66fa, type: 2}
 --- !u!4 &707035580
 Transform:
   m_ObjectHideFlags: 0
