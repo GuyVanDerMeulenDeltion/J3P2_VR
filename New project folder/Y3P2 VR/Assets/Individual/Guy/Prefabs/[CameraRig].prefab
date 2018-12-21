@@ -518,6 +518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   otherController: {fileID: 1572227545698182}
+  mitten: {fileID: 0}
   leftHand: 1
   rightHand: 0
 --- !u!114 &114405485881229622
@@ -598,6 +599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   otherController: {fileID: 1199645970629222}
+  mitten: {fileID: 0}
   leftHand: 0
   rightHand: 1
 --- !u!114 &114647397577358298

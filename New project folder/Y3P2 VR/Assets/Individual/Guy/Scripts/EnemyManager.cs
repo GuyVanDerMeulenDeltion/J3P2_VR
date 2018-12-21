@@ -78,11 +78,11 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
             GetEnemyMessage(_Pos, _Message);
     }
 
-    public void SetEnemyHit(int _i, Vector3 _Velocity, float _Damage) {
+    public void SetEnemyHit(int _i, Vector3 _Velocity, Vector3 _AngularVel ,float _Damage) {
         if (PhotonNetwork.IsConnected)
-            photonView.RPC("GetEnemyHit", RpcTarget.MasterClient, _i, _Velocity, _Damage);
+            photonView.RPC("GetEnemyHit", RpcTarget.MasterClient, _i, _Velocity, _AngularVel ,_Damage);
         else
-            GetEnemyHit(_i, _Velocity, _Damage);
+            GetEnemyHit(_i, _Velocity, _AngularVel ,_Damage);
     }
 
     [PunRPC]
@@ -168,10 +168,11 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
     }
 
     [PunRPC]
-    private void GetEnemyHit(int _i, Vector3 _Velocity, float Damage) {
+    private void GetEnemyHit(int _i, Vector3 _Velocity, Vector3 _Angular ,float Damage) {
         foreach(PhotonView _View in PhotonNetwork.PhotonViews) {
             if(_View.ViewID == _i && _View.transform.tag == "Enemy") {
                 _View.GetComponent<Rigidbody>().AddForce(_Velocity, ForceMode.Impulse);
+                _View.GetComponent<Rigidbody>().angularVelocity = _Angular;
                 _View.GetComponent<Enemy>().health -= Damage;
                 return;
             }

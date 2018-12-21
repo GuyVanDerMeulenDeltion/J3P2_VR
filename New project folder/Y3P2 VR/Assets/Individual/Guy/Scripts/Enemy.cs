@@ -214,7 +214,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     //Function handles the hit that has been applied to the enemy
     public void GetDamaged(int _Hit, Vector3 _Velocity) {
 
-        EnemyManager.enemyManager.SetEnemyHit(photonView.ViewID, _Velocity, _Hit);
+        //EnemyManager.enemyManager.SetEnemyHit(photonView.ViewID, _Velocity, GetComponent<Rigidbody>().angularVelocity, _Hit);
         EnemyManager.enemyManager.SetEnemyHitsplash(transform.position + new Vector3(0, 1, 0), _Hit);
         EnemyManager.enemyManager.SetEnemyHealth(photonView.ViewID, maxHealth, health);
 
