@@ -8,11 +8,17 @@ public class FaceController : MonoBehaviour {
     public float timer = 0;
     private float multiplier = 1;
     public Animator myAnim;
-    public KekDoll kekdoll;
+    
 
  
 
     void Update()
+    {
+
+
+    }
+
+    public void RandomFaces()
     {
         if (timer <= 0)
         {
@@ -24,5 +30,10 @@ public class FaceController : MonoBehaviour {
         {
             timer -= Time.deltaTime * multiplier;
         }
+    }
+
+    public void DeadFace()
+    {
+        myAnim.SetInteger("Emotion", 7);
     }
 }

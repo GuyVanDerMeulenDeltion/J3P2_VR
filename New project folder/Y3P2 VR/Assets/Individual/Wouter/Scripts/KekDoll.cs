@@ -9,6 +9,7 @@ public class KekDoll : MonoBehaviour {
     public CapsuleCollider navigationCollider;
     [HideInInspector]
     public bool quickbool;
+    public FaceController faceControllerScript;
 
 
     public bool doRagdoll;
@@ -25,14 +26,23 @@ public class KekDoll : MonoBehaviour {
     {
 		if(doRagdoll)
         {
+            faceControllerScript.DeadFace();
 
-            rb.constraints = RigidbodyConstraints.None;
-            myanim.enabled = false;
-            navigationCollider.enabled = false;
-            quickbool = true;
+            if (myanim.GetCurrentAnimatorStateInfo(3).IsName("Anim_FaceRig_Dead"))
+            {
+                rb.constraints = RigidbodyConstraints.None;
+                myanim.enabled = false;
+                navigationCollider.enabled = false;
+                quickbool = true;
+                print("test");
+            }
+
+
         }
         else
         {
+            
+            faceControllerScript.RandomFaces();
             if(quickbool)
             {
                 myanim.SetTrigger("Getup");

@@ -1706,7 +1706,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 209c88784e1b3954d98fc32ac999dcdb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1941,6 +1941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navigationCollider: {fileID: 136778480562774002}
   quickbool: 0
+  faceControllerScript: {fileID: 114436640916294426}
   doRagdoll: 0
 --- !u!114 &114436640916294426
 MonoBehaviour:
@@ -1956,7 +1957,6 @@ MonoBehaviour:
   currentEmotion: 0
   timer: 0
   myAnim: {fileID: 95232084369515628}
-  kekdoll: {fileID: 114280685426974932}
 --- !u!114 &114939748301563834
 MonoBehaviour:
   m_ObjectHideFlags: 1
