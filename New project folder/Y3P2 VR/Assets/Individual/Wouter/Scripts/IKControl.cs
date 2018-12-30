@@ -44,9 +44,17 @@ public class IKControl : MonoBehaviour
                 if (rightHandObj != null)
                 {
                     animator.SetIKPositionWeight(AvatarIKGoal.RightHand, ikStrenghtHands);
-                    animator.SetIKRotationWeight(AvatarIKGoal.RightHand, ikStrenghtHands);
+                    //animator.SetIKRotationWeight(AvatarIKGoal.RightHand, ikStrenghtHands);
                     animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.position);
-                    animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.rotation);
+                    //animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.rotation);
+                }
+
+                if(leftHandObj != null)
+                {
+                    animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, ikStrenghtHands);
+                    //animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, ikStrenghtHands);
+                    animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandObj.position);
+                    //animator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandObj.rotation);
                 }
 
             }
@@ -56,6 +64,8 @@ public class IKControl : MonoBehaviour
             {
                 animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0);
                 animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 0);
+                animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);
+                animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0);
                 animator.SetLookAtWeight(0);
             }
         }
