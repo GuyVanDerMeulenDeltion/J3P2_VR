@@ -31,6 +31,7 @@ public class KekDoll : MonoBehaviour {
             if (true)
             {
                 rb.constraints = RigidbodyConstraints.None;
+                rb.isKinematic = false;
                 myanim.enabled = false;
                 navigationCollider.enabled = false;
                 quickbool = true;
