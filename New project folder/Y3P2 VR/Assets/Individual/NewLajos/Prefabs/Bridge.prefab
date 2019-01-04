@@ -9,18 +9,18 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1322327619057292}
+  m_RootGameObject: {fileID: 1759909053016702}
   m_IsPrefabAsset: 1
---- !u!1 &1322327619057292
+--- !u!1 &1759909053016702
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4918804134728650}
-  - component: {fileID: 33737674456112216}
-  - component: {fileID: 23879424721424828}
+  - component: {fileID: 4547630981533234}
+  - component: {fileID: 33996060319605754}
+  - component: {fileID: 23125507512540880}
   m_Layer: 0
   m_Name: Bridge
   m_TagString: Untagged
@@ -28,25 +28,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4918804134728650
+--- !u!4 &4547630981533234
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322327619057292}
-  m_LocalRotation: {x: -0.5000007, y: -0.4999993, z: -0.4999993, w: 0.5000007}
-  m_LocalPosition: {x: -1000, y: 0, z: -76}
+  m_GameObject: {fileID: 1759909053016702}
+  m_LocalRotation: {x: -0.5000003, y: -0.49999985, z: -0.49999973, w: 0.50000024}
+  m_LocalPosition: {x: 5.0843, y: -0.10305, z: -10.75}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -90.00001}
---- !u!23 &23879424721424828
+--- !u!23 &23125507512540880
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322327619057292}
+  m_GameObject: {fileID: 1759909053016702}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -76,10 +76,10 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33737674456112216
+--- !u!33 &33996060319605754
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322327619057292}
-  m_Mesh: {fileID: 4300000, guid: 195df9e883877ce46bb6438ce175477c, type: 3}
+  m_GameObject: {fileID: 1759909053016702}
+  m_Mesh: {fileID: 4300000, guid: b266a6c4e72e49446ac4561d99a15ab7, type: 3}
