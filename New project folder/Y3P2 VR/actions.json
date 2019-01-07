@@ -37,7 +37,11 @@
     },
     {
       "name": "/actions/default/in/TouchpadTouch",
-      "type": "vector2"
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/TouchpadPress",
+      "type": "boolean"
     },
     {
       "name": "/actions/default/out/Haptic",

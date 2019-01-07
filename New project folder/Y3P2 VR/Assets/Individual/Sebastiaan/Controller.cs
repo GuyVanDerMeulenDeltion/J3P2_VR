@@ -21,10 +21,12 @@ public class Controller : MonoBehaviourPunCallbacks
     public float leftHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.LeftHand); } }
     public float rightHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.RightHand); } }
 
-    public Vector2 touchpadLeft {  get { return SteamVR_Input._default.inActions.TouchpadTouch.GetAxis(SteamVR_Input_Sources.LeftHand); } }
-    public Vector2 touchpadRight { get { return SteamVR_Input._default.inActions.TouchpadTouch.GetAxis(SteamVR_Input_Sources.RightHand); } }
+    public bool touchpadLeft {  get { return SteamVR_Input._default.inActions.TouchpadTouch.GetState(SteamVR_Input_Sources.LeftHand); } }
+    public bool touchpadRight { get { return SteamVR_Input._default.inActions.TouchpadTouch.GetState(SteamVR_Input_Sources.RightHand); } }
 
-    private EVRButtonId touchpad = EVRButtonId.k_EButton_DPad_Down;
+    public bool touchpadLeftPress { get { return SteamVR_Input._default.inActions.TouchpadPress.GetState(SteamVR_Input_Sources.LeftHand); } }
+    public bool touchpadRightPress { get { return SteamVR_Input._default.inActions.TouchpadPress.GetState(SteamVR_Input_Sources.RightHand); } }
+
     private EVRButtonId triggerButton = EVRButtonId.k_EButton_SteamVR_Trigger;
 
     public bool leftHand, rightHand;
@@ -63,35 +65,31 @@ public class Controller : MonoBehaviourPunCallbacks
     }
 
     public void ActivateButton() {
-        print(SteamVR_Input._default.inActions.TouchpadTouch.GetAxis(SteamVR_Input_Sources.RightHand));
-        print(SteamVR_Input._default.inActions.TouchpadTouch.GetAxis(SteamVR_Input_Sources.LeftHand));
 
-        if ((SteamVR_Input._default.inActions.TouchpadTouch.GetAxis(SteamVR_Input_Sources.LeftHand) == Vector2.zero && leftHand) ||
-            (SteamVR_Input._default.inActions.TouchpadTouch.GetAxis(SteamVR_Input_Sources.RightHand) == Vector2.zero && rightHand)) {
+        if ((touchpadLeft && leftHand) || (touchpadRight && rightHand)) {
+            print("Teleport");
             teleport.enabled = true;
         } else {
             teleport.enabled = false;
         }
 
-            if ((leftHand && leftHandAxis > 0.85f) || (rightHand && rightHandAxis > 0.85f) && activated == false) {
-            Buttons.Activate(gameObject);
-            activated = true;
-            if (teleport.enabled && teleported == false) {
-                teleport.TeleportPlayer();
-                teleported = true;
-            }
-        } else if ((leftHand && leftHandAxis < 0.85f) || (rightHand && rightHandAxis < 0.85f) && activated == true){
-            activated = false;
+        print(touchpadRightPress);
+        print(touchpadLeftPress);
+
+        if (teleported == false && ((leftHand && touchpadLeftPress) || (rightHand && touchpadRightPress))) {
+            print("yes");
+            teleport.TeleportPlayer();
+            teleported = true;
+        } else {
             teleported = false;
         }
 
-        //This is used for teleporting purposes, checking if you are touching your touchpad;
-        /*if ((leftHand == true && leftHandTouchpad != Vector2.zero) || (rightHand && rightHandTouchpad != Vector2.zero)) {
-            print("Touchpad detected!");
-            teleport.enabled = true;
-        } else {
-            teleport.enabled = false;
-        }*/
+        if ((leftHand && leftHandAxis > 0.85f) || (rightHand && rightHandAxis > 0.85f) && activated == false) {
+            Buttons.Activate(gameObject);
+            activated = true;
+        } else if ((leftHand && leftHandAxis < 0.85f) || (rightHand && rightHandAxis < 0.85f) && activated == true){
+            activated = false;
+        }
     }
 
     public void OnTriggerStay(Collider other)

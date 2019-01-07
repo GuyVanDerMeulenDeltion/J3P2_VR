@@ -14,6 +14,8 @@ public class Teleport : MonoBehaviour {
 
     [Header("Teleport Settings:")]
     [SerializeField]private GameObject reticle;
+    [SerializeField] public LineRenderer leftControllerLineRenderer;
+    [SerializeField] public LineRenderer rightControllerLineRenderer;
     [SerializeField]private float maxRange = 100f;
     [SerializeField]private LayerMask teleportMask;
     public float teleportLerpSpeed = 5;
@@ -24,6 +26,10 @@ public class Teleport : MonoBehaviour {
     [SerializeField]private Material lineMaterial;
     [SerializeField]private int lineVertexCount = 10;
     [SerializeField]private Vector3 arcOffset = new Vector3(0, 10, 0);
+
+    [Header("Controllers")]
+    [SerializeField] public GameObject leftController;
+    [SerializeField] public GameObject rightController;
 
     [Header("Ray Settings:")]
     [SerializeField]private float radius = 5.0f;
@@ -56,7 +62,6 @@ public class Teleport : MonoBehaviour {
     }
 
     private void OnDisable() {
-        canTeleport = false;
         thisLine.enabled = false;
         reticle.SetActive(false);
     }
@@ -74,6 +79,7 @@ public class Teleport : MonoBehaviour {
             Vector3 _Offset = transform.root.position - playerHead.transform.position;
             Vector3 _Plus = reticle.transform.position + _Offset;
             Vector3 _Final = new Vector3(_Plus.x, _Plus.y + _NewHeightDecrement, _Plus.z);
+            print("lol");
             Controller.currentPos = _Final;
             reticle.transform.position = _OldReticlePosition;
         }
@@ -168,7 +174,6 @@ public class Teleport : MonoBehaviour {
                 break;
             } else {
                 reticle.SetActive(false);
-                canTeleport = false;
             }
         }
     }
