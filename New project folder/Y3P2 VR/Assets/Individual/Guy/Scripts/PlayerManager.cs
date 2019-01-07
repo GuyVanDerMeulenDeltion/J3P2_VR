@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     internal SteamVR_Behaviour_Pose[] hands;
     internal Player_Revivefield[] reviveFields;
     internal PhotonTestMovement testMov;
+    internal Teleport[] teleporters;
     //internal Valve.VR.InteractionSystem.TeleportArc player_tele_arc;
     //internal Valve.VR.InteractionSystem.Teleport player_tele;
 
@@ -84,6 +85,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         player_grayscale = GetComponentInChildren<Grayscale_ImageEffect>();
         player_controllers = GetComponentsInChildren<Controller>();
         player_hands_steam = GetComponentsInChildren<Hand>();
+        teleporters = GetComponentsInChildren<Teleport>();
         //player_tele_arc = GetComponentInChildren<Valve.VR.InteractionSystem.TeleportArc>();
         //player_tele = GetComponentInChildren<Valve.VR.InteractionSystem.Teleport>();
         //player_teleportArea = GetComponentInChildren<Valve.VR.InteractionSystem.TeleportArea>();

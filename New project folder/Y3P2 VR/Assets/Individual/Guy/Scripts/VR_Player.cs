@@ -30,7 +30,6 @@ public class VR_Player : MonoBehaviourPunCallbacks {
         foreach (Hand _Hand in PlayerManager.thisPlayer.player_hands_steam)
             _Hand.enabled = true;
 
-
         foreach (Controller _Cont in PlayerManager.thisPlayer.player_controllers)
             _Cont.enabled = true;
 

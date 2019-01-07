@@ -2108,7 +2108,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navigationCollider: {fileID: 136019589332855936}
   quickbool: 0
-  faceControllerScript: {fileID: 114661677765353672}
   doRagdoll: 0
 --- !u!114 &114349683687119102
 MonoBehaviour:
@@ -2150,7 +2149,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentEmotion: 0
   timer: 0
-  myAnim: {fileID: 95783197875902276}
 --- !u!114 &114730317632479058
 MonoBehaviour:
   m_ObjectHideFlags: 1

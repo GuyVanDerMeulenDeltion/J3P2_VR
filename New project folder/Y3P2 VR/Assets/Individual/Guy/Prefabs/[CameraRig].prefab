@@ -518,6 +518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   otherController: {fileID: 1572227545698182}
+  teleport: {fileID: 0}
   mitten: {fileID: 0}
   leftHand: 1
   rightHand: 0
@@ -599,6 +600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   otherController: {fileID: 1199645970629222}
+  teleport: {fileID: 0}
   mitten: {fileID: 0}
   leftHand: 0
   rightHand: 1
