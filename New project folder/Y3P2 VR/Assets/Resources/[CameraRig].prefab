@@ -3856,6 +3856,8 @@ MonoBehaviour:
   canTeleport: 0
   reticleOffset: {x: 2.23, y: 0, z: 0}
   reticle: {fileID: 1707700225285824}
+  leftControllerLineRenderer: {fileID: 0}
+  rightControllerLineRenderer: {fileID: 0}
   maxRange: 100
   teleportMask:
     serializedVersion: 2
@@ -3866,6 +3868,8 @@ MonoBehaviour:
   lineMaterial: {fileID: 2100000, guid: de639cae8164bf44eaed02b48287cfca, type: 2}
   lineVertexCount: 40
   arcOffset: {x: 0, y: 10, z: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   radius: 3
   segments: 12
   curveAmount: 110
@@ -5424,6 +5428,8 @@ MonoBehaviour:
   canTeleport: 0
   reticleOffset: {x: 2.23, y: 0, z: 0}
   reticle: {fileID: 1997474342907990}
+  leftControllerLineRenderer: {fileID: 0}
+  rightControllerLineRenderer: {fileID: 0}
   maxRange: 100
   teleportMask:
     serializedVersion: 2
@@ -5434,6 +5440,8 @@ MonoBehaviour:
   lineMaterial: {fileID: 2100000, guid: de639cae8164bf44eaed02b48287cfca, type: 2}
   lineVertexCount: 40
   arcOffset: {x: 0, y: 10, z: 0}
+  leftController: {fileID: 0}
+  rightController: {fileID: 0}
   radius: 3
   segments: 12
   curveAmount: 110

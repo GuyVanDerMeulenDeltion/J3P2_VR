@@ -2149,6 +2149,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentEmotion: 0
   timer: 0
+  hurt: 0
+  dead: 0
+  kekdollScript: {fileID: 0}
+  obj1: {fileID: 0}
+  obj2: {fileID: 0}
+  obj3: {fileID: 0}
+  obj4: {fileID: 0}
+  obj5: {fileID: 0}
 --- !u!114 &114730317632479058
 MonoBehaviour:
   m_ObjectHideFlags: 1
