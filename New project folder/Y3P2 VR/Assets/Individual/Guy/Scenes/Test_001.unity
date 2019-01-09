@@ -1565,8 +1565,6 @@ MonoBehaviour:
   canTeleport: 0
   reticleOffset: {x: 0, y: 0, z: 0}
   reticle: {fileID: 1779427416}
-  leftControllerLineRenderer: {fileID: 0}
-  rightControllerLineRenderer: {fileID: 0}
   maxRange: 5
   teleportMask:
     serializedVersion: 2
@@ -1575,13 +1573,11 @@ MonoBehaviour:
   lineWidth: {x: 0, y: 0}
   textureOffset: {x: 0, y: 0}
   lineMaterial: {fileID: 0}
+  canTeleportImage: {fileID: 0}
+  cannotTeleportImage: {fileID: 0}
   lineVertexCount: 10
-  arcOffset: {x: 0, y: 10, z: 0}
   leftController: {fileID: 0}
   rightController: {fileID: 0}
-  radius: 5
-  segments: 12
-  curveAmount: 360
 --- !u!65 &1872132092
 BoxCollider:
   m_ObjectHideFlags: 0
