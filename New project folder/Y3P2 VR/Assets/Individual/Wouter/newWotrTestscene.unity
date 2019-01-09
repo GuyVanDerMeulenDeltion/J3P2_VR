@@ -390,6 +390,26 @@ Prefab:
       propertyPath: ikStrenghtHead
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 54911500423194328, guid: a4867c89f579cdc458de43bc3564761f,
+        type: 2}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114252537529581870, guid: a4867c89f579cdc458de43bc3564761f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114479551413847578, guid: a4867c89f579cdc458de43bc3564761f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54911500423194328, guid: a4867c89f579cdc458de43bc3564761f,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4867c89f579cdc458de43bc3564761f, type: 2}
   m_IsPrefabAsset: 0
