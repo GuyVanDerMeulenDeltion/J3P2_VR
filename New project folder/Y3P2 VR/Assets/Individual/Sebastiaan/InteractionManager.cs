@@ -33,6 +33,7 @@ public class InteractionManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void PickObject(int _View, int pickUpObject, int hasItem, bool itemStatus)
     {
+        print("yes");
         GameObject _Hand = null;
         GameObject _PickedupObject = null;
         GameObject _HasItem = null;
