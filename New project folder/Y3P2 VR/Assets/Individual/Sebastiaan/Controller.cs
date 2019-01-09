@@ -7,6 +7,9 @@ using Photon.Pun;
 public class Controller : MonoBehaviourPunCallbacks
 {
     public static Vector3 currentPos;
+    public static float teleportTimer = 1; //Timer that decides when the held item can function again... 
+    private static float timer;
+    private static bool canDrop = true;
 
     public GameObject item;
     public GameObject otherController;
@@ -32,10 +35,10 @@ public class Controller : MonoBehaviourPunCallbacks
     public bool leftHand, rightHand;
 
     private bool activated = false;
-    private bool teleported = false;
 
     private void Awake() {
         currentPos = transform.root.position;
+        timer = teleportTimer;
     }
 
     public void Update()
@@ -45,10 +48,44 @@ public class Controller : MonoBehaviourPunCallbacks
         HideController();
         ActivateButton();
         CurrentPosition();
+        Timer(false);
     }
 
     private void CurrentPosition() {
         transform.root.position = Vector3.Lerp(transform.root.position, currentPos, teleport.teleportLerpSpeed * Time.deltaTime);
+    }
+
+    private void Timer(bool _ResetTimer)
+    {
+        if(_ResetTimer == true)
+        {
+            timer = teleportTimer;
+            foreach(Controller _Cont in PlayerManager.thisPlayer.player_controllers)
+            {
+                canDrop = false;
+                if (_Cont.item != null)
+                    if (_Cont.GetComponent<Sword>())
+                        _Cont.GetComponent<Sword>().enabled = false;
+                    else if (_Cont.GetComponent<Shield>())
+                        _Cont.GetComponent<Shield>().enabled = false;
+            }
+        }
+
+        timer -= Time.deltaTime;
+
+        if(timer <= 0)
+        {
+            canDrop = true;
+            foreach (Controller _Cont in PlayerManager.thisPlayer.player_controllers)
+            {
+                if (_Cont.item != null)
+                    if (_Cont.GetComponent<Sword>())
+                        _Cont.GetComponent<Sword>().enabled = true;
+                    else if (_Cont.GetComponent<Shield>())
+                        _Cont.GetComponent<Shield>().enabled = true;
+            }
+        }
+
     }
 
     //Used for the hand visuals
@@ -72,12 +109,10 @@ public class Controller : MonoBehaviourPunCallbacks
             teleport.enabled = false;
         }
 
-        if (teleported == false && ((leftHand && touchpadLeftPress) || (rightHand && touchpadRightPress))) {
+        if (((leftHand && touchpadLeftPress) || (rightHand && touchpadRightPress))) {
             print("yes");
             teleport.TeleportPlayer();
-            teleported = true;
-        } else {
-            teleported = false;
+            Timer(true);
         }
 
         if ((leftHand && leftHandAxis > 0.85f) || (rightHand && rightHandAxis > 0.85f) && activated == false) {
@@ -113,17 +148,20 @@ public class Controller : MonoBehaviourPunCallbacks
 
     public void DropObject()
     {
-        if (leftHand)
-            if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.LeftHand)) 
-                InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID);
-            
-        if (rightHand)
-            if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand))
-                InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID);
-            
+        if (canDrop == true)
+        {
+            if (leftHand)
+                if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.LeftHand))
+                    InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID);
 
-        if(PlayerManager.thisPlayer != null)
-        PlayerManager.thisPlayer.SetCurrentState();
+            if (rightHand)
+                if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand))
+                    InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID);
+
+
+            if (PlayerManager.thisPlayer != null)
+                PlayerManager.thisPlayer.SetCurrentState();
+        }
     }
 
     void HideController()

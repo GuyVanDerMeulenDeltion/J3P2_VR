@@ -1121,7 +1121,6 @@ GameObject:
   - component: {fileID: 4462918686020404}
   - component: {fileID: 33030772893376252}
   - component: {fileID: 23469154226471124}
-  - component: {fileID: 65027630084372776}
   m_Layer: 0
   m_Name: Reticle
   m_TagString: Untagged
@@ -1533,7 +1532,6 @@ GameObject:
   - component: {fileID: 4645628986583712}
   - component: {fileID: 33795333747446356}
   - component: {fileID: 23310065570667728}
-  - component: {fileID: 65352597474522578}
   m_Layer: 0
   m_Name: Reticle
   m_TagString: Untagged
@@ -2442,18 +2440,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 2
---- !u!65 &65027630084372776
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1707700225285824}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65080982155140656
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2478,18 +2464,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3, y: 2.01, z: 1.3}
   m_Center: {x: 0, y: -0.45, z: 0}
---- !u!65 &65352597474522578
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997474342907990}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65529698354269782
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2766,8 +2740,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 0
-  InstantiationId: 11
+  viewIdField: 21
+  InstantiationId: 21
   isRuntimeInstantiated: 0
 --- !u!114 &114015520694842438
 MonoBehaviour:
@@ -3200,8 +3174,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 0
-  InstantiationId: 15
+  viewIdField: 20
+  InstantiationId: 20
   isRuntimeInstantiated: 0
 --- !u!114 &114138053903484908
 MonoBehaviour:
@@ -3839,8 +3813,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 0
-  InstantiationId: 13
+  viewIdField: 19
+  InstantiationId: 19
   isRuntimeInstantiated: 0
 --- !u!114 &114227566168539726
 MonoBehaviour:
@@ -3856,9 +3830,7 @@ MonoBehaviour:
   canTeleport: 0
   reticleOffset: {x: 2.23, y: 0, z: 0}
   reticle: {fileID: 1707700225285824}
-  leftControllerLineRenderer: {fileID: 0}
-  rightControllerLineRenderer: {fileID: 0}
-  maxRange: 100
+  maxRange: 5
   teleportMask:
     serializedVersion: 2
     m_Bits: 65536
@@ -3866,13 +3838,11 @@ MonoBehaviour:
   lineWidth: {x: 0.05, y: 0.03}
   textureOffset: {x: 1, y: 0}
   lineMaterial: {fileID: 2100000, guid: de639cae8164bf44eaed02b48287cfca, type: 2}
-  lineVertexCount: 40
-  arcOffset: {x: 0, y: 10, z: 0}
+  canTeleportImage: {fileID: 2800000, guid: d108d9c8e694e9b45b9e25a3bb6bb4a5, type: 3}
+  cannotTeleportImage: {fileID: 2800000, guid: 721b4565eccd00d4f862bc1def1b2814, type: 3}
+  lineVertexCount: 2
   leftController: {fileID: 0}
   rightController: {fileID: 0}
-  radius: 3
-  segments: 12
-  curveAmount: 110
 --- !u!114 &114230215108791542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3891,8 +3861,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 0
-  InstantiationId: 12
+  viewIdField: 18
+  InstantiationId: 18
   isRuntimeInstantiated: 0
 --- !u!114 &114242354556962928
 MonoBehaviour:
@@ -3967,8 +3937,8 @@ MonoBehaviour:
   - {fileID: 114166693041222178}
   - {fileID: 114160861733942512}
   - {fileID: 114033177746709336}
-  viewIdField: 0
-  InstantiationId: 14
+  viewIdField: 17
+  InstantiationId: 17
   isRuntimeInstantiated: 0
 --- !u!114 &114300727277268618
 MonoBehaviour:
@@ -4168,8 +4138,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 0
-  InstantiationId: 10
+  viewIdField: 16
+  InstantiationId: 16
   isRuntimeInstantiated: 0
 --- !u!114 &114516150403839018
 MonoBehaviour:
@@ -5428,9 +5398,7 @@ MonoBehaviour:
   canTeleport: 0
   reticleOffset: {x: 2.23, y: 0, z: 0}
   reticle: {fileID: 1997474342907990}
-  leftControllerLineRenderer: {fileID: 0}
-  rightControllerLineRenderer: {fileID: 0}
-  maxRange: 100
+  maxRange: 5
   teleportMask:
     serializedVersion: 2
     m_Bits: 65536
@@ -5438,13 +5406,11 @@ MonoBehaviour:
   lineWidth: {x: 0.05, y: 0.03}
   textureOffset: {x: 1, y: 0}
   lineMaterial: {fileID: 2100000, guid: de639cae8164bf44eaed02b48287cfca, type: 2}
-  lineVertexCount: 40
-  arcOffset: {x: 0, y: 10, z: 0}
+  canTeleportImage: {fileID: 2800000, guid: d108d9c8e694e9b45b9e25a3bb6bb4a5, type: 3}
+  cannotTeleportImage: {fileID: 2800000, guid: 721b4565eccd00d4f862bc1def1b2814, type: 3}
+  lineVertexCount: 2
   leftController: {fileID: 0}
   rightController: {fileID: 0}
-  radius: 3
-  segments: 12
-  curveAmount: 110
 --- !u!114 &114915930500962078
 MonoBehaviour:
   m_ObjectHideFlags: 1
