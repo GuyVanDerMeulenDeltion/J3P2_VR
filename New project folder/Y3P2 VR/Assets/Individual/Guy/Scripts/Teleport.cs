@@ -14,8 +14,6 @@ public class Teleport : MonoBehaviour {
 
     [Header("Teleport Settings:")]
     [SerializeField]private GameObject reticle;
-    [SerializeField] public LineRenderer leftControllerLineRenderer;
-    [SerializeField] public LineRenderer rightControllerLineRenderer;
     [SerializeField]private float maxRange = 100f;
     [SerializeField]private LayerMask teleportMask;
     public float teleportLerpSpeed = 5;
@@ -79,7 +77,6 @@ public class Teleport : MonoBehaviour {
             Vector3 _Offset = transform.root.position - playerHead.transform.position;
             Vector3 _Plus = reticle.transform.position + _Offset;
             Vector3 _Final = new Vector3(_Plus.x, _Plus.y + _NewHeightDecrement, _Plus.z);
-            print("lol");
             Controller.currentPos = _Final;
             reticle.transform.position = _OldReticlePosition;
         }
@@ -90,18 +87,24 @@ public class Teleport : MonoBehaviour {
         DrawLine();
         UpdateTextureOffset();
         arcStatistics = transform.position - arcOffset;
-
-
         CalculatePoints();
         DrawLines();    // just for testing    
         CheckForHits();
     }
 
     private void UpdateTextureOffset() {
-        thisLine.material.mainTextureOffset += textureOffset * Time.deltaTime;
+        thisLine.material.mainTextureOffset -= textureOffset * Time.deltaTime;
     }
 
     private void DrawLine() {
+        if (canTeleport == false)
+        {
+            thisLine.positionCount = 2;
+            thisLine.SetPositions(new Vector3[] { transform.position, transform.forward * 1.25f + transform.position });
+            return;
+        }
+
+        thisLine.positionCount = lineVertexCount;
         float _Distance = Vector3.Distance(transform.position, reticle.transform.position);
 
         //Sets the array length to the line vertex count;
@@ -114,7 +117,7 @@ public class Teleport : MonoBehaviour {
         //Changes the theta and calculates the new position afterwards;
         for (int i = 1; i < _Points.Length - 1; i++) {
             float _Theta = (i - 1) * Change_Theta;
-            _Points[i] = CalculateFinalPos(transform.position, arcStatistics, reticle.transform.position, _Angles, _Theta);
+                _Points[i] = CalculateFinalPos(transform.position, arcStatistics, reticle.transform.position, _Angles, _Theta);
         }
 
         //Sets the array of newfound positions into the linerenderer;
@@ -142,12 +145,9 @@ public class Teleport : MonoBehaviour {
         if(Physics.Raycast(reticle.transform.GetChild(0).transform.position, Vector3.down, out hitInfo, maxRange, teleportMask)) {
             reticle.transform.position = new Vector3(reticle.transform.position.x, hitInfo.point.y, reticle.transform.position.z);
             reticle.GetComponent<MeshRenderer>().enabled = enabled;
-            canTeleport = true;
             return;
-        } 
-
+        }
             reticle.GetComponent<MeshRenderer>().enabled = false;
-            canTeleport = false;
     }
 
     private void CalculatePoints() {
@@ -165,15 +165,18 @@ public class Teleport : MonoBehaviour {
 
     private void CheckForHits() {
         radius = radiusMax - (transform.eulerAngles.x * transform.eulerAngles.x / 360);
+        arcOffset.y = radiusMax - (transform.eulerAngles.x * transform.eulerAngles.x / 360);
         radius = Mathf.Clamp(radius, 0 ,radiusMax);
 
         for (int i = 0; i < nodes.Count - 1; i++) {
             if (Physics.Linecast(nodes[i], nodes[i + 1], out hitInfo, teleportMask)) {
                 reticle.transform.position = hitInfo.point;
                 reticle.SetActive(true);
+                canTeleport = true;
                 break;
             } else {
                 reticle.SetActive(false);
+                canTeleport = false;
             }
         }
     }

@@ -84,8 +84,6 @@ public class Enemy : MonoBehaviourPunCallbacks {
 
     private bool CheckIfTarget(GameObject _Object) {
         if (currentTarget != null && started == true && hit == false)
-            print(_Object.transform.root.gameObject);
-            print(currentTarget.gameObject);
             if (_Object.gameObject == currentTarget.gameObject)
                 return true;
 

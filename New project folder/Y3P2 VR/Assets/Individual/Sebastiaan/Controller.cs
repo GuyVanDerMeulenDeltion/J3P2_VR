@@ -24,8 +24,8 @@ public class Controller : MonoBehaviourPunCallbacks
     public bool touchpadLeft {  get { return SteamVR_Input._default.inActions.TouchpadTouch.GetState(SteamVR_Input_Sources.LeftHand); } }
     public bool touchpadRight { get { return SteamVR_Input._default.inActions.TouchpadTouch.GetState(SteamVR_Input_Sources.RightHand); } }
 
-    public bool touchpadLeftPress { get { return SteamVR_Input._default.inActions.TouchpadPress.GetState(SteamVR_Input_Sources.LeftHand); } }
-    public bool touchpadRightPress { get { return SteamVR_Input._default.inActions.TouchpadPress.GetState(SteamVR_Input_Sources.RightHand); } }
+    public bool touchpadLeftPress { get { return SteamVR_Input._default.inActions.TouchpadPress.GetStateDown(SteamVR_Input_Sources.LeftHand); } }
+    public bool touchpadRightPress { get { return SteamVR_Input._default.inActions.TouchpadPress.GetStateDown(SteamVR_Input_Sources.RightHand); } }
 
     private EVRButtonId triggerButton = EVRButtonId.k_EButton_SteamVR_Trigger;
 
@@ -67,14 +67,10 @@ public class Controller : MonoBehaviourPunCallbacks
     public void ActivateButton() {
 
         if ((touchpadLeft && leftHand) || (touchpadRight && rightHand)) {
-            print("Teleport");
             teleport.enabled = true;
         } else {
             teleport.enabled = false;
         }
-
-        print(touchpadRightPress);
-        print(touchpadLeftPress);
 
         if (teleported == false && ((leftHand && touchpadLeftPress) || (rightHand && touchpadRightPress))) {
             print("yes");
