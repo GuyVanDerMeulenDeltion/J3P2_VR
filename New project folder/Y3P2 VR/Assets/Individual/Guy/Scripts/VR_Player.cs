@@ -37,9 +37,6 @@ public class VR_Player : MonoBehaviourPunCallbacks {
         for(int i = 0; i < PlayerManager.thisPlayer.hands.Length; i++) {
             PlayerManager.thisPlayer.hands[i].enabled = true;
         }
-
-        //PlayerManager.thisPlayer.player_tele.enabled = true;
-        //PlayerManager.thisPlayer.player_tele_arc.enabled = true;
     }
 
     public void SendMessageOnline(string _Message) {
