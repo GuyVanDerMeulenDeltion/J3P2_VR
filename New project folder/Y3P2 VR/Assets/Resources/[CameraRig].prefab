@@ -2740,7 +2740,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 21
+  viewIdField: 0
   InstantiationId: 21
   isRuntimeInstantiated: 0
 --- !u!114 &114015520694842438
@@ -3174,7 +3174,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 20
+  viewIdField: 0
   InstantiationId: 20
   isRuntimeInstantiated: 0
 --- !u!114 &114138053903484908
@@ -3813,7 +3813,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 19
+  viewIdField: 0
   InstantiationId: 19
   isRuntimeInstantiated: 0
 --- !u!114 &114227566168539726
@@ -3861,7 +3861,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 18
+  viewIdField: 0
   InstantiationId: 18
   isRuntimeInstantiated: 0
 --- !u!114 &114242354556962928
@@ -3937,7 +3937,7 @@ MonoBehaviour:
   - {fileID: 114166693041222178}
   - {fileID: 114160861733942512}
   - {fileID: 114033177746709336}
-  viewIdField: 17
+  viewIdField: 0
   InstantiationId: 17
   isRuntimeInstantiated: 0
 --- !u!114 &114300727277268618
@@ -4138,7 +4138,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 16
+  viewIdField: 0
   InstantiationId: 16
   isRuntimeInstantiated: 0
 --- !u!114 &114516150403839018
