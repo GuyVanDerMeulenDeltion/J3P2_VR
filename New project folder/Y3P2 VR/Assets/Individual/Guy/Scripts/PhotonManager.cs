@@ -7,7 +7,7 @@ using Photon.Realtime;
 public class PhotonManager : MonoBehaviourPunCallbacks {
 
     public static PhotonManager photonManager;
-    public string room;
+    public bool joinRandom = false;
 
 	// Use this for initialization
 	private void Awake () {
@@ -23,13 +23,16 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     }
 
     public override void OnConnectedToMaster() {
-        CreateRoom(room);
+        CreateRoom("Test");
     }
 
     public void CreateRoom(string _RoomID) {
         print("Joined room");
         RoomOptions _Options = new RoomOptions { IsVisible = true, IsOpen = true, MaxPlayers = 20 };
-        PhotonNetwork.JoinRandomRoom();
+        if (joinRandom == true)
+            PhotonNetwork.JoinRandomRoom();
+        else
+            PhotonNetwork.JoinOrCreateRoom(_RoomID, _Options, TypedLobby.Default);
     }
 
     public override void OnJoinedRoom() {
