@@ -42,6 +42,7 @@ public class Teleport : MonoBehaviour {
         thisLine.positionCount = lineVertexCount;
         thisLine.material = lineMaterial;
         playerHead = transform.root.GetComponentInChildren<Camera>().transform;
+        this.enabled = false;
     }
 
     private void OnDisable() {
