@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviourPunCallbacks {
     public void Start() {
         print(PhotonNetwork.IsConnected +" is the current state of photon network;");
         print(PhotonNetwork.CurrentRoom.Name+ " is the current room name");
+        print(PhotonNetwork.PlayerList.Length+ " is the amount of players");
 
         if (PlayerManager.thisPlayer == null && PhotonNetwork.IsConnected) {
             PhotonNetwork.Instantiate("[CameraRig]", _SpawnPoint[spawnIndex].position, Quaternion.identity);
