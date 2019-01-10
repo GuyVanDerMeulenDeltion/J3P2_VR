@@ -29,7 +29,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     public void CreateRoom(string _RoomID) {
         print("Joined room");
         RoomOptions _Options = new RoomOptions { IsVisible = true, IsOpen = true, MaxPlayers = 20 };
-        PhotonNetwork.JoinOrCreateRoom(_RoomID, _Options, TypedLobby.Default);
+        PhotonNetwork.JoinRandomRoom();
     }
 
     public override void OnJoinedRoom() {
