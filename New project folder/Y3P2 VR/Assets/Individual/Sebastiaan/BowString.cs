@@ -38,18 +38,19 @@ public class BowString : Bow
 
     public void Shoot()
     {
+        GameObject _arrow = null;
         // -----------------------------------------------Left hand ------------------------------------------------
         if (currentHand != null && !firing)
         {
             if (leftHandAxis > 0.85f && currentHand.GetComponent<Controller>().leftHand)
             {
-                GameObject _arrow;
                 firing = true;
                 if(PhotonNetwork.IsConnected)
                  _arrow = PhotonNetwork.Instantiate(ammo.name, transform.position, transform.rotation) as GameObject;
                 else
                     _arrow = Instantiate(ammo, transform.position, transform.rotation) as GameObject;
 
+                _arrow.GetPhotonView().TransferOwnership(currentHand.GetPhotonView().Owner);
                 if (_arrow.GetComponent<NetworkedAmmo>())
                     _arrow.GetComponent<NetworkedAmmo>().enabled = false;
                 _arrow.transform.SetParent(transform);
@@ -88,8 +89,14 @@ public class BowString : Bow
             if (rightHandAxis > 0.85f && currentHand.GetComponent<Controller>().rightHand)
             {
                 firing = true;
-                GameObject _arrow = PhotonNetwork.InstantiateSceneObject("Ammo", transform.position, transform.rotation) as GameObject;
+                if (PhotonNetwork.IsConnected)
+                    _arrow = PhotonNetwork.Instantiate(ammo.name, transform.position, transform.rotation) as GameObject;
+                else
+                    _arrow = Instantiate(ammo, transform.position, transform.rotation) as GameObject;
+
                 _arrow.GetPhotonView().TransferOwnership(currentHand.GetPhotonView().Owner);
+                if (_arrow.GetComponent<NetworkedAmmo>())
+                    _arrow.GetComponent<NetworkedAmmo>().enabled = false;
                 _arrow.transform.SetParent(transform);
                 _arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 currentHand.GetComponent<Controller>().item = _arrow.gameObject;
