@@ -35,7 +35,16 @@ public class Mitten : MonoBehaviourPunCallbacks {
 
     [PunRPC]
     private void GetGloveState(int _view, float _axis) {
-        if(photonView.ViewID == _view)
-        myanim.SetFloat("Timeline", Mathf.Clamp(_axis, 0, 0.95f));
+        Animator _Glove = null;
+        foreach(PhotonView _View in PhotonNetwork.PhotonViews)
+        {
+            if(_View.ViewID == _view)
+            {
+                _Glove = _View.transform.GetComponent<Animator>();
+            }
+        }
+
+        if(_Glove != null)
+          _Glove.SetFloat("Timeline", Mathf.Clamp(_axis, 0, 0.95f));
     }
 }
