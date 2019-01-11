@@ -51,4 +51,6 @@ MonoBehaviour:
   - GetGloveState
   - PickObject
   - ThrowObject
+  - Shoot
+  - LoadArrow
   DisableAutoOpenWizard: 1
