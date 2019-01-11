@@ -680,7 +680,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 114401006248868314}
   - {fileID: 114614039355269992}
