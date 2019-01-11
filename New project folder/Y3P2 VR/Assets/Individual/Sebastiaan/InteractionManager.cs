@@ -17,6 +17,7 @@ public class InteractionManager : MonoBehaviourPunCallbacks
     }
 
     public void PickObjectNetwork(int _View, int pickUpObject, int hasItem, bool itemStatus) {
+        print(intManager);
         if (PhotonNetwork.IsConnected)
             photonView.RPC("PickObject", RpcTarget.MasterClient, _View, pickUpObject, hasItem, itemStatus);
         else
