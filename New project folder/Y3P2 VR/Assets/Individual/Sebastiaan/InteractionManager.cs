@@ -23,14 +23,14 @@ public class InteractionManager : MonoBehaviourPunCallbacks
 
     public void PickObjectNetwork(int _View, int pickUpObject, int hasItem, bool itemStatus) {
         if (PhotonNetwork.IsConnected)
-            photonView.RPC("PickObject", RpcTarget.MasterClient, _View, pickUpObject, hasItem, itemStatus);
+            photonView.RPC("PickObject", RpcTarget.AllBuffered, _View, pickUpObject, hasItem, itemStatus);
         else
             PickObject(_View, pickUpObject, hasItem, itemStatus);
     }
 
     public void DropObjectNetwork(int _View, int throwable) {
         if (PhotonNetwork.IsConnected)
-            photonView.RPC("ThrowObject", RpcTarget.MasterClient, _View, throwable);
+            photonView.RPC("ThrowObject", RpcTarget.AllBuffered, _View, throwable);
         else
             ThrowObject(_View, throwable);
     }
