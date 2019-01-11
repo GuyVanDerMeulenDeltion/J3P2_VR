@@ -53,10 +53,7 @@ public class InteractionManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void PickObject(int _View, int pickUpObject, int hasItem, bool itemStatus)
     {
-        Debug.LogWarning("YOU TRIED PICKING UP A NETWORKED OBJECT");
         if (GetView(_View).IsMine ) {
-
-
         GameObject _Hand = GetView(_View).gameObject;
         GameObject _PickedupObject = GetView(pickUpObject).gameObject;
         GameObject _HasItem = null;
@@ -119,6 +116,7 @@ public class InteractionManager : MonoBehaviourPunCallbacks
                 _Throwable.GetComponent<Rigidbody>().velocity = _TrackedObj.GetVelocity();
                 _Throwable.GetComponent<Rigidbody>().angularVelocity = _TrackedObj.GetAngularVelocity();
             }
+            GetView(_throwable).TransferOwnership(PhotonNetwork.MasterClient);
         }
     }
 }
