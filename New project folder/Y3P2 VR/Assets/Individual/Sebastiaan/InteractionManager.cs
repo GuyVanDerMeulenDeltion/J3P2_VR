@@ -57,7 +57,7 @@ public class InteractionManager : MonoBehaviourPunCallbacks
         GameObject _PickedupObject = GetView(pickUpObject).gameObject;
         GameObject _HasItem = null;
         if (GetView(hasItem) != null)
-        _HasItem = GetView(hasItem).gameObject;
+            _HasItem = GetView(hasItem).gameObject;
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -75,10 +75,10 @@ public class InteractionManager : MonoBehaviourPunCallbacks
 
                 if (_Hand.GetPhotonView().IsMine)
                     _Hand.GetComponent<Controller>().item = _PickedupObject;
-
-                _PickedupObject.GetPhotonView().TransferOwnership(_Hand.GetPhotonView().Owner);
             }
         }
+
+        GetView(pickUpObject).TransferOwnership(_Hand.GetPhotonView().Owner);
     }
 
     [PunRPC]
