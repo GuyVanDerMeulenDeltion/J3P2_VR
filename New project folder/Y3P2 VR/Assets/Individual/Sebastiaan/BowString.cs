@@ -88,7 +88,7 @@ public class BowString : Bow
             if (rightHandAxis > 0.85f && currentHand.GetComponent<Controller>().rightHand)
             {
                 firing = true;
-                GameObject _arrow = PhotonNetwork.Instantiate("Ammo", transform.position, transform.rotation) as GameObject;
+                GameObject _arrow = PhotonNetwork.InstantiateSceneObject("Ammo", transform.position, transform.rotation) as GameObject;
                 _arrow.GetPhotonView().TransferOwnership(currentHand.GetPhotonView().Owner);
                 _arrow.transform.SetParent(transform);
                 _arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
