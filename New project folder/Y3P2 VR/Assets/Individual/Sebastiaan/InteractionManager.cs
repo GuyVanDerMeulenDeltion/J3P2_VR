@@ -53,8 +53,9 @@ public class InteractionManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void PickObject(int _View, int pickUpObject, int hasItem, bool itemStatus)
     {
-        if(GetView(_View).IsMine ) {
-            Debug.LogWarning("YOU TRIED PICKING UP A NETWORKED OBJECT");
+        Debug.LogWarning("YOU TRIED PICKING UP A NETWORKED OBJECT");
+        if (GetView(_View).IsMine ) {
+
 
         GameObject _Hand = GetView(_View).gameObject;
         GameObject _PickedupObject = GetView(pickUpObject).gameObject;
