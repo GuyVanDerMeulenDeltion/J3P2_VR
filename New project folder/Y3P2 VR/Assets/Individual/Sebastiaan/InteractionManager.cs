@@ -53,32 +53,30 @@ public class InteractionManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void PickObject(int _View, int pickUpObject, int hasItem, bool itemStatus)
     {
+        if(GetView(_View).IsMine ) {
+
         GameObject _Hand = GetView(_View).gameObject;
         GameObject _PickedupObject = GetView(pickUpObject).gameObject;
         GameObject _HasItem = null;
         if (GetView(hasItem) != null)
             _HasItem = GetView(hasItem).gameObject;
 
-        if (PhotonNetwork.IsMasterClient)
-        {
+            GetView(pickUpObject).TransferOwnership(_Hand.GetPhotonView().Owner);
+
             if (_HasItem == null)
             {
-                    _PickedupObject.transform.SetParent(_Hand.transform);
-                    _PickedupObject.GetComponent<Rigidbody>().isKinematic = true;
-                    _PickedupObject.GetComponent<Rigidbody>().useGravity = false;
+                _PickedupObject.transform.SetParent(_Hand.transform);
+                _PickedupObject.GetComponent<Rigidbody>().isKinematic = true;
+                _PickedupObject.GetComponent<Rigidbody>().useGravity = false;
 
-                    if (_PickedupObject.GetComponent<Interactables>() != null)
-                        _PickedupObject.GetComponent<Interactables>().enabled = true;
+                if (_PickedupObject.GetComponent<Interactables>() != null)
+                    _PickedupObject.GetComponent<Interactables>().enabled = true;
 
                 _PickedupObject.GetComponent<Transform>().position = _Hand.transform.position;
                 _PickedupObject.GetComponent<Transform>().rotation = _Hand.transform.rotation;
-
-                if (_Hand.GetPhotonView().IsMine)
-                    _Hand.GetComponent<Controller>().item = _PickedupObject;
-            }
+                _Hand.GetComponent<Controller>().item = _PickedupObject;
+            }       
         }
-
-        GetView(pickUpObject).TransferOwnership(_Hand.GetPhotonView().Owner);
     }
 
     [PunRPC]
