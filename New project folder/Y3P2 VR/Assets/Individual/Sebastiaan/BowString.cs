@@ -8,7 +8,7 @@ public class BowString : Bow
 {
     public GameObject ammo;
     private GameObject currentHand;
-    private GameObject startPos {  get { return transform.parent.GetChild(3).gameObject; } }
+    private GameObject startPos { get { return transform.parent.GetChild(3).gameObject; } }
 
     private DrawOutline drawOutline { get { return new DrawOutline(); } }
 
@@ -45,8 +45,8 @@ public class BowString : Bow
             if (leftHandAxis > 0.85f && currentHand.GetComponent<Controller>().leftHand)
             {
                 firing = true;
-                if(PhotonNetwork.IsConnected)
-                 _arrow = PhotonNetwork.Instantiate(ammo.name, transform.position, transform.rotation) as GameObject;
+                if (PhotonNetwork.IsConnected)
+                    _arrow = PhotonNetwork.Instantiate(ammo.name, transform.position, transform.rotation) as GameObject;
                 else
                     _arrow = Instantiate(ammo, transform.position, transform.rotation) as GameObject;
 
@@ -62,16 +62,17 @@ public class BowString : Bow
         {
             if (currentHand.GetComponent<Controller>().leftHand)
             {
-                transform.parent.LookAt(currentHand.transform.position,transform.parent.up);
+                transform.parent.LookAt(currentHand.transform.position, transform.parent.up);
                 transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", Vector3.Distance(startPos.transform.position, currentHand.transform.position));
-                
+
                 if (leftHandAxis == 0)
                 {
                     transform.GetChild(0).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                    transform.GetChild(0).GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f*transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
+                    transform.GetChild(0).GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f * transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
                     //------------ temp
                     transform.GetChild(0).GetComponent<TempFirework>().enable = true;
-                    if (transform.GetChild(0).GetComponent<NetworkedAmmo>()) {
+                    if (transform.GetChild(0).GetComponent<NetworkedAmmo>())
+                    {
                         transform.GetChild(0).GetComponent<NetworkedAmmo>().canHit = true;
                         transform.GetChild(0).GetComponent<Destroy>().enabled = true;
                     }
@@ -106,16 +107,17 @@ public class BowString : Bow
         {
             if (currentHand.GetComponent<Controller>().rightHand)
             {
-                transform.parent.LookAt(currentHand.transform.position,transform.parent.up);
-                transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", Vector3.Distance(startPos.transform.position,currentHand.transform.position));
+                transform.parent.LookAt(currentHand.transform.position, transform.parent.up);
+                transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", Vector3.Distance(startPos.transform.position, currentHand.transform.position));
 
                 if (rightHandAxis == 0)
                 {
                     transform.GetChild(0).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                    transform.GetChild(0).GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f*transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
+                    transform.GetChild(0).GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f * transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
                     //------------ temp
                     transform.GetChild(0).GetComponent<TempFirework>().enable = true;
-                    if (transform.GetChild(0).GetComponent<NetworkedAmmo>()) {
+                    if (transform.GetChild(0).GetComponent<NetworkedAmmo>())
+                    {
                         transform.GetChild(0).GetComponent<NetworkedAmmo>().canHit = true;
                         transform.GetChild(0).GetComponent<Destroy>().enabled = true;
                     }
@@ -127,7 +129,7 @@ public class BowString : Bow
             }
         }
 
-        if (!firing && currentHand == null && transform.parent.GetComponent<Animator>().GetFloat("DrawAxis") != 0)       
-            transform.parent.GetComponent<Animator>().SetFloat("DrawAxis",Mathf.Lerp(transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"), 0,0.2f));       
+        if (!firing && currentHand == null && transform.parent.GetComponent<Animator>().GetFloat("DrawAxis") != 0)
+            transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", Mathf.Lerp(transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"), 0, 0.2f));
     }
 }
