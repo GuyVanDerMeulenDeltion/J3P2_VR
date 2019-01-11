@@ -81,43 +81,29 @@ public class InteractionManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void ThrowObject(int _View, int _throwable)
     {
-        GameObject _Hand = null;
-        GameObject _Throwable = null;
-        SteamVR_Behaviour_Pose _TrackedObj = null;
+        GameObject _Hand = GetView(_View).gameObject;
+        GameObject _Throwable = GetView(_throwable).gameObject;
+        SteamVR_Behaviour_Pose _TrackedObj = _Hand.GetComponent<SteamVR_Behaviour_Pose>();
 
-        foreach (PhotonView _view in PhotonNetwork.PhotonViews) {
-            if (_view.ViewID == _View) {
-                _Hand = _view.gameObject;
-                _TrackedObj = _view.GetComponent<SteamVR_Behaviour_Pose>();
-                break;
-            }
-        }
+        if(_Throwable.GetComponent<Interactables>())
+        _Throwable.GetComponent<Interactables>().enabled = false;
 
-        foreach (PhotonView _view in PhotonNetwork.PhotonViews) {
-            if (_view.ViewID == _throwable) {
-                _Throwable = _view.gameObject;
-                break;
-            }
-        }
-
-        GetView(_throwable).TransferOwnership(PhotonNetwork.MasterClient);
-
-        if (_Throwable != null && _Hand != null)
+        if (_Hand.GetPhotonView().IsMine) //Drops the object locally before giving rights back to the master;
         {
-            if(_Hand.GetPhotonView().IsMine)
-            _Hand.GetComponent<Controller>().item = null;
-
-            if (PhotonNetwork.IsMasterClient) {
-
-                if (_Throwable.GetComponent<Interactables>() != null)
-                    _Throwable.GetComponent<Interactables>().enabled = false;
-
+            if (_Throwable != null && _Hand != null)
+            {
+                _Hand.GetComponent<Controller>().item = null;
                 _Throwable.transform.SetParent(null);
-                _Throwable.GetComponent<Rigidbody>().isKinematic = false;
-                _Throwable.GetComponent<Rigidbody>().useGravity = true;
-                _Throwable.GetComponent<Rigidbody>().velocity = _TrackedObj.GetVelocity();
-                _Throwable.GetComponent<Rigidbody>().angularVelocity = _TrackedObj.GetAngularVelocity();
+                GetView(_throwable).TransferOwnership(PhotonNetwork.MasterClient);
             }
+        }
+
+        if (PhotonNetwork.IsMasterClient && _Throwable != null)
+        {
+            _Throwable.GetComponent<Rigidbody>().isKinematic = false;
+            _Throwable.GetComponent<Rigidbody>().useGravity = true;
+            _Throwable.GetComponent<Rigidbody>().velocity = _TrackedObj.GetVelocity();
+            _Throwable.GetComponent<Rigidbody>().angularVelocity = _TrackedObj.GetAngularVelocity();
         }
     }
 }
