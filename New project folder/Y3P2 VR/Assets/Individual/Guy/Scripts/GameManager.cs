@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviourPunCallbacks {
         print(PhotonNetwork.PlayerList.Length+ " is the amount of players");
 
         if (PlayerManager.thisPlayer == null && PhotonNetwork.IsConnected) {
-            PhotonNetwork.Instantiate("Cube", _SpawnPoint[spawnIndex].position, Quaternion.identity);
+            PhotonNetwork.Instantiate("[CameraRig]", _SpawnPoint[spawnIndex].position, Quaternion.identity);
             photonView.RPC("SetSpawn", RpcTarget.All, _SpawnPoint[spawnIndex].position);
             photonView.RPC("SendOnJoinedMessage", RpcTarget.All, "All welcome the new player!");
             SendOnJoinedMessage("Welcome to the game");

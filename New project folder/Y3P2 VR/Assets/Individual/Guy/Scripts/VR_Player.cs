@@ -26,7 +26,6 @@ public class VR_Player : MonoBehaviourPunCallbacks {
         PlayerManager.thisPlayer.camera.enabled = true;
         PlayerManager.thisPlayer.area.enabled = true;
         GetComponent<InteractionManager>().enabled = true;
-        //PlayerManager.thisPlayer.player_teleportArea.enabled = true;
 
         foreach (Hand _Hand in PlayerManager.thisPlayer.player_hands_steam)
             _Hand.enabled = true;

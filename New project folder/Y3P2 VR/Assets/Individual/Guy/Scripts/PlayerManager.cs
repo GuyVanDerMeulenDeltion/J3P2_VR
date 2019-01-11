@@ -17,7 +17,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     public InteractionManager interaction_manager;
 
     internal Hand[] player_hands_steam;
-    //internal Valve.VR.InteractionSystem.TeleportArea player_teleportArea;
     internal Grayscale_ImageEffect player_grayscale;
     internal Controller[] player_controllers;
     internal PlayerHead player_head;
@@ -27,8 +26,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     internal Player_Revivefield[] reviveFields;
     internal PhotonTestMovement testMov;
     internal Teleport[] teleporters;
-    //internal Valve.VR.InteractionSystem.TeleportArc player_tele_arc;
-    //internal Valve.VR.InteractionSystem.Teleport player_tele;
 
     private void Awake()
     {
@@ -86,9 +83,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         player_controllers = GetComponentsInChildren<Controller>();
         player_hands_steam = GetComponentsInChildren<Hand>();
         teleporters = GetComponentsInChildren<Teleport>();
-        //player_tele_arc = GetComponentInChildren<Valve.VR.InteractionSystem.TeleportArc>();
-        //player_tele = GetComponentInChildren<Valve.VR.InteractionSystem.Teleport>();
-        //player_teleportArea = GetComponentInChildren<Valve.VR.InteractionSystem.TeleportArea>();
         Steam_VR_Manager.steamManager.EnableRender();
     }
 
