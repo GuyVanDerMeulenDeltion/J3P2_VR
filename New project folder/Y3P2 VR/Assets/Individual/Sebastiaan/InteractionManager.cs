@@ -17,7 +17,6 @@ public class InteractionManager : MonoBehaviourPunCallbacks
     }
 
     public void PickObjectNetwork(int _View, int pickUpObject, int hasItem, bool itemStatus) {
-        print(intManager);
         if (PhotonNetwork.IsConnected)
             photonView.RPC("PickObject", RpcTarget.MasterClient, _View, pickUpObject, hasItem, itemStatus);
         else
@@ -31,56 +30,37 @@ public class InteractionManager : MonoBehaviourPunCallbacks
             ThrowObject(_View, throwable);
     }
 
+    private PhotonView Checkview(int _ID) {
+        PhotonView _NewView = null;
+        foreach (PhotonView _View in PhotonNetwork.PhotonViews) {
+            if (_View.ViewID == _ID) {
+                _NewView = _View;
+                break;
+            }
+        }
+
+        return _NewView;
+    }
+
     [PunRPC]
-    public void PickObject(int _View, int pickUpObject, int hasItem, bool itemStatus)
-    {
-        GameObject _Hand = null;
-        GameObject _PickedupObject = null;
-        GameObject _HasItem = null;
+    public void PickObject(int _View, int pickUpObject, int hasItem, bool itemStatus) {
 
-        if (PhotonNetwork.IsMasterClient)
-        {
-            foreach (PhotonView _view in PhotonNetwork.PhotonViews)
-            {
-                if (_view.ViewID == _View)
-                {
-                    _Hand = _view.gameObject;
-                    break;
+        if (Checkview(_View).IsMine || PhotonNetwork.IsMasterClient) {
+            GameObject _Hand = Checkview(_View).gameObject;
+            GameObject _PickedupObject = Checkview(pickUpObject).gameObject;
+            GameObject _HasItem = Checkview(hasItem).gameObject;
+
+            if (_HasItem == null) {
+                _PickedupObject.transform.SetParent(_Hand.transform);
+                _PickedupObject.GetComponent<Rigidbody>().isKinematic = true;
+                _PickedupObject.GetComponent<Rigidbody>().useGravity = false;
+
+                if (_PickedupObject.GetComponent<Interactables>() != null && PhotonNetwork.IsMasterClient) {
+                    _PickedupObject.GetComponent<Interactables>().enabled = true;
+
+                    _PickedupObject.GetComponent<Transform>().position = _Hand.transform.position;
+                    _PickedupObject.GetComponent<Transform>().rotation = _Hand.transform.rotation;
                 }
-            }
-
-            foreach (PhotonView _view in PhotonNetwork.PhotonViews)
-            {
-                if (_view.ViewID == pickUpObject)
-                {
-                    _PickedupObject = _view.gameObject;
-                    break;
-                }
-            }
-
-            foreach (PhotonView _view in PhotonNetwork.PhotonViews)
-            {
-                if (_view.ViewID == hasItem && itemStatus == true)
-                {
-                    _HasItem = _view.gameObject;
-                    break;
-                }
-            }
-
-            print(_PickedupObject + " is pickedup");
-            print(_Hand + " is hand");
-
-            if (_HasItem == null)
-            {
-                    _PickedupObject.transform.SetParent(_Hand.transform);
-                    _PickedupObject.GetComponent<Rigidbody>().isKinematic = true;
-                    _PickedupObject.GetComponent<Rigidbody>().useGravity = false;
-
-                    if (_PickedupObject.GetComponent<Interactables>() != null)
-                        _PickedupObject.GetComponent<Interactables>().enabled = true;
-
-                _PickedupObject.GetComponent<Transform>().position = _Hand.transform.position;
-                _PickedupObject.GetComponent<Transform>().rotation = _Hand.transform.rotation;
 
                 if (_Hand.GetPhotonView().IsMine)
                     _Hand.GetComponent<Controller>().item = _PickedupObject;
