@@ -29,6 +29,14 @@ public class NetworkedAmmo : MonoBehaviourPunCallbacks {
     private float CheckKinetics() {
         return Mathf.Pow(GetComponent<Rigidbody>().velocity.magnitude, 2) * 0.5f;
     }
-}
+
+    private void Check()
+    {
+        if(PhotonNetwork.IsMasterClient == false)
+        {
+            Destroy(GetComponent<Rigidbody>());
+        }
+    }
+} 
 
 
