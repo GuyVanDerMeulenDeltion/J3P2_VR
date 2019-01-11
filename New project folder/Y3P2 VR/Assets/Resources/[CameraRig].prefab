@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 114274111421203996}
   - component: {fileID: 114204979075749436}
   - component: {fileID: 65680596031646380}
-  - component: {fileID: 114323789479016436}
+  - component: {fileID: 114067883201045502}
   m_Layer: 0
   m_Name: '[CameraRig]'
   m_TagString: Player
@@ -3234,6 +3234,17 @@ MonoBehaviour:
   deathscreenAnim: {fileID: 95894946619835156}
   broadcastAnim: {fileID: 95738816979079422}
   broadcastText: {fileID: 114609051189746684}
+--- !u!114 &114067883201045502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1502915016181340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9114614b75e9a7b4b8e0cbda58ade47e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114082135105182136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4125,17 +4136,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e20e65b3fa4555f46b1fe021a588bb76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114323789479016436
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1502915016181340}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9114614b75e9a7b4b8e0cbda58ade47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114326233422116824
@@ -5130,7 +5130,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 1844709239116400}
   playerMain: {fileID: 114055774911588608}
-  interaction_manager: {fileID: 114323789479016436}
+  interaction_manager: {fileID: 0}
 --- !u!114 &114759268130333638
 MonoBehaviour:
   m_ObjectHideFlags: 1

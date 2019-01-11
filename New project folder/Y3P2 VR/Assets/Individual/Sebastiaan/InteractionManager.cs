@@ -8,10 +8,15 @@ public class InteractionManager : MonoBehaviourPunCallbacks
 {
     public static InteractionManager intManager;
 
-    //public GameObject leftHandSpawnPos { get { return (transform.GetChild(0).gameObject); } }
-    //public GameObject rightHandSpawnPos { get { return (transform.GetChild(1).gameObject); } }
+    public GameObject leftHandSpawnPos { get { return (transform.GetChild(0).gameObject); } }
+    public GameObject rightHandSpawnPos { get { return (transform.GetChild(1).gameObject); } }
 
     private void Awake()
+    {
+        intManager = this;
+    }
+
+    public override void OnEnable()
     {
         intManager = this;
     }
@@ -30,45 +35,30 @@ public class InteractionManager : MonoBehaviourPunCallbacks
             ThrowObject(_View, throwable);
     }
 
+    private PhotonView GetView(int _ID)
+    {
+        PhotonView _NewView = null;
+        foreach(PhotonView _View in PhotonNetwork.PhotonViews)
+        {
+            if (_View.ViewID == _ID)
+            {
+                _NewView = _View;
+                break;
+            }
+        }
+
+        return _NewView;
+    }
+
     [PunRPC]
     public void PickObject(int _View, int pickUpObject, int hasItem, bool itemStatus)
     {
-        GameObject _Hand = null;
-        GameObject _PickedupObject = null;
-        GameObject _HasItem = null;
+        GameObject _Hand = GetView(_View).gameObject;
+        GameObject _PickedupObject = GetView(pickUpObject).gameObject;
+        GameObject _HasItem = GetView(hasItem).gameObject;
 
         if (PhotonNetwork.IsMasterClient)
         {
-            foreach (PhotonView _view in PhotonNetwork.PhotonViews)
-            {
-                if (_view.ViewID == _View)
-                {
-                    _Hand = _view.gameObject;
-                    break;
-                }
-            }
-
-            foreach (PhotonView _view in PhotonNetwork.PhotonViews)
-            {
-                if (_view.ViewID == pickUpObject)
-                {
-                    _PickedupObject = _view.gameObject;
-                    break;
-                }
-            }
-
-            foreach (PhotonView _view in PhotonNetwork.PhotonViews)
-            {
-                if (_view.ViewID == hasItem && itemStatus == true)
-                {
-                    _HasItem = _view.gameObject;
-                    break;
-                }
-            }
-
-            print(_PickedupObject + " is pickedup");
-            print(_Hand + " is hand");
-
             if (_HasItem == null)
             {
                     _PickedupObject.transform.SetParent(_Hand.transform);
@@ -83,6 +73,8 @@ public class InteractionManager : MonoBehaviourPunCallbacks
 
                 if (_Hand.GetPhotonView().IsMine)
                     _Hand.GetComponent<Controller>().item = _PickedupObject;
+
+                _PickedupObject.GetPhotonView().TransferOwnership(_Hand.GetPhotonView().Owner);
             }
         }
     }
