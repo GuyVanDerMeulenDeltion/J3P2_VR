@@ -100,6 +100,8 @@ public class InteractionManager : MonoBehaviourPunCallbacks
             }
         }
 
+        GetView(_throwable).TransferOwnership(PhotonNetwork.MasterClient);
+
         if (_Throwable != null && _Hand != null)
         {
             if(_Hand.GetPhotonView().IsMine)
@@ -116,7 +118,6 @@ public class InteractionManager : MonoBehaviourPunCallbacks
                 _Throwable.GetComponent<Rigidbody>().velocity = _TrackedObj.GetVelocity();
                 _Throwable.GetComponent<Rigidbody>().angularVelocity = _TrackedObj.GetAngularVelocity();
             }
-            GetView(_throwable).TransferOwnership(PhotonNetwork.MasterClient);
         }
     }
 }
