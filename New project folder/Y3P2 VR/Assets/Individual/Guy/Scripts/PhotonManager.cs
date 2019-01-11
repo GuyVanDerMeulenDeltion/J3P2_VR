@@ -19,10 +19,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
 
     private void Start() {
         PhotonNetwork.ConnectUsingSettings();
+        //PhotonNetwork.ConnectToRegion("EU");
     }
 
     public override void OnConnectedToMaster() {
         PhotonNetwork.JoinRandomRoom();
+        print(PhotonNetwork.CloudRegion+ " is the region.");
     }
 
     public override void OnJoinedRoom() {
