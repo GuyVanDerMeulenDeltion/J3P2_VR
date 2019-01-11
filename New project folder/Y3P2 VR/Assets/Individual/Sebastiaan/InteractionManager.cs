@@ -56,8 +56,8 @@ public class InteractionManager : MonoBehaviourPunCallbacks
         GameObject _Hand = GetView(_View).gameObject;
         GameObject _PickedupObject = GetView(pickUpObject).gameObject;
         GameObject _HasItem = null;
-        if (GetView(hasItem).gameObject != null)
-            _HasItem = GetView(hasItem).gameObject;
+        if (GetView(hasItem) != null)
+        _HasItem = GetView(hasItem).gameObject;
 
         if (PhotonNetwork.IsMasterClient)
         {
