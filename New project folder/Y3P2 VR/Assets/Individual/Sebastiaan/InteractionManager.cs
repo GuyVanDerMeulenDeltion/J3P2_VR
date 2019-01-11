@@ -11,9 +11,9 @@ public class InteractionManager : MonoBehaviourPunCallbacks
     public GameObject leftHandSpawnPos { get { return (transform.GetChild(0).gameObject); } }
     public GameObject rightHandSpawnPos { get { return (transform.GetChild(1).gameObject); } }
 
-    private void Awake() {
+    public override void OnEnable()
+    {
         intManager = this;
-        print(intManager);
     }
 
     public void PickObjectNetwork(int _View, int pickUpObject, int hasItem, bool itemStatus) {
@@ -33,51 +33,57 @@ public class InteractionManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void PickObject(int _View, int pickUpObject, int hasItem, bool itemStatus)
     {
-        print("yes");
         GameObject _Hand = null;
         GameObject _PickedupObject = null;
         GameObject _HasItem = null;
 
-        foreach (PhotonView _view in PhotonNetwork.PhotonViews) {
-            if (_view.ViewID == _View) {
-                _Hand = _view.gameObject;
-                break;
-            }
-        }
-
-        foreach (PhotonView _view in PhotonNetwork.PhotonViews) {
-            if (_view.ViewID == pickUpObject) {
-                _PickedupObject = _view.gameObject;
-                break;
-            }
-        }
-
-        foreach (PhotonView _view in PhotonNetwork.PhotonViews) {
-            if (_view.ViewID == hasItem && itemStatus == true) {
-                _HasItem = _view.gameObject;
-                break;
-            }
-        }
-
-        print(_PickedupObject +" is pickedup");
-        print(_Hand + " is hand");
-
-        if (_HasItem == null)
+        if (PhotonNetwork.IsMasterClient)
         {
-            if (PhotonNetwork.IsMasterClient) {
-                _PickedupObject.transform.SetParent(_Hand.transform);
-                _PickedupObject.GetComponent<Rigidbody>().isKinematic = true;
-                _PickedupObject.GetComponent<Rigidbody>().useGravity = false;
-
-                if (_PickedupObject.GetComponent<Interactables>() != null)
-                    _PickedupObject.GetComponent<Interactables>().enabled = true;
+            foreach (PhotonView _view in PhotonNetwork.PhotonViews)
+            {
+                if (_view.ViewID == _View)
+                {
+                    _Hand = _view.gameObject;
+                    break;
+                }
             }
 
-            _PickedupObject.GetComponent<Transform>().position = _Hand.transform.position;
-            _PickedupObject.GetComponent<Transform>().rotation = _Hand.transform.rotation;
+            foreach (PhotonView _view in PhotonNetwork.PhotonViews)
+            {
+                if (_view.ViewID == pickUpObject)
+                {
+                    _PickedupObject = _view.gameObject;
+                    break;
+                }
+            }
 
-            if(_Hand.GetPhotonView().IsMine)
-            _Hand.GetComponent<Controller>().item = _PickedupObject;
+            foreach (PhotonView _view in PhotonNetwork.PhotonViews)
+            {
+                if (_view.ViewID == hasItem && itemStatus == true)
+                {
+                    _HasItem = _view.gameObject;
+                    break;
+                }
+            }
+
+            print(_PickedupObject + " is pickedup");
+            print(_Hand + " is hand");
+
+            if (_HasItem == null)
+            {
+                    _PickedupObject.transform.SetParent(_Hand.transform);
+                    _PickedupObject.GetComponent<Rigidbody>().isKinematic = true;
+                    _PickedupObject.GetComponent<Rigidbody>().useGravity = false;
+
+                    if (_PickedupObject.GetComponent<Interactables>() != null)
+                        _PickedupObject.GetComponent<Interactables>().enabled = true;
+
+                _PickedupObject.GetComponent<Transform>().position = _Hand.transform.position;
+                _PickedupObject.GetComponent<Transform>().rotation = _Hand.transform.rotation;
+
+                if (_Hand.GetPhotonView().IsMine)
+                    _Hand.GetComponent<Controller>().item = _PickedupObject;
+            }
         }
     }
 

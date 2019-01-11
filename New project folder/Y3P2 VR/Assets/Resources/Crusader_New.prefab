@@ -2093,7 +2093,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114035834490309888}
   viewIdField: 0
-  InstantiationId: 8
+  InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &114316416762104784
 MonoBehaviour:
@@ -2142,7 +2142,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1925864966609802}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98a84028f35973843904e9627a175a28, type: 3}
   m_Name: 
@@ -2151,7 +2151,7 @@ MonoBehaviour:
   timer: 0
   hurt: 0
   dead: 0
-  kekdollScript: {fileID: 0}
+  kekdollScript: {fileID: 114316416762104784}
   obj1: {fileID: 0}
   obj2: {fileID: 0}
   obj3: {fileID: 0}
