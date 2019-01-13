@@ -25,7 +25,11 @@ public class FaceController : MonoBehaviour {
 
     public void Update()
     {
-        hurt = kekdollScript.doRagdoll;
+        if(kekdollScript != null)
+        {
+            hurt = kekdollScript.doRagdoll;
+        }
+        
         if(hurt)
         {
             currentEmotion = 4;
