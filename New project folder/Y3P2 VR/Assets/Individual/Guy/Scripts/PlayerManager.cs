@@ -35,6 +35,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         if (photonView.IsMine || !PhotonNetwork.IsConnected)
         {
             thisPlayer = this;
+            Debug.LogError("yterwaerewr");
             GetComponentsFromPlayer();
             camera.enabled = true;
             playerbody.SetActive(false);
