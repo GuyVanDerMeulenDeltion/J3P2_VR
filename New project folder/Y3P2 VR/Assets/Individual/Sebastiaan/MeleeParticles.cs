@@ -11,6 +11,6 @@ public class MeleeParticles : MonoBehaviour {
 	}
 	
 	void Update () {
-        trailrenderer.widthMultiplier = Mathf.Clamp(transform.root.GetComponent<Rigidbody>().velocity.magnitude, 0.1f, 1);
+        trailrenderer.widthMultiplier = Mathf.Clamp(transform.root.GetComponent<Rigidbody>().velocity.magnitude, 0.05f, 1);
 	}
 }
