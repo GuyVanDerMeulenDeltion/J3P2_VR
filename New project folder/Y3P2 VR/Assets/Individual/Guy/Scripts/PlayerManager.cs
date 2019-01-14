@@ -14,6 +14,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     public Camera camera;
     public GameObject[] menu;
     public VR_Player playerMain;
+
+    [SerializeField] private GameObject playerbody;
+    
     public InteractionManager interaction_manager;
 
     internal Hand[] player_hands_steam;
@@ -34,6 +37,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
             thisPlayer = this;
             GetComponentsFromPlayer();
             camera.enabled = true;
+            playerbody.SetActive(false);
             return;
         }
 
