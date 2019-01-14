@@ -56,7 +56,7 @@ public class InteractionManager : MonoBehaviourPunCallbacks
 
         GameObject _Hand = GetView(_View).gameObject;
         GameObject _PickedupObject = GetView(pickUpObject).gameObject;
-        _Hand.GetComponent<Rigidbody>().isKinematic = true;
+        _PickedupObject.GetComponent<Rigidbody>().isKinematic = true;
 
         if (GetView(_View).IsMine ) {
         GameObject _HasItem = null;
@@ -93,6 +93,7 @@ public class InteractionManager : MonoBehaviourPunCallbacks
 
                 if (_Throwable.GetComponent<Interactables>() != null)
                     _Throwable.GetComponent<Interactables>().enabled = false;
+
                 _Throwable.transform.SetParent(null);
                 _Throwable.GetComponent<Rigidbody>().isKinematic = false;
                 _Throwable.GetComponent<Rigidbody>().useGravity = true;
