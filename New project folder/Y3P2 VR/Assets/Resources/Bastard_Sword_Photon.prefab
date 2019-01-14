@@ -59,7 +59,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1317351242399802}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 15.638193, y: 3.29428, z: 41.37065}
+  m_LocalPosition: {x: 21.046356, y: -3.402, z: 44.151}
   m_LocalScale: {x: 1.5, y: 2, z: 2}
   m_Children:
   - {fileID: 4555752393154464}
@@ -72,13 +72,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1909733720273858}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.002, z: 0.345}
   m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.44115007}
   m_Children: []
   m_Father: {fileID: 4058285805049864}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!23 &23150937083757982
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -230,7 +230,7 @@ TrailRenderer:
   m_Time: 0.5
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 1
+    widthMultiplier: 50
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -257,11 +257,11 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.504717, b: 0.5934954, a: 1}
-      key1: {r: 0.9245283, g: 0.14391243, b: 0.41944504, a: 1}
-      key2: {r: 0.5188679, g: 0.002447496, b: 0.36819118, a: 0.22745098}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.20990565, g: 0.27867585, b: 0.8396226, a: 0.7254902}
+      key1: {r: 0.43596473, g: 0.58339345, b: 0.9150943, a: 0.22745098}
+      key2: {r: 0.5222944, g: 0.8020368, b: 0.9150943, a: 0.22745098}
+      key3: {r: 0, g: 0, b: 0, a: 0.22745098}
+      key4: {r: 0, g: 0, b: 0, a: 0.22745098}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
@@ -273,17 +273,17 @@ TrailRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 5204
-      atime1: 40863
+      atime0: 0
+      atime1: 65535
       atime2: 65535
-      atime3: 0
-      atime4: 0
+      atime3: 65535
+      atime4: 65535
       atime5: 0
       atime6: 0
       atime7: 0
       m_Mode: 0
       m_NumColorKeys: 3
-      m_NumAlphaKeys: 3
+      m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 1
@@ -349,6 +349,6 @@ MonoBehaviour:
   OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 114646327951320546}
-  viewIdField: 0
+  viewIdField: 7
   InstantiationId: 7
   isRuntimeInstantiated: 0
