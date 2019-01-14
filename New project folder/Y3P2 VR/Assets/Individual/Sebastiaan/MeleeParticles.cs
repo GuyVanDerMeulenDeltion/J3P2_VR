@@ -5,12 +5,21 @@ using UnityEngine;
 public class MeleeParticles : MonoBehaviour {
 
     public TrailRenderer trailrenderer { get { return transform.GetComponent<TrailRenderer>(); } }
+    protected Vector3 oldPos;
+    protected Vector3 newPos;
+    protected Vector3 customVelocity;
 
-	void Start () {
+    void Start () {
 		
 	}
 	
 	void Update () {
-        trailrenderer.widthMultiplier = Mathf.Clamp(transform.root.GetComponent<Rigidbody>().velocity.magnitude, 0.05f, 1);
+        newPos = transform.parent.parent.position;
+        customVelocity = (oldPos - newPos) / Time.deltaTime;
+        oldPos = newPos;
+
+        trailrenderer.widthMultiplier = Mathf.Clamp(customVelocity.magnitude, 0.05f, 1);
+        print(transform.parent.parent);
+        print(customVelocity);
 	}
 }
