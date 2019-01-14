@@ -55,12 +55,13 @@ public class InteractionManager : MonoBehaviourPunCallbacks
     {
         GameObject _Hand = GetView(_View).gameObject;
         GameObject _PickedupObject = GetView(pickUpObject).gameObject;
-        _PickedupObject.GetComponent<Rigidbody>().isKinematic = true;
 
         if(_PickedupObject.GetComponentInParent<Controller>()) {
             Controller _Cont = _PickedupObject.GetComponentInParent<Controller>();
             ThrowObject(_Cont.gameObject.GetPhotonView().ViewID, pickUpObject);
         }
+
+        _PickedupObject.GetComponent<Rigidbody>().isKinematic = true;
 
         if (GetView(_View).IsMine ) {
         GameObject _HasItem = null;
