@@ -7937,6 +7937,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 1277577619841040}
   playerMain: {fileID: 114312998515331378}
+  playerbody: {fileID: 1287452760338486}
   interaction_manager: {fileID: 0}
 --- !u!120 &120430979114979430
 LineRenderer:
