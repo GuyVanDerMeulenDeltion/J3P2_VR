@@ -303,6 +303,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e56b3e89d1b01f4e8a7c329bd4b17ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minTrailSize: 0
+  maxTrailSize: 0
+  trailMultiplier: 0
 --- !u!114 &114197626033389920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -349,6 +352,6 @@ MonoBehaviour:
   OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 114646327951320546}
-  viewIdField: 7
+  viewIdField: 0
   InstantiationId: 7
   isRuntimeInstantiated: 0
