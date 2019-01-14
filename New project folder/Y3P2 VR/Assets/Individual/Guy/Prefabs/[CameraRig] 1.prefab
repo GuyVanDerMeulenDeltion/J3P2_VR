@@ -5652,7 +5652,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 4
+  viewIdField: 0
   InstantiationId: 4
   isRuntimeInstantiated: 0
 --- !u!114 &114310222223513106
@@ -6098,6 +6098,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 1918650169946846}
   playerMain: {fileID: 114361605679226794}
+  playerbody: {fileID: 0}
   interaction_manager: {fileID: 0}
 --- !u!114 &114448143662049988
 MonoBehaviour:
@@ -6161,7 +6162,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 6
+  viewIdField: 0
   InstantiationId: 6
   isRuntimeInstantiated: 0
 --- !u!114 &114467712026137024
@@ -6471,7 +6472,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 3
+  viewIdField: 0
   InstantiationId: 3
   isRuntimeInstantiated: 0
 --- !u!114 &114583553344933526
@@ -7034,7 +7035,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 5
+  viewIdField: 0
   InstantiationId: 5
   isRuntimeInstantiated: 0
 --- !u!114 &114727792377217144
@@ -7129,7 +7130,7 @@ MonoBehaviour:
   - {fileID: 114199813285621332}
   - {fileID: 114279580086223334}
   - {fileID: 114651091750332332}
-  viewIdField: 1
+  viewIdField: 0
   InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &114778248576931048
@@ -7907,7 +7908,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 2
+  viewIdField: 0
   InstantiationId: 2
   isRuntimeInstantiated: 0
 --- !u!114 &114981327683575532
@@ -7964,8 +7965,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04de12733d4540f46a6ca28905e62d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchor: {fileID: 4781243582400108}
   yAxisOffset: 1.24
+  offset: 0.6
+  _Head: {fileID: 0}
 --- !u!120 &120456487502145838
 LineRenderer:
   m_ObjectHideFlags: 1

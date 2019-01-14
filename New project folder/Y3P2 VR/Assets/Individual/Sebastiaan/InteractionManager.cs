@@ -82,42 +82,17 @@ public class InteractionManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void ThrowObject(int _View, int _throwable)
     {
-        GameObject _Hand = null;
-        GameObject _Throwable = null;
-        SteamVR_Behaviour_Pose _TrackedObj = null;
-
-        foreach (PhotonView _view in PhotonNetwork.PhotonViews)
-        {
-            if (_view.ViewID == _View)
-            {
-                _Hand = _view.gameObject;
-                _TrackedObj = _view.GetComponent<SteamVR_Behaviour_Pose>();
-                break;
-            }
-        }
-
-        foreach (PhotonView _view in PhotonNetwork.PhotonViews)
-        {
-            if (_view.ViewID == _throwable)
-            {
-                _Throwable = _view.gameObject;
-                break;
-            }
-        }
-
-        GetView(_throwable).TransferOwnership(PhotonNetwork.MasterClient);
+        GameObject _Hand = GetView(_View).gameObject;
+        GameObject _Throwable = GetView(_throwable).gameObject;
+        SteamVR_Behaviour_Pose _TrackedObj = _Hand.GetComponent<SteamVR_Behaviour_Pose>();
 
         if (_Throwable != null && _Hand != null)
         {
             if (_Hand.GetPhotonView().IsMine)
                 _Hand.GetComponent<Controller>().item = null;
 
-            if (PhotonNetwork.IsMasterClient)
-            {
-
                 if (_Throwable.GetComponent<Interactables>() != null)
                     _Throwable.GetComponent<Interactables>().enabled = false;
-
                 _Throwable.transform.SetParent(null);
                 _Throwable.GetComponent<Rigidbody>().isKinematic = false;
                 _Throwable.GetComponent<Rigidbody>().useGravity = true;
@@ -126,4 +101,3 @@ public class InteractionManager : MonoBehaviourPunCallbacks
             }
         }
     }
-}
