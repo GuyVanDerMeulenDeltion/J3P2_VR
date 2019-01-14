@@ -1,0 +1,87 @@
+fileFormatVersion: 2
+guid: 7311e8caefea436489e78e837e7c71b3
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: Stylized Mud_-_Environment/Stylized Mud_-_Environment
+    400000: Stylized Mud_-_Environment/Stylized Mud_-_Environment/Transform
+    2100000: mat.Stylized_Ground_Environment
+    2300000: Stylized Mud_-_Environment/Stylized Mud_-_Environment/MeshRenderer
+    2800000: Stylized_Ground_Environment_baseColor
+    2800002: Stylized_Ground_Environment_normal
+    2800004: Stylized_Ground_Environment_height
+    2800006: Stylized_Ground_Environment_ambientOcclusion
+    3300000: Stylized Mud_-_Environment/Stylized Mud_-_Environment/MeshFilter
+    11400000: sbsar
+    11400002: graph0
+    13500000: Stylized Mud_-_Environment/Stylized Mud_-_Environment/SphereCollider
+    100100000: Stylized Mud_-_Environment
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
+  version: 13
+  mGraphInstanceData:
+  - graphLabel: Stylized_Ground_Environment
+    prototypeName: Stylized_Ground_Environment
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Stylized_Ground_Environment\" label=\"\" >\n
+      </sbspreset>\n"
+    shaderName: Standard
+    outputNames: baseColor,normal,height,ambientOcclusion
+    texturePackingList:
+    - outputName: baseColor
+      alphaSource: baseColor
+    - outputName: normal
+      alphaSource: normal
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: height
+      alphaSource: height
+    - outputName: ambientOcclusion
+      alphaSource: ambientOcclusion
+    textureParameters:
+    - textureName: Stylized_Ground_Environment_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Stylized_Ground_Environment_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Stylized_Ground_Environment_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Stylized_Ground_Environment_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Stylized_Ground_Environment_ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: ambientOcclusion
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {instanceID: 0}
+    generatedTextures: []
