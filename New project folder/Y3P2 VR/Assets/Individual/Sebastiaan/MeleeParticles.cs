@@ -10,6 +10,10 @@ public class MeleeParticles : MonoBehaviour {
     protected Vector3 newPos;
     protected Vector3 customVelocity;
 
+    public float minTrailSize;
+    public float maxTrailSize;
+    public float trailMultiplier;
+
     void Start () {
 		
 	}
@@ -19,6 +23,7 @@ public class MeleeParticles : MonoBehaviour {
         customVelocity = (oldPos - newPos) / Time.deltaTime;
         oldPos = newPos;
 
-        trailrenderer.widthMultiplier = Mathf.Clamp(customVelocity.magnitude*20, 1, 20);
+
+        trailrenderer.widthMultiplier = Mathf.Clamp(customVelocity.magnitude*trailMultiplier,minTrailSize,maxTrailSize);
 	}
 }
