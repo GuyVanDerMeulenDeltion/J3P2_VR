@@ -54,4 +54,6 @@ MonoBehaviour:
   - Shoot
   - LoadArrow
   - GetRemoveTarget
+  - ShootEnemyArrow
+  - HitPlayer
   DisableAutoOpenWizard: 1

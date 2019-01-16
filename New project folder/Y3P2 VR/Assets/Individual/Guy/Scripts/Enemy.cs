@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     [SerializeField]public float health;
 
     [Header("Target Info:")]
-    [SerializeField]private Transform currentTarget;
+    [SerializeField]protected Transform currentTarget;
 
     #region Private references
     private NavMeshAgent thisAgent;
