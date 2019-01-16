@@ -274,15 +274,4 @@ public class Enemy : MonoBehaviourPunCallbacks {
         EnemyManager.enemyManager.SetEnemyHealth(photonView.ViewID, maxHealth, health);
         EnemyManager.enemyManager.SetEnemyHitsplash(_HitPos, _Hit);
     }
-
-    #region Animation Events
-    public void AnimationCheck(int _i) {
-        if (_i == 0) attacking = true;
-        else
-        if (_i == 1) {
-            attacking = false;
-            thisAgent.speed = agentSpeed;
-        }
-    }
-    #endregion
 }

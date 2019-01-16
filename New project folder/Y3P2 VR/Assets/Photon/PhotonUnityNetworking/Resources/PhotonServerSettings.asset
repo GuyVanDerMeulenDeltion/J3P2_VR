@@ -53,4 +53,5 @@ MonoBehaviour:
   - ThrowObject
   - Shoot
   - LoadArrow
+  - GetRemoveTarget
   DisableAutoOpenWizard: 1
