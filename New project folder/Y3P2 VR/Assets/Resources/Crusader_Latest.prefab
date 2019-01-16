@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 65031041475077536}
   m_Layer: 10
   m_Name: Crusader_Latest
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2680,7 +2680,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114431090655589002}
-  viewIdField: 0
+  viewIdField: 7
   InstantiationId: 7
   isRuntimeInstantiated: 0
 --- !u!114 &114239674875153540
