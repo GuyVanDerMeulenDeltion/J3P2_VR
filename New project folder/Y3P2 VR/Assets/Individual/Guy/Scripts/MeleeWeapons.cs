@@ -16,9 +16,7 @@ public class MeleeWeapons : Interactables {
 
     //Initialize rotationLast in start, or it will cause an error
     protected virtual void Start() {
-        if (PhotonNetwork.IsMasterClient == false)
-            Destroy(this);
-
+        this.enabled = false;
         rotationLast = transform.rotation;
     }
 
