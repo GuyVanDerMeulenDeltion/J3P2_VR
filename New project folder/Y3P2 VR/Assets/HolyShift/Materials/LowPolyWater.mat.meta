@@ -1,10 +1,12 @@
 fileFormatVersion: 2
-guid: dba33a2bf8b23400bacf323fc2816a51
+guid: 863b1e136fdb9fd4eaaa03b2a369ddb4
 labels:
 - Lowpoly
 - Shader
 - Water
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
