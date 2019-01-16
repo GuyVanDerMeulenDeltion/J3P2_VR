@@ -82,7 +82,7 @@ ScriptedImporter:
     - outputName: roughness
       bLinear: 1
     - outputName: metallic
-      bLinear: 1
+      bLinear: 0
     - outputName: height
       bLinear: 1
     - outputName: ambientOcclusion
@@ -96,5 +96,5 @@ ScriptedImporter:
       textureHeight: 0
       textureFormat: 0
       bGenerateOnLoad: 1
-    material: {instanceID: 0}
+    material: {fileID: 2100000, guid: ebdd5ebd47a35f54d8db70f75da38052, type: 3}
     generatedTextures: []
