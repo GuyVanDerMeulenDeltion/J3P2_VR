@@ -180,7 +180,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
 
         if (_Players != null) {
             foreach (Transform _Player in _Players) {
-                if (Vector3.Distance(transform.position, _Player.transform.position) < _ClosestDistance & _Player.transform.root.GetComponent<PlayerManager>().died == false) {
+                if (Vector3.Distance(transform.position, _Player.transform.position) < _ClosestDistance) {
                     _ClosestPlayer = _Player;
                     _ClosestDistance = Vector3.Distance(transform.position, _Player.transform.position);
                 }

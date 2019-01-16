@@ -96,6 +96,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         if (died == false) {
             playerMain.SetDeath();
             died = true;
+            EnemyManager.enemyManager.SetRemoveTarget(photonView.ViewID);
             foreach(Controller _Cont in PlayerManager.thisPlayer.player_controllers)
             {
                 _Cont.DropObject(true);
