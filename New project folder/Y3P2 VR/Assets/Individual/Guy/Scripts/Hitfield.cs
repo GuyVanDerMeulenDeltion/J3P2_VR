@@ -12,4 +12,15 @@ public class Hitfield : MonoBehaviour {
     void LateUpdate() {
         transform.rotation = rotation;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.LogWarning("initiate tag test");
+        if(other.transform.tag == "EnemyWeapon")
+        {
+            Debug.LogWarning("Passed tag test");
+            if(PlayerManager.thisPlayer.died == false) 
+            PlayerManager.thisPlayer.SetDeath();
+        }
+    }
 }

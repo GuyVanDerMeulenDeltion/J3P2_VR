@@ -12,6 +12,8 @@ TagManager:
   - Enemy
   - Health
   - Menu
+  - Fire
+  - EnemyWeapon
   layers:
   - Default
   - TransparentFX

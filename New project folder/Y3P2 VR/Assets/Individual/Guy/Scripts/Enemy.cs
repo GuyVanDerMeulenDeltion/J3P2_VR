@@ -43,17 +43,9 @@ public class Enemy : MonoBehaviourPunCallbacks {
 
     public void Update() {
         Attacking();
-
-        /*if (Input.GetButtonDown("Fire1")) {
-            GetDamaged(50, Vector3.one);
-        }
-
-        if (Input.GetButtonDown("Fire2")) {
-            StartEnemy();
-        }*/
     }
 
-    private void Attacking() {
+    public virtual void Attacking() {
          if(inRange == true && hit == false) {
                 if (hitTimer > 0) {
                     hitTimer -= Time.deltaTime;
@@ -64,9 +56,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
              }
         }
 
-    private void Attack(int _View) {
-        //Does the big attack;
-        print("Attack");
+    public virtual void Attack(int _View) {
         EnemyManager.enemyManager.SetEnemyMessage(transform.position + new Vector3(0, 1, 0), gameObject.name + " has attacked " +currentTarget.name+"!");
         EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, false, true);
     }
@@ -168,7 +158,6 @@ public class Enemy : MonoBehaviourPunCallbacks {
     private IEnumerator AssignTargetTimer() {
         yield return new WaitForSeconds(timeTillTargetCheck);
         StartCoroutine(AssignTargetTimer());
-        if (inRange == true) yield break;
         SetTarget();
     }
 
@@ -191,7 +180,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
 
         if (_Players != null) {
             foreach (Transform _Player in _Players) {
-                if (Vector3.Distance(transform.position, _Player.transform.position) < _ClosestDistance) {
+                if (Vector3.Distance(transform.position, _Player.transform.position) < _ClosestDistance & _Player.transform.root.GetComponent<PlayerManager>().died == false) {
                     _ClosestPlayer = _Player;
                     _ClosestDistance = Vector3.Distance(transform.position, _Player.transform.position);
                 }
@@ -201,7 +190,11 @@ public class Enemy : MonoBehaviourPunCallbacks {
         if (_ClosestPlayer != null)
             return _ClosestPlayer.transform;
         else
+        {
+            EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, false, false);
+            inRange = false;
             return null;
+        }
     }
 
     //Sets the new target of the enemy based on the overloaded transform
@@ -249,8 +242,6 @@ public class Enemy : MonoBehaviourPunCallbacks {
         thisBody.velocity *= 10;
         Destroy(thisAgent);
         Destroy(this);
-
-
     }
 
     //Restores after a while
@@ -263,6 +254,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
             hit = false;
             thisAgent.enabled = true;
             thisAgent.updatePosition = transform;
+
             if (inRange == false) {
                 thisAgent.speed = agentSpeed;
                 EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, true, false);

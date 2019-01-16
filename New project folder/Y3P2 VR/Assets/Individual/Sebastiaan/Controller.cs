@@ -59,15 +59,20 @@ public class Controller : MonoBehaviourPunCallbacks
     {
         if(_ResetTimer == true)
         {
+
             timer = teleportTimer;
             foreach(Controller _Cont in PlayerManager.thisPlayer.player_controllers)
             {
                 canDrop = false;
                 if (_Cont.item != null)
-                    if (_Cont.GetComponent<Sword>())
-                        _Cont.GetComponent<Sword>().enabled = false;
-                    else if (_Cont.GetComponent<Shield>())
-                        _Cont.GetComponent<Shield>().enabled = false;
+                    if (_Cont.GetComponentInChildren<Sword>())
+                    {
+                        _Cont.GetComponentInChildren<Sword>().enabled = false;
+                        _Cont.GetComponentInChildren<TrailRenderer>().enabled = false;
+                    }
+                    else if (_Cont.GetComponentInChildren<Shield>())
+                        _Cont.GetComponentInChildren<Shield>().enabled = false;
+
             }
         }
 
@@ -79,10 +84,13 @@ public class Controller : MonoBehaviourPunCallbacks
             foreach (Controller _Cont in PlayerManager.thisPlayer.player_controllers)
             {
                 if (_Cont.item != null)
-                    if (_Cont.GetComponent<Sword>())
-                        _Cont.GetComponent<Sword>().enabled = true;
-                    else if (_Cont.GetComponent<Shield>())
-                        _Cont.GetComponent<Shield>().enabled = true;
+                    if (_Cont.GetComponentInChildren<Sword>())
+                    {
+                        _Cont.GetComponentInChildren<Sword>().enabled = true;
+                        _Cont.GetComponentInChildren<TrailRenderer>().enabled = true;
+                    }
+                    else if (_Cont.GetComponentInChildren<Shield>())
+                        _Cont.GetComponentInChildren<Shield>().enabled = true;
             }
         }
 
@@ -152,11 +160,17 @@ public class Controller : MonoBehaviourPunCallbacks
         {
             if (leftHand)
                 if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.LeftHand))
-                    InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID);
+                    if (item != null)
+                        InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID);
+                    else
+                        InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, 0);
 
             if (rightHand)
                 if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand))
+                    if(item != null)
                     InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID);
+                            else
+                    InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, 0);
 
 
             if (PlayerManager.thisPlayer != null)

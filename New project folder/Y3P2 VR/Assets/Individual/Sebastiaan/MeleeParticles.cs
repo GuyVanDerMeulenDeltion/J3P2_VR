@@ -19,11 +19,20 @@ public class MeleeParticles : MonoBehaviour {
 	}
 	
 	void Update () {
-        newPos = transform.parent.parent.position;
-        customVelocity = (oldPos - newPos) / Time.deltaTime;
-        oldPos = newPos;
+        if (transform.parent.parent != null)
+        {
+            newPos = transform.parent.parent.position;
+            customVelocity = (oldPos - newPos) / Time.deltaTime;
+            oldPos = newPos;
+        }
 
+        if (customVelocity.magnitude > 1)
+        {
+            trailrenderer.widthMultiplier = Mathf.Clamp(customVelocity.magnitude * trailMultiplier, minTrailSize, maxTrailSize);
+            trailrenderer.emitting = true;
 
-        trailrenderer.widthMultiplier = Mathf.Clamp(customVelocity.magnitude*trailMultiplier,minTrailSize,maxTrailSize);
+        }
+        else
+            trailrenderer.emitting = false;
 	}
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2890,7 +2890,7 @@ MonoBehaviour:
   - entityType: Crusader
     _Pos:
     - {fileID: 1476372667}
-    _Entity: {fileID: 1925864966609802, guid: 14246e4534bfd474b9e861e39c5b66fa, type: 2}
+    _Entity: {fileID: 1265604688048576, guid: cf51277f24bedb1479eda6754920021a, type: 2}
 --- !u!4 &707035580
 Transform:
   m_ObjectHideFlags: 0

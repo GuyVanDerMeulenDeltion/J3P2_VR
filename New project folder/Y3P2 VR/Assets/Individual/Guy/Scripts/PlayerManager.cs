@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     internal SteamVR_Behaviour_Pose[] hands;
     internal Player_Revivefield[] reviveFields;
     internal PhotonTestMovement testMov;
+    internal Hitfield player_hitbox;
     internal Teleport[] teleporters;
 
     private void Awake()
@@ -77,6 +78,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     }
 
     private void GetComponentsFromPlayer() {
+        player_hitbox = GetComponentInChildren<Hitfield>();
         player_head = GetComponentInChildren<PlayerHead>();
         player_menu = GetComponentInChildren<Menu>();
         camera = GetComponentInChildren<Camera>();
@@ -87,12 +89,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         player_controllers = GetComponentsInChildren<Controller>();
         player_hands_steam = GetComponentsInChildren<Hand>();
         teleporters = GetComponentsInChildren<Teleport>();
-        Steam_VR_Manager.steamManager.EnableRender();
+        //Steam_VR_Manager.steamManager.EnableRender();
     }
 
     public void SetDeath() {
         if (died == false) {
             playerMain.SetDeath();
+            print("ÿ");
             foreach (Player_Revivefield _Field in reviveFields) {
                 _Field.SetReviveFieldState(false);
             }
