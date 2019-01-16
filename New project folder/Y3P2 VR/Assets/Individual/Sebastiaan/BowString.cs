@@ -76,6 +76,10 @@ public class BowString : Bow
                         transform.GetChild(0).GetComponent<NetworkedAmmo>().canHit = true;
                         transform.GetChild(0).GetComponent<Destroy>().enabled = true;
                     }
+                    if(transform.parent.GetComponent<Animator>().GetFloat("DrawAxis") >= 0.95f)
+                    {
+                        _arrow.GetComponentInChildren<ParticleSystem>().Play();
+                    }
                     currentHand.GetComponent<Controller>().item = null;
                     transform.GetChild(0).SetParent(null);
                     firing = false;
@@ -120,6 +124,11 @@ public class BowString : Bow
                     {
                         transform.GetChild(0).GetComponent<NetworkedAmmo>().canHit = true;
                         transform.GetChild(0).GetComponent<Destroy>().enabled = true;
+                    }
+                    if (transform.parent.GetComponent<Animator>().GetFloat("DrawAxis") >= 0.95f)
+                    {
+                        for (int i = 0; i < criticalSystems.Length; i++)
+                            criticalSystems[i].Play();
                     }
                     currentHand.GetComponent<Controller>().item = null;
                     transform.GetChild(0).SetParent(null);
