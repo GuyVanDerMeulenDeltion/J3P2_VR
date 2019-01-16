@@ -55,7 +55,8 @@ public class BowString : Bow
                     _arrow.GetComponent<NetworkedAmmo>().enabled = false;
                 _arrow.transform.SetParent(transform);
                 _arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                _arrow.transform.localEulerAngles = new Vector3(-90, 0, 0);
+                _arrow.transform.localEulerAngles = new Vector3(-180, -90, 90);
+                _arrow.transform.localPosition = new Vector3(2.13f, 0, -13.81f);
                 currentHand.GetComponent<Controller>().item = _arrow.gameObject;
             }
         }
@@ -107,7 +108,8 @@ public class BowString : Bow
                     _arrow.GetComponent<NetworkedAmmo>().enabled = false;
                 _arrow.transform.SetParent(transform);
                 _arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                _arrow.transform.localEulerAngles = new Vector3(-90, 0, 0);
+                _arrow.transform.localEulerAngles = new Vector3(-180, -90, 90);
+                _arrow.transform.localPosition = new Vector3(2.13f, 0,-13.81f);
                 currentHand.GetComponent<Controller>().item = _arrow.gameObject;
             }
         }

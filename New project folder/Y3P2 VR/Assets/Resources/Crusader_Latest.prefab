@@ -2727,7 +2727,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   health: 0
+  isArcher: 0
   currentTarget: {fileID: 0}
+  timeTillFollow: 1
 --- !u!114 &114390591180177110
 MonoBehaviour:
   m_ObjectHideFlags: 1

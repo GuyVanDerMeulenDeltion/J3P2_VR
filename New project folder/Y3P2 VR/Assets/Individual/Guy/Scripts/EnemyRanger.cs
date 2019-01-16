@@ -19,8 +19,8 @@ public class EnemyRanger : Enemy {
     {
         Quaternion _Rot = Quaternion.LookRotation(_ArrowSpawnPos.position - currentTarget.position);
         Rigidbody _NewArrow = PhotonNetwork.InstantiateSceneObject(_EnemyArrow.name, _ArrowSpawnPos.position, _Rot).GetComponent<Rigidbody>();
-        _NewArrow.AddForce(Vector3.forward * 5, ForceMode.Impulse);
-        _NewArrow.useGravity = false;
+        _NewArrow.AddForce(Vector3.forward * 20, ForceMode.Impulse);
+        _NewArrow.useGravity = true;
 
     }
 }
