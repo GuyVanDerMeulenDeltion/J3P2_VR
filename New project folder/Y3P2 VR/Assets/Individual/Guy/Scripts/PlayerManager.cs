@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     public VR_Player playerMain;
 
     [SerializeField] private GameObject playerbody;
-    
+
     public InteractionManager interaction_manager;
 
     internal Hand[] player_hands_steam;
@@ -95,7 +95,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     public void SetDeath() {
         if (died == false) {
             playerMain.SetDeath();
-            print("ÿ");
+            died = true;
+            foreach(Controller _Cont in PlayerManager.thisPlayer.player_controllers)
+            {
+                _Cont.DropObject(true);
+            }
+
             foreach (Player_Revivefield _Field in reviveFields) {
                 _Field.SetReviveFieldState(false);
             }
@@ -105,6 +110,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 
     public void Revive() {
         if(died == true) {
+            died = false;
             playerMain.SetRevive();
             foreach (Player_Revivefield _Field in reviveFields) {
                 _Field.SetReviveFieldState(true);

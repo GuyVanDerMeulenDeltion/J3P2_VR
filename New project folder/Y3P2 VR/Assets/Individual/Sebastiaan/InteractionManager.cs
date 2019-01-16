@@ -91,8 +91,12 @@ public class InteractionManager : MonoBehaviourPunCallbacks
     public void ThrowObject(int _View, int _throwable)
     {
         GameObject _Hand = GetView(_View).gameObject;
-        GameObject _Throwable = GetView(_throwable).gameObject;
         SteamVR_Behaviour_Pose _TrackedObj = _Hand.GetComponent<SteamVR_Behaviour_Pose>();
+        GameObject _Throwable = null;
+        if (GetView(_throwable) != null)
+        {
+            _Throwable = GetView(_throwable).gameObject;
+        }
 
         if (_Throwable != null && _Hand != null)
         {

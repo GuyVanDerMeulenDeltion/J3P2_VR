@@ -44,11 +44,19 @@ public class Controller : MonoBehaviourPunCallbacks
     public void Update()
     {
         SetMitten();
-        DropObject();
+        Timer(false);
         HideController();
+
+        if (PlayerManager.thisPlayer.died == true)
+        {
+            if(teleport.enabled == true)
+            teleport.enabled = false;
+            return;
+        }
+
+        DropObject(false);
         ActivateButton();
         CurrentPosition();
-        Timer(false);
     }
 
     private void CurrentPosition() {
@@ -111,14 +119,13 @@ public class Controller : MonoBehaviourPunCallbacks
 
     public void ActivateButton() {
 
-        if ((touchpadLeft && leftHand) || (touchpadRight && rightHand)) {
+        if ((touchpadLeft && leftHand) || (touchpadRight && rightHand) && PlayerManager.thisPlayer.died == false) {
             teleport.enabled = true;
         } else {
             teleport.enabled = false;
         }
 
-        if (((leftHand && touchpadLeftPress) || (rightHand && touchpadRightPress))) {
-            print("yes");
+        if ((leftHand && touchpadLeftPress) || (rightHand && touchpadRightPress) && PlayerManager.thisPlayer.died == false) {
             teleport.TeleportPlayer();
             Timer(true);
         }
@@ -136,13 +143,13 @@ public class Controller : MonoBehaviourPunCallbacks
 
         if (other.transform.tag == "Interactable" && otherController.GetComponent<Controller>().item != other.gameObject)
         {
-            if (leftHand && leftHandAxis > 0.85f)
+            if (leftHand && leftHandAxis > 0.85f && PlayerManager.thisPlayer.died == false)
                 if(item != null)
                     InteractionManager.intManager.PickObjectNetwork(GetComponent<PhotonView>().ViewID, other.gameObject.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID, true);
                 else
                     InteractionManager.intManager.PickObjectNetwork(GetComponent<PhotonView>().ViewID, other.gameObject.GetComponent<PhotonView>().ViewID, 0, false);
 
-            if (rightHand && rightHandAxis > 0.85f)
+            if (rightHand && rightHandAxis > 0.85f && PlayerManager.thisPlayer.died == false)
                 if(item != null)
                     InteractionManager.intManager.PickObjectNetwork(GetComponent<PhotonView>().ViewID, other.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID, true);
                 else
@@ -154,19 +161,19 @@ public class Controller : MonoBehaviourPunCallbacks
         }
     }
 
-    public void DropObject()
+    public void DropObject(bool _ForceDrop)
     {
-        if (canDrop == true)
+        if (canDrop == true || _ForceDrop == true)
         {
             if (leftHand)
-                if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.LeftHand))
+                if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.LeftHand) || _ForceDrop == true)
                     if (item != null)
                         InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID);
                     else
                         InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, 0);
 
             if (rightHand)
-                if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand))
+                if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) || _ForceDrop == true)
                     if(item != null)
                     InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID);
                             else

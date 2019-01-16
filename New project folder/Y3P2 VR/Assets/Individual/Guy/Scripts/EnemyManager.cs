@@ -85,11 +85,36 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
             GetEnemyHit(_i, _Velocity, _AngularVel ,_Damage);
     }
 
+    public void SetRemoveTarget(int _i)
+    {
+        if (PhotonNetwork.IsConnected)
+            photonView.RPC("GetRemoveTarget", RpcTarget.All, _i);
+        else
+            GetRemoveTarget(_i);
+    }
+
     [PunRPC]
     private void GetNewTarget(int _i) {
         foreach (PhotonView _View in PhotonNetwork.PhotonViews)
             if (_View.ViewID == _i && _View.gameObject.tag == "Player") {
-                Enemy.players.Add(_View.transform.GetComponentInChildren<Hitfield>().transform);
+                    Enemy.players.Add(_View.transform.GetComponentInChildren<Hitfield>().transform);
+                    return;
+                }
+            }
+
+    [PunRPC]
+    private void GetRemoveTarget(int _i) {
+        foreach (PhotonView _View in PhotonNetwork.PhotonViews)
+            if (_View.ViewID == _i && _View.gameObject.tag == "Player")
+            {
+                foreach(Transform _T in Enemy.players)
+                {
+                    if(_View.transform.root == _T.transform.root)
+                    {
+                        Enemy.players.Remove(_T);
+                        break;
+                    }
+                }
                 return;
             }
     }

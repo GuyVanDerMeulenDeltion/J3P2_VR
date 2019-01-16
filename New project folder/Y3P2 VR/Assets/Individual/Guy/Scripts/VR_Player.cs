@@ -50,7 +50,7 @@ public class VR_Player : MonoBehaviourPunCallbacks {
 
     [PunRPC]
     private new void BroadcastMessage(string _Message) {
-        if (ignoreBroadcastedMessage == false) {
+        if (ignoreBroadcastedMessage != true) {
             broadcastAnim.SetTrigger("Send");
             broadcastText.text = _Message;
         }
@@ -61,13 +61,8 @@ public class VR_Player : MonoBehaviourPunCallbacks {
     public void SetDeath() {
         ignoreBroadcastedMessage = true;
         deathscreenAnim.SetTrigger("Open");
-        PlayerManager.thisPlayer.died = true;
         PlayerManager.thisPlayer.player_grayscale.enabled = true;
-
-        if (PhotonNetwork.IsConnected)
-            SendMessageOnline(death_Message);
-        else
-            SendMessageLocally(death_Message);
+        SendMessageOnline("Oh no, someone died!");
     }
 
     public void SetRevive() {
