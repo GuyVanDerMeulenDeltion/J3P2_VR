@@ -1,17 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02b1c930c612dbc469d258783cb8be34, type: 3}
-  m_Name: __actions_buggy_in_Throttle
-  m_EditorClassIdentifier: 
-  changeTolerance: 0.000001
-  fullPath: /actions/buggy/in/Throttle
-  actionSet: {fileID: 11400000, guid: 76067f66712fb784da79e80ca87f6a33, type: 2}
-  direction: 0
+version https://git-lfs.github.com/spec/v1
+oid sha256:90e61d012d06af171c8069045c0675bea5f64eb08b58d8a182e81c18d3393a0a
+size 567

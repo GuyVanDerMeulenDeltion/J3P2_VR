@@ -1,17 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ab55ded67f66140977a544d93962ab, type: 3}
-  m_Name: __actions_buggy_in_Steering
-  m_EditorClassIdentifier: 
-  changeTolerance: 0.000001
-  fullPath: /actions/buggy/in/Steering
-  actionSet: {fileID: 11400000, guid: 76067f66712fb784da79e80ca87f6a33, type: 2}
-  direction: 0
+version https://git-lfs.github.com/spec/v1
+oid sha256:a01d1dbd58f8f04423c5680c24e53c05d86a2b059e534d460d58989bc6f42fc2
+size 567
