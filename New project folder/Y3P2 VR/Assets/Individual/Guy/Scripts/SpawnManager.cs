@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviourPunCallbacks {
         SpawnItems();
     }
 
-    private void SpawnItems() {
+    internal void SpawnItems() {
         foreach (ItemSpawns _Spawn in items) {
             if (_Spawn._Item != null) {
                 foreach (Transform _Pos in _Spawn._Pos) {
@@ -59,20 +59,30 @@ public class SpawnManager : MonoBehaviourPunCallbacks {
         }
     }
 
-    private void SpawnEntites(int _Chunk) {
+    internal void SpawnEntites(int _Chunk) {
         EntityChunk _ToBeSpawned = entitiesToSpawn[_Chunk];
 
-        foreach(Entity _Entity in _ToBeSpawned.entitiesToSpawn)
+        foreach (Entity _Entity in _ToBeSpawned.entitiesToSpawn)
         {
-            if(PhotonNetwork.IsConnected)
+            if (_Entity._Enemy && _Entity._Pos) //If there is a enemy to spawn and a position to spawn it at.
             {
-                PhotonNetwork.Instantiate(_Entity._Enemy.name, _Entity._Pos.position, _Entity._Pos.rotation);
-                PhotonNetwork.Instantiate(spawnParticles.name, _Entity._Pos.position, _Entity._Pos.rotation);
-            } else
-            {
-                Instantiate(_Entity._Enemy, _Entity._Pos.position, _Entity._Pos.rotation);
-                Instantiate(spawnParticles, _Entity._Pos.position, _Entity._Pos.rotation);
+                if (PhotonNetwork.IsConnected)
+                {
+                    PhotonNetwork.Instantiate(_Entity._Enemy.name, _Entity._Pos.position, _Entity._Pos.rotation);
+                    photonView.RPC("SetParticles", RpcTarget.All, _Entity._Pos.position, _Entity._Pos.eulerAngles);
+                }
+                else
+                {
+                    Instantiate(_Entity._Enemy, _Entity._Pos.position, _Entity._Pos.rotation);
+                    SetParticles(_Entity._Pos.position, _Entity._Pos.rotation.eulerAngles);
+                }
             }
         }
+    }
+
+    [PunRPC]
+    private void SetParticles(Vector3 _Pos, Vector3 _Eulers)
+    {
+        Instantiate(spawnParticles, _Pos, Quaternion.Euler(_Eulers));
     }
 }
