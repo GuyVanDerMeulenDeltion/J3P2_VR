@@ -109,10 +109,13 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
             {
                 foreach(Transform _T in Enemy.players)
                 {
-                    if(_View.transform.root == _T.transform.root)
+                    if (_T != null)
                     {
-                        Enemy.players.Remove(_T);
-                        break;
+                        if (_View.transform.root == _T.transform.root)
+                        {
+                            Enemy.players.Remove(_T);
+                            break;
+                        }
                     }
                 }
                 return;

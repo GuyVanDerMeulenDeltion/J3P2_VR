@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114902426272149370}
   - component: {fileID: 114646327951320546}
   - component: {fileID: 114197626033389920}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Bastard_Sword_Photon
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 23150937083757982}
   - component: {fileID: 96670027429191130}
   - component: {fileID: 114111069230789062}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Trailrenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

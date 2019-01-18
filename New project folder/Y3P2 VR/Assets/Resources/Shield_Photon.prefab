@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 54397182337379662}
   - component: {fileID: 65071538449312190}
   - component: {fileID: 114963483870045254}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Shield_Photon
   m_TagString: Interactable
   m_Icon: {fileID: 0}

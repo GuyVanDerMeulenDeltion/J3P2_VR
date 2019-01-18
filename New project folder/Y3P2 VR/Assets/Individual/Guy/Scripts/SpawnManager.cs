@@ -6,6 +6,9 @@ using Photon.Pun;
 public class SpawnManager : MonoBehaviourPunCallbacks {
 
     public static SpawnManager spawnManager;
+    public static List<Enemy> enemies;
+
+    [SerializeField] private GameObject spawnParticles;
 
     [System.Serializable]
     public struct ItemSpawns {
@@ -16,13 +19,18 @@ public class SpawnManager : MonoBehaviourPunCallbacks {
 
     [System.Serializable]
     public struct Entity {
-        public string entityType;
-        public Transform[] _Pos;
-        public GameObject _Entity;
+        public Transform _Pos;
+        public GameObject _Enemy;
+    }
+
+    [System.Serializable]
+    public struct EntityChunk
+    {
+        public Entity[] entitiesToSpawn;
     }
 
     public List<ItemSpawns> items = new List<ItemSpawns>();
-    public List<Entity> entities = new List<Entity>();
+    public List<EntityChunk> entitiesToSpawn = new List<EntityChunk>();
 
     private void Awake() {
         if (spawnManager != null) Destroy(this);
@@ -36,7 +44,6 @@ public class SpawnManager : MonoBehaviourPunCallbacks {
 
     public void SpawnScenery() {
         SpawnItems();
-        SpawnEntites();
     }
 
     private void SpawnItems() {
@@ -52,15 +59,19 @@ public class SpawnManager : MonoBehaviourPunCallbacks {
         }
     }
 
-    private void SpawnEntites() {
-        foreach (Entity _Spawn in entities) {
-            if (_Spawn._Entity != null) {
-                foreach (Transform _Pos in _Spawn._Pos) {
-                    if (PhotonNetwork.IsConnected)
-                        PhotonNetwork.InstantiateSceneObject(_Spawn._Entity.name, _Pos.position, Quaternion.identity);
-                    else
-                        Instantiate(_Spawn._Entity, _Pos.position, Quaternion.identity);
-                }
+    private void SpawnEntites(int _Chunk) {
+        EntityChunk _ToBeSpawned = entitiesToSpawn[_Chunk];
+
+        foreach(Entity _Entity in _ToBeSpawned.entitiesToSpawn)
+        {
+            if(PhotonNetwork.IsConnected)
+            {
+                PhotonNetwork.Instantiate(_Entity._Enemy.name, _Entity._Pos.position, _Entity._Pos.rotation);
+                PhotonNetwork.Instantiate(spawnParticles.name, _Entity._Pos.position, _Entity._Pos.rotation);
+            } else
+            {
+                Instantiate(_Entity._Enemy, _Entity._Pos.position, _Entity._Pos.rotation);
+                Instantiate(spawnParticles, _Entity._Pos.position, _Entity._Pos.rotation);
             }
         }
     }
