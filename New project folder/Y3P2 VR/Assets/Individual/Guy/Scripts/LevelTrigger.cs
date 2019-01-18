@@ -21,7 +21,7 @@ public class LevelTrigger : MonoBehaviourPunCallbacks {
         levelIndex = (int)Mathf.Clamp(levelIndex, 0, 2);
     }
 
-    private void OnTriggerEnter(Collision _O) {
+    private void OnTriggerEnter(Collider _O) {
         if(_O.transform.tag == "Hand") {
             thisAnim.SetTrigger("Clap");
         }
