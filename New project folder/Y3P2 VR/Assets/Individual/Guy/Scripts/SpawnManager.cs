@@ -41,22 +41,26 @@ public class SpawnManager : MonoBehaviourPunCallbacks {
 
     private void SpawnItems() {
         foreach (ItemSpawns _Spawn in items) {
-            foreach (Transform _Pos in _Spawn._Pos) {
-                if (PhotonNetwork.IsConnected)
-                    PhotonNetwork.InstantiateSceneObject(_Spawn._Item.name, _Pos.position, _Pos.rotation);
-                else
-                    Instantiate(_Spawn._Item, _Pos.position, Quaternion.identity);
+            if (_Spawn._Item != null) {
+                foreach (Transform _Pos in _Spawn._Pos) {
+                    if (PhotonNetwork.IsConnected)
+                        PhotonNetwork.InstantiateSceneObject(_Spawn._Item.name, _Pos.position, _Pos.rotation);
+                    else
+                        Instantiate(_Spawn._Item, _Pos.position, Quaternion.identity);
+                }
             }
         }
     }
 
     private void SpawnEntites() {
         foreach (Entity _Spawn in entities) {
-            foreach (Transform _Pos in _Spawn._Pos) {
-                if (PhotonNetwork.IsConnected)
-                    PhotonNetwork.InstantiateSceneObject(_Spawn._Entity.name, _Pos.position, Quaternion.identity);
-                else
-                    Instantiate(_Spawn._Entity, _Pos.position, Quaternion.identity);
+            if (_Spawn._Entity != null) {
+                foreach (Transform _Pos in _Spawn._Pos) {
+                    if (PhotonNetwork.IsConnected)
+                        PhotonNetwork.InstantiateSceneObject(_Spawn._Entity.name, _Pos.position, Quaternion.identity);
+                    else
+                        Instantiate(_Spawn._Entity, _Pos.position, Quaternion.identity);
+                }
             }
         }
     }
