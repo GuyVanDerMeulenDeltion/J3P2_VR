@@ -5,6 +5,13 @@ using Photon.Pun;
 
 public class EnemyArrow : MonoBehaviourPunCallbacks {
 
+    private bool canDamage = true;
+
+    private void OnCollisionEnter(Collision _c) {
+        if (_c.transform.GetComponent<Shield>())
+            canDamage = false;
+    }
+
     private void OnTriggerEnter(Collider _O)
     {
         if(_O.transform.tag == "Player")
@@ -23,8 +30,10 @@ public class EnemyArrow : MonoBehaviourPunCallbacks {
             {
                 if(_View.IsMine && PlayerManager.thisPlayer.died == false)
                 {
-                    PlayerManager.thisPlayer.SetDeath();
-                    Destroy(this);
+                    if (canDamage == true) {
+                        PlayerManager.thisPlayer.SetDeath();
+                        Destroy(this);
+                    }
                 }
             }
         }
