@@ -20,6 +20,7 @@ public class LevelTrigger : MonoBehaviourPunCallbacks {
         thisAnim = GetComponentInChildren<Animator>();
         thisRender = GetComponentInChildren<MeshRenderer>();
         thisRender.materials[1].SetFloat("_Thickness", 0);
+        selectedLevel = false;
     }
 
     private void OnTriggerEnter(Collider _O) {

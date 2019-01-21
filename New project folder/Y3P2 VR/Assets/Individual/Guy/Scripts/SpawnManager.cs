@@ -7,6 +7,7 @@ public class SpawnManager : MonoBehaviourPunCallbacks {
 
     public static SpawnManager spawnManager;
     public static List<Enemy> enemies;
+    public static int enemyCount;
 
     [SerializeField] private GameObject spawnParticles;
 
@@ -38,12 +39,30 @@ public class SpawnManager : MonoBehaviourPunCallbacks {
     }
 
     private void Start() {
+        SetEnemyCount();
+
         if (PhotonNetwork.IsMasterClient)
             SpawnScenery();
     }
 
     public void SpawnScenery() {
         SpawnItems();
+    }
+
+    private void SetEnemyCount()
+    {
+        enemyCount = 0;
+
+        foreach (EntityChunk _Chunk in entitiesToSpawn)
+        {
+            foreach(Entity _Entity in _Chunk.entitiesToSpawn)
+            {
+                if(_Entity._Enemy != null)
+                {
+                    enemyCount++;
+                }
+            }
+        }
     }
 
     internal void SpawnItems() {

@@ -16,6 +16,20 @@ public class GameManager : MonoBehaviourPunCallbacks {
     public void Awake() {
         if (gameManager != null) return;
         gameManager = this;
+
+    }
+
+    public void UpdateEnemyKill()
+    {
+        if (SpawnManager.spawnManager != null)
+        {
+            SpawnManager.enemyCount -= 1;
+
+            if(SpawnManager.enemyCount <= 0)
+            {
+                photonView.RPC("EndMatch", RpcTarget.AllBuffered, "Completed level, returning to main lobby...");
+            }
+        }
     }
 
     public void Start() {
@@ -68,20 +82,20 @@ public class GameManager : MonoBehaviourPunCallbacks {
 
         if (deathCount >= PhotonNetwork.PlayerList.Length)
         {
-            photonView.RPC("EndMatch", RpcTarget.AllBuffered);
+            photonView.RPC("EndMatch", RpcTarget.AllBuffered, "Everyone died, loading lobby...");
         }
     }
 
     [PunRPC]
-    private void EndMatch()
+    private void EndMatch(string _Message)
     {
-        StartCoroutine(LoadMenu());
+        StartCoroutine(LoadMenu(_Message));
     }
 
-    private IEnumerator LoadMenu()
+    private IEnumerator LoadMenu(string _Message)
     {
         yield return new WaitForSeconds(2);
-        PlayerManager.thisPlayer.playerMain.SendMessageLocally("Everyone died, loading lobby...");
+        PlayerManager.thisPlayer.playerMain.SendMessageLocally(_Message);
         yield return new WaitForSeconds(loadTime);
         PhotonNetwork.LoadLevel(1);
     }

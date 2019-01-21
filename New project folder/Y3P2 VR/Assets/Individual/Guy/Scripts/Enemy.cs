@@ -52,6 +52,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     public void Update() {
         Attacking();
         Check();
+        UpdateWalkTimer();
     }
 
     private void UpdateWalkTimer()
