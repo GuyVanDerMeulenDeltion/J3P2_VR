@@ -1,36 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 327278c90f4824e4f9e67a55a6f3fc4b, type: 3}
-  m_Name: SteamVR_Input_ActionSet_default_In
-  m_EditorClassIdentifier: 
-  actionSet: {fileID: 0}
-  listDirection: 0
-  actions:
-  - {fileID: 11400000, guid: a1d58a8a0b77ec14c9b14d256b811ba8, type: 2}
-  - {fileID: 11400000, guid: 1d876a7371a0c5340a6efc44929fa161, type: 2}
-  - {fileID: 11400000, guid: 3fd2405cd08899740870a5540b3047ce, type: 2}
-  - {fileID: 11400000, guid: 4e3d5f8d3edc3b14581714c42f9ab54d, type: 2}
-  - {fileID: 11400000, guid: 8584ccf8d185681439d2aa7aa30e85a1, type: 2}
-  - {fileID: 11400000, guid: 9f653286eac342c4fa1497be6073770f, type: 2}
-  - {fileID: 11400000, guid: 828cba91a4c63ee40b42cef14f06d3a5, type: 2}
-  - {fileID: 11400000, guid: d9e1c28aa353b214aac5c5ebe37ec9e4, type: 2}
-  - {fileID: 11400000, guid: c681079ed16cf7c4c91b417b73e1cd6f, type: 2}
-  - {fileID: 11400000, guid: b8c67307f807c3e4eafbc530a9afa85f, type: 2}
-  InteractUI: {fileID: 11400000, guid: a1d58a8a0b77ec14c9b14d256b811ba8, type: 2}
-  Teleport: {fileID: 11400000, guid: 1d876a7371a0c5340a6efc44929fa161, type: 2}
-  GrabPinch: {fileID: 11400000, guid: 3fd2405cd08899740870a5540b3047ce, type: 2}
-  GrabGrip: {fileID: 11400000, guid: 4e3d5f8d3edc3b14581714c42f9ab54d, type: 2}
-  Pose: {fileID: 11400000, guid: 8584ccf8d185681439d2aa7aa30e85a1, type: 2}
-  SkeletonLeftHand: {fileID: 11400000, guid: 9f653286eac342c4fa1497be6073770f, type: 2}
-  SkeletonRightHand: {fileID: 11400000, guid: 828cba91a4c63ee40b42cef14f06d3a5, type: 2}
-  Squeeze: {fileID: 11400000, guid: d9e1c28aa353b214aac5c5ebe37ec9e4, type: 2}
-  TouchpadTouch: {fileID: 11400000, guid: c681079ed16cf7c4c91b417b73e1cd6f, type: 2}
-  TouchpadPress: {fileID: 11400000, guid: b8c67307f807c3e4eafbc530a9afa85f, type: 2}
+version https://git-lfs.github.com/spec/v1
+oid sha256:79895d1e35490ddc26fccca8bbbb0a5d8ca4432347314b1c509b03cb7e3137d8
+size 2030

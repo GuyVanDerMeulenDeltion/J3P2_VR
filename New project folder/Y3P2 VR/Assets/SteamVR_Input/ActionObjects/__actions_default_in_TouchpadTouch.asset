@@ -1,17 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c3d755cf6cc936488afcb037b69341e, type: 3}
-  m_Name: __actions_default_in_TouchpadTouch
-  m_EditorClassIdentifier: 
-  changeTolerance: 0.000001
-  fullPath: /actions/default/in/TouchpadTouch
-  actionSet: {fileID: 11400000, guid: cf5cd85c2dec2c64aa800321584811f0, type: 2}
-  direction: 0
+version https://git-lfs.github.com/spec/v1
+oid sha256:3a8c7f5a2c2376d89b69cd45fd4bf099c35aa3e22d2bae20a585d50471b97097
+size 581

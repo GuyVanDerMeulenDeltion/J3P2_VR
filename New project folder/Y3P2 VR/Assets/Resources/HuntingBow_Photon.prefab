@@ -636,7 +636,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114614039355269992}
   viewIdField: 0
-  InstantiationId: 1
+  InstantiationId: 9
   isRuntimeInstantiated: 0
 --- !u!114 &114098406803668908
 MonoBehaviour:
@@ -685,7 +685,7 @@ MonoBehaviour:
   - {fileID: 114401006248868314}
   - {fileID: 114614039355269992}
   viewIdField: 0
-  InstantiationId: 2
+  InstantiationId: 10
   isRuntimeInstantiated: 0
 --- !u!114 &114401006248868314
 MonoBehaviour:
@@ -714,7 +714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupRotation: {x: 0, y: 0, z: 0}
   pickupPosition: {x: 0, y: 0, z: 0}
-  ammo: {fileID: 1706007819409006, guid: e2510af6941e3d04aaf2807b547e18a1, type: 2}
+  ammo: {fileID: 1568259301440234, guid: 907843f850be5fe4ba64bc4af1aba233, type: 2}
   firing: 0
 --- !u!114 &114614039355269992
 MonoBehaviour:

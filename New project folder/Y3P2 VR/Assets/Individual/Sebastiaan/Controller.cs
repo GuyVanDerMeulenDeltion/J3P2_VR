@@ -140,6 +140,21 @@ public class Controller : MonoBehaviourPunCallbacks
 
     public void OnTriggerStay(Collider other)
     {
+        if(other.transform.GetComponent<LevelTrigger>())
+        {
+            if (leftHand && leftHandAxis > 0.85f)
+            {
+                other.transform.GetComponent<LevelTrigger>().LoadLevel();
+                return;
+            }
+
+            if (rightHand && rightHandAxis > 0.85f)
+            {
+                other.transform.GetComponent<LevelTrigger>().LoadLevel();
+                return;
+            }
+
+        }
 
         if (other.transform.tag == "Interactable" && otherController.GetComponent<Controller>().item != other.gameObject)
         {
@@ -163,17 +178,23 @@ public class Controller : MonoBehaviourPunCallbacks
 
     public void DropObject(bool _ForceDrop)
     {
-        if (canDrop == true || _ForceDrop == true)
+        if (item != null & _ForceDrop == true)
+        {
+            InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID);
+            return;
+        }
+
+        if (canDrop == true)
         {
             if (leftHand)
-                if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.LeftHand) || _ForceDrop == true)
+                if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.LeftHand))
                     if (item != null)
                         InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID);
                     else
                         InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, 0);
 
             if (rightHand)
-                if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand) || _ForceDrop == true)
+                if (SteamVR_Input._default.inActions.GrabGrip.GetStateDown(SteamVR_Input_Sources.RightHand))
                     if(item != null)
                     InteractionManager.intManager.DropObjectNetwork(transform.GetComponent<PhotonView>().ViewID, item.GetComponent<PhotonView>().ViewID);
                             else

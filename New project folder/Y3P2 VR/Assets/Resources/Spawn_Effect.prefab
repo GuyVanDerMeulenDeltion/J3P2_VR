@@ -692,7 +692,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0
-  InstantiationId: 0
+  InstantiationId: 13
   isRuntimeInstantiated: 0
 --- !u!114 &114798794881615528
 MonoBehaviour:
@@ -706,5 +706,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkDestroy: 0
-  timeTillDestroy: 0
+  timeTillDestroy: 4
   toDestroy: {fileID: 1921604835119932}

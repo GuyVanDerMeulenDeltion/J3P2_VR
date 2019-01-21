@@ -23,15 +23,18 @@ public class Enemy : MonoBehaviourPunCallbacks {
     [SerializeField]private LayerMask floor; 
 
     [Header("NPC Statistics:")]
-    [SerializeField]public float health;
+    public float health;
+    [SerializeField] private bool isArcher = false;
 
     [Header("Target Info:")]
-    [SerializeField]private Transform currentTarget;
+    [SerializeField]protected Transform currentTarget;
+    [SerializeField] protected float timeTillFollow = 1;
 
     #region Private references
     private NavMeshAgent thisAgent;
     private Rigidbody thisBody;
     private float hitTimer;
+    private IKControl control;
     //[SerializeField]private UnityEvent gotHitEvent;
     #endregion
 
@@ -113,6 +116,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     private void Awake() {
         thisAgent = GetComponent<NavMeshAgent>();
         thisBody = GetComponent<Rigidbody>();
+        control = GetComponent<IKControl>();
 
         if (PhotonNetwork.IsConnected) {
             if (!PhotonNetwork.IsMasterClient) {
@@ -180,9 +184,13 @@ public class Enemy : MonoBehaviourPunCallbacks {
 
         if (_Players != null) {
             foreach (Transform _Player in _Players) {
-                if (Vector3.Distance(transform.position, _Player.transform.position) < _ClosestDistance) {
-                    _ClosestPlayer = _Player;
-                    _ClosestDistance = Vector3.Distance(transform.position, _Player.transform.position);
+                if (_Player != null)
+                {
+                    if (Vector3.Distance(transform.position, _Player.transform.position) < _ClosestDistance)
+                    {
+                        _ClosestPlayer = _Player;
+                        _ClosestDistance = Vector3.Distance(transform.position, _Player.transform.position);
+                    }
                 }
             }
         }
@@ -203,6 +211,10 @@ public class Enemy : MonoBehaviourPunCallbacks {
             if (thisAgent.isActiveAndEnabled) {
                 thisAgent.SetDestination(_Target.position);
                 currentTarget = _Target;
+                control.lookObj = _Target.transform.parent;
+                if (isArcher == true)
+                    control.leftHandObj = _Target.transform.parent;
+                
             }
         }
     }

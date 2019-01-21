@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4102947210560192}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4883590803639362}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: TriggerPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 4911172062901074}
   - component: {fileID: 33921543057507910}
   - component: {fileID: 23883259040189368}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Flintlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4033989168627850}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: ExtraPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 23990895306640860}
   - component: {fileID: 114120389959049394}
   - component: {fileID: 135087507043581274}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 4296966046607492}
   - component: {fileID: 33817431167051218}
   - component: {fileID: 23275016508275456}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: HitPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4033012848703410}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Additional pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 4518759286592492}
   - component: {fileID: 33738528790184616}
   - component: {fileID: 23892212377234520}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 54898221174196130}
   - component: {fileID: 114814987621165694}
   - component: {fileID: 114270580974470158}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: FlintLock
   m_TagString: Interactable
   m_Icon: {fileID: 0}

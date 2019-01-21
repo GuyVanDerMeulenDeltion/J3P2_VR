@@ -55,6 +55,8 @@ public class BowString : Bow
                     _arrow.GetComponent<NetworkedAmmo>().enabled = false;
                 _arrow.transform.SetParent(transform);
                 _arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                _arrow.transform.localEulerAngles = new Vector3(-180, -90, 90);
+                _arrow.transform.localPosition = new Vector3(2.13f, 0, -13.81f);
                 currentHand.GetComponent<Controller>().item = _arrow.gameObject;
             }
         }
@@ -70,16 +72,18 @@ public class BowString : Bow
                     transform.GetChild(0).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                     transform.GetChild(0).GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f * transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
                     //------------ temp
-                    transform.GetChild(0).GetComponent<TempFirework>().enable = true;
                     if (transform.GetChild(0).GetComponent<NetworkedAmmo>())
                     {
                         transform.GetChild(0).GetComponent<NetworkedAmmo>().canHit = true;
                         transform.GetChild(0).GetComponent<Destroy>().enabled = true;
                     }
-                    if(transform.parent.GetComponent<Animator>().GetFloat("DrawAxis") >= 0.95f)
-                    {
-                        _arrow.GetComponentInChildren<ParticleSystem>().Play();
-                    }
+                    if (transform.parent.GetComponent<Animator>().GetFloat("DrawAxis") >= 0.95f)
+                        for (int i = 0; i < transform.GetChild(0).childCount; i++)
+                        {
+                            if (transform.GetChild(0).GetChild(i).GetComponent<ParticleSystem>())
+                                transform.GetChild(0).GetChild(i).GetComponent<ParticleSystem>().Play();
+                        }
+
                     currentHand.GetComponent<Controller>().item = null;
                     transform.GetChild(0).SetParent(null);
                     firing = false;
@@ -104,6 +108,8 @@ public class BowString : Bow
                     _arrow.GetComponent<NetworkedAmmo>().enabled = false;
                 _arrow.transform.SetParent(transform);
                 _arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                _arrow.transform.localEulerAngles = new Vector3(-180, -90, 90);
+                _arrow.transform.localPosition = new Vector3(2.13f, 0,-13.81f);
                 currentHand.GetComponent<Controller>().item = _arrow.gameObject;
             }
         }
@@ -119,17 +125,18 @@ public class BowString : Bow
                     transform.GetChild(0).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                     transform.GetChild(0).GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f * transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
                     //------------ temp
-                    transform.GetChild(0).GetComponent<TempFirework>().enable = true;
                     if (transform.GetChild(0).GetComponent<NetworkedAmmo>())
                     {
                         transform.GetChild(0).GetComponent<NetworkedAmmo>().canHit = true;
                         transform.GetChild(0).GetComponent<Destroy>().enabled = true;
                     }
                     if (transform.parent.GetComponent<Animator>().GetFloat("DrawAxis") >= 0.95f)
-                    {
-                        for (int i = 0; i < criticalSystems.Length; i++)
-                            criticalSystems[i].Play();
-                    }
+                        for (int i = 0; i < transform.GetChild(0).childCount; i++)
+                        {
+                            if (transform.GetChild(0).GetChild(i).GetComponent<ParticleSystem>())
+                                transform.GetChild(0).GetChild(i).GetComponent<ParticleSystem>().Play();
+                        }
+
                     currentHand.GetComponent<Controller>().item = null;
                     transform.GetChild(0).SetParent(null);
                     firing = false;
