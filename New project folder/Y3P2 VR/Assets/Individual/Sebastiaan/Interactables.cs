@@ -5,23 +5,56 @@ using Photon.Pun;
 
 public class Interactables : MonoBehaviourPunCallbacks {
 
-    private DrawOutline drawOutline;
+    [SerializeField] private bool useSkinned = false;
+    [SerializeField] private MeshRenderer render;
+    [SerializeField] private SkinnedMeshRenderer s_Render;
+
     public Vector3 pickupRotation;
     public Vector3 pickupPosition;
 
-    public void Awake()
+    public bool isInteracting = false;
+
+    private void Awake()
     {
-        drawOutline = new DrawOutline();
+        if (useSkinned == true && s_Render != null)
+            s_Render.materials[0].SetFloat("_Thickness", 0);
+        else if (render != null)
+            render.materials[0].SetFloat("_Thickness", 0);
     }
 
-	public virtual void Interact()
+    public virtual void OnTriggerEnter(Collider other)
     {
-        drawOutline.transform.GetComponent<MeshRenderer>().material.SetFloat("_Thickness", 0);
-        drawOutline.enabled = false;
+        if(other.transform.tag == "Hand" && isInteracting == false)
+        {
+            if (useSkinned == true && s_Render != null)
+                s_Render.materials[0].SetFloat("_Thickness", 1);
+            else if(render != null)
+                render.materials[0].SetFloat("_Thickness", 1);
+        }
+    }
+
+    public virtual void OnTriggerExit(Collider other)
+    {
+        if (other.transform.tag == "Hand")
+        {
+            if (useSkinned == true && s_Render != null)
+                s_Render.materials[0].SetFloat("_Thickness", 0);
+            else if (render != null)
+                render.materials[0].SetFloat("_Thickness", 0);
+        }
+    }
+
+    public virtual void Interact()
+    {
+        isInteracting = true;
+        if (useSkinned == true && s_Render != null)
+            s_Render.materials[0].SetFloat("_Thickness", 0);
+        else if (render != null)
+            render.materials[0].SetFloat("_Thickness", 0);
     }
 
     public virtual void DeInteract()
     {
-        drawOutline.enabled = true;
+        isInteracting = false;
     }
 }

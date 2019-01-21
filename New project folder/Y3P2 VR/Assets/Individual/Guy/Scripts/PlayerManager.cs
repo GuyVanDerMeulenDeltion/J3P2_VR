@@ -96,6 +96,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         if (died == false) {
             playerMain.SetDeath();
             died = true;
+            GameManager.gameManager.SetCount(1);
             EnemyManager.enemyManager.SetRemoveTarget(photonView.ViewID);
             foreach(Controller _Cont in PlayerManager.thisPlayer.player_controllers)
             {
@@ -112,6 +113,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     public void Revive() {
         if(died == true) {
             died = false;
+            GameManager.gameManager.SetCount(-1);
             playerMain.SetRevive();
             foreach (Player_Revivefield _Field in reviveFields) {
                 _Field.SetReviveFieldState(true);

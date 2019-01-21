@@ -16,18 +16,19 @@ public class Enemy : MonoBehaviourPunCallbacks {
     public static float restoreTimer = 4;
 
     [Header("Presets:")]
-    [SerializeField]private float maxHealth = 500;
+    [SerializeField] private float maxHealth = 500;
 
     [Header("Enemy Hit Settings:")]
-    [SerializeField]private float maxHitTimer = 6;
-    [SerializeField]private LayerMask floor; 
+    [SerializeField] private float maxHitTimer = 6;
+    [SerializeField] private LayerMask floor;
+    [SerializeField] private float range = 2;
 
     [Header("NPC Statistics:")]
     public float health;
     [SerializeField] private bool isArcher = false;
 
     [Header("Target Info:")]
-    [SerializeField]protected Transform currentTarget;
+    [SerializeField] protected Transform currentTarget;
     [SerializeField] protected float timeTillFollow = 1;
 
     #region Private references
@@ -38,6 +39,10 @@ public class Enemy : MonoBehaviourPunCallbacks {
     //[SerializeField]private UnityEvent gotHitEvent;
     #endregion
 
+    private bool canWalk = false;
+
+    private float walkTimer;
+
     private bool hit = false;
     private bool started = false;
     private bool inRange = false;
@@ -46,6 +51,52 @@ public class Enemy : MonoBehaviourPunCallbacks {
 
     public void Update() {
         Attacking();
+        Check();
+    }
+
+    private void UpdateWalkTimer()
+    {
+        if (walkTimer > 0)
+        {
+            walkTimer -= Time.deltaTime;
+            canWalk = false;
+        } else
+        {
+            canWalk = true;
+        }
+        
+    }
+
+    internal virtual void Check()
+    {
+        if (currentTarget != null)
+        {
+            if (Vector3.Distance(transform.position, currentTarget.position) <= range)
+            {
+                walkTimer = timeTillFollow;
+                thisAgent.speed = 0;
+                thisAgent.velocity = Vector3.zero;
+                EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, false, false);
+                inRange = true;
+            }
+            else
+            {
+                if(canWalk == false)
+                {
+                    UpdateWalkTimer();
+                    return;
+                }
+
+                inRange = false;
+                attacking = false;
+                thisAgent.speed = agentSpeed;
+                EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, true, false);
+            }
+        } else
+        {
+            thisAgent.speed = 0;
+            EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, false, false);
+        }
     }
 
     public virtual void Attacking() {
@@ -82,33 +133,6 @@ public class Enemy : MonoBehaviourPunCallbacks {
 
         return false;
     }
-
-    private void OnTriggerEnter(Collider _O) {
-        if (_O.GetComponent<PlayerManager>() && started == false) {
-            StartEnemy();
-        }
-
-        if (CheckIfTarget(_O.gameObject) == false)
-            return;
-
-        thisAgent.speed = 0;
-        thisAgent.velocity = Vector3.zero;
-        EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, false, false);
-        inRange = true;
-    }
-
-    private void OnTriggerExit(Collider _O) {
-        if(currentTarget != null)
-          if(_O.gameObject == currentTarget.gameObject)
-                inRange = false;
-
-        if (CheckIfTarget(_O.gameObject)) {
-            if(attacking == false)
-                thisAgent.speed = agentSpeed;
-                inRange = false;
-                EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, true, false);
-            }
-        }
     #endregion
 
     #region Functions related to setting references and starting
@@ -130,6 +154,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
 
 
     private void Start() {
+        if(EnemyManager.enemyManager != null)
         EnemyManager.enemyManager.SetEnemyRagdoll(photonView.ViewID, true);
         health = maxHealth;
         hitTimer = maxHitTimer;

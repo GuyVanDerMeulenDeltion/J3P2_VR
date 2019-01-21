@@ -2682,11 +2682,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114431090655589002}
   viewIdField: 0
-<<<<<<< HEAD
-  InstantiationId: 7
-=======
   InstantiationId: 8
->>>>>>> de7d8106276a06f166c65172327c734fa2ec14b9
   isRuntimeInstantiated: 0
 --- !u!114 &114239674875153540
 MonoBehaviour:
@@ -2731,6 +2727,7 @@ MonoBehaviour:
   floor:
     serializedVersion: 2
     m_Bits: 2048
+  range: 2
   health: 0
   isArcher: 0
   currentTarget: {fileID: 0}

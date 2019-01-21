@@ -1118,7 +1118,6 @@ GameObject:
   - component: {fileID: 114680706745141392}
   - component: {fileID: 114091105726042776}
   - component: {fileID: 114502936575171170}
-  - component: {fileID: 114602440119102490}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -2788,28 +2787,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e7de8be91a1ee4a8ceb85471a580a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114602440119102490
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1905604902750038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44427d3cadf1c1c4e9e85d6f0801ab10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 500
-  maxHitTimer: 6
-  floor:
-    serializedVersion: 2
-    m_Bits: 2048
-  health: 0
-  isArcher: 0
-  currentTarget: {fileID: 0}
-  timeTillFollow: 1
-  _ArrowSpawnPos: {fileID: 0}
-  _EnemyArrow: {fileID: 0}
 --- !u!114 &114680706745141392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2891,7 +2868,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114302650499482404}
   viewIdField: 0
-  InstantiationId: 7
+  InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &114986262414939138
 MonoBehaviour:
@@ -2909,6 +2886,7 @@ MonoBehaviour:
   floor:
     serializedVersion: 2
     m_Bits: 2048
+  range: 2
   health: 0
   isArcher: 1
   currentTarget: {fileID: 0}

@@ -10,7 +10,6 @@ public class Bow : Interactables
         if(transform.GetChild(2).GetComponent<BowString>().firing == false)
         transform.localEulerAngles = pickupRotation;
         transform.localPosition = pickupPosition;
-
     }
 }
 

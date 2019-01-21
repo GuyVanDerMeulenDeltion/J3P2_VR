@@ -5,6 +5,9 @@ using Photon.Pun;
 
 public class GameManager : MonoBehaviourPunCallbacks {
     public static GameManager gameManager;
+    private static float loadTime = 5;
+
+    internal static int deathCount = 0;
 
     [SerializeField] private Transform[] _SpawnPoint;
 
@@ -47,6 +50,40 @@ public class GameManager : MonoBehaviourPunCallbacks {
     [PunRPC]
     private void SendOnJoinedMessage(string _Message) {
         PlayerManager.thisPlayer.playerMain.SendMessageLocally(_Message);
+    }
+
+    internal void SetCount(int _Add)
+    {
+        if (PhotonNetwork.IsConnected)
+            photonView.RPC("GetCount", RpcTarget.AllBuffered, _Add);
+        else
+            GetCount(_Add);
+    }
+
+
+    [PunRPC]
+    private void GetCount(int _Add)
+    {
+        deathCount += _Add;
+
+        if (deathCount >= PhotonNetwork.PlayerList.Length)
+        {
+            photonView.RPC("EndMatch", RpcTarget.AllBuffered);
+        }
+    }
+
+    [PunRPC]
+    private void EndMatch()
+    {
+        StartCoroutine(LoadMenu());
+    }
+
+    private IEnumerator LoadMenu()
+    {
+        yield return new WaitForSeconds(2);
+        PlayerManager.thisPlayer.playerMain.SendMessageLocally("Everyone died, loading lobby...");
+        yield return new WaitForSeconds(loadTime);
+        PhotonNetwork.LoadLevel(1);
     }
 }
 

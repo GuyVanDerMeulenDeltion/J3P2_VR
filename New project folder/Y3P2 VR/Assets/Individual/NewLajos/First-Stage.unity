@@ -8538,6 +8538,18 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 794dab3179790ec4eba68d49783cf28a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 347c61f9e8667db48a5aec32eb9e772c, type: 2}
+    - target: {fileID: 2300004, guid: 794dab3179790ec4eba68d49783cf28a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f6bacc9a5639944c9bf98389997c063, type: 2}
+    - target: {fileID: 2300002, guid: 794dab3179790ec4eba68d49783cf28a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a61d23fb30bdc940b06f0b0cae927b8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 794dab3179790ec4eba68d49783cf28a, type: 3}
   m_IsPrefabAsset: 0
@@ -23991,6 +24003,18 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 794dab3179790ec4eba68d49783cf28a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 347c61f9e8667db48a5aec32eb9e772c, type: 2}
+    - target: {fileID: 2300004, guid: 794dab3179790ec4eba68d49783cf28a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f6bacc9a5639944c9bf98389997c063, type: 2}
+    - target: {fileID: 2300002, guid: 794dab3179790ec4eba68d49783cf28a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a61d23fb30bdc940b06f0b0cae927b8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 794dab3179790ec4eba68d49783cf28a, type: 3}
   m_IsPrefabAsset: 0
@@ -43024,6 +43048,11 @@ MonoBehaviour:
     - {fileID: 457185917}
     - {fileID: 1634288845}
     _Item: {fileID: 1317351242399802, guid: 8f9e274899aebef46bdf6f63ef6b312e, type: 2}
+  - itemType: Colt
+    _Pos:
+    - {fileID: 457185917}
+    - {fileID: 1634288845}
+    _Item: {fileID: 1770600310908650, guid: ab4ad45190d37274bbc5385185284daa, type: 2}
   entitiesToSpawn:
   - entitiesToSpawn:
     - _Pos: {fileID: 1044863051}

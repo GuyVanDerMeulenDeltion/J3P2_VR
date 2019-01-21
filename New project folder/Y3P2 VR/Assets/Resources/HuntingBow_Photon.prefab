@@ -636,7 +636,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114614039355269992}
   viewIdField: 0
-  InstantiationId: 9
+  InstantiationId: 3
   isRuntimeInstantiated: 0
 --- !u!114 &114098406803668908
 MonoBehaviour:
@@ -663,8 +663,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95a52f3f43bf704782c5f97bb21732e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useSkinned: 1
+  render: {fileID: 0}
+  s_Render: {fileID: 137023142989922482}
   pickupRotation: {x: -90, y: 180, z: 0}
   pickupPosition: {x: 0, y: 0, z: -0.1}
+  isInteracting: 0
 --- !u!114 &114376648407370398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -685,7 +689,7 @@ MonoBehaviour:
   - {fileID: 114401006248868314}
   - {fileID: 114614039355269992}
   viewIdField: 0
-  InstantiationId: 10
+  InstantiationId: 2
   isRuntimeInstantiated: 0
 --- !u!114 &114401006248868314
 MonoBehaviour:
@@ -712,8 +716,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271db87f8b4f7534490a46abeb80b9cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useSkinned: 0
+  render: {fileID: 0}
+  s_Render: {fileID: 0}
   pickupRotation: {x: 0, y: 0, z: 0}
   pickupPosition: {x: 0, y: 0, z: 0}
+  isInteracting: 0
   ammo: {fileID: 1568259301440234, guid: 907843f850be5fe4ba64bc4af1aba233, type: 2}
   firing: 0
 --- !u!114 &114614039355269992

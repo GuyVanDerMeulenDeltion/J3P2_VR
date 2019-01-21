@@ -317,8 +317,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de65fb3d68efa3743a3cdbfb88f2109a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useSkinned: 0
+  render: {fileID: 23859222132678642}
+  s_Render: {fileID: 0}
   pickupRotation: {x: 0, y: 0, z: 0}
   pickupPosition: {x: 0, y: 0, z: 0}
+  isInteracting: 0
   baseDamageMutliplier: 20
 --- !u!114 &114646327951320546
 MonoBehaviour:
@@ -353,5 +357,5 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114646327951320546}
   viewIdField: 0
-  InstantiationId: 7
+  InstantiationId: 2
   isRuntimeInstantiated: 0

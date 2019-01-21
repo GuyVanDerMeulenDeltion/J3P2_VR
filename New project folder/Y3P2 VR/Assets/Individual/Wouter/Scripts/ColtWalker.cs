@@ -10,7 +10,7 @@ public class ColtWalker : Interactables {
 
     private Animator myAnim { get { return GetComponent<Animator>(); } }
     private float triggerAxis;
-    internal int bulletsLoaded;
+    internal int bulletsLoaded = 6;
     private bool canFire;
 
     internal float leftHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.LeftHand); } }
@@ -19,33 +19,33 @@ public class ColtWalker : Interactables {
     private void Update()
     {
         Trigger();
+        transform.localEulerAngles = pickupRotation;
+        transform.localPosition = pickupPosition;
 
-        triggerAxis = Mathf.Clamp(Input.GetAxis("Horizontal"), 0, 0.95f);
-
-        myAnim.SetFloat("TriggerAxis", triggerAxis);
         myAnim.SetInteger("Bullets", bulletsLoaded);
     }
 
     private void EditBulletcount(int amount)
     {
-        bulletsLoaded +=amount;
+        bulletsLoaded += amount;
     }
 
     private void Trigger()
     {
-        if (transform.parent.GetComponent<Controller>().leftHand && leftHandAxis > 0.05f && bulletsLoaded > 0)
+        if (transform.parent.GetComponent<Controller>().leftHand && leftHandAxis > 0.05f)
         {
             myAnim.SetFloat("TriggerAxis", leftHandAxis);
-            if (myAnim.GetFloat("TriggerAxis") > 0.99f && canFire)
-                Shoot();
+
         }
-        else
-            canFire = true;
+
+        if (transform.parent.GetComponent<Controller>().rightHand && rightHandAxis > 0.05f)
+        {
+            myAnim.SetFloat("TriggerAxis", rightHandAxis);
+        }
     }
 
-    private void Shoot()
+    internal void Shoot()
     {
-        bulletsLoaded--;
         canFire = false;
 
         if (PhotonNetwork.IsConnected)

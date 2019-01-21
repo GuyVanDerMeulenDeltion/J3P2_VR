@@ -63,8 +63,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 748cc819c859d164eb389c42badc5521, type: 2}
   - {fileID: 2100000, guid: dd42f8055d4fd7845b07089a13166c04, type: 2}
+  - {fileID: 2100000, guid: 748cc819c859d164eb389c42badc5521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -141,8 +141,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebda69a0ee4b8f043a1dcde0f81268be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useSkinned: 0
+  render: {fileID: 23581177169148412}
+  s_Render: {fileID: 0}
   pickupRotation: {x: 0, y: 0, z: 0}
   pickupPosition: {x: 0, y: 0, z: 0}
+  isInteracting: 0
 --- !u!114 &114906804450943192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,8 +172,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518aef14e49fdd34d84631ed8bb668f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useSkinned: 0
+  render: {fileID: 0}
+  s_Render: {fileID: 0}
   pickupRotation: {x: 0, y: 0, z: 0}
   pickupPosition: {x: 0, y: 0, z: 0}
+  isInteracting: 0
 --- !u!114 &114981859227662504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -189,5 +197,5 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114906804450943192}
   viewIdField: 0
-  InstantiationId: 5
+  InstantiationId: 2
   isRuntimeInstantiated: 0

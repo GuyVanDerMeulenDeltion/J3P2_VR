@@ -56,7 +56,10 @@ public class InteractionManager : MonoBehaviourPunCallbacks
         GameObject _Hand = GetView(_View).gameObject;
         GameObject _PickedupObject = GetView(pickUpObject).gameObject;
 
-        if(_PickedupObject.GetComponentInParent<Controller>()) {
+        _PickedupObject.GetComponent<Interactables>().isInteracting = true;
+        _PickedupObject.GetComponent<Interactables>().Interact();
+
+        if (_PickedupObject.GetComponentInParent<Controller>()) {
             if (_PickedupObject.GetComponent<Sword>())
                 _PickedupObject.GetComponent<Sword>().enabled = true;
 
@@ -103,6 +106,9 @@ public class InteractionManager : MonoBehaviourPunCallbacks
         {
             _Throwable = GetView(_throwable).gameObject;
         }
+
+        _Throwable.GetComponent<Interactables>().isInteracting = false;
+        _Throwable.GetComponent<Interactables>().DeInteract();
 
         if (_Throwable != null && _Hand != null)
         {

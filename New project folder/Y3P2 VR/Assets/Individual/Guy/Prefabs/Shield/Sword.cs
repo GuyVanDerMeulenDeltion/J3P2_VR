@@ -7,8 +7,10 @@ public class Sword : MeleeWeapons {
 
     public int baseDamageMutliplier = 20;
 
-    private void OnTriggerEnter(Collider _O)
+    public override void OnTriggerEnter(Collider _O)
     {
+        base.OnTriggerEnter(_O);
+
         if (_O.transform.tag == "Enemy")
         {
             Hit(_O.gameObject);
