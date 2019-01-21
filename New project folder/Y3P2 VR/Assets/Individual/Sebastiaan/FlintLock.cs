@@ -46,7 +46,7 @@ public class FlintLock : Interactables
             if (flintLockHammer.currentHand.GetComponent<Controller>().leftHand && leftHandAxis > 0.99f || flintLockHammer.currentHand.GetComponent<Controller>().rightHand && rightHandAxis > 0.99f)
             {
                 myanim.SetBool("Firing", false);
-                myanim.SetFloat("RecockAxis", Mathf.Clamp(Vector3.Distance(transform.position, flintLockHammer.currentHand.transform.position) * 1.5f, 0, 1f));
+                myanim.SetFloat("RecockAxis", Mathf.Clamp(Vector3.Distance(transform.position, flintLockHammer.currentHand.transform.position) * 3f, 0, 2f));
                 if (myanim.GetFloat("RecockAxis") > 0.95f)
                     myanim.SetBool("Cocked", true);
             }
