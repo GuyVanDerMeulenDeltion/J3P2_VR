@@ -6,16 +6,15 @@ using Photon.Pun;
 
 public class FlintLock : Interactables
 {
-    private Animator myanim;
+    private Animator myanim { get { return GetComponent<Animator>();} }
 
     [SerializeField] private FlintlockHammer flintLockHammer;
     [SerializeField] private Transform bulletSpawnpos;
 
-    public bool firing;
-    public bool resetTrigger;
+    internal bool firing;
+    private bool resetTrigger;
 
-    [HideInInspector]
-    public bool cocking;
+    internal bool cocking;
 
     public float leftHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.LeftHand); } }
     public float rightHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.RightHand); } }
@@ -24,12 +23,6 @@ public class FlintLock : Interactables
     {
         //resets the hand upon pickup
         flintLockHammer.currentHand = null;
-    }
-
-    void Start()
-    {
-        //assings animator variable
-        myanim = GetComponent<Animator>();
     }
 
     void Update()
@@ -68,7 +61,6 @@ public class FlintLock : Interactables
         if (transform.parent.GetComponent<Controller>().leftHand && leftHandAxis > 0.05f && myanim.GetBool("Cocked") && resetTrigger)
         {
             firing = true;
-            print(leftHandAxis);
             myanim.SetFloat("TriggerAxis", leftHandAxis);
             if (leftHandAxis > 0.99f)
                 Shoot();
@@ -76,7 +68,6 @@ public class FlintLock : Interactables
         else if (transform.parent.GetComponent<Controller>().rightHand && rightHandAxis > 0.05f && myanim.GetBool("Cocked") && resetTrigger)
         {
             firing = true;
-            print(rightHandAxis);
             myanim.SetFloat("TriggerAxis", rightHandAxis);
             if (rightHandAxis > 0.99f && myanim.GetBool("Cocked"))
                 Shoot();

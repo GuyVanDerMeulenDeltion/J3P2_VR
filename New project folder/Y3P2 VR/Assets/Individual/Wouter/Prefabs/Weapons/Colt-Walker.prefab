@@ -91,6 +91,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1344861693871712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4452392503384042}
+  m_Layer: 0
+  m_Name: BulletSpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1366748447800712
 GameObject:
   m_ObjectHideFlags: 1
@@ -357,10 +372,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1770600310908650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.8331037, y: 0.5413828, z: -2.046823}
+  m_LocalPosition: {x: 14.759508, y: -13.7355, z: -15.538671}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4282346411600844}
+  - {fileID: 4452392503384042}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -390,6 +406,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4842404074322796}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4452392503384042
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344861693871712}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5478077, y: 0.35459995, z: 0.0011701584}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
+  m_Children: []
+  m_Father: {fileID: 4275432958122298}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4520987012517146
 Transform:
@@ -951,8 +980,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58cf1411f8eb1ac408da164994f21703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myAnim: {fileID: 95855649248019764}
-  bulletsLoaded: 6
+  pickupRotation: {x: 0, y: 0, z: 0}
+  pickupPosition: {x: 0, y: 0, z: 0}
+  bulletSpawnPos: {fileID: 4452392503384042}
 --- !u!135 &135058276204672232
 SphereCollider:
   m_ObjectHideFlags: 1
