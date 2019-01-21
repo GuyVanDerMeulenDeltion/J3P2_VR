@@ -71,6 +71,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     private void Start() {
         if (this == thisPlayer)
         {
+            if(EnemyManager.enemyManager != null)
             EnemyManager.enemyManager.SetNewTarget(photonView.ViewID);
             GetComponentsFromPlayer();
             playerMain.Initialise();

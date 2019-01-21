@@ -2189,8 +2189,11 @@ MonoBehaviour:
   floor:
     serializedVersion: 2
     m_Bits: 2048
+  range: 2
   health: 0
+  isArcher: 0
   currentTarget: {fileID: 0}
+  timeTillFollow: 5
 --- !u!136 &136019589332855936
 CapsuleCollider:
   m_ObjectHideFlags: 1

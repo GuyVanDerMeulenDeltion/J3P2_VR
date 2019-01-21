@@ -2882,11 +2882,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 250
-  maxHitTimer: 6
+  maxHitTimer: 3
   floor:
     serializedVersion: 2
     m_Bits: 2048
-  range: 2
+  range: 8
   health: 0
   isArcher: 1
   currentTarget: {fileID: 0}

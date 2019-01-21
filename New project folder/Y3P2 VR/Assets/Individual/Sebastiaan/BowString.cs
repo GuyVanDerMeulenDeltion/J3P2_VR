@@ -14,6 +14,7 @@ public class BowString : Bow
 
     [HideInInspector]
     public bool firing;
+    [SerializeField] private float drawoffset = 1.35f;
 
     public float leftHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.LeftHand); } }
     public float rightHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.RightHand); } }
@@ -56,7 +57,7 @@ public class BowString : Bow
                 _arrow.transform.SetParent(transform);
                 _arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 _arrow.transform.localEulerAngles = new Vector3(-180, -90, 90);
-                _arrow.transform.localPosition = new Vector3(2.13f, 0, -13.81f);
+                _arrow.transform.localPosition = new Vector3(0.98f, 0, -23.02f);
                 currentHand.GetComponent<Controller>().item = _arrow.gameObject;
             }
         }
@@ -65,7 +66,7 @@ public class BowString : Bow
             if (currentHand.GetComponent<Controller>().leftHand)
             {
                 transform.parent.LookAt(currentHand.transform.position, transform.parent.up);
-                transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", Vector3.Distance(startPos.transform.position, currentHand.transform.position));
+                transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", Vector3.Distance(startPos.transform.position, currentHand.transform.position) * drawoffset);
 
                 if (leftHandAxis == 0)
                 {
@@ -109,7 +110,7 @@ public class BowString : Bow
                 _arrow.transform.SetParent(transform);
                 _arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 _arrow.transform.localEulerAngles = new Vector3(-180, -90, 90);
-                _arrow.transform.localPosition = new Vector3(2.13f, 0,-13.81f);
+                _arrow.transform.localPosition = new Vector3(0.98f, 0, -23.02f);
                 currentHand.GetComponent<Controller>().item = _arrow.gameObject;
             }
         }
@@ -118,7 +119,7 @@ public class BowString : Bow
             if (currentHand.GetComponent<Controller>().rightHand)
             {
                 transform.parent.LookAt(currentHand.transform.position, transform.parent.up);
-                transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", Vector3.Distance(startPos.transform.position, currentHand.transform.position));
+                transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", Vector3.Distance(startPos.transform.position, currentHand.transform.position) * drawoffset);
 
                 if (rightHandAxis == 0)
                 {

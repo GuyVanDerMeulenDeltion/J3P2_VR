@@ -840,3 +840,11 @@ AnimationClip:
     floatParameter: 0
     intParameter: -1
     messageOptions: 0
+  - time: 0.16666667
+    functionName: Shoot
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 58cf1411f8eb1ac408da164994f21703,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

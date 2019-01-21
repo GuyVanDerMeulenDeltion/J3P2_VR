@@ -4663,7 +4663,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3, y: 2.01, z: 1.3}
+  m_Size: {x: 0.4, y: 0.4, z: 0.4}
   m_Center: {x: 0, y: -0.45, z: 0}
 --- !u!65 &65447947237880560
 BoxCollider:
@@ -5632,8 +5632,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 2
-  InstantiationId: 2
+  viewIdField: 0
+  InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &114298693866505674
 MonoBehaviour:
@@ -5903,8 +5903,8 @@ MonoBehaviour:
   - {fileID: 114929816670445698}
   - {fileID: 114298693866505674}
   - {fileID: 114229597267380428}
-  viewIdField: 7
-  InstantiationId: 7
+  viewIdField: 0
+  InstantiationId: 6
   isRuntimeInstantiated: 0
 --- !u!114 &114387986257142502
 MonoBehaviour:
@@ -6611,8 +6611,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 4
-  InstantiationId: 4
+  viewIdField: 0
+  InstantiationId: 3
   isRuntimeInstantiated: 0
 --- !u!114 &114573730253063714
 MonoBehaviour:
@@ -6741,8 +6741,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 5
-  InstantiationId: 5
+  viewIdField: 0
+  InstantiationId: 4
   isRuntimeInstantiated: 0
 --- !u!114 &114649346670176456
 MonoBehaviour:
@@ -7016,8 +7016,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 6
-  InstantiationId: 6
+  viewIdField: 0
+  InstantiationId: 5
   isRuntimeInstantiated: 0
 --- !u!114 &114700361418285876
 MonoBehaviour:
@@ -7565,8 +7565,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 3
-  InstantiationId: 3
+  viewIdField: 0
+  InstantiationId: 2
   isRuntimeInstantiated: 0
 --- !u!114 &114967377946554908
 MonoBehaviour:

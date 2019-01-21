@@ -161,6 +161,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
         hitTimer = maxHitTimer;
         agentSpeed = thisAgent.speed;
 
+        if(EnemyManager.enemyManager != null)
         if (EnemyManager.enemyManager.aggroAllOnStart == true) {
             StartEnemy();
         }
