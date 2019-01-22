@@ -91,7 +91,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 112001942, guid: fa035d744906a864c82decfa52479861,
+  m_LightingDataAsset: {fileID: 112001972, guid: c0450caf495111c428214d5ace58a1d9,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -2958,7 +2958,12 @@ Prefab:
     - target: {fileID: 108177640586899858, guid: 0e072d7d8fd00104d80b38b5cfec4e6c,
         type: 2}
       propertyPath: m_BounceIntensity
-      value: 1.6
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 108177640586899858, guid: 0e072d7d8fd00104d80b38b5cfec4e6c,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e072d7d8fd00104d80b38b5cfec4e6c, type: 2}
@@ -11497,7 +11502,12 @@ Prefab:
     - target: {fileID: 108177640586899858, guid: 0e072d7d8fd00104d80b38b5cfec4e6c,
         type: 2}
       propertyPath: m_BounceIntensity
-      value: 1.6
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 108177640586899858, guid: 0e072d7d8fd00104d80b38b5cfec4e6c,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e072d7d8fd00104d80b38b5cfec4e6c, type: 2}
