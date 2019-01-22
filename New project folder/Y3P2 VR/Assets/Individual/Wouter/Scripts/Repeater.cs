@@ -11,7 +11,7 @@ public class Repeater : MonoBehaviour {
     void Update()
     {
         triggerAxis = Mathf.Clamp(Input.GetAxis("Horizontal"), 0, 0.95f);
-        rechamberAxis = Mathf.Clamp(Input.GetAxis("Vertical"), 0, 0.95f);
+        rechamberAxis = Mathf.Clamp(Input.GetAxis("Vertical"), 0.1f, 0.95f);
 
         myAnim.SetFloat("TriggerAxis", triggerAxis);
         myAnim.SetFloat("RechamberAxis", rechamberAxis);
