@@ -87,7 +87,7 @@ public class SpawnManager : MonoBehaviourPunCallbacks {
             {
                 if (PhotonNetwork.IsConnected)
                 {
-                    PhotonNetwork.Instantiate(_Entity._Enemy.name, _Entity._Pos.position, _Entity._Pos.rotation);
+                    PhotonNetwork.InstantiateSceneObject(_Entity._Enemy.name, _Entity._Pos.position, _Entity._Pos.rotation);
                     photonView.RPC("SetParticles", RpcTarget.All, _Entity._Pos.position, _Entity._Pos.eulerAngles);
                 }
                 else

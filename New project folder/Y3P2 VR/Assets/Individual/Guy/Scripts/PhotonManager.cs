@@ -18,6 +18,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     }
 
     private void Start() {
+        PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.ConnectUsingSettings();
         //PhotonNetwork.ConnectToRegion("EU");
     }

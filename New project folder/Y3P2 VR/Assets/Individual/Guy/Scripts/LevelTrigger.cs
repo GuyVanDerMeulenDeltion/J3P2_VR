@@ -43,7 +43,7 @@ public class LevelTrigger : MonoBehaviourPunCallbacks {
         if (selectedLevel == false)
         {
             if (PhotonNetwork.IsConnected)
-                photonView.RPC("LoadLevelForPlayers", RpcTarget.AllBuffered, levelIndex);
+                photonView.RPC("LoadLevelForPlayers", RpcTarget.MasterClient, levelIndex);
             else
                 LoadLevelForPlayers(levelIndex);
         }
