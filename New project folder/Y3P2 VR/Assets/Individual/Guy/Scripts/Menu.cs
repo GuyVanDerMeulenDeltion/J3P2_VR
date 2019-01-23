@@ -15,7 +15,6 @@ public class Menu : MonoBehaviour {
 
         if (_State == false && extraAnim != null) {
             extraAnim.SetBool("Open", _State);
-            extraAnim.gameObject.SetActive(false);
             Buttons.DeactivateAllButtons();
         }
 

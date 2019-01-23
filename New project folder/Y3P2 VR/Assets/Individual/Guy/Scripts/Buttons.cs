@@ -36,10 +36,16 @@ public class Buttons : MonoBehaviour {
     private void SetCurrentButton() {
         if (allButtons == null) return;
 
-        foreach(Buttons _Button in allButtons) {
-            if(_Button.thisAnim != null)
-            _Button.thisAnim.enabled = false;
-            _Button.outline.enabled = false;
+        foreach (Buttons _Button in allButtons)
+        {
+            if (_Button != null)
+            {
+                if (_Button.thisAnim != null)
+                    _Button.thisAnim.enabled = false;
+
+                if (_Button.outline != null)
+                    _Button.outline.enabled = false;
+            }
         }
 
         thisAnim.enabled = true;
