@@ -724,6 +724,7 @@ MonoBehaviour:
   isInteracting: 0
   ammo: {fileID: 1568259301440234, guid: 907843f850be5fe4ba64bc4af1aba233, type: 2}
   firing: 0
+  drawoffset: 1.35
 --- !u!114 &114614039355269992
 MonoBehaviour:
   m_ObjectHideFlags: 1
