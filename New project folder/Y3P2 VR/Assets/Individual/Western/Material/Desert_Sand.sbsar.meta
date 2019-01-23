@@ -28,10 +28,10 @@ ScriptedImporter:
     generateAllOutputs: 0
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://StylizedSand\" label=\"\" >\n  <presetinput
-      identifier=\"Highlight_1_Color\" uid=\"1615479591\" type=\"3\" value=\"0.792453,0.470316,0.250445,1\"
+      identifier=\"Highlight_1_Color\" uid=\"1615479591\" type=\"3\" value=\"0.877358,0.632937,0.293832,1\"
       />\n  <presetinput identifier=\"Highlight_2_Color\" uid=\"1615479592\" type=\"3\"
-      value=\"0.992157,0.664933,0.498039,1\" />\n  <presetinput identifier=\"Base_1_Color\"
-      uid=\"1615479631\" type=\"3\" value=\"0.641509,0.292003,0.124065,1\" />\n  <presetinput
+      value=\"0.801887,0.552137,0.268556,1\" />\n  <presetinput identifier=\"Base_1_Color\"
+      uid=\"1615479631\" type=\"3\" value=\"0.716981,0.569974,0.307761,1\" />\n  <presetinput
       identifier=\"Base_2_Color\" uid=\"1615479640\" type=\"3\" value=\"0.566038,0.380697,0.226949,1\"
       />\n  <presetinput identifier=\"Overlay_Color\" uid=\"1615479668\" type=\"3\"
       value=\"0.462264,0.372927,0.276922,0\" />\n  <presetinput identifier=\"Stones_Color\"
@@ -77,13 +77,13 @@ ScriptedImporter:
     - outputName: baseColor
       bLinear: 0
     - outputName: normal
-      bLinear: 1
+      bLinear: 0
     - outputName: roughness
       bLinear: 1
     - outputName: metallic
       bLinear: 1
     - outputName: height
-      bLinear: 1
+      bLinear: 0
     inputTextureMap: []
     targetSettingList:
     - label: 

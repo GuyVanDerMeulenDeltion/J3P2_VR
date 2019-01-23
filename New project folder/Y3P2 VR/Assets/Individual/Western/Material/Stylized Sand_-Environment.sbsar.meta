@@ -27,7 +27,11 @@ ScriptedImporter:
     graphDescIndex: 0
     generateAllOutputs: 0
     generateMipMaps: 1
-    preset: " <sbspreset pkgurl=\"pkg://StylizedSand\" label=\"\" >\n </sbspreset>\n"
+    preset: " <sbspreset pkgurl=\"pkg://StylizedSand\" label=\"\" >\n  <presetinput
+      identifier=\"Overlay_Color\" uid=\"1615479668\" type=\"3\" value=\"0.988235,0.725085,0.443137,0\"
+      />\n  <presetinput identifier=\"Stones_Color\" uid=\"1615479684\" type=\"3\"
+      value=\"0.666667,0.625622,0.575937,0\" />\n  <presetinput identifier=\"Stones_Opacity\"
+      uid=\"1615479738\" type=\"0\" value=\"0\" />\n </sbspreset>\n"
     shaderName: Standard
     outputNames: baseColor,normal,metallic,height
     texturePackingList:
@@ -82,5 +86,9 @@ ScriptedImporter:
       textureHeight: 0
       textureFormat: 0
       bGenerateOnLoad: 1
-    material: {instanceID: 0}
-    generatedTextures: []
+    material: {fileID: 2100000, guid: 6fd84e7afa56f67449383e1b4a258f5f, type: 3}
+    generatedTextures:
+    - {fileID: 2800000, guid: 6fd84e7afa56f67449383e1b4a258f5f, type: 3}
+    - {fileID: 2800002, guid: 6fd84e7afa56f67449383e1b4a258f5f, type: 3}
+    - {fileID: 2800004, guid: 6fd84e7afa56f67449383e1b4a258f5f, type: 3}
+    - {fileID: 2800006, guid: 6fd84e7afa56f67449383e1b4a258f5f, type: 3}
