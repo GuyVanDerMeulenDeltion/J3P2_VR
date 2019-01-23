@@ -9,6 +9,14 @@ public class EnemyRanger : Enemy {
     [SerializeField] private Transform _ArrowSpawnPos;
     [SerializeField] private GameObject _EnemyArrow;
 
+    private Enemy root;
+
+    internal override void Start()
+    {
+        base.Start();
+        root = transform.root.GetComponent<Enemy>();
+    }
+
     internal void ShootArrow()
     {
         photonView.RPC("ShootEnemyArrow", RpcTarget.MasterClient);
@@ -18,9 +26,9 @@ public class EnemyRanger : Enemy {
     private void ShootEnemyArrow()
     {
         Quaternion _Rot = Quaternion.LookRotation(_ArrowSpawnPos.position - currentTarget.position);
-        Rigidbody _NewArrow = PhotonNetwork.InstantiateSceneObject(_EnemyArrow.name, _ArrowSpawnPos.position, _Rot).GetComponent<Rigidbody>();
-        _NewArrow.AddForce(Vector3.forward * 20, ForceMode.Impulse);
-        _NewArrow.useGravity = true;
+        Rigidbody _NewArrow = PhotonNetwork.InstantiateSceneObject(_EnemyArrow.name, _ArrowSpawnPos.position, Quaternion.LookRotation(root.currentTarget.transform.position - _ArrowSpawnPos.transform.position)).GetComponent<Rigidbody>();
+        _NewArrow.GetComponent<Rigidbody>().AddForce(-_NewArrow.transform.forward * 3, ForceMode.Impulse);
+        _NewArrow.useGravity = false;
 
     }
 }

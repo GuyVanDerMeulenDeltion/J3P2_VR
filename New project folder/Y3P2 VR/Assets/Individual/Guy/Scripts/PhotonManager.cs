@@ -8,6 +8,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
 
     public static PhotonManager photonManager;
 
+    [SerializeField]private bool joinTest = false;
+    
     // Use this for initialization
     private void Awake() {
         DontDestroyOnLoad(this);
@@ -20,11 +22,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks {
     private void Start() {
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.ConnectUsingSettings();
-        //PhotonNetwork.ConnectToRegion("EU");
     }
 
     public override void OnConnectedToMaster() {
-        PhotonNetwork.JoinRandomRoom();
+        if (joinTest == false)
+            PhotonNetwork.JoinRandomRoom();
+        else
+            PhotonNetwork.JoinOrCreateRoom("Test", new RoomOptions(), TypedLobby.Default);
+
         print(PhotonNetwork.CloudRegion+ " is the region.");
     }
 

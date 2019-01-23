@@ -17,8 +17,9 @@ public class Sword : MeleeWeapons {
         }
     }
 
-    private new void Update()
+    protected override void Update()
     {
+        base.Update();
         transform.localEulerAngles = pickupRotation;
         transform.localPosition = pickupPosition;
     }
@@ -28,6 +29,7 @@ public class Sword : MeleeWeapons {
         print(CalculateKinetics());
 
         if (CalculateKinetics() > 2)
+            Haptic();
             EnemyManager.enemyManager.SetEnemyTotalHit(_O.GetComponent<PhotonView>().ViewID, baseDamageMutliplier * (int)CalculateKinetics(), customVelocity, customAngularVelocity);
     }
 

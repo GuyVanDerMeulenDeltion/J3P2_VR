@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     [SerializeField] private bool isArcher = false;
 
     [Header("Target Info:")]
-    [SerializeField] protected Transform currentTarget;
+    public Transform currentTarget;
     [SerializeField] protected float timeTillFollow = 1;
 
     #region Private references
@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     private bool attacking = false;
     private float agentSpeed;
 
-    public void Update() {
+    public virtual void Update() {
         Attacking();
         Check();
         UpdateWalkTimer();
@@ -77,6 +77,11 @@ public class Enemy : MonoBehaviourPunCallbacks {
                 walkTimer = timeTillFollow;
                 thisAgent.speed = 0;
                 thisAgent.velocity = Vector3.zero;
+                if (hit == false)
+                {
+                    Quaternion _Look = Quaternion.LookRotation(currentTarget.position - transform.position);
+                    transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0, _Look.eulerAngles.y, 0), Time.deltaTime * 8);
+                }
                 EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, false, false);
                 inRange = true;
             }
@@ -154,7 +159,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     }
 
 
-    private void Start() {
+    internal virtual void Start() {
         if(EnemyManager.enemyManager != null)
         EnemyManager.enemyManager.SetEnemyRagdoll(photonView.ViewID, true);
         health = maxHealth;
@@ -179,7 +184,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
             yield break;
 
         started = true;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.2f);
         thisAgent.enabled = true;
         StartCoroutine(AssignTargetTimer());
         EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, true, false);
@@ -239,8 +244,6 @@ public class Enemy : MonoBehaviourPunCallbacks {
                 thisAgent.SetDestination(_Target.position);
                 currentTarget = _Target;
                 control.lookObj = _Target.transform.parent;
-                if (isArcher == true)
-                    control.leftHandObj = _Target.transform.parent;
                 
             }
         }

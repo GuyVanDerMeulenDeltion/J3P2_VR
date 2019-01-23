@@ -60,9 +60,12 @@ public class SpawnManager : MonoBehaviourPunCallbacks {
                 if(_Entity._Enemy != null)
                 {
                     enemyCount++;
+
                 }
             }
         }
+
+        print(enemyCount);
     }
 
     internal void SpawnItems() {

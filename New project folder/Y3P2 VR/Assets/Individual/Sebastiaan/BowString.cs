@@ -140,7 +140,7 @@ public class BowString : Bow
             transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", Mathf.Lerp(transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"), 0, 0.2f));
     }
 
-    public override void OnDisable()
+    public new void OnDisable()
     {
         if (firing)
         {

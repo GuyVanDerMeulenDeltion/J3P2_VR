@@ -13,7 +13,17 @@ public class NetworkedAmmo : MonoBehaviourPunCallbacks {
     private void OnTriggerEnter(Collider _O) {
         if (_O.transform.tag == "Enemy") {
             Hit(_O.gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.root.tag == "Enemy")
+        {
+            Hit(collision.transform.root.gameObject);
+        }
+            PhotonNetwork.Destroy(gameObject);
     }
 
     public void Hit(GameObject _O) {

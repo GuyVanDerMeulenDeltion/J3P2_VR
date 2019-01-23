@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Valve.VR;
 
 public class Interactables : MonoBehaviourPunCallbacks {
 
@@ -56,5 +57,13 @@ public class Interactables : MonoBehaviourPunCallbacks {
     public virtual void DeInteract()
     {
         isInteracting = false;
+    }
+
+    internal void Haptic()
+    {
+        if(transform.parent.GetComponent<Controller>().leftHand)
+            transform.parent.GetComponent<Haptic>().Pulse(0.2f, 240, 100, SteamVR_Input_Sources.LeftHand);
+        else
+            transform.parent.GetComponent<Haptic>().Pulse(0.2f, 90, 30, SteamVR_Input_Sources.RightHand);
     }
 }

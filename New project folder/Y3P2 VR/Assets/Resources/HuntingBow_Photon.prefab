@@ -372,7 +372,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1308088099545630}
   m_LocalRotation: {x: -0, y: -0, z: -0.4064209, w: 0.913686}
-  m_LocalPosition: {x: 0.0023765564, y: 0, z: -9.304}
+  m_LocalPosition: {x: -2.652123, y: -2.9337301, z: 1.9927664}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4221836639711622}
@@ -636,7 +636,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114614039355269992}
   viewIdField: 0
-  InstantiationId: 3
+  InstantiationId: 13
   isRuntimeInstantiated: 0
 --- !u!114 &114098406803668908
 MonoBehaviour:
@@ -669,6 +669,7 @@ MonoBehaviour:
   pickupRotation: {x: -90, y: 180, z: 0}
   pickupPosition: {x: 0, y: 0, z: -0.1}
   isInteracting: 0
+  bowString: {fileID: 1119238439984614}
 --- !u!114 &114376648407370398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -689,7 +690,7 @@ MonoBehaviour:
   - {fileID: 114401006248868314}
   - {fileID: 114614039355269992}
   viewIdField: 0
-  InstantiationId: 2
+  InstantiationId: 14
   isRuntimeInstantiated: 0
 --- !u!114 &114401006248868314
 MonoBehaviour:
@@ -722,6 +723,7 @@ MonoBehaviour:
   pickupRotation: {x: 0, y: 0, z: 0}
   pickupPosition: {x: 0, y: 0, z: 0}
   isInteracting: 0
+  bowString: {fileID: 1119238439984614}
   ammo: {fileID: 1568259301440234, guid: 907843f850be5fe4ba64bc4af1aba233, type: 2}
   firing: 0
   drawoffset: 1.35

@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 135987071895388786}
   - component: {fileID: 120702602378917676}
   - component: {fileID: 65244298480703832}
+  - component: {fileID: 114181678614038272}
   m_Layer: 0
   m_Name: Controller (left)
   m_TagString: Hand
@@ -2627,6 +2628,7 @@ GameObject:
   - component: {fileID: 114703510476111906}
   - component: {fileID: 120781939750203958}
   - component: {fileID: 65545531328805232}
+  - component: {fileID: 114029321605294936}
   m_Layer: 0
   m_Name: Controller (right)
   m_TagString: Hand
@@ -5019,6 +5021,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114029321605294936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1939846181178914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c096d6fe87ae8264ba72909943ea585f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haptic: {fileID: 11400000, guid: d27860b0c0430c24fa7ae356f436e3a9, type: 2}
 --- !u!114 &114045697923090966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5588,6 +5602,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Valve.VR.SteamVR_Behaviour_PoseEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114181678614038272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1001290749468200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c096d6fe87ae8264ba72909943ea585f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haptic: {fileID: 11400000, guid: d27860b0c0430c24fa7ae356f436e3a9, type: 2}
 --- !u!114 &114187498145943392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5759,7 +5785,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0
-  InstantiationId: 7
+  InstantiationId: 14
   isRuntimeInstantiated: 0
 --- !u!114 &114295324902042714
 MonoBehaviour:
@@ -6144,7 +6170,7 @@ MonoBehaviour:
   - {fileID: 114298693866505674}
   - {fileID: 114229597267380428}
   viewIdField: 0
-  InstantiationId: 6
+  InstantiationId: 19
   isRuntimeInstantiated: 0
 --- !u!114 &114387986257142502
 MonoBehaviour:
@@ -6788,7 +6814,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0
-  InstantiationId: 1
+  InstantiationId: 13
   isRuntimeInstantiated: 0
 --- !u!114 &114523561695587482
 MonoBehaviour:
@@ -6887,7 +6913,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0
-  InstantiationId: 5
+  InstantiationId: 16
   isRuntimeInstantiated: 0
 --- !u!114 &114573730253063714
 MonoBehaviour:
@@ -7017,7 +7043,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0
-  InstantiationId: 4
+  InstantiationId: 17
   isRuntimeInstantiated: 0
 --- !u!114 &114649346670176456
 MonoBehaviour:
@@ -7292,7 +7318,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0
-  InstantiationId: 3
+  InstantiationId: 18
   isRuntimeInstantiated: 0
 --- !u!114 &114700361418285876
 MonoBehaviour:
@@ -7897,7 +7923,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0
-  InstantiationId: 2
+  InstantiationId: 15
   isRuntimeInstantiated: 0
 --- !u!114 &114967377946554908
 MonoBehaviour:
@@ -8241,7 +8267,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.045
-  m_Center: {x: 0, y: -0.02, z: 0}
+  m_Center: {x: 0, y: -0.02, z: -0.04}
 --- !u!135 &135987071895388786
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -8253,7 +8279,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.045
-  m_Center: {x: 0, y: -0.02, z: 0}
+  m_Center: {x: 0, y: -0.02, z: -0.04}
 --- !u!137 &137197856116269498
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
