@@ -17,6 +17,12 @@ public class Sword : MeleeWeapons {
         }
     }
 
+    private new void Update()
+    {
+        transform.localEulerAngles = pickupRotation;
+        transform.localPosition = pickupPosition;
+    }
+
     public void Hit(GameObject _O)
     {
         print(CalculateKinetics());

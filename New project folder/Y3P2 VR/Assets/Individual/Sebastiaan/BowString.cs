@@ -39,7 +39,7 @@ public class BowString : Bow
 
     public void Shoot()
     {
-        GameObject _arrow = null;
+        GameObject iArrow = null;
         // -----------------------------------------------Left hand ------------------------------------------------
         if (currentHand != null && !firing)
         {
@@ -47,18 +47,18 @@ public class BowString : Bow
             {
                 firing = true;
                 if (PhotonNetwork.IsConnected)
-                    _arrow = PhotonNetwork.Instantiate(ammo.name, transform.position, transform.rotation) as GameObject;
+                    iArrow = PhotonNetwork.Instantiate(ammo.name, transform.position, transform.rotation) as GameObject;
                 else
-                    _arrow = Instantiate(ammo, transform.position, transform.rotation) as GameObject;
+                    iArrow = Instantiate(ammo, transform.position, transform.rotation) as GameObject;
 
-                _arrow.GetPhotonView().TransferOwnership(currentHand.GetPhotonView().Owner);
-                if (_arrow.GetComponent<NetworkedAmmo>())
-                    _arrow.GetComponent<NetworkedAmmo>().enabled = false;
-                _arrow.transform.SetParent(transform);
-                _arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                _arrow.transform.localEulerAngles = new Vector3(-180, -90, 90);
-                _arrow.transform.localPosition = new Vector3(0.98f, 0, -23.02f);
-                currentHand.GetComponent<Controller>().item = _arrow.gameObject;
+                iArrow.GetPhotonView().TransferOwnership(currentHand.GetPhotonView().Owner);
+                if (iArrow.GetComponent<NetworkedAmmo>())
+                    iArrow.GetComponent<NetworkedAmmo>().enabled = false;
+                iArrow.transform.SetParent(transform);
+                iArrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                iArrow.transform.localEulerAngles = new Vector3(-180, -90, 90);
+                iArrow.transform.localPosition = new Vector3(0.98f, 0, -23.02f);
+                currentHand.GetComponent<Controller>().item = iArrow.gameObject;
             }
         }
         else if (firing && currentHand != null)
@@ -72,6 +72,7 @@ public class BowString : Bow
                 {
                     transform.GetChild(0).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                     transform.GetChild(0).GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f * transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
+                    transform.GetChild(0).GetChild(0).GetComponent<TrailRenderer>().enabled = true;
                     //------------ temp
                     if (transform.GetChild(0).GetComponent<NetworkedAmmo>())
                     {
@@ -100,18 +101,18 @@ public class BowString : Bow
             {
                 firing = true;
                 if (PhotonNetwork.IsConnected)
-                    _arrow = PhotonNetwork.Instantiate(ammo.name, transform.position, transform.rotation) as GameObject;
+                    iArrow = PhotonNetwork.Instantiate(ammo.name, transform.position, transform.rotation) as GameObject;
                 else
-                    _arrow = Instantiate(ammo, transform.position, transform.rotation) as GameObject;
+                    iArrow = Instantiate(ammo, transform.position, transform.rotation) as GameObject;
 
-                _arrow.GetPhotonView().TransferOwnership(currentHand.GetPhotonView().Owner);
-                if (_arrow.GetComponent<NetworkedAmmo>())
-                    _arrow.GetComponent<NetworkedAmmo>().enabled = false;
-                _arrow.transform.SetParent(transform);
-                _arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                _arrow.transform.localEulerAngles = new Vector3(-180, -90, 90);
-                _arrow.transform.localPosition = new Vector3(0.98f, 0, -23.02f);
-                currentHand.GetComponent<Controller>().item = _arrow.gameObject;
+                iArrow.GetPhotonView().TransferOwnership(currentHand.GetPhotonView().Owner);
+                if (iArrow.GetComponent<NetworkedAmmo>())
+                    iArrow.GetComponent<NetworkedAmmo>().enabled = false;
+                iArrow.transform.SetParent(transform);
+                iArrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                iArrow.transform.localEulerAngles = new Vector3(-180, -90, 90);
+                iArrow.transform.localPosition = new Vector3(0.98f, 0, -23.02f);
+                currentHand.GetComponent<Controller>().item = iArrow.gameObject;
             }
         }
         else if (firing && currentHand != null)
@@ -123,21 +124,10 @@ public class BowString : Bow
 
                 if (rightHandAxis == 0)
                 {
-                    transform.GetChild(0).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                    transform.GetChild(0).GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f * transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
-                    //------------ temp
-                    if (transform.GetChild(0).GetComponent<NetworkedAmmo>())
-                    {
-                        transform.GetChild(0).GetComponent<NetworkedAmmo>().canHit = true;
-                        transform.GetChild(0).GetComponent<Destroy>().enabled = true;
-                    }
-                    if (transform.parent.GetComponent<Animator>().GetFloat("DrawAxis") >= 0.95f)
-                        for (int i = 0; i < transform.GetChild(0).childCount; i++)
-                        {
-                            if (transform.GetChild(0).GetChild(i).GetComponent<ParticleSystem>())
-                                transform.GetChild(0).GetChild(i).GetComponent<ParticleSystem>().Play();
-                        }
-
+                    iArrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                    iArrow.GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f * transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
+                    iArrow.GetComponent<NetworkedAmmo>().canHit = true;
+                    iArrow.GetComponent<Destroy>().enabled = true;
                     currentHand.GetComponent<Controller>().item = null;
                     transform.GetChild(0).SetParent(null);
                     firing = false;
@@ -148,5 +138,16 @@ public class BowString : Bow
 
         if (!firing && currentHand == null && transform.parent.GetComponent<Animator>().GetFloat("DrawAxis") != 0)
             transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", Mathf.Lerp(transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"), 0, 0.2f));
+    }
+
+    public override void OnDisable()
+    {
+        if (firing)
+        {
+            firing = false;
+            currentHand = null;
+            Destroy(transform.GetChild(0).gameObject);
+            transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", 0);
+        }
     }
 }

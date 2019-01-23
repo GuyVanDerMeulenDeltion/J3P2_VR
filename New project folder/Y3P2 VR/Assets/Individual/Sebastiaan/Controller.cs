@@ -76,7 +76,8 @@ public class Controller : MonoBehaviourPunCallbacks
                     if (_Cont.GetComponentInChildren<Sword>())
                     {
                         _Cont.GetComponentInChildren<Sword>().enabled = false;
-                        _Cont.GetComponentInChildren<TrailRenderer>().enabled = false;
+                        if (_Cont.GetComponentInChildren<TrailRenderer>())
+                            _Cont.GetComponentInChildren<TrailRenderer>().enabled = false;
                     }
                     else if (_Cont.GetComponentInChildren<Shield>())
                         _Cont.GetComponentInChildren<Shield>().enabled = false;
@@ -95,6 +96,7 @@ public class Controller : MonoBehaviourPunCallbacks
                     if (_Cont.GetComponentInChildren<Sword>())
                     {
                         _Cont.GetComponentInChildren<Sword>().enabled = true;
+                        if(_Cont.GetComponentInChildren<TrailRenderer>())
                         _Cont.GetComponentInChildren<TrailRenderer>().enabled = true;
                     }
                     else if (_Cont.GetComponentInChildren<Shield>())
