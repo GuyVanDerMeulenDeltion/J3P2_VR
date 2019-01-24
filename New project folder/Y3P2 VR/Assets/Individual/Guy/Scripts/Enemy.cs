@@ -283,7 +283,11 @@ public class Enemy : MonoBehaviourPunCallbacks {
         EnemyManager.enemyManager.SetEnemyRagdoll(photonView.ViewID, true);
         thisBody.velocity *= 10;
         Destroy(thisAgent);
+        Destroy _DestroyComp = gameObject.AddComponent<Destroy>();
+        _DestroyComp.toDestroy = gameObject;
+        _DestroyComp.networkDestroy = true;
         Destroy(this);
+
     }
 
     //Restores after a while

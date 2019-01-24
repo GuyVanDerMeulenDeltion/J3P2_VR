@@ -7,8 +7,8 @@ public class Destroy : MonoBehaviour {
 
     public bool networkDestroy = true;
 
+    public GameObject toDestroy;
     [SerializeField]private float timeTillDestroy = 5;
-    [SerializeField]private GameObject toDestroy;
 
 	// Use this for initialization
 	private void OnEnable () {
