@@ -24181,7 +24181,7 @@ Prefab:
     - target: {fileID: 114427612531650058, guid: fb28d60217a1ba448910c58eefb7a4d0,
         type: 2}
       propertyPath: entitiesToSpawn.Array.data[3].entitiesToSpawn.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4577055655046400, guid: fb28d60217a1ba448910c58eefb7a4d0, type: 2}
       propertyPath: m_LocalPosition.x
@@ -24395,12 +24395,12 @@ Prefab:
         type: 2}
       propertyPath: entitiesToSpawn.Array.data[3].entitiesToSpawn.Array.data[3]._Pos
       value: 
-      objectReference: {fileID: 1007112045}
+      objectReference: {fileID: 1007112047}
     - target: {fileID: 114427612531650058, guid: fb28d60217a1ba448910c58eefb7a4d0,
         type: 2}
       propertyPath: entitiesToSpawn.Array.data[3].entitiesToSpawn.Array.data[3]._Enemy
       value: 
-      objectReference: {fileID: 1466397089735688, guid: 97d68351370da7c4da924041cfe21385,
+      objectReference: {fileID: 1639098856449510, guid: 0722392f2ce2ee74c8a2a47c7f12fe3f,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb28d60217a1ba448910c58eefb7a4d0, type: 2}
@@ -24448,6 +24448,11 @@ Transform:
 --- !u!4 &1007112046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4054978703653130, guid: fb28d60217a1ba448910c58eefb7a4d0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1007112037}
+--- !u!4 &1007112047 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4228779825660928, guid: fb28d60217a1ba448910c58eefb7a4d0,
     type: 2}
   m_PrefabInternal: {fileID: 1007112037}
 --- !u!1001 &1009058663
