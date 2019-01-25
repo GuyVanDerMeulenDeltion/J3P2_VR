@@ -30,7 +30,7 @@ public class MeleeWeapons : Interactables {
         oldPos = newPos;
 
         rotationDelta = Quaternion.Euler(transform.rotation.eulerAngles - rotationLast.eulerAngles);
-        customAngularVelocity = rotationDelta.eulerAngles;
+        customAngularVelocity = rotationDelta.eulerAngles / Time.deltaTime;
         rotationLast = transform.rotation;
     }
 

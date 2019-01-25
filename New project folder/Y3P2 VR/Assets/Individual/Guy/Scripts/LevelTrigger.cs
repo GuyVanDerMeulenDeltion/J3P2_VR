@@ -9,6 +9,7 @@ public class LevelTrigger : MonoBehaviourPunCallbacks {
     private static float outlineThickness = 1.82f;
     private static int levelLoadTimer = 4;
 
+    [SerializeField] private bool loadScene = false;
     [SerializeField] private int levelIndex;
 
     #region References
@@ -21,6 +22,11 @@ public class LevelTrigger : MonoBehaviourPunCallbacks {
         thisRender = GetComponentInChildren<MeshRenderer>();
         thisRender.materials[1].SetFloat("_Thickness", 0);
         selectedLevel = false;
+    }
+
+    private void Start() {
+        if (loadScene == true)
+            LoadLevel();
     }
 
     private void OnTriggerEnter(Collider _O) {

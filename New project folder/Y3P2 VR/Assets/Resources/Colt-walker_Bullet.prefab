@@ -253,8 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkDestroy: 1
-  timeTillDestroy: 5
   toDestroy: {fileID: 1726877629930046}
+  timeTillDestroy: 5
 --- !u!114 &114954964373521226
 MonoBehaviour:
   m_ObjectHideFlags: 1

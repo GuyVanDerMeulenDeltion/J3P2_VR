@@ -305,5 +305,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkDestroy: 0
-  timeTillDestroy: 7
   toDestroy: {fileID: 1733880848264648}
+  timeTillDestroy: 7

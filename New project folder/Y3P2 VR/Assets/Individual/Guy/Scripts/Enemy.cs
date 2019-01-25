@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
 
     [Header("NPC Statistics:")]
     public float health;
+    [SerializeField] private bool isAggressive = true;
     [SerializeField] private bool isArcher = false;
 
     [Header("Target Info:")]
@@ -44,7 +45,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     private float walkTimer;
 
     private bool hit = false;
-    private bool started = false;
+    internal bool started = false;
     private bool inRange = false;
     private bool attacking = false;
     private float agentSpeed;
@@ -143,7 +144,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
 
     #region Functions related to setting references and starting
     //Sets references
-    private void Awake() {
+    public virtual void Awake() {
         thisAgent = GetComponent<NavMeshAgent>();
         thisBody = GetComponent<Rigidbody>();
         control = GetComponent<IKControl>();
@@ -167,7 +168,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
         agentSpeed = thisAgent.speed;
 
         if(EnemyManager.enemyManager != null)
-        if (EnemyManager.enemyManager.aggroAllOnStart == true) {
+        if (isAggressive == true) {
             StartEnemy();
         }
     }
@@ -250,7 +251,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     }
 
     //Function handles the hit that has been applied to the enemy
-    public void GetDamaged(int _Hit, Vector3 _Velocity, Vector3 _Angular) {
+    public virtual void GetDamaged(int _Hit, Vector3 _Velocity, Vector3 _Angular) {
 
         EnemyManager.enemyManager.SetEnemyHit(photonView.ViewID, _Velocity, _Angular, _Hit);
         EnemyManager.enemyManager.SetEnemyHitsplash(transform.position + new Vector3(0, 1, 0), _Hit);

@@ -79,7 +79,7 @@ public class Teleport : MonoBehaviour {
 
 
     private void CheckForHits() {
-            if (Physics.Raycast(transform.position, transform.forward, out hitInfo, maxRange ,teleportMask)) {
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, maxRange ,teleportMask)) {
                 reticle.transform.position = hitInfo.point;
                 reticle.SetActive(true);
                 canTeleport = true;
@@ -88,8 +88,8 @@ public class Teleport : MonoBehaviour {
         } else {
             thisLine.SetPositions(new Vector3[] { transform.position, transform.forward * 5 + transform.position });
             reticle.SetActive(false);
-                canTeleport = false;
+            canTeleport = false;
             thisLine.material.mainTexture = cannotTeleportImage;
         }
-        }
     }
+}

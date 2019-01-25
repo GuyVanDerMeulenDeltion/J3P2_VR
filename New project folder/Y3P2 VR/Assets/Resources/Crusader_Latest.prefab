@@ -2729,6 +2729,7 @@ MonoBehaviour:
     m_Bits: 2048
   range: 1.95
   health: 0
+  isAggressive: 1
   isArcher: 0
   currentTarget: {fileID: 0}
   timeTillFollow: 5

@@ -10,8 +10,10 @@ public class Shield : MeleeWeapons {
             Hit(_O.gameObject);
         }
     }
-    private new void Update()
+
+    protected override void Update()
     {
+        base.Update();
         transform.localEulerAngles = pickupRotation;
         transform.localPosition = pickupPosition;
     }
@@ -19,6 +21,6 @@ public class Shield : MeleeWeapons {
     public void Hit(GameObject _O) {
 
         if(CalculateKinetics() > 3)
-            EnemyManager.enemyManager.SetEnemyTotalHit(_O.GetComponent<PhotonView>().ViewID,(int)CalculateKinetics(), customVelocity * (CalculateKinetics()*8), customAngularVelocity);
+            EnemyManager.enemyManager.SetEnemyTotalHit(_O.GetComponent<PhotonView>().ViewID, Mathf.Clamp((int)CalculateKinetics(), 0, 50), customVelocity, customAngularVelocity / 2);
     }
 }

@@ -28,9 +28,9 @@ public class Sword : MeleeWeapons {
     {
         print(CalculateKinetics());
 
-        if (CalculateKinetics() > 2)
+        if (CalculateKinetics() > 1.5f)
             Haptic();
-            EnemyManager.enemyManager.SetEnemyTotalHit(_O.GetComponent<PhotonView>().ViewID, baseDamageMutliplier * (int)CalculateKinetics(), customVelocity, customAngularVelocity);
+            EnemyManager.enemyManager.SetEnemyTotalHit(_O.GetComponent<PhotonView>().ViewID, Mathf.Clamp(baseDamageMutliplier * (int)CalculateKinetics(), 0, 400), customVelocity / 2, customAngularVelocity / 2);
     }
 
 }

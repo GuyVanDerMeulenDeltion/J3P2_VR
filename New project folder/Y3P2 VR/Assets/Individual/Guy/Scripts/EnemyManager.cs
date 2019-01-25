@@ -11,8 +11,6 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
 
     public static EnemyManager enemyManager;
 
-    public bool aggroAllOnStart = false;
-
     private void Awake() {
         if (enemyManager != null) Destroy(this);
         enemyManager = this;
@@ -91,6 +89,23 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
             photonView.RPC("GetRemoveTarget", RpcTarget.All, _i);
         else
             GetRemoveTarget(_i);
+    }
+
+    public void SetCrabAnim(int _i, string _Trigger) {
+        if (PhotonNetwork.IsConnected)
+            photonView.RPC("GetCrabAnim", RpcTarget.All, _i, _Trigger);
+        else
+            GetRemoveTarget(_i);
+    }
+
+    [PunRPC]
+    private void GetCrabAnim(int _i, string _Trigger) {
+        foreach (PhotonView _View in PhotonNetwork.PhotonViews) {
+            if (_View.ViewID == _i) {
+                _View.GetComponent<Animator>().SetTrigger(_Trigger);
+                return;
+            }
+        }
     }
 
     [PunRPC]
