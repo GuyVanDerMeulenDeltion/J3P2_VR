@@ -324,6 +324,7 @@ MonoBehaviour:
   pickupPosition: {x: 0, y: 0, z: 0}
   isInteracting: 0
   baseDamageMutliplier: 20
+  divide: 1
 --- !u!114 &114646327951320546
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,6 +5,8 @@ using Photon.Pun;
 
 public class EnemyRanger : Enemy {
 
+    public bool isCowboy = false;
+
     [Header("Archer Settings:")]
     [SerializeField] private Transform _ArrowSpawnPos;
     [SerializeField] private GameObject _EnemyArrow;

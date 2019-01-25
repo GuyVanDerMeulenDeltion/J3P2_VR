@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Sword : MeleeWeapons {
+public class Sword : MeleeWeapons
+{
 
     public int baseDamageMutliplier = 20;
+    public int divide = 1;
 
     public override void OnTriggerEnter(Collider _O)
     {
@@ -29,8 +31,9 @@ public class Sword : MeleeWeapons {
         print(CalculateKinetics());
 
         if (CalculateKinetics() > 1.5f)
+        {
             Haptic();
-            EnemyManager.enemyManager.SetEnemyTotalHit(_O.GetComponent<PhotonView>().ViewID, Mathf.Clamp(baseDamageMutliplier * (int)CalculateKinetics(), 0, 400), customVelocity / 2, customAngularVelocity / 2);
+            EnemyManager.enemyManager.SetEnemyTotalHit(_O.GetComponent<PhotonView>().ViewID, Mathf.Clamp(baseDamageMutliplier * (int)CalculateKinetics() / divide, 0, 400), customVelocity / 2, customAngularVelocity / 2);
+        }
     }
-
 }
