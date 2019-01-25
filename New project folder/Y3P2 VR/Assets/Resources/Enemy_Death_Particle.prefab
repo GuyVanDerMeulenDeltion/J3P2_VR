@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 198996872926093774}
   - component: {fileID: 199023372731150004}
   - component: {fileID: 114655335767604182}
+  - component: {fileID: 114479854011571562}
   m_Layer: 0
   m_Name: Enemy_Death_Particle
   m_TagString: Untagged
@@ -187,6 +188,20 @@ MonoBehaviour:
   delay: 0
   finalIntensity: 0
   autodestruct: 1
+--- !u!114 &114479854011571562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1312042046293556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3febdf49ff5305946b5fa4eaea12699a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkDestroy: 1
+  toDestroy: {fileID: 1312042046293556}
+  timeTillDestroy: 5
 --- !u!114 &114655335767604182
 MonoBehaviour:
   m_ObjectHideFlags: 1
