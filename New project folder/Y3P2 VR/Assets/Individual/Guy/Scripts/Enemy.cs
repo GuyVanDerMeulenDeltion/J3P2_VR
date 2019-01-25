@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
         
     }
 
-    internal virtual void Check()
+    internal void Check()
     {
         if (currentTarget != null)
         {

@@ -14,7 +14,7 @@ public class EnemyArrow : MonoBehaviourPunCallbacks {
 
     private void OnTriggerEnter(Collider _O)
     {
-        if(_O.transform.tag == "Player" && _O.transform.GetComponent<Hitfield>())
+        if(_O.transform.tag == "Player")
         {
             if(_O.gameObject.GetPhotonView() != null)
             photonView.RPC("HitPlayer", RpcTarget.AllBuffered, _O.gameObject.GetPhotonView().ViewID);

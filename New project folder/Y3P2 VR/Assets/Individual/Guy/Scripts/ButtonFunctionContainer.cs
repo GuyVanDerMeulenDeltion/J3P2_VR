@@ -25,15 +25,17 @@ public class ButtonFunctionContainer : MonoBehaviourPunCallbacks {
         StartCoroutine(QuitGame());
     }
 
+
     private IEnumerator QuitGame()
     {
-        PlayerManager.thisPlayer.playerMain.SendMessageLocally("Quitting game, please wait...");
+        //PlayerManager.thisPlayer.playerMain.SendMessageLocally("Quitting game, please wait...");
         yield return new WaitForSeconds(4);
 
-        if(Application.isEditor == false)
+        //if(Application.isEditor == false)
+
         Application.Quit();
-        else
-        UnityEditor.EditorApplication.isPlaying = false;
+        //else
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 
     public void ReturnPlayersToLobby()

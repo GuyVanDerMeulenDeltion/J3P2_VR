@@ -21,7 +21,7 @@ public class EnemyCrab : Enemy {
         {
             if (_CrabMate != null)
             {
-                if (_CrabMate.started == false && _CrabMate != this)
+                if (_CrabMate.started == false)
                 {
                     EnemyManager.enemyManager.SetCrabAnim(_CrabMate.gameObject.GetPhotonView().ViewID, "Walk");
                     _CrabMate.StartEnemy();
