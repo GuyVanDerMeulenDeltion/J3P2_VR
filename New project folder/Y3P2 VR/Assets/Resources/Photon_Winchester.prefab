@@ -204,6 +204,8 @@ GameObject:
   - component: {fileID: 54178012950060672}
   - component: {fileID: 65206971071220574}
   - component: {fileID: 65414073661816734}
+  - component: {fileID: 114027550980832328}
+  - component: {fileID: 114179342903626500}
   m_Layer: 0
   m_Name: Photon_Winchester
   m_TagString: Interactable
@@ -335,8 +337,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773118169128264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2472453, y: -0.98641306, z: 7.9312444}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.8110673, y: 0.8169068, z: -4.338814}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4577074744146810}
   - {fileID: 4067969505207636}
@@ -521,7 +523,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1472642796440566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.435, y: 0.482, z: 0}
+  m_LocalPosition: {x: -1.705, y: 0.482, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4108304776564558}
@@ -1372,7 +1374,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114045049180594986
+--- !u!114 &114027550980832328
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1380,17 +1382,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 1773118169128264}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 114179342903626500}
+  viewIdField: 14
+  InstantiationId: 14
+  isRuntimeInstantiated: 0
+--- !u!114 &114045049180594986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773118169128264}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdb7e6772c2ad2845872e74cac6ca746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   useSkinned: 0
-  render: {fileID: 0}
+  render: {fileID: 23951905136909236}
   s_Render: {fileID: 0}
-  pickupRotation: {x: 0, y: 0, z: 0}
-  pickupPosition: {x: 0, y: 0, z: 0}
+  pickupRotation: {x: 0, y: 90, z: 0}
+  pickupPosition: {x: 0, y: -0.15, z: 0}
   isInteracting: 0
-  repeaterReload: {fileID: 0}
+  repeaterReload: {fileID: 114524850900152168}
   bulletSpawnpos: {fileID: 4877872476229560}
+--- !u!114 &114179342903626500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773118169128264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!114 &114415777071849864
 MonoBehaviour:
   m_ObjectHideFlags: 1

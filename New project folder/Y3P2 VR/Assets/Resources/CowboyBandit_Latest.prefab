@@ -2351,7 +2351,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1287770435486226}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.003126955, y: 0.055057712, z: -0.001}
+  m_LocalPosition: {x: -0.003126955, y: 0.055057712, z: -0.015}
   m_LocalScale: {x: -3.1269548, y: -61.175236, z: 1}
   m_Children: []
   m_Father: {fileID: 224171066270506372}
@@ -2927,7 +2927,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114620046303424356}
   viewIdField: 0
-  InstantiationId: 13
+  InstantiationId: 14
   isRuntimeInstantiated: 0
 --- !u!114 &114755653222769302
 MonoBehaviour:
@@ -3015,7 +3015,7 @@ MonoBehaviour:
   floor:
     serializedVersion: 2
     m_Bits: 2048
-  range: 8
+  range: 12
   health: 0
   isAggressive: 1
   isArcher: 1

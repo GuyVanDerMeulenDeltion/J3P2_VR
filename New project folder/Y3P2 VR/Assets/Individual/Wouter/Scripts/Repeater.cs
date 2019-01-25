@@ -77,15 +77,16 @@ public class Repeater : Interactables
     [PunRPC]
     private void ShootBulletNetworked()
     {
+        Haptic();
         GameObject _NewBullet;
         if (PhotonNetwork.IsConnected && gameObject.GetPhotonView().IsMine)
         {
-            _NewBullet = PhotonNetwork.Instantiate("Bullet", bulletSpawnpos.position, Quaternion.Euler(-transform.right));
+            _NewBullet = PhotonNetwork.Instantiate("Bullet_Winchester", bulletSpawnpos.position, Quaternion.Euler(-transform.right));
             _NewBullet.GetComponent<Rigidbody>().AddForce(-transform.right * 80, ForceMode.Impulse);
         }
         else
         {
-            _NewBullet = (GameObject)Instantiate(Resources.Load("Bullet"), bulletSpawnpos.position, Quaternion.Euler(-transform.right));
+            _NewBullet = (GameObject)Instantiate(Resources.Load("Bullet_Winchester"), bulletSpawnpos.position, Quaternion.Euler(-transform.right));
             _NewBullet.GetComponent<Rigidbody>().AddForce(-transform.right * 80, ForceMode.Impulse);
         }
 
