@@ -201,9 +201,11 @@ GameObject:
   - component: {fileID: 114045049180594986}
   - component: {fileID: 114994683713910370}
   - component: {fileID: 114691405351721558}
-  - component: {fileID: 114930367815085646}
+  - component: {fileID: 54178012950060672}
+  - component: {fileID: 65206971071220574}
+  - component: {fileID: 65414073661816734}
   m_Layer: 0
-  m_Name: Winchester_1873_Repeater
+  m_Name: Photon_Winchester
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,6 +236,8 @@ GameObject:
   - component: {fileID: 4155693434019186}
   - component: {fileID: 33714748977393742}
   - component: {fileID: 23293006038159680}
+  - component: {fileID: 135231809871648906}
+  - component: {fileID: 114524850900152168}
   m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
@@ -331,7 +335,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773118169128264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.249052, y: -1.6483517, z: -0.61699104}
+  m_LocalPosition: {x: 3.2472453, y: -0.98641306, z: 7.9312444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4577074744146810}
@@ -796,6 +800,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
+  - {fileID: 2100000, guid: dd42f8055d4fd7845b07089a13166c04, type: 2}
   - {fileID: 2100000, guid: aa2973fbcd7aa614ab729abc27d0616c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -914,6 +919,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1942743080592946}
   m_Mesh: {fileID: 4300004, guid: 57cd901359e10ef40b72981f27f353a0, type: 3}
+--- !u!54 &54178012950060672
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773118169128264}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!65 &65206971071220574
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773118169128264}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 0.6, z: 0.22}
+  m_Center: {x: 0, y: 0.3, z: 0}
+--- !u!65 &65414073661816734
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773118169128264}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1, z: 0.3}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!82 &82077659617254474
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1345,7 +1389,7 @@ MonoBehaviour:
   pickupRotation: {x: 0, y: 0, z: 0}
   pickupPosition: {x: 0, y: 0, z: 0}
   isInteracting: 0
-  repeaterReload: {fileID: 114930367815085646}
+  repeaterReload: {fileID: 0}
   bulletSpawnpos: {fileID: 4877872476229560}
 --- !u!114 &114415777071849864
 MonoBehaviour:
@@ -1460,6 +1504,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
+--- !u!114 &114524850900152168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1916433270967046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec3ddc6ed36e59478e6b96ef4c54f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHand: {fileID: 0}
 --- !u!114 &114691405351721558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1586,18 +1642,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
---- !u!114 &114930367815085646
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1773118169128264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ec3ddc6ed36e59478e6b96ef4c54f32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHand: {fileID: 0}
 --- !u!114 &114994683713910370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1615,6 +1659,18 @@ MonoBehaviour:
   audioSourcesRandom:
   - {fileID: 82584574544512092}
   - {fileID: 82077659617254474}
+--- !u!135 &135231809871648906
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1916433270967046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.16052166
+  m_Center: {x: 0.14440686, y: 0, z: -0.06851844}
 --- !u!222 &222270742046343196
 CanvasRenderer:
   m_ObjectHideFlags: 1
