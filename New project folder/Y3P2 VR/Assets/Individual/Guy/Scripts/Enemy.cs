@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     [SerializeField] protected float timeTillFollow = 1;
 
     #region Private references
-    private NavMeshAgent thisAgent;
+    protected NavMeshAgent thisAgent;
     private Rigidbody thisBody;
     private float hitTimer;
     private IKControl control;
@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
 
     private float walkTimer;
 
-    private bool hit = false;
+    protected bool hit = false;
     internal bool started = false;
     private bool inRange = false;
     private bool attacking = false;
@@ -118,7 +118,6 @@ public class Enemy : MonoBehaviourPunCallbacks {
         }
 
     public virtual void Attack(int _View) {
-        EnemyManager.enemyManager.SetEnemyMessage(transform.position + new Vector3(0, 1, 0), gameObject.name + " has attacked " +currentTarget.name+"!");
         EnemyManager.enemyManager.SetEnemyAnimation(photonView.ViewID, false, true);
     }
 
@@ -274,9 +273,6 @@ public class Enemy : MonoBehaviourPunCallbacks {
             Die();
             return;
         }
-
-        if (started == false)
-            StartEnemy();
     }
 
     public void Die() {
@@ -292,7 +288,7 @@ public class Enemy : MonoBehaviourPunCallbacks {
     }
 
     //Restores after a while
-    private IEnumerator RestoreTimer() {
+    public virtual IEnumerator RestoreTimer() {
         yield return new WaitForSeconds(restoreTimer);
         if (CheckIfGrounded()) {
             EnemyManager.enemyManager.SetEnemyRagdoll(photonView.ViewID, false);
@@ -301,6 +297,12 @@ public class Enemy : MonoBehaviourPunCallbacks {
             hit = false;
             thisAgent.enabled = true;
             thisAgent.updatePosition = transform;
+
+            if (started == false)
+            {
+                StartEnemy();
+                yield break;
+            }
 
             if (inRange == false) {
                 thisAgent.speed = agentSpeed;

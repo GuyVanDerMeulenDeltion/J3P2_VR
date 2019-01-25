@@ -17,10 +17,16 @@ public class EnemyCrab : Enemy {
     public override void GetDamaged(int _Hit, Vector3 _Velocity, Vector3 _Angular) {
         base.GetDamaged(_Hit, _Velocity, _Angular);
 
-        foreach(EnemyCrab _CrabMate in team) {
-            if(_CrabMate.started == false && _CrabMate != this) {
-                EnemyManager.enemyManager.SetCrabAnim(_CrabMate.gameObject.GetPhotonView().ViewID, "Getup");
-                _CrabMate.StartEnemy();
+        foreach (EnemyCrab _CrabMate in team)
+        {
+            if (_CrabMate != null)
+            {
+                if (_CrabMate.started == false && _CrabMate != this)
+                {
+                    EnemyManager.enemyManager.SetCrabAnim(_CrabMate.gameObject.GetPhotonView().ViewID, "Walk");
+                    _CrabMate.StartEnemy();
+                    _CrabMate.started = true;
+                }
             }
         }
     }

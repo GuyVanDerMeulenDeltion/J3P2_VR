@@ -97,6 +97,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         if (died == false) {
             playerMain.SetDeath();
             died = true;
+            Instantiate(Resources.Load("Death Skull"), transform.position, Quaternion.identity);
             GameManager.gameManager.SetCount(1);
             EnemyManager.enemyManager.SetRemoveTarget(photonView.ViewID);
             foreach(Controller _Cont in PlayerManager.thisPlayer.player_controllers)

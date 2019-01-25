@@ -178,6 +178,7 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
     [PunRPC]
     private void GetEnemyHitsplash(Vector3 _Pos, int _Damage) {
         GameObject _Hitsplash = (GameObject)Instantiate(Resources.Load("Hitsplash"), _Pos, Quaternion.identity);
+        GameObject _HitImpact = (GameObject)Instantiate(Resources.Load("Hit Impact"), _Pos, Quaternion.identity);
         _Hitsplash.GetComponentInChildren<TextMeshProUGUI>().text = _Damage.ToString();
     }
 
@@ -187,6 +188,7 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
 
         GameObject _KOMessage = (GameObject)Instantiate(Resources.Load("Hitsplash"), _SplashPos + new Vector3(0, 1, 0), transform.rotation);
         _KOMessage.GetComponentInChildren<TextMeshProUGUI>().text = "KO'd!";
+        Instantiate(Resources.Load("Death Skull"), _SplashPos, Quaternion.identity);
         _KOMessage.GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
         foreach(PhotonView _View in PhotonNetwork.PhotonViews) {
             if(_View.ViewID == _i) {

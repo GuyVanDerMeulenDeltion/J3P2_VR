@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33330206698269158}
   - component: {fileID: 23299401157092600}
   - component: {fileID: 136434302166832350}
-  - component: {fileID: 136653780585804142}
   - component: {fileID: 54342671924233334}
   - component: {fileID: 114702249296178804}
   - component: {fileID: 114292973085314440}
@@ -41,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1119096531206230}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.0802622, y: 1.5172, z: 0.1017}
+  m_LocalPosition: {x: -41.20896, y: 4.608139, z: 15.754335}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 0}
@@ -136,7 +135,8 @@ MonoBehaviour:
   pickupRotation: {x: 0, y: 0, z: 0}
   pickupPosition: {x: 0, y: 0, z: 0.45}
   isInteracting: 0
-  baseDamageMutliplier: 20
+  baseDamageMutliplier: 10
+  divide: 6
 --- !u!114 &114702249296178804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,7 +156,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0
-  InstantiationId: 7
+  InstantiationId: 14
   isRuntimeInstantiated: 0
 --- !u!136 &136434302166832350
 CapsuleCollider:
@@ -168,19 +168,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.06
-  m_Height: 2.8
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.3}
---- !u!136 &136653780585804142
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1119096531206230}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.15
   m_Height: 2.8
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.3}
