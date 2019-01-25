@@ -633,6 +633,7 @@ GameObject:
   - component: {fileID: 4417547354721778}
   - component: {fileID: 65790552473761112}
   - component: {fileID: 114582995615676360}
+  - component: {fileID: 54535153436425648}
   m_Layer: 15
   m_Name: Bip001 R Hand
   m_TagString: Untagged
@@ -1050,6 +1051,7 @@ GameObject:
   - component: {fileID: 4209610749334056}
   - component: {fileID: 65157764288569844}
   - component: {fileID: 114357109929688324}
+  - component: {fileID: 54516545531744298}
   m_Layer: 15
   m_Name: Bip001 L Hand
   m_TagString: Untagged
@@ -2225,6 +2227,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!54 &54516545531744298
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1891711076901414}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!54 &54535153436425648
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1574206023939934}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!54 &54583932213589480
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -2399,7 +2431,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114535743854160536}
-  viewIdField: 0
+  viewIdField: 13
   InstantiationId: 13
   isRuntimeInstantiated: 0
 --- !u!114 &114105745955427786
@@ -2565,7 +2597,7 @@ MonoBehaviour:
   floor:
     serializedVersion: 2
     m_Bits: 2048
-  range: 2
+  range: 0.5
   health: 0
   isAggressive: 0
   isArcher: 0
