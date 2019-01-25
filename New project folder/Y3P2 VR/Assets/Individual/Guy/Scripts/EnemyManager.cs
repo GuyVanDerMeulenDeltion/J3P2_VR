@@ -185,6 +185,7 @@ public class EnemyManager : MonoBehaviourPunCallbacks {
     [PunRPC]
     private void GetEnemyDeath(int _i, Vector3 _SplashPos) {
         GameManager.gameManager.UpdateEnemyKill();
+        Instantiate(Resources.Load("Enemy_Death_Particle"), _SplashPos, Quaternion.identity);
 
         GameObject _KOMessage = (GameObject)Instantiate(Resources.Load("Hitsplash"), _SplashPos + new Vector3(0, 1, 0), transform.rotation);
         _KOMessage.GetComponentInChildren<TextMeshProUGUI>().text = "KO'd!";

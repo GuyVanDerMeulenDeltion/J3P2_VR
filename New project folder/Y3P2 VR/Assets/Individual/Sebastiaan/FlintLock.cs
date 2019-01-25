@@ -14,6 +14,8 @@ public class FlintLock : Interactables
     internal bool firing;
     private bool resetTrigger;
 
+    public ParticleSystem smokeFX;
+
     internal bool cocking;
 
     public float leftHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.LeftHand); } }
@@ -88,6 +90,7 @@ public class FlintLock : Interactables
         myanim.SetBool("Firing",true);
         myanim.SetFloat("RecockAxis", 0);
         resetTrigger = false;
+        smokeFX.GetComponent<ParticleSystem>().Play();
 
 
         //spawn particles
@@ -138,12 +141,3 @@ public class FlintLock : Interactables
         myanim.SetFloat("RecockAxis", 0);
     }
 }
-/*void Update()
-{
-    triggerAxis = Mathf.Clamp(Input.GetAxis("Horizontal"), 0, 0.95f);
-    rechamberAxis = Mathf.Clamp(Input.GetAxis("Vertical"), 0.1f, 0.95f);
-
-    myAnim.SetFloat("TriggerAxis", triggerAxis);
-    myAnim.SetFloat("RechamberAxis", rechamberAxis);
-}
-*/

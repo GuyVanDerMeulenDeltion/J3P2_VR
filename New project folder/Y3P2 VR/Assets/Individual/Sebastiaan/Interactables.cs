@@ -45,6 +45,22 @@ public class Interactables : MonoBehaviourPunCallbacks {
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.GetComponent<EnemyArrow>())
+        {
+            if(transform.parent != null)
+            {
+                if(transform.parent.GetComponent<Controller>())
+                {
+                    transform.parent.GetComponent<Controller>().DropObject(true);
+                    Destroy(collision.gameObject);
+                    PlayerManager.thisPlayer.playerMain.SendMessageLocally("Oops, your weapon did an oopsie! ¯|_(ツ)_|¯");
+                }
+            }
+        }
+    }
+
     public virtual void Interact()
     {
         isInteracting = true;
