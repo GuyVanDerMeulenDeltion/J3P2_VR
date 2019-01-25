@@ -38,9 +38,8 @@ public class FlintLock : Interactables
 
     void Recock()
     {
-        print(myanim.GetBool("Cocked") +":"+flintLockHammer.currentHand);
         //recocks flintlock by distance from hand you recock with to the hammer multiplied my 4 to get a  realistic feeling
-        if (!myanim.GetBool("Cocked") && flintLockHammer.currentHand != null)
+        if (flintLockHammer.currentHand != null)
         {
             cocking = true;
             if (flintLockHammer.currentHand.GetComponent<Controller>().leftHand && leftHandAxis > 0.99f || flintLockHammer.currentHand.GetComponent<Controller>().rightHand && rightHandAxis > 0.99f)
@@ -139,3 +138,12 @@ public class FlintLock : Interactables
         myanim.SetFloat("RecockAxis", 0);
     }
 }
+/*void Update()
+{
+    triggerAxis = Mathf.Clamp(Input.GetAxis("Horizontal"), 0, 0.95f);
+    rechamberAxis = Mathf.Clamp(Input.GetAxis("Vertical"), 0.1f, 0.95f);
+
+    myAnim.SetFloat("TriggerAxis", triggerAxis);
+    myAnim.SetFloat("RechamberAxis", rechamberAxis);
+}
+*/

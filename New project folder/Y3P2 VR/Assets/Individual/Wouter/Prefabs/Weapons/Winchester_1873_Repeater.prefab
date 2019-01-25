@@ -109,6 +109,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1472642796440566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4877872476229560}
+  m_Layer: 0
+  m_Name: BulletSpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1586521133779852
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,9 +201,10 @@ GameObject:
   - component: {fileID: 114045049180594986}
   - component: {fileID: 114994683713910370}
   - component: {fileID: 114691405351721558}
+  - component: {fileID: 114930367815085646}
   m_Layer: 0
   m_Name: Winchester_1873_Repeater
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -315,12 +331,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773118169128264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.351776, y: 0.5413828, z: -4.1319532}
+  m_LocalPosition: {x: 2.249052, y: -1.6483517, z: -0.61699104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4577074744146810}
   - {fileID: 4067969505207636}
   - {fileID: 4183339463624536}
+  - {fileID: 4877872476229560}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -492,6 +509,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4283291475180240}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4877872476229560
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1472642796440566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.435, y: 0.482, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4108304776564558}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4913089634798940
 Transform:
@@ -1309,7 +1339,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb7e6772c2ad2845872e74cac6ca746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myAnim: {fileID: 95731969403876934}
+  useSkinned: 0
+  render: {fileID: 0}
+  s_Render: {fileID: 0}
+  pickupRotation: {x: 0, y: 0, z: 0}
+  pickupPosition: {x: 0, y: 0, z: 0}
+  isInteracting: 0
+  repeaterReload: {fileID: 114930367815085646}
+  bulletSpawnpos: {fileID: 4877872476229560}
 --- !u!114 &114415777071849864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1549,6 +1586,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
+--- !u!114 &114930367815085646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773118169128264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec3ddc6ed36e59478e6b96ef4c54f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHand: {fileID: 0}
 --- !u!114 &114994683713910370
 MonoBehaviour:
   m_ObjectHideFlags: 1
