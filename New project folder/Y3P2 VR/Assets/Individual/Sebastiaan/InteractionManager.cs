@@ -56,10 +56,13 @@ public class InteractionManager : MonoBehaviourPunCallbacks
         GameObject _Hand = GetView(_View).gameObject;
         GameObject _PickedupObject = GetView(pickUpObject).gameObject;
 
-        if (!_PickedupObject.GetComponentInParent<Controller>().gameObject.GetPhotonView().IsMine)
+        if (_PickedupObject.GetComponentInParent<Controller>() != null)
         {
-            Controller _Cont = _PickedupObject.GetComponentInParent<Controller>();
-            photonView.RPC("ThrowObject", RpcTarget.All, _PickedupObject.GetComponentInParent<Controller>().gameObject.GetPhotonView().ViewID, _PickedupObject);
+            if (!_PickedupObject.GetComponentInParent<Controller>().gameObject.GetPhotonView().IsMine)
+            {
+                Controller _Cont = _PickedupObject.GetComponentInParent<Controller>();
+                photonView.RPC("ThrowObject", RpcTarget.All, _PickedupObject.GetComponentInParent<Controller>().gameObject.GetPhotonView().ViewID, _PickedupObject);
+            }
         }
 
         _PickedupObject.GetComponent<Interactables>().isInteracting = true;
