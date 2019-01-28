@@ -714,14 +714,14 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 0
-    functionName: ShootBullet
+    functionName: Haptic
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
+    floatParameter: 1
     intParameter: 0
     messageOptions: 0
   - time: 0
-    functionName: Haptic
+    functionName: ShootBullet
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
