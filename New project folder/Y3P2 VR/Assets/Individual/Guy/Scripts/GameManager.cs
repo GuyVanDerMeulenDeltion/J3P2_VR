@@ -83,9 +83,9 @@ public class GameManager : MonoBehaviourPunCallbacks {
     {
         deathCount += _Add;
 
-        if (deathCount >= PhotonNetwork.PlayerList.Length)
+        if (deathCount >= PhotonNetwork.PlayerList.Length && PhotonNetwork.IsMasterClient)
         {
-            photonView.RPC("EndMatch", RpcTarget.AllBuffered, "Everyone died, loading lobby...");
+            photonView.RPC("EndMatch", RpcTarget.MasterClient, "Everyone died, loading lobby...");
         }
     }
 
