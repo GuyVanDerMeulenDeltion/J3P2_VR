@@ -8,8 +8,8 @@ public class EnemyArrow : MonoBehaviourPunCallbacks {
     private bool canDamage = true;
 
     private void OnCollisionEnter(Collision _c) {
-        GetComponent<Rigidbody>().useGravity = true;
         canDamage = false;
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider _O)
