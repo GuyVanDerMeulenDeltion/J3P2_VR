@@ -21,13 +21,16 @@ public class GameManager : MonoBehaviourPunCallbacks {
 
     public void UpdateEnemyKill()
     {
-        if (SpawnManager.spawnManager != null)
+        if (PhotonNetwork.IsMasterClient)
         {
-            SpawnManager.enemyCount -= 1;
-
-            if(SpawnManager.enemyCount <= 0)
+            if (SpawnManager.spawnManager != null)
             {
-                photonView.RPC("EndMatch", RpcTarget.AllBuffered, "Completed level, returning to main lobby...");
+                SpawnManager.enemyCount -= 1;
+
+                if (SpawnManager.enemyCount <= 0)
+                {
+                    photonView.RPC("EndMatch", RpcTarget.AllBuffered, "Completed level, returning to main lobby...");
+                }
             }
         }
     }
