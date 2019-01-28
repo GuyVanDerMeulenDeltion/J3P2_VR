@@ -19,9 +19,10 @@ public class EnemyArrow : MonoBehaviourPunCallbacks {
             if (_O.transform.root.gameObject.GetComponent<PlayerManager>().died == false)
             {
                 _O.transform.root.gameObject.GetComponent<PlayerManager>().SetDeath();
-                Destroy(gameObject);
             }
         }
+
+        Destroy(gameObject);
     }
 
     [PunRPC]

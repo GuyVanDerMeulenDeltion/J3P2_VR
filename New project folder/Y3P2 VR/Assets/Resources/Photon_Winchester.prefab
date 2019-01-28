@@ -1409,7 +1409,7 @@ MonoBehaviour:
   useSkinned: 0
   render: {fileID: 23951905136909236}
   s_Render: {fileID: 0}
-  pickupRotation: {x: 0, y: 90, z: 0}
+  pickupRotation: {x: 0, y: 90, z: 46.65}
   pickupPosition: {x: 0, y: -0.15, z: 0}
   isInteracting: 0
   repeaterReload: {fileID: 114524850900152168}
