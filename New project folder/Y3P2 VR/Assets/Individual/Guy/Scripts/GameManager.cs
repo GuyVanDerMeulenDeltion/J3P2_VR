@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviourPunCallbacks {
     internal void SetCount(int _Add)
     {
         if (PhotonNetwork.IsConnected)
-            photonView.RPC("GetCount", RpcTarget.AllBuffered, _Add);
+            photonView.RPC("GetCount", RpcTarget.MasterClient, _Add);
         else
             GetCount(_Add);
     }
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviourPunCallbacks {
     {
         deathCount += _Add;
 
-        if (deathCount >= PhotonNetwork.PlayerList.Length && PhotonNetwork.IsMasterClient)
+        if (deathCount >= PhotonNetwork.PlayerList.Length)
         {
             photonView.RPC("EndMatch", RpcTarget.MasterClient, "Everyone died, loading lobby...");
         }
