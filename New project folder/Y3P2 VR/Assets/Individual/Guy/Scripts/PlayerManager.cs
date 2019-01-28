@@ -42,6 +42,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
             return;
         }
 
+        Destroy(GetComponentInChildren<AudioListener>());
         foreach (GameObject _MenuItem in menu)
             Destroy(_MenuItem);
         playerMain.enabled = false;
