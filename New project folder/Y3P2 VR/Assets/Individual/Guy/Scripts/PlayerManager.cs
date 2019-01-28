@@ -106,9 +106,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
                 _Cont.DropObject(true);
             }
 
-            foreach (Player_Revivefield _Field in reviveFields) {
-                _Field.SetReviveFieldState(false);
-            }
+            if (reviveFields != null)
+                foreach (Player_Revivefield _Field in reviveFields)
+                {
+                    if (_Field != null)
+                        _Field.SetReviveFieldState(false);
+                }
             return;
         }
     }
@@ -118,7 +121,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
             died = false;
             GameManager.gameManager.SetCount(-1);
             playerMain.SetRevive();
+
+            if(reviveFields != null)
             foreach (Player_Revivefield _Field in reviveFields) {
+                    if(_Field != null)
                 _Field.SetReviveFieldState(true);
             }
         }
