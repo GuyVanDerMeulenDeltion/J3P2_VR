@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 114229597267380428}
   - component: {fileID: 114863369318065178}
   - component: {fileID: 114674909389958130}
+  - component: {fileID: 81171615716767776}
   m_Layer: 8
   m_Name: Camera
   m_TagString: Player
@@ -4259,7 +4260,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1419199129272034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.341, z: -0.191}
+  m_LocalPosition: {x: 0, y: 0.244, z: -0.191}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4326408323097492}
@@ -4776,8 +4777,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.4, z: 0.4}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.75, y: 1.97, z: 0.75}
+  m_Center: {x: 0, y: -0.88, z: 0}
 --- !u!65 &65447947237880560
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -4826,6 +4827,13 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!81 &81171615716767776
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1049758546120248}
+  m_Enabled: 1
 --- !u!95 &95042438045247556
 Animator:
   serializedVersion: 3
@@ -5787,7 +5795,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 1
+  viewIdField: 0
   InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &114295324902042714
@@ -6172,7 +6180,7 @@ MonoBehaviour:
   - {fileID: 114929816670445698}
   - {fileID: 114298693866505674}
   - {fileID: 114229597267380428}
-  viewIdField: 9
+  viewIdField: 0
   InstantiationId: 9
   isRuntimeInstantiated: 0
 --- !u!114 &114387986257142502
@@ -6816,7 +6824,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 6
+  viewIdField: 0
   InstantiationId: 6
   isRuntimeInstantiated: 0
 --- !u!114 &114523561695587482
@@ -6915,7 +6923,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 3
+  viewIdField: 0
   InstantiationId: 3
   isRuntimeInstantiated: 0
 --- !u!114 &114573730253063714
@@ -7045,7 +7053,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 4
+  viewIdField: 0
   InstantiationId: 4
   isRuntimeInstantiated: 0
 --- !u!114 &114649346670176456
@@ -7320,7 +7328,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 5
+  viewIdField: 0
   InstantiationId: 5
   isRuntimeInstantiated: 0
 --- !u!114 &114700361418285876
@@ -7925,7 +7933,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 0}
-  viewIdField: 2
+  viewIdField: 0
   InstantiationId: 2
   isRuntimeInstantiated: 0
 --- !u!114 &114967377946554908

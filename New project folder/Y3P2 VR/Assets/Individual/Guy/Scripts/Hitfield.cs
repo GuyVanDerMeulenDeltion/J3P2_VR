@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class Hitfield : MonoBehaviour {
 
+    private Quaternion startRotation;
+
+    private void Awake()
+    {
+        startRotation = transform.rotation;
+    }
+
+    private void LateUpdate()
+    {
+        transform.rotation = startRotation;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.LogWarning("initiate tag test");

@@ -2431,7 +2431,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 114535743854160536}
-  viewIdField: 1
+  viewIdField: 0
   InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &114105745955427786
@@ -2593,11 +2593,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 600
-  maxHitTimer: 6
+  maxHitTimer: 2
   floor:
     serializedVersion: 2
     m_Bits: 2048
-  range: 2.5
+  range: 2.3
   health: 0
   isAggressive: 0
   isArcher: 0
