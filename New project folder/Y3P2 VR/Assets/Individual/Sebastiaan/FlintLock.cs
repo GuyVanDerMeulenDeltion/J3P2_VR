@@ -109,17 +109,11 @@ public class FlintLock : Interactables
     private void ShootBulletNetworked()
     {
         GameObject _NewBullet;
-        if (PhotonNetwork.IsConnected && gameObject.GetPhotonView().IsMine)
+        if (gameObject.GetPhotonView().IsMine)
         {
-            _NewBullet = PhotonNetwork.Instantiate("Bullet", bulletSpawnpos.position, Quaternion.Euler(-transform.right));
+            _NewBullet = PhotonNetwork.InstantiateSceneObject("Bullet", bulletSpawnpos.position, Quaternion.Euler(-transform.right));
             _NewBullet.GetComponent<Rigidbody>().AddForce(-transform.right * 80, ForceMode.Impulse);
         }
-        else
-        {
-            _NewBullet = (GameObject)Instantiate(Resources.Load("Bullet"), bulletSpawnpos.position, Quaternion.Euler(-transform.right));
-            _NewBullet.GetComponent<Rigidbody>().AddForce(-transform.right * 80, ForceMode.Impulse);
-        }
-
     }
 
     void ResetTrigger()

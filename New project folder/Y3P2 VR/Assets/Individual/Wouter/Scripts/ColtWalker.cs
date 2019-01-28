@@ -63,10 +63,5 @@ public class ColtWalker : Interactables {
             iNewBullet = PhotonNetwork.Instantiate("Colt-walker_Bullet", bulletSpawnPos.position, Quaternion.Euler(-transform.right));
             iNewBullet.GetComponent<Rigidbody>().AddForce(-transform.right * 80, ForceMode.Impulse);
         }
-        else
-        {
-            iNewBullet = (GameObject)Instantiate(Resources.Load("Colt-walker_Bullet"), bulletSpawnPos.position, Quaternion.Euler(-transform.right));
-            iNewBullet.GetComponent<Rigidbody>().AddForce(-transform.right * 80, ForceMode.Impulse);
-        }
     }
 }

@@ -75,11 +75,11 @@ public class Interactables : MonoBehaviourPunCallbacks {
         isInteracting = false;
     }
 
-    internal void Haptic(float _Strength = 120, float _Duration = 0.2f)
+    internal void Haptic(float _Strength = 120)
     {
         if(transform.parent.GetComponent<Controller>().leftHand)
-            transform.parent.GetComponent<Haptic>().Pulse(_Duration, 240, _Strength, SteamVR_Input_Sources.LeftHand);
+            transform.parent.GetComponent<Haptic>().Pulse(0.2f, 240, _Strength, SteamVR_Input_Sources.LeftHand);
         else
-            transform.parent.GetComponent<Haptic>().Pulse(_Duration, 90, _Strength, SteamVR_Input_Sources.RightHand);
+            transform.parent.GetComponent<Haptic>().Pulse(0.2f, 90, _Strength, SteamVR_Input_Sources.RightHand);
     }
 }
