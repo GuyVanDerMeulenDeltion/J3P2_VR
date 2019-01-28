@@ -47,7 +47,7 @@ public class Interactables : MonoBehaviourPunCallbacks {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.GetComponent<EnemyArrow>())
+        if (collision.transform.GetComponent<EnemyArrow>() && !GetComponent<Shield>())
         {
             if(transform.parent != null)
             {

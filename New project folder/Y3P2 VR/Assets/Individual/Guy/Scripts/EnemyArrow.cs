@@ -16,9 +16,11 @@ public class EnemyArrow : MonoBehaviourPunCallbacks {
     {
         if(_O.transform.tag == "Player")
         {
-            if(_O.gameObject.GetPhotonView() != null)
-            photonView.RPC("HitPlayer", RpcTarget.AllBuffered, _O.gameObject.GetPhotonView().ViewID);
-            Destroy(gameObject);
+            if (_O.transform.root.gameObject.GetComponent<PlayerManager>().died == false)
+            {
+                _O.transform.root.gameObject.GetComponent<PlayerManager>().SetDeath();
+                Destroy(gameObject);
+            }
         }
     }
 

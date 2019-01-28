@@ -20,7 +20,8 @@ public class Shield : MeleeWeapons {
 
     public void Hit(GameObject _O) {
 
-        if(CalculateKinetics() > 3)
+        if (CalculateKinetics() > 3)
+            Haptic();
             EnemyManager.enemyManager.SetEnemyTotalHit(_O.GetComponent<PhotonView>().ViewID, Mathf.Clamp((int)CalculateKinetics(), 0, 50), customVelocity, customAngularVelocity / 2);
     }
 }

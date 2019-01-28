@@ -19224,7 +19224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadScene: 0
-  levelIndex: 2
+  levelIndex: 4
 --- !u!65 &1469554922
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19711,7 +19711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadScene: 0
-  levelIndex: 4
+  levelIndex: 2
 --- !u!114 &1514965305
 MonoBehaviour:
   m_ObjectHideFlags: 0
