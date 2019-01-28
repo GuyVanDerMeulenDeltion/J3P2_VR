@@ -56,6 +56,12 @@ public class InteractionManager : MonoBehaviourPunCallbacks
         GameObject _Hand = GetView(_View).gameObject;
         GameObject _PickedupObject = GetView(pickUpObject).gameObject;
 
+        if (!_PickedupObject.GetComponentInParent<Controller>().gameObject.GetPhotonView().IsMine)
+        {
+            Controller _Cont = _PickedupObject.GetComponentInParent<Controller>();
+            //photonView.RPCThrowObject(_Cont.gameObject.GetPhotonView().ViewID, pickUpObject);
+        }
+
         _PickedupObject.GetComponent<Interactables>().isInteracting = true;
         _PickedupObject.GetComponent<Interactables>().Interact();
 
@@ -65,12 +71,6 @@ public class InteractionManager : MonoBehaviourPunCallbacks
 
             if (_PickedupObject.GetComponent<Shield>())
                 _PickedupObject.GetComponent<Shield>().enabled = true;
-
-            if (!_PickedupObject.GetComponentInParent<Controller>().gameObject.GetPhotonView().IsMine)
-            {
-                Controller _Cont = _PickedupObject.GetComponentInParent<Controller>();
-                ThrowObject(_Cont.gameObject.GetPhotonView().ViewID, pickUpObject);
-            }
         }
 
         _PickedupObject.GetComponent<Rigidbody>().isKinematic = true;
