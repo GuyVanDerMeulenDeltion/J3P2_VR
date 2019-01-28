@@ -58,7 +58,7 @@ public class InteractionManager : MonoBehaviourPunCallbacks
 
         if (_PickedupObject.GetComponentInParent<Controller>())
         {
-            if (_PickedupObject.GetPhotonView().IsMine)
+            if (_PickedupObject.GetPhotonView().IsMine || _PickedupObject.GetComponent<Controller>().item != null)
                 return;
 
             if (!_PickedupObject.GetComponentInParent<Controller>().gameObject.GetPhotonView().IsMine)
