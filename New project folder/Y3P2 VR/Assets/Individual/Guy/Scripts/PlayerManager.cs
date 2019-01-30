@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     public GameObject[] menu;
     public VR_Player playerMain;
 
-    [SerializeField] private GameObject playerbody;
+    [SerializeField] private GameObject[] playerbody;
 
     public InteractionManager interaction_manager;
 
@@ -38,7 +38,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
             thisPlayer = this;
             GetComponentsFromPlayer();
             camera.enabled = true;
-            playerbody.SetActive(false);
+            SetBody();
+            //foreach(GameObject _Body in playerbody)
+            //_Body.SetActive(false);
             return;
         }
 
@@ -52,6 +54,21 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 
     public void SetCurrentState() {
         player_head.isWielding = CheckHands();
+    }
+
+    private void SetBody() {
+        if (PhotonNetwork.IsConnected)
+            photonView.RPC("GetBody", RpcTarget.AllBuffered, Random.Range(0, playerbody.Length - 1));
+        else
+            GetBody(Random.Range(0, playerbody.Length - 1));
+    }
+
+    [PunRPC]
+    private void GetBody(int _Body) {
+        if(photonView.IsMine == false) {
+            if(playerbody[_Body] != null)
+            playerbody[_Body].SetActive(true);
+        }
     }
 
     private bool CheckHands() {
