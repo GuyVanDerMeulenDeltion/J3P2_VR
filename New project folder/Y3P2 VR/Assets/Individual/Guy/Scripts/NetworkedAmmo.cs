@@ -7,6 +7,7 @@ public class NetworkedAmmo : MonoBehaviourPunCallbacks {
 
     public int baseDamage = 25;
 
+    public bool canDestroy = true;
     public bool canHit = false;
     public bool calculateKinetics = true;
 
@@ -21,8 +22,10 @@ public class NetworkedAmmo : MonoBehaviourPunCallbacks {
     {
         if (collision.transform.root.tag == "Enemy")
         {
+            PhotonNetwork.Destroy(gameObject);
             Hit(collision.transform.root.gameObject);
         }
+            if(canDestroy == true)
             PhotonNetwork.Destroy(gameObject);
     }
 

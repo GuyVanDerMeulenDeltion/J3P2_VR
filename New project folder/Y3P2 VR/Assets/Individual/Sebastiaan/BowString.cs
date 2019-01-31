@@ -4,150 +4,133 @@ using Valve.VR;
 using UnityEngine;
 using Photon.Pun;
 
-public class BowString : Bow
-{
-    public GameObject ammo;
-    private GameObject currentHand;
-    private GameObject startPos { get { return transform.parent.GetChild(3).gameObject; } }
+public class BowString : Bow {
 
-    private DrawOutline drawOutline { get { return new DrawOutline(); } }
+    [Header("Bow References:")]
+    [SerializeField] private float returnToStateSpeed = 8;
+    [SerializeField] private Transform parent;
+    [SerializeField] private Transform startPos;
 
-    [HideInInspector]
-    public bool firing;
-    [SerializeField] private float drawoffset = 1.35f;
+    [Header("Arrow Spawn Settings:")]
+    [SerializeField] private GameObject ammo;
+    [SerializeField] private Vector3 rotation;
+    [SerializeField] private Vector3 pos;
+
 
     public float leftHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.LeftHand); } }
     public float rightHandAxis { get { return SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.RightHand); } }
 
-    private void Update()
-    {
-        Shoot();
+    #region References
+    private Animator parentAnim;
+
+    private Transform currentHand;
+    private GameObject _Arrow;
+
+    internal bool firing;
+    #endregion
+
+    private void Awake() {
+        parentAnim = parent.GetComponent<Animator>();
     }
 
-    public void OnTriggerStay(Collider other)
-    {
-        if (other.transform.tag == "Hand")
-        {
-            currentHand = other.gameObject;
+    private void Update() {
+        NewShoot(currentHand);
+        parentAnim.SetFloat("DrawAxis", Mathf.Clamp(parentAnim.GetFloat("DrawAxis"), 0, 0.65f));
+    }
+
+    public void OnTriggerStay(Collider other) {
+        if (other.transform.tag == "Hand") {
+            currentHand = other.transform;;
         }
     }
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.transform.tag == "Hand" && !firing)
+    public override void OnTriggerExit(Collider other) {
+        base.OnTriggerExit(other);
+        if (other.transform.tag == "Hand" && firing == false)
             currentHand = null;
     }
 
-    public void Shoot()
-    {
-        GameObject iArrow = null;
-        // -----------------------------------------------Left hand ------------------------------------------------
-        if (currentHand != null && !firing)
-        {
-            if (leftHandAxis > 0.85f && currentHand.GetComponent<Controller>().leftHand)
-            {
-                firing = true;
-                if (PhotonNetwork.IsConnected)
-                    iArrow = PhotonNetwork.Instantiate(ammo.name, transform.position, transform.rotation) as GameObject;
-                else
-                    iArrow = Instantiate(ammo, transform.position, transform.rotation) as GameObject;
+    private void ResetState(GameObject _Arrow, float _Force, Controller _Cont) {
+        if (_Arrow == null) return;
 
-                iArrow.GetPhotonView().TransferOwnership(currentHand.GetPhotonView().Owner);
-                if (iArrow.GetComponent<NetworkedAmmo>())
-                    iArrow.GetComponent<NetworkedAmmo>().enabled = false;
-                iArrow.transform.SetParent(transform);
-                iArrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                iArrow.transform.localEulerAngles = new Vector3(-180, -90, 90);
-                iArrow.transform.localPosition = new Vector3(0.98f, 0, -23.02f);
-                currentHand.GetComponent<Controller>().item = iArrow.gameObject;
-            }
+        _Arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        _Arrow.GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f * parentAnim.GetFloat("DrawAxis"));
+        _Arrow.GetComponent<NetworkedAmmo>().canHit = true;
+        _Arrow.GetComponent<Destroy>().enabled = true;
+        _Arrow.transform.SetParent(null);
+        Haptic(0.5f, _Cont);
+        if (_Force > 0.60f) {
+            _Arrow.GetComponentInChildren<ParticleSystem>().Play();
+            _Arrow.GetComponent<NetworkedAmmo>().calculateKinetics = false;
+            _Arrow.GetComponent<NetworkedAmmo>().baseDamage = 750;
         }
-        else if (firing && currentHand != null)
-        {
-            if (currentHand.GetComponent<Controller>().leftHand)
-            {
-                transform.parent.LookAt(currentHand.transform.position, transform.parent.up);
-                transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", Vector3.Distance(startPos.transform.position, currentHand.transform.position) * drawoffset);
 
-                if (leftHandAxis == 0)
-                {
-                    transform.GetChild(0).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                    transform.GetChild(0).GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f * transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
-                    transform.GetChild(0).GetChild(0).GetComponent<TrailRenderer>().enabled = true;
-                    //------------ temp
-                    if (transform.GetChild(0).GetComponent<NetworkedAmmo>())
-                    {
-                        transform.GetChild(0).GetComponent<NetworkedAmmo>().canHit = true;
-                        transform.GetChild(0).GetComponent<Destroy>().enabled = true;
-                    }
-                    if (transform.parent.GetComponent<Animator>().GetFloat("DrawAxis") >= 0.95f)
-                        for (int i = 0; i < transform.GetChild(0).childCount; i++)
-                        {
-                            if (transform.GetChild(0).GetChild(i).GetComponent<ParticleSystem>())
-                                transform.GetChild(0).GetChild(i).GetComponent<ParticleSystem>().Play();
+        _Arrow = null;
+        firing = false;
+        currentHand.GetComponent<Controller>().item = null;
+        currentHand = null;
+    }
+
+    private GameObject _SetArrow() {
+        if (PhotonNetwork.IsConnected == false) return null;
+
+        _Arrow = PhotonNetwork.InstantiateSceneObject(ammo.name, Vector3.zero, Quaternion.identity) as GameObject;
+        _Arrow.transform.SetParent(transform);
+        _Arrow.transform.localEulerAngles = rotation;
+        _Arrow.transform.localPosition = pos;
+        _Arrow.GetComponent<NetworkedAmmo>().enabled = false;
+        _Arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        currentHand.GetComponent<Controller>().item = _Arrow.gameObject;
+        firing = true;
+
+        return _Arrow;
+    }
+
+    public void NewShoot(Transform _Hand) {
+        if (_Hand != null) {
+
+            Controller _ControllerComp = _Hand.GetComponent<Controller>();
+
+            switch (_ControllerComp.leftHand) {
+                case true:
+                    if (firing == false)
+                        if (leftHandAxis > 0.85f) {
+                            if (_Arrow == null)
+                                _Arrow = _SetArrow();
+                            return;
                         }
 
-                    currentHand.GetComponent<Controller>().item = null;
-                    transform.GetChild(0).SetParent(null);
-                    firing = false;
-                    currentHand = null;
-                }
-            }
-        }
-        //-------------------------------------------Right hand ------------------------------------------
+                    if(leftHandAxis != 0)
+                        Haptic(0.2f, _ControllerComp);
 
-        if (currentHand != null && !firing)
-        {
-            if (rightHandAxis > 0.85f && currentHand.GetComponent<Controller>().rightHand)
-            {
-                firing = true;
-                if (PhotonNetwork.IsConnected)
-                    iArrow = PhotonNetwork.Instantiate(ammo.name, transform.position, transform.rotation) as GameObject;
-                else
-                    iArrow = Instantiate(ammo, transform.position, transform.rotation) as GameObject;
+                    parent.LookAt(_Hand.transform.position, parent.up);
+                    parentAnim.SetFloat("DrawAxis", Vector3.Distance(startPos.position, _Hand.position));
 
-                iArrow.GetPhotonView().TransferOwnership(currentHand.GetPhotonView().Owner);
-                if (iArrow.GetComponent<NetworkedAmmo>())
-                    iArrow.GetComponent<NetworkedAmmo>().enabled = false;
-                iArrow.transform.SetParent(transform);
-                iArrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-                iArrow.transform.localEulerAngles = new Vector3(-180, -90, 90);
-                iArrow.transform.localPosition = new Vector3(0.98f, 0, -23.02f);
-                currentHand.GetComponent<Controller>().item = iArrow.gameObject;
-            }
-        }
-        else if (firing && currentHand != null)
-        {
-            if (currentHand.GetComponent<Controller>().rightHand)
-            {
-                transform.parent.LookAt(currentHand.transform.position, transform.parent.up);
-                transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", Vector3.Distance(startPos.transform.position, currentHand.transform.position) * drawoffset);
+                    if (leftHandAxis == 0 && _Arrow != null)
+                        ResetState(_Arrow, parentAnim.GetFloat("DrawAxis"), _ControllerComp);
+                    break;
 
-                if (rightHandAxis == 0)
-                {
-                    iArrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                    iArrow.GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f * transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"));
-                    iArrow.GetComponent<NetworkedAmmo>().canHit = true;
-                    iArrow.GetComponent<Destroy>().enabled = true;
-                    currentHand.GetComponent<Controller>().item = null;
-                    transform.GetChild(0).SetParent(null);
-                    firing = false;
-                    currentHand = null;
-                }
+                case false:
+                    if (firing == false)
+                        if (rightHandAxis > 0.85f) {
+                            if (_Arrow == null)
+                                _Arrow = _SetArrow();
+                            return;
+                        }
+
+                    if (leftHandAxis != 0)
+                        Haptic(0.2f, _ControllerComp);
+
+                    parent.LookAt(_Hand.transform.position, parent.up);
+                    parentAnim.SetFloat("DrawAxis", Vector3.Distance(startPos.position, _Hand.position));
+                    Haptic(0.2f, _ControllerComp);
+
+                    if (rightHandAxis == 0 && _Arrow != null)
+                        ResetState(_Arrow, parentAnim.GetFloat("DrawAxis"), _ControllerComp);
+                    break;
             }
         }
 
-        if (!firing && currentHand == null && transform.parent.GetComponent<Animator>().GetFloat("DrawAxis") != 0)
-            transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", Mathf.Lerp(transform.parent.GetComponent<Animator>().GetFloat("DrawAxis"), 0, 0.2f));
-    }
-
-    public new void OnDisable()
-    {
-        if (firing)
-        {
-            firing = false;
-            currentHand = null;
-            Destroy(transform.GetChild(0).gameObject);
-            transform.parent.GetComponent<Animator>().SetFloat("DrawAxis", 0);
-        }
+        if (!firing && parentAnim.GetFloat("DrawAxis") != 0)
+            parentAnim.SetFloat("DrawAxis", Mathf.Lerp(parentAnim.GetComponent<Animator>().GetFloat("DrawAxis"), 0, returnToStateSpeed * Time.deltaTime));
     }
 }

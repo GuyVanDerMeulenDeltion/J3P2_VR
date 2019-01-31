@@ -366,6 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 25
+  canDestroy: 0
   canHit: 0
   calculateKinetics: 1
 --- !u!114 &114538270851138230

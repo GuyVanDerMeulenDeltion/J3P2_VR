@@ -636,7 +636,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114614039355269992}
   viewIdField: 0
-  InstantiationId: 13
+  InstantiationId: 2
   isRuntimeInstantiated: 0
 --- !u!114 &114098406803668908
 MonoBehaviour:
@@ -690,7 +690,7 @@ MonoBehaviour:
   - {fileID: 114401006248868314}
   - {fileID: 114614039355269992}
   viewIdField: 0
-  InstantiationId: 14
+  InstantiationId: 1
   isRuntimeInstantiated: 0
 --- !u!114 &114401006248868314
 MonoBehaviour:
@@ -724,9 +724,12 @@ MonoBehaviour:
   pickupPosition: {x: 0, y: 0, z: 0}
   isInteracting: 0
   bowString: {fileID: 1119238439984614}
+  returnToStateSpeed: 8
+  parent: {fileID: 4359638442020272}
+  startPos: {fileID: 4433669818460470}
   ammo: {fileID: 1568259301440234, guid: 907843f850be5fe4ba64bc4af1aba233, type: 2}
-  firing: 0
-  drawoffset: 1.35
+  rotation: {x: 0, y: 90, z: -90}
+  pos: {x: 1.35, y: 0, z: -13.01}
 --- !u!114 &114614039355269992
 MonoBehaviour:
   m_ObjectHideFlags: 1
