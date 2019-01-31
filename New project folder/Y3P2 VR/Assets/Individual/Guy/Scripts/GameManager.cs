@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviourPunCallbacks {
     private int spawnIndex = 0;
 
     public void Awake() {
+        if (PhotonNetwork.IsMasterClient)
+            rigCount = 1;
+
         if (gameManager != null) return;
         gameManager = this;
 
@@ -57,7 +60,7 @@ public class GameManager : MonoBehaviourPunCallbacks {
 
         if (PlayerManager.thisPlayer == null && PhotonNetwork.IsConnected) {
             SetRigCount();
-            if(rigCount < 2)
+            if(rigCount > 1)
             PhotonNetwork.Instantiate("[CameraRig]", _SpawnPoint[spawnIndex].position, Quaternion.identity);
 
 
