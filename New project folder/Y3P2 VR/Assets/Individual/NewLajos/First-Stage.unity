@@ -4008,8 +4008,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: -6.97, y: 12.65, z: 6.8}
-  m_Center: {x: -3.72, y: 0, z: 0}
+  m_Size: {x: -16.27, y: 12.65, z: 6.8}
+  m_Center: {x: -10.4, y: 0, z: 0}
 --- !u!1001 &150774071
 Prefab:
   m_ObjectHideFlags: 0
@@ -18113,7 +18113,10 @@ MonoBehaviour:
     - {fileID: 1656302625}
     - {fileID: 597621007}
     _Item: {fileID: 1119096531206230, guid: f755f867b2979034199d7e0034915222, type: 2}
-  entitiesToSpawn: []
+  entitiesToSpawn:
+  - entitiesToSpawn:
+    - _Pos: {fileID: 1321733924}
+      _Enemy: {fileID: 1265604688048576, guid: cf51277f24bedb1479eda6754920021a, type: 2}
 --- !u!1 &671670364
 GameObject:
   m_ObjectHideFlags: 0
@@ -18188,8 +18191,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.73, y: 12.65, z: 7.44}
-  m_Center: {x: -3.72, y: 0, z: 0}
+  m_Size: {x: 7.24, y: 12.65, z: 7.44}
+  m_Center: {x: -7.62, y: 0, z: 0}
 --- !u!1001 &672677024
 Prefab:
   m_ObjectHideFlags: 0

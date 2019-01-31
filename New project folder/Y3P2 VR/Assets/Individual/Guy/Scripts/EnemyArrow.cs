@@ -9,7 +9,9 @@ public class EnemyArrow : MonoBehaviourPunCallbacks {
 
     private void OnCollisionEnter(Collision _c) {
         canDamage = false;
-        Destroy(gameObject);
+
+        if (_O.transform.tag != "Spawner")
+            Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider _O)
@@ -22,6 +24,7 @@ public class EnemyArrow : MonoBehaviourPunCallbacks {
             }
         }
 
+        if(_O.transform.tag != "Spawner")
         Destroy(gameObject);
     }
 
