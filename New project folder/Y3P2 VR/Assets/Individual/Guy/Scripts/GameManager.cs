@@ -6,7 +6,7 @@ using Photon.Pun;
 public class GameManager : MonoBehaviourPunCallbacks {
     public static GameManager gameManager;
 
-    public static GameObject rig = null;
+    public static int rigCount = 0;
 
     private static float loadTime = 5;
 
@@ -20,6 +20,18 @@ public class GameManager : MonoBehaviourPunCallbacks {
         if (gameManager != null) return;
         gameManager = this;
 
+    }
+
+    private void SetRigCount() {
+        if (PhotonNetwork.IsConnected)
+            photonView.RPC("GetRigCount", RpcTarget.All);
+        else
+            GetRigCount();
+    }
+
+    [PunRPC]
+    private void GetRigCount() {
+        rigCount++;
     }
 
     public void UpdateEnemyKill()
@@ -44,9 +56,10 @@ public class GameManager : MonoBehaviourPunCallbacks {
         print(PhotonNetwork.PlayerList.Length+ " is the amount of players");
 
         if (PlayerManager.thisPlayer == null && PhotonNetwork.IsConnected) {
-            GameObject _NewRig = PhotonNetwork.Instantiate("[CameraRig]", _SpawnPoint[spawnIndex].position, Quaternion.identity);
-            if (rig == null) rig = _NewRig;
-            else Destroy(_NewRig);
+            SetRigCount();
+            if(rigCount < 2)
+            PhotonNetwork.Instantiate("[CameraRig]", _SpawnPoint[spawnIndex].position, Quaternion.identity);
+
 
             photonView.RPC("SetSpawn", RpcTarget.All, _SpawnPoint[spawnIndex].position);
             photonView.RPC("SendOnJoinedMessage", RpcTarget.All, "All welcome the new player!");
