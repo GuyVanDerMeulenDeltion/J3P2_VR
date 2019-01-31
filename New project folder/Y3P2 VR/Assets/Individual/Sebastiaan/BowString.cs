@@ -54,6 +54,7 @@ public class BowString : Bow {
         _ArrowNew.GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f * parentAnim.GetFloat("DrawAxis"));
         _ArrowNew.GetComponent<NetworkedAmmo>().canHit = true;
         _ArrowNew.GetComponent<Destroy>().enabled = true;
+        _ArrowNew.GetComponent<TrailRenderer>().enabled = true;
         _ArrowNew.transform.SetParent(null);
         HapticSpecific(0.5f, _Cont);
         if (_Force > 0.60f) {
@@ -83,6 +84,22 @@ public class BowString : Bow {
         return _Arrow;
     }
 
+   /* private void SetupAmmoNetworked(int i) {
+        GameObject _Arrow = null;
+        foreach(PhotonView _View in PhotonNetwork.PhotonViews) {
+            if(_View.ViewID == i) {
+                _Arrow = _View.gameObject;
+                break;
+            }
+        }
+
+        if(_Arrow.GetPhotonView().IsMine == false) {
+            Destroy(_Arrow.GetComponent<Rigidbody>());
+            Destroy(_Arrow.GetComponent<NetworkedAmmo>());
+            _Arrow.transform.SetParent(transform);
+        }
+    }*/
+
     public void NewShoot(Transform _Hand) {
         if (_Hand != null) {
 
@@ -90,6 +107,7 @@ public class BowString : Bow {
 
             switch (_ControllerComp.leftHand) {
                 case true:
+                    #region Lefthand
                     if (firing == false)
                         if (leftHandAxis > 0.85f) {
                             if (_Arrow == null)
@@ -108,9 +126,11 @@ public class BowString : Bow {
                         Controller.canDrop = true;
                         ResetState(_Arrow, parentAnim.GetFloat("DrawAxis"), _ControllerComp);
                     }
+                    #endregion
                     break;
 
                 case false:
+                    #region Righthand
                     if (firing == false)
                         if (rightHandAxis > 0.85f) {
                             if (_Arrow == null)
@@ -129,6 +149,7 @@ public class BowString : Bow {
                         Controller.canDrop = true;
                         ResetState(_Arrow, parentAnim.GetFloat("DrawAxis"), _ControllerComp);
                     }
+                    #endregion
                     break;
             }
         }
