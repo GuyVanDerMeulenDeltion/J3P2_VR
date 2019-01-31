@@ -53,18 +53,15 @@ public class ColtWalker : Interactables {
     internal void Shoot()
     {
         canFire = false;
-
-        if (PhotonNetwork.IsConnected)
-            photonView.RPC("SpawnBullet", RpcTarget.All);
+        SpawnBullet();
     }
 
-    [PunRPC]
     private void SpawnBullet()
     {
         GameObject iNewBullet;
         if (gameObject.GetPhotonView().IsMine)
         {
-            iNewBullet = PhotonNetwork.Instantiate("Colt-walker_Bullet", bulletSpawnPos.position, Quaternion.Euler(-transform.right));
+            iNewBullet = PhotonNetwork.InstantiateSceneObject("Colt-walker_Bullet", bulletSpawnPos.position, Quaternion.Euler(-transform.right));
             iNewBullet.GetComponent<Rigidbody>().AddForce(-transform.right * 80, ForceMode.Impulse);
         }
     }
