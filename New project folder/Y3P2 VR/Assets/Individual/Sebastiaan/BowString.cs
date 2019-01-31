@@ -97,14 +97,17 @@ public class BowString : Bow {
                             return;
                         }
 
-                    if(leftHandAxis != 0)
-                        HapticSpecific(0.2f, _ControllerComp);
+                    if (leftHandAxis != 0) {
+                        Controller.canDrop = false;
+                    }
 
                     parent.LookAt(_Hand.transform.position, parent.up);
                     parentAnim.SetFloat("DrawAxis", Vector3.Distance(startPos.position, _Hand.position));
 
-                    if (leftHandAxis == 0 && _Arrow != null)
+                    if (leftHandAxis == 0 && _Arrow != null) {
+                        Controller.canDrop = true;
                         ResetState(_Arrow, parentAnim.GetFloat("DrawAxis"), _ControllerComp);
+                    }
                     break;
 
                 case false:
@@ -115,15 +118,17 @@ public class BowString : Bow {
                             return;
                         }
 
-                    if (leftHandAxis != 0)
-                        HapticSpecific(0.2f, _ControllerComp);
+                    if (leftHandAxis != 0) {
+                        Controller.canDrop = false;
+                    }
 
                     parent.LookAt(_Hand.transform.position, parent.up);
                     parentAnim.SetFloat("DrawAxis", Vector3.Distance(startPos.position, _Hand.position));
-                    HapticSpecific(0.2f, _ControllerComp);
 
-                    if (rightHandAxis == 0 && _Arrow != null)
+                    if (rightHandAxis == 0 && _Arrow != null) {
+                        Controller.canDrop = true;
                         ResetState(_Arrow, parentAnim.GetFloat("DrawAxis"), _ControllerComp);
+                    }
                     break;
             }
         }

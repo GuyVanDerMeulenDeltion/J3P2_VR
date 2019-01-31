@@ -9,7 +9,7 @@ public class Controller : MonoBehaviourPunCallbacks
     public static Vector3 currentPos;
     public static float teleportTimer = 1; //Timer that decides when the held item can function again... 
     private static float timer;
-    private static bool canDrop = true;
+    public static bool canDrop = true;
 
     public GameObject item;
     public GameObject otherController;
