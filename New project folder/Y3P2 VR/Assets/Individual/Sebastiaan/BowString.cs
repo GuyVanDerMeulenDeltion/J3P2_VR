@@ -49,19 +49,17 @@ public class BowString : Bow {
             currentHand = null;
     }
 
-    private void ResetState(GameObject _Arrow, float _Force, Controller _Cont) {
-        if (_Arrow == null) return;
-
-        _Arrow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        _Arrow.GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f * parentAnim.GetFloat("DrawAxis"));
-        _Arrow.GetComponent<NetworkedAmmo>().canHit = true;
-        _Arrow.GetComponent<Destroy>().enabled = true;
-        _Arrow.transform.SetParent(null);
+    private void ResetState(GameObject _ArrowNew, float _Force, Controller _Cont) {
+        _ArrowNew.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        _ArrowNew.GetComponent<Rigidbody>().AddForce(-transform.forward * 5000f * parentAnim.GetFloat("DrawAxis"));
+        _ArrowNew.GetComponent<NetworkedAmmo>().canHit = true;
+        _ArrowNew.GetComponent<Destroy>().enabled = true;
+        _ArrowNew.transform.SetParent(null);
         Haptic(0.5f, _Cont);
         if (_Force > 0.60f) {
-            _Arrow.GetComponentInChildren<ParticleSystem>().Play();
-            _Arrow.GetComponent<NetworkedAmmo>().calculateKinetics = false;
-            _Arrow.GetComponent<NetworkedAmmo>().baseDamage = 750;
+            _ArrowNew.GetComponentInChildren<ParticleSystem>().Play();
+            _ArrowNew.GetComponent<NetworkedAmmo>().calculateKinetics = false;
+            _ArrowNew.GetComponent<NetworkedAmmo>().baseDamage = 750;
         }
 
         _Arrow = null;
