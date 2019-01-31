@@ -5,7 +5,6 @@ using Photon.Pun;
 
 public class GameManager : MonoBehaviourPunCallbacks {
     public static GameManager gameManager;
-    public static bool spawnedPlayer = false;
 
     private static float loadTime = 5;
 
@@ -46,8 +45,7 @@ public class GameManager : MonoBehaviourPunCallbacks {
         print(PhotonNetwork.CurrentRoom.Name+ " is the current room name");
         print(PhotonNetwork.PlayerList.Length+ " is the amount of players");
 
-        if (PlayerManager.thisPlayer == null && PhotonNetwork.IsConnected && spawnedPlayer == false) {
-            spawnedPlayer = true;
+        if (PlayerManager.thisPlayer == null && PhotonNetwork.IsConnected) {
             PhotonNetwork.Instantiate("[CameraRig]", _SpawnPoint[spawnIndex].position, Quaternion.identity);
             photonView.RPC("SetSpawn", RpcTarget.All, _SpawnPoint[spawnIndex].position);
             photonView.RPC("SendOnJoinedMessage", RpcTarget.All, "All welcome the new player!");
