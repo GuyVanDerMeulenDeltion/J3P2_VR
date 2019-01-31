@@ -19710,7 +19710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc7fa94e43b1b947ab7954808b3c0d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadScene: 0
+  loadScene: 1
   levelIndex: 2
 --- !u!114 &1514965305
 MonoBehaviour:

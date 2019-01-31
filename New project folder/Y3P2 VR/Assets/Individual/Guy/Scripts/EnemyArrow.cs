@@ -5,12 +5,13 @@ using Photon.Pun;
 
 public class EnemyArrow : MonoBehaviourPunCallbacks {
 
-    private bool canDamage = true;
+    public bool canDamage = true;
+    private bool shouldDestroy = true;
 
     private void OnCollisionEnter(Collision _c) {
         canDamage = false;
 
-        if (_c.transform.tag != "Spawner")
+        if (_c.transform.tag != "Spawner" && shouldDestroy == true)
             Destroy(gameObject);
     }
 
@@ -24,8 +25,8 @@ public class EnemyArrow : MonoBehaviourPunCallbacks {
             }
         }
 
-        if(_O.transform.tag != "Spawner")
-        Destroy(gameObject);
+        if (_O.transform.tag != "Spawner" && shouldDestroy == true)
+        Destroy(gameObject); 
     }
 
     [PunRPC]

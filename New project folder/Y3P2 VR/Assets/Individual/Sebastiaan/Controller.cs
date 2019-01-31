@@ -208,9 +208,20 @@ public class Controller : MonoBehaviourPunCallbacks
         }
     }
 
-    void HideController()
+    private void HideController()
     {
         transform.GetComponent<SphereCollider>().enabled = item ? false : true;
         mitten.transform.GetChild(1).gameObject.SetActive(item ? false : true);
+        photonView.RPC("GetControllerHide", RpcTarget.All, mitten.gameObject.GetPhotonView().ViewID, mitten.transform.GetChild(1).gameObject.activeSelf);
+    }
+
+    [PunRPC]
+    private void GetControllerHide(int _View, bool _State) {
+        foreach(PhotonView _V in PhotonNetwork.PhotonViews) {
+            if(_V.ViewID == _View && _V.IsMine == false) {
+                _V.gameObject.transform.GetChild(1).gameObject.SetActive(_State);
+                break;
+            }
+        }
     }
 }
