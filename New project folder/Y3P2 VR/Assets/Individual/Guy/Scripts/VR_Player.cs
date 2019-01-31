@@ -28,6 +28,9 @@ public class VR_Player : MonoBehaviourPunCallbacks {
         PlayerManager.thisPlayer.player_hitbox.enabled = true;
         GetComponent<InteractionManager>().enabled = true;
 
+        foreach (Mitten _Glove in PlayerManager.thisPlayer.gloves)
+            _Glove.enabled = true;
+
         foreach (Hand _Hand in PlayerManager.thisPlayer.player_hands_steam)
             _Hand.enabled = true;
 
