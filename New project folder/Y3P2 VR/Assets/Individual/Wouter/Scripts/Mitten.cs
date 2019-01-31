@@ -19,32 +19,16 @@ public class Mitten : MonoBehaviourPunCallbacks {
     }
 
     private void Update() {
-        //Implementer notes
-        //This controlls the mitten grabbing animation.
-        //Replace " Input.GetAxis("Horizontal") " with Controller trigger axis.
         SetGloveState();
     }
 
     public void SetGloveState() {
         if (PhotonNetwork.IsConnected)
-            photonView.RPC("GetGloveState", RpcTarget.All, photonView.ViewID, triggerAxis);
-        else
-            GetGloveState(photonView.ViewID, triggerAxis);
-
+            photonView.RPC("GetGloveState", RpcTarget.All, triggerAxis);
     }
 
     [PunRPC]
-    private void GetGloveState(int _view, float _axis) {
-        Animator _Glove = null;
-        foreach(PhotonView _View in PhotonNetwork.PhotonViews)
-        {
-            if(_View.ViewID == _view)
-            {
-                _Glove = _View.transform.GetComponent<Animator>();
-            }
-        }
-
-        if(_Glove != null)
-          _Glove.SetFloat("Timeline", Mathf.Clamp(_axis, 0, 0.95f));
+    private void GetGloveState(float _axis) {
+            GetComponent<Animator>().SetFloat("Timeline", Mathf.Clamp(_axis, 0, 0.95f));
     }
 }
