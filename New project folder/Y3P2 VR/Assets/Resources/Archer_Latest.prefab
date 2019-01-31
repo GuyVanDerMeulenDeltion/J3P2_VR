@@ -2886,7 +2886,7 @@ MonoBehaviour:
   floor:
     serializedVersion: 2
     m_Bits: 2048
-  range: 8
+  range: 12
   health: 0
   isAggressive: 1
   isArcher: 1

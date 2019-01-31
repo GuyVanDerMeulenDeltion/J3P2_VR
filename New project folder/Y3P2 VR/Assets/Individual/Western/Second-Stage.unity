@@ -12788,6 +12788,7 @@ GameObject:
   - component: {fileID: 399267897}
   - component: {fileID: 399267899}
   - component: {fileID: 399267898}
+  - component: {fileID: 399267900}
   m_Layer: 0
   m_Name: Spawn_006
   m_TagString: Untagged
@@ -12836,6 +12837,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: -15.58, y: 1, z: 17.34}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &399267900
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 399267896}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 2
 --- !u!1001 &402853441
 Prefab:
   m_ObjectHideFlags: 0
@@ -21586,6 +21602,7 @@ GameObject:
   - component: {fileID: 738238733}
   - component: {fileID: 738238735}
   - component: {fileID: 738238734}
+  - component: {fileID: 738238736}
   m_Layer: 0
   m_Name: Spawn_005
   m_TagString: Untagged
@@ -21634,6 +21651,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: -15.58, y: 1, z: 17.34}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &738238736
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 738238732}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 2
 --- !u!1001 &742910050
 Prefab:
   m_ObjectHideFlags: 0
@@ -23046,6 +23078,7 @@ GameObject:
   - component: {fileID: 799118210}
   - component: {fileID: 799118212}
   - component: {fileID: 799118211}
+  - component: {fileID: 799118213}
   m_Layer: 0
   m_Name: Spawn_003
   m_TagString: Untagged
@@ -23092,6 +23125,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: -15.58, y: 1, z: 5.02}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &799118213
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 799118209}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 2
 --- !u!1001 &801521047
 Prefab:
   m_ObjectHideFlags: 0
@@ -23815,6 +23863,7 @@ GameObject:
   - component: {fileID: 822227684}
   - component: {fileID: 822227686}
   - component: {fileID: 822227685}
+  - component: {fileID: 822227687}
   m_Layer: 0
   m_Name: Spawn_002
   m_TagString: Untagged
@@ -23860,6 +23909,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: -15.58, y: 1, z: 5.02}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &822227687
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 822227683}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 2
 --- !u!1001 &827626518
 Prefab:
   m_ObjectHideFlags: 0
@@ -25366,6 +25430,7 @@ GameObject:
   - component: {fileID: 865513734}
   - component: {fileID: 865513736}
   - component: {fileID: 865513735}
+  - component: {fileID: 865513737}
   m_Layer: 0
   m_Name: Spawn_004
   m_TagString: Untagged
@@ -25413,6 +25478,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: -15.58, y: 1, z: 5.02}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &865513737
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 865513733}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 2
 --- !u!1001 &865984254
 Prefab:
   m_ObjectHideFlags: 0
@@ -47425,6 +47505,7 @@ GameObject:
   - component: {fileID: 1613424417}
   - component: {fileID: 1613424419}
   - component: {fileID: 1613424418}
+  - component: {fileID: 1613424420}
   m_Layer: 0
   m_Name: Spawn_001
   m_TagString: Untagged
@@ -47470,6 +47551,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1613424420
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1613424416}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 2
 --- !u!1001 &1613635483
 Prefab:
   m_ObjectHideFlags: 0
