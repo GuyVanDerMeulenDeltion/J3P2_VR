@@ -46,6 +46,11 @@ public class LevelTrigger : MonoBehaviourPunCallbacks {
 
     //Main function to load a level over the network;
     internal void LoadLevel() {
+        if(PhotonNetwork.IsMasterClient == false) {
+            PlayerManager.thisPlayer.playerMain.SendMessageLocally("Only the master can do that!");
+            return;
+        }
+
         if (selectedLevel == false)
         {
             if (PhotonNetwork.IsConnected)
