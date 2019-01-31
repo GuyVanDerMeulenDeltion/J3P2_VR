@@ -34,6 +34,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 
     private void Awake()
     {
+        if (photonView.Owner == null)
+            Destroy(gameObject);
+
         if (photonView.IsMine || !PhotonNetwork.IsConnected)
         {
             thisPlayer = this;

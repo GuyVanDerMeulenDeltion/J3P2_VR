@@ -14,10 +14,6 @@ public class GameManager : MonoBehaviourPunCallbacks {
 
     private int spawnIndex = 0;
 
-    public void OnApplicationQuit() {
-        spawnedPlayer = false;
-    }
-
     public void Awake() {
         if (gameManager != null) return;
         gameManager = this;
