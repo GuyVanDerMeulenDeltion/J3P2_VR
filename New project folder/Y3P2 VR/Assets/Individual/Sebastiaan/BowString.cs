@@ -98,7 +98,7 @@ public class BowString : Bow {
                         }
 
                     if(leftHandAxis != 0)
-                        Haptic(0.2f, _ControllerComp);
+                        HapticSpecific(0.2f, _ControllerComp);
 
                     parent.LookAt(_Hand.transform.position, parent.up);
                     parentAnim.SetFloat("DrawAxis", Vector3.Distance(startPos.position, _Hand.position));
@@ -116,11 +116,11 @@ public class BowString : Bow {
                         }
 
                     if (leftHandAxis != 0)
-                        Haptic(0.2f, _ControllerComp);
+                        HapticSpecific(0.2f, _ControllerComp);
 
                     parent.LookAt(_Hand.transform.position, parent.up);
                     parentAnim.SetFloat("DrawAxis", Vector3.Distance(startPos.position, _Hand.position));
-                    Haptic(0.2f, _ControllerComp);
+                    HapticSpecific(0.2f, _ControllerComp);
 
                     if (rightHandAxis == 0 && _Arrow != null)
                         ResetState(_Arrow, parentAnim.GetFloat("DrawAxis"), _ControllerComp);
