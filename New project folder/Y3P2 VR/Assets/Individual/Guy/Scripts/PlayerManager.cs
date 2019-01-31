@@ -45,10 +45,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
             return;
         }
 
-        foreach(Mitten _Mit in gloves) {
-            _Mit.enabled = false;
-        }
-
+        if(GetComponentInChildren<AudioListener>())
         Destroy(GetComponentInChildren<AudioListener>());
         foreach (GameObject _MenuItem in menu)
             Destroy(_MenuItem);
