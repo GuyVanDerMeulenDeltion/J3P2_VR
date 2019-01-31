@@ -10,7 +10,7 @@ public class EnemyArrow : MonoBehaviourPunCallbacks {
     private void OnCollisionEnter(Collision _c) {
         canDamage = false;
 
-        if (_O.transform.tag != "Spawner")
+        if (_c.transform.tag != "Spawner")
             Destroy(gameObject);
     }
 
