@@ -18,6 +18,7 @@ public class ColtWalker : Interactables {
 
     private void Update()
     {
+        bulletsLoaded = (int)Mathf.Clamp(bulletsLoaded, 0, 6);
         Trigger();
         transform.localEulerAngles = pickupRotation;
         transform.localPosition = pickupPosition;
@@ -34,14 +35,19 @@ public class ColtWalker : Interactables {
     {
         if (transform.parent.GetComponent<Controller>().leftHand && leftHandAxis > 0.05f)
         {
-            myAnim.SetFloat("TriggerAxis", leftHandAxis);
+            photonView.RPC("Sync", RpcTarget.All, leftHandAxis);
 
         }
 
         if (transform.parent.GetComponent<Controller>().rightHand && rightHandAxis > 0.05f)
         {
-            myAnim.SetFloat("TriggerAxis", rightHandAxis);
+            photonView.RPC("Sync", RpcTarget.All, rightHandAxis);
         }
+    }
+
+    [PunRPC]
+    private void Sync(float _Amount) {
+        GetComponent<Animator>().SetFloat("TriggerAxis", _Amount);
     }
 
     internal void Shoot()
@@ -50,8 +56,6 @@ public class ColtWalker : Interactables {
 
         if (PhotonNetwork.IsConnected)
             photonView.RPC("SpawnBullet", RpcTarget.All);
-        else
-            SpawnBullet();
     }
 
     [PunRPC]
