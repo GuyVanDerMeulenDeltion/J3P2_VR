@@ -20,6 +20,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
     public InteractionManager interaction_manager;
 
     internal Hand[] player_hands_steam;
+    internal Mitten[] gloves;
     internal Grayscale_ImageEffect player_grayscale;
     internal Controller[] player_controllers;
     internal PlayerHead player_head;
@@ -42,6 +43,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
             //foreach(GameObject _Body in playerbody)
             //_Body.SetActive(false);
             return;
+        }
+
+        foreach(Mitten _Mit in gloves) {
+            _Mit.enabled = false;
         }
 
         Destroy(GetComponentInChildren<AudioListener>());
@@ -104,6 +109,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
         area = GetComponentInChildren<SteamVR_PlayArea>();
         hands = GetComponentsInChildren<SteamVR_Behaviour_Pose>();
         reviveFields = GetComponentsInChildren<Player_Revivefield>();
+        gloves = GetComponentsInChildren<Mitten>();
         player_grayscale = GetComponentInChildren<Grayscale_ImageEffect>();
         player_controllers = GetComponentsInChildren<Controller>();
         player_hands_steam = GetComponentsInChildren<Hand>();
