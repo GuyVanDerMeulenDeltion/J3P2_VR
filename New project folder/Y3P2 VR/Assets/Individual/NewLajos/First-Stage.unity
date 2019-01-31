@@ -17205,9 +17205,7 @@ MonoBehaviour:
     - {fileID: 276516517}
     _Item: {fileID: 1317351242399802, guid: 8f9e274899aebef46bdf6f63ef6b312e, type: 2}
   - itemType: Colt
-    _Pos:
-    - {fileID: 216902340}
-    - {fileID: 1042895652}
+    _Pos: []
     _Item: {fileID: 1770600310908650, guid: ab4ad45190d37274bbc5385185284daa, type: 2}
   - itemType: Roman Shield
     _Pos:
