@@ -55,7 +55,7 @@ public class BowString : Bow {
         _ArrowNew.GetComponent<NetworkedAmmo>().canHit = true;
         _ArrowNew.GetComponent<Destroy>().enabled = true;
         _ArrowNew.transform.SetParent(null);
-        Haptic(0.5f, _Cont);
+        HapticSpecific(0.5f, _Cont);
         if (_Force > 0.60f) {
             _ArrowNew.GetComponentInChildren<ParticleSystem>().Play();
             _ArrowNew.GetComponent<NetworkedAmmo>().calculateKinetics = false;
