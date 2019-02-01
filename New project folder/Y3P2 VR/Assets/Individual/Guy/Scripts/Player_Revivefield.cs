@@ -5,9 +5,6 @@ using Photon.Pun;
 
 public class Player_Revivefield : MonoBehaviourPunCallbacks {
 
-    public bool isMine = false;
-    public bool canRevive = true;
-
     private void OnTriggerEnter(Collider _O) {
         if(_O.transform.tag == "Hand") {
             if(_O.gameObject.GetPhotonView().IsMine == false)

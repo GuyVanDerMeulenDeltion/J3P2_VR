@@ -133,7 +133,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
                 foreach (Player_Revivefield _Field in reviveFields)
                 {
                     if (_Field != null)
-                        _Field.SetReviveFieldState(false);
+                        _Field.enabled = false;
                 }
             return;
         }
@@ -148,7 +148,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
             if(reviveFields != null)
             foreach (Player_Revivefield _Field in reviveFields) {
                     if(_Field != null)
-                _Field.SetReviveFieldState(true);
+                _Field.enabled = true;
             }
         }
     }
