@@ -35,19 +35,14 @@ public class ColtWalker : Interactables {
     {
         if (transform.parent.GetComponent<Controller>().leftHand && leftHandAxis > 0.05f)
         {
-            photonView.RPC("Sync", RpcTarget.All, leftHandAxis);
+            myAnim.SetFloat("TriggerAxis", leftHandAxis);
 
         }
 
         if (transform.parent.GetComponent<Controller>().rightHand && rightHandAxis > 0.05f)
         {
-            photonView.RPC("Sync", RpcTarget.All, rightHandAxis);
+            myAnim.SetFloat("TriggerAxis", rightHandAxis);
         }
-    }
-
-    [PunRPC]
-    private void Sync(float _Amount) {
-        GetComponent<Animator>().SetFloat("TriggerAxis", _Amount);
     }
 
     internal void Shoot()
