@@ -10,24 +10,27 @@ public class Player_Revivefield : MonoBehaviourPunCallbacks {
 
     private void OnTriggerEnter(Collider _O) {
         if(_O.transform.tag == "Hand") {
-            if(_O.GetComponent<Player_Revivefield>().isMine == false && isMine == true && canRevive == true && PlayerManager.thisPlayer.died == true) {
-                Revive();
+            if(_O.gameObject.GetPhotonView().IsMine == false)
+            {
+                photonView.RPC("Revive", RpcTarget.All, _O.transform.root.gameObject.GetPhotonView().ViewID);
             }
         }
     }
-    
-    public void SetReviveFieldState(bool _State) {
-        if (PhotonNetwork.IsConnected)
-            photonView.RPC("GetReviveFieldState", RpcTarget.All);
-    }
 
     [PunRPC]
-    private void GetReviveFieldState(bool _State) {
-            canRevive = _State;
-    }
+    public void Revive(int i) {
+        PlayerManager _Player = null;
 
-    public void Revive() {
-        PlayerManager.thisPlayer.Revive();
-        
+        foreach(PhotonView _View in PhotonNetwork.PhotonViews)
+        {
+            if(_View.ViewID == i)
+            {
+                _Player = _View.transform.GetComponent<PlayerManager>();
+                break;
+            }
+        }
+
+        if(_Player.died == true)
+        _Player.Revive();
     }
 }
